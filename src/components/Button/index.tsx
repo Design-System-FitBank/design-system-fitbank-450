@@ -1,10 +1,15 @@
 import React from 'react';
 
+import * as Styled from './styles'
+
 interface ButtonProps {
   secondary?: boolean;
   size?: 'small' | 'medium' | 'large';
   label: string;
-  onClick?: () => void;
+  /**
+   * Função sem retorno que será chamada ao clicar no botão
+   */
+  onClick: () => void;
 }
 
 
@@ -12,15 +17,18 @@ const Button = ({
   secondary = false,
   size = 'medium',
   label,
+  onClick,
   ...props
 }: ButtonProps) => {
   return (
-    <button
+    <Styled.Container
+      secondary={secondary}
       type="button"
+      onClick={onClick}
       {...props}
     >
       {label}
-    </button>
+    </Styled.Container>
   );
 };
 
