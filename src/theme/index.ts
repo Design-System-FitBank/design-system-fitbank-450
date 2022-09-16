@@ -1,2 +1,3 @@
-export { ThemeProvider } from './Provider'
-export { Theme }  from './Theme'
+export { ThemeDSProvider } from './Provider'
+export { Theme } from './Theme'
+export { GlobalStyles } from './globalStyles'
