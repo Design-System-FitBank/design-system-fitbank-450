@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/Fitbank-Pagamentos-Eletronicos/Design-System.git"
   },
+  "publishConfig": {
+    "@Fitbank-Pagamentos-Eletronicos:registry": "https://npm.pkg.github.com"
+  },
   "author": "fitbank-cledson-leite <cledson-leite@fitbank.com.br>",
   "license": "MIT",
   "scripts": {
