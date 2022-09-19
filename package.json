@@ -16,7 +16,8 @@
     "storybook": "start-storybook -p 3010 -s public",
     "build": "tsc -p .",
     "build:storybook": "build-storybook -s public",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "test": "cypress"
   },
   "dependencies": {
     "styled-components": "^5.3.5"

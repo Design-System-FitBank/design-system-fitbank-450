@@ -1,0 +1,19 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish-gpr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+          registry-url: https://npm.pkg.github.com/
+          scope: '@Fitbank-Pagamentos-Eletronicos'
+      - run: npm install
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: $({secrets.GITHUB_TOKEN})
