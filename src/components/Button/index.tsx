@@ -13,7 +13,7 @@ interface ButtonProps {
 }
 
 
-const Button = ({
+export const Button = ({
   secondary = false,
   size = 'medium',
   label,
@@ -31,5 +31,3 @@ const Button = ({
     </Styled.Container>
   );
 };
-
-export default Button
