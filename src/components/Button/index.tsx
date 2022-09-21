@@ -4,7 +4,7 @@ import * as Styled from './styles'
 
 interface ButtonProps {
   secondary?: boolean;
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'large';
   label: string;
   /**
    * Função sem retorno que será chamada ao clicar no botão
