@@ -1,47 +1,36 @@
 import React from 'react'
 
-import { Container } from './styles'
-
+import * as Style from './styles'
 interface TypographyProps {
-  type: 'headline' | 'subtitle' | 'body' | 'button' | 'caption'
+  type: 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'H6' | 'Subtitle' | 'BodySmall' | 'BodyBold' | 'BodyLarge' | 'Caption'
   label: string
 }
 
-export const Typography = ({ type = 'headline', label, ...props }: TypographyProps) => {
-  switch (type) {
-    case 'headline':
-      return (
-        <Container data-testid='headline' {...props}>
-          {label}
-        </Container>
-      )
+export const Typography: React.FC<TypographyProps> = ({ type = 'H1', label }) => {
+  const component = (type: string) => {
+    switch (type) {
+      case 'H1':
+        return <Style.H1>{label}</Style.H1>
 
-    case 'subtitle':
-      return (
-        <Container data-testid='subtitle' {...props}>
-          {label}
-        </Container>
-      )
+      case 'H2':
+        return <Style.H2>{label}</Style.H2>
 
-    case 'body':
-      return (
-        <Container data-testid='body' {...props}>
-          {label}
-        </Container>
-      )
+      case 'H3':
+        return <Style.H3>{label}</Style.H3>
 
-    case 'button':
-      return (
-        <Container data-testid='button' {...props}>
-          {label}
-        </Container>
-      )
+      case 'H4':
+        return <Style.H4>{label}</Style.H4>
 
-    case 'caption':
-      return (
-        <Container data-testid='caption' {...props}>
-          {label}
-        </Container>
-      )
+      case 'H5':
+        return <Style.H5>{label}</Style.H5>
+
+      case 'H6':
+        return <Style.H6>{label}</Style.H6>
+
+      default:
+        return
+    }
   }
+
+  return <div data-testid='typography'>{component(type)}</div>
 }
