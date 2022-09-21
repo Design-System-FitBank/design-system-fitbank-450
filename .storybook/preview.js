@@ -9,7 +9,6 @@ export const parameters = {
     },
   },
 }
-
 export const decorators = [
   (Story) => (
     <ThemeDSProvider theme={Theme}>
