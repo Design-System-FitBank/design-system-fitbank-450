@@ -1,16 +1,33 @@
-import React from 'react'
+import React from 'react';
+
 import * as Styled from './styles'
 
 interface ButtonProps {
-  label: string
-  size: 'small' | 'large'
-  onClick: () => void
+  secondary?: boolean;
+  size?: 'small' | 'medium' | 'large';
+  label: string;
+  /**
+   * Função sem retorno que será chamada ao clicar no botão
+   */
+  onClick: () => void;
 }
 
-export const Button: React.FC<ButtonProps> = ({ label, size, onClick }) => {
+
+export const Button = ({
+  secondary = false,
+  size = 'medium',
+  label,
+  onClick,
+  ...props
+}: ButtonProps) => {
   return (
-    <Styled.Container data-testeid='button' size={size} onClick={onClick}>
+    <Styled.Container
+      secondary={secondary}
+      type="button"
+      onClick={onClick}
+      {...props}
+    >
       {label}
     </Styled.Container>
-  )
-}
+  );
+};
