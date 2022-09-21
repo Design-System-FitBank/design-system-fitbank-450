@@ -15,7 +15,7 @@ interface ButtonProps {
 
 export const Button = ({
   secondary = false,
-  size = 'medium',
+  size = 'large',
   label,
   onClick,
   ...props
