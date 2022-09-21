@@ -1,19 +1,30 @@
 import React from 'react'
-import { mount } from 'cypress/react18'
-
-import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
+import { faker } from '@faker-js/faker'
 import { Button } from '.'
 
-
 describe('Button', () => {
-  it('Dever mostrar o botão default em caso de primary', () => {
-    const onClickStub = cy.stub()
-    mount(
-      <ThemeDSProvider theme={Theme}>
-        <GlobalStyles />
-        <Button label='Teste' onClick={onClickStub} />
-      </ThemeDSProvider>
-    )
-    cy.get('.sc-bczRLJ').should('have.css', 'background-color', 'rgb(3, 168, 124)' )
+  let sut: any
+  const size = 'small'
+  const label = faker.lorem.word()
+
+  beforeEach(() => {
+    cy.mount(<Button label={label} onClick={cy.stub().as('onClick')} size={size} />)
+  })
+
+  it('Deve ter componente visível', () => {
+    cy.get('[data-testeid="button"]').should('be.visible')
+  })
+
+  it('Deve mostrar a label recebida', () => {
+    cy.get('[data-testeid="button"]').should('have.text', label)
+  })
+
+  it('Deve ter uma função', () => {
+    cy.get('[data-testeid="button"]').click()
+    cy.get('@onClick').should('have.been.calledOnce')
+  })
+
+  it('Deve ter tamanho 142px quando o tamanho for small', () => {
+    cy.get('[data-testeid="button"]').should('have.css', 'width', '142px')
   })
 })
