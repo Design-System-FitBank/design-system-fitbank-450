@@ -10,7 +10,7 @@ export default {
 
 const Template: ComponentStory<typeof Button> = args => <Button {...args} />
 
-const Primary = Template.bind({})
+export const Primary = Template.bind({})
 Primary.args = {
   label: 'Primary',
   onClick: () => {}
