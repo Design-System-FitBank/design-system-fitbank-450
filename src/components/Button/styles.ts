@@ -1,6 +1,23 @@
 import styled from 'styled-components'
 
-export const Container = styled.button<{ size?: string }>`
-  width: ${({ size }) => (size === 'small' ? '142px' : '210px')};
-  padding: ${({ size }) => (size === 'small' ? '4px 12px 4px 12px' : '8px 24px 8px 24px')};
+export const Container = styled.button`
+  width: 210px;
+  height: 48px;
+  padding: 8px 24px;
+  gap: 8px;
+  background-color: #323751;
+  border: 1px solid #323751;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+`
+export const Icon = styled.div`
+  width: 32px;
+  height: 32px;
 `
