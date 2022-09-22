@@ -6,11 +6,11 @@ interface TypographyProps {
   label: string
 }
 
-export const Typography: React.FC<TypographyProps> = ({ type = 'H1', label }) => {
+export const Typography = ({ type = 'H1', label }: TypographyProps) => {
   const component = (type: string) => {
     switch (type) {
       case 'H1':
-        return <Style.H1>{label}</Style.H1>
+        return <Style.H1 data-testid='h1Test'>{label}</Style.H1>
 
       case 'H2':
         return <Style.H2>{label}</Style.H2>
