@@ -4,14 +4,15 @@ import * as Styled from './styles'
 
 interface ButtonProps {
   label: string
+  disabled?: boolean
   onClick: () => void
 }
 
 interface IconProps {}
 
-export const Button: React.FC<ButtonProps> = ({ label, onClick }) => {
+export const Button: React.FC<ButtonProps> = ({ label, disabled = false, onClick }) => {
   return (
-    <Styled.Container data-testeid='button' onClick={onClick}>
+    <Styled.Container data-testeid='button' onClick={onClick} disabled={disabled}>
       <Styled.Icon data-testeid='iconPrefix'>
         <Home />
       </Styled.Icon>
