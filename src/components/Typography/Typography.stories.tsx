@@ -11,8 +11,8 @@ export default {
 
 const Template: ComponentStory<typeof Typography> = args => <Typography {...args} />
 
-export const H1 = Template.bind({})
-H1.args = {
+export const Headline = Template.bind({})
+Headline.args = {
   type: 'H1',
   label: 'Headline'
 }
