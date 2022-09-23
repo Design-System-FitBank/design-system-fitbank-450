@@ -33,6 +33,7 @@ describe('Button Default', () => {
       .and('have.css', 'font-weight', '500')
       .and('have.css', 'font-size', '16px')
       .and('have.css', 'line-height', '19px')
+      .and('have.css', 'cursor', 'pointer')
   })
 
   it('Deve ser o componente Default com tamanho small', () => {
