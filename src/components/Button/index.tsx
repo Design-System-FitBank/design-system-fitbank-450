@@ -17,8 +17,6 @@ interface ButtonProps {
   onClick: () => void
 }
 
-interface IconProps {}
-
 export const Button: React.FC<ButtonProps> = ({
   children,
   icon,
