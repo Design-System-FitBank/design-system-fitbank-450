@@ -1,6 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { Button } from '.'
+import { Home } from './img-test'
 
 export default {
   title: 'Button',
@@ -12,6 +13,7 @@ const Template: ComponentStory<typeof Button> = args => <Button {...args} />
 
 export const Primary = Template.bind({})
 Primary.args = {
-  label: 'Primary',
+  children: 'Primary',
+  icon: <Home />,
   onClick: () => {}
 }
