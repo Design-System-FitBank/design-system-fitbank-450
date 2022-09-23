@@ -1,6 +1,5 @@
 import React from 'react'
 import { Home } from './icons/Home'
-<<<<<<< HEAD
 import { Adress } from './icons/Adress'
 import { ArrowDown } from './icons/ArrowDown'
 import { ArroyLeft } from './icons/ArroyLeft'
@@ -61,8 +60,6 @@ import { UserGroup } from './icons/UserGroup'
 import { UserSearch } from './icons/UserSearch'
 import { WithdrawMoney } from './icons/WithdrawMoney'
 import { Xlsx } from './icons/Xlsx'
-=======
->>>>>>> 23b7fcc465477e28dbaec829e7969b17c5ec0d06
 
 interface IconsProps {
   name:
@@ -77,16 +74,10 @@ interface IconsProps {
     | 'card'
     | 'cardMulti'
     | 'changeAccount'
-<<<<<<< HEAD
     | 'code'
     | 'cnh'
     | 'details'
     | 'device'
-=======
-    | 'cnh'
-    | 'details'
-    | 'Device'
->>>>>>> 23b7fcc465477e28dbaec829e7969b17c5ec0d06
     | 'done'
     | 'download'
     | 'edit'
@@ -96,20 +87,11 @@ interface IconsProps {
     | 'favoriteAdd'
     | 'favoriteRemove'
     | 'filter'
-<<<<<<< HEAD
-=======
-    | 'Frame 202'
-    | 'Frame 203'
->>>>>>> 23b7fcc465477e28dbaec829e7969b17c5ec0d06
     | 'home'
     | 'link'
     | 'money'
     | 'moneyln'
-<<<<<<< HEAD
     | 'moneyNote'
-=======
-    | 'moneyNotes'
->>>>>>> 23b7fcc465477e28dbaec829e7969b17c5ec0d06
     | 'moneyOut'
     | 'moneyTransfer'
     | 'moneyTransferSMS'
@@ -127,11 +109,7 @@ interface IconsProps {
     | 'refresh'
     | 'rg'
     | 'scheduled'
-<<<<<<< HEAD
     | 'selectAll'
-=======
-    | 'select-all'
->>>>>>> 23b7fcc465477e28dbaec829e7969b17c5ec0d06
     | 'sendMoney'
     | 'setup'
     | 'share'
@@ -146,10 +124,7 @@ interface IconsProps {
     | 'userGroup'
     | 'userSearch'
     | 'withdrawMoney'
-<<<<<<< HEAD
     | 'xlsx'
-=======
->>>>>>> 23b7fcc465477e28dbaec829e7969b17c5ec0d06
 }
 
 export const Icon: React.FC<IconsProps> = ({ name }) => {
@@ -157,7 +132,6 @@ export const Icon: React.FC<IconsProps> = ({ name }) => {
     case 'home':
       return <Home data-testid='home' />
 
-<<<<<<< HEAD
     case 'adress':
       return <Adress data-testid='adress' />
 
@@ -340,9 +314,5 @@ export const Icon: React.FC<IconsProps> = ({ name }) => {
 
     default:
       return <div>icon not found!</div>
-=======
-    default:
-      return <div />
->>>>>>> 23b7fcc465477e28dbaec829e7969b17c5ec0d06
   }
 }
