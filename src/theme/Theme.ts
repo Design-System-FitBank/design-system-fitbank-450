@@ -8,9 +8,10 @@ export const Theme = {
     alert: '#deaa24',
     info: '#3c78b8',
     textGrey: '#555555',
-    textDesable: '#c4c4c4',
+    textDisabled: '#c4c4c4',
     light: '#ffffff',
     dark: '#010716',
+    disabled: '#c4c4c4'
   },
   font: {
     weight: {
