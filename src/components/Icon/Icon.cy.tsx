@@ -7,6 +7,7 @@ describe('Icon component', () => {
     mount(<Icon name='home' />)
     cy.get('[data-testid="home"]').should('be.visible')
   })
+<<<<<<< HEAD
 
   const names = [
     'home',
@@ -77,4 +78,6 @@ describe('Icon component', () => {
       cy.get(`[data-testid=${item}]`).should('be.visible')
     })
   })
+=======
+>>>>>>> 23b7fcc465477e28dbaec829e7969b17c5ec0d06
 })
