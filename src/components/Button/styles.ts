@@ -8,7 +8,7 @@ export const Container = styled.button<ButtonProps>`
   width: 210px;
   height: 48px;
   padding: 8px 24px;
-  gap: 8px;
+  gap: 7px;
   background-color: ${({ disabled }) => (disabled ? '#ffffff' : '#323751')};
   border: 1px solid ${({ disabled }) => (disabled ? '#c4c4c4' : '#323751')};
   border-radius: 10px;
@@ -34,4 +34,10 @@ export const Container = styled.button<ButtonProps>`
 export const Icon = styled.div`
   width: 32px;
   height: 32px;
+`
+
+export const BoxLabel = styled.div`
+  width: 82px;
+  height: 19px;
+  overflow: hidden;
 `
