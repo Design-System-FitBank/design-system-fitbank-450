@@ -11,11 +11,11 @@ declare module 'styled-components' {
       alert: string,
       info: string,
       textGrey: string,
-      textDesable: string,
+      textDisabled: string,
       light: string,
       dark: string,
       grey: string,
-      desable: string
+      disabled: string
     },
     font: {
         weight: {
