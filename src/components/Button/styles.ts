@@ -26,9 +26,9 @@ export const Container = styled.button<ButtonProps>`
   }
 
   :active {
-    background-color: #fff;
-    color: #323751;
-    border: 1px solid #fcd669;
+    background-color: #ffffff;
+    color: ${({ disabled }) => (disabled ? '#c4c4c4' : '#323751')};
+    border: 1px solid ${({ disabled }) => (disabled ? '#c4c4c4' : '#fcd669')};
   }
 `
 export const Icon = styled.div`
