@@ -15,5 +15,6 @@ export const Primary = Template.bind({})
 Primary.args = {
   children: 'Primary',
   icon: <Home />,
+  size: 'large',
   onClick: () => {}
 }
