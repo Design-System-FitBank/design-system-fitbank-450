@@ -16,6 +16,7 @@ export const Container = styled.button<ButtonProps>`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   color: ${({ disabled }) => (disabled ? '#c4c4c4' : '#ffffff')};
   font-weight: 500;
