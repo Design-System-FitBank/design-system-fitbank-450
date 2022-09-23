@@ -6,7 +6,7 @@ import { Home } from './img-test'
 
 describe('Button Default', () => {
   const label = faker.lorem.word()
-  const icon = <Home />
+  const icon = <Home width={32} height={32} />
   beforeEach(() => {
     cy.mount(
       <Button icon={icon} iconRight={false} onClick={cy.stub().as('onClick')} disabled={false}>
@@ -33,6 +33,26 @@ describe('Button Default', () => {
       .and('have.css', 'font-weight', '500')
       .and('have.css', 'font-size', '16px')
       .and('have.css', 'line-height', '19px')
+      .and('have.css', 'cursor', 'pointer')
+  })
+
+  it('Deve ser o componente Default com tamanho small', () => {
+    const size = 'small'
+    cy.mount(
+      <Button
+        icon={<Home width={20} height={20} />}
+        iconRight={false}
+        size={size}
+        onClick={cy.stub().as('onClick')}
+        disabled={false}
+      >
+        {label}
+      </Button>
+    )
+    cy.get('[data-testeid="button"]')
+      .should('have.css', 'width', '142px')
+      .and('have.css', 'height', '32px')
+      .and('have.css', 'padding', '4px 12px')
   })
 
   it('Deve ter espaço padrão para o label', () => {
