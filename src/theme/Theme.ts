@@ -11,7 +11,8 @@ export const Theme = {
     textDisabled: '#c4c4c4',
     light: '#ffffff',
     dark: '#010716',
-    disabled: '#c4c4c4'
+    disabled: '#c4c4c4',
+    shadow: '#0000001A'
   },
   font: {
     weight: {
