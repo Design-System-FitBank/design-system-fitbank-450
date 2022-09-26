@@ -17,7 +17,6 @@ export const Container = styled.button<ButtonProps>`
   justify-content: center;
   align-items: center;
 
-  color: ${({ theme }) => theme.colors.light};
   font-weight: 500;
   font-size: ${({ size, theme }) => (size === 'small' ? theme.sizes['12px'] : theme.sizes['16px'])};
   line-height: ${({ size, theme }) => (size === 'small' ? theme.sizes['14px'] : theme.sizes['19px'])};
@@ -30,6 +29,7 @@ export const Container = styled.button<ButtonProps>`
 `
 export const Primary = styled(Container)<ButtonProps>`
   background-color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.light};
   border: 1px solid ${({ theme }) => theme.colors.primary};
 
   :hover {
