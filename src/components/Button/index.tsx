@@ -7,6 +7,11 @@ interface ButtonProps {
   icon: JSX.Element
   size?: 'small' | 'large'
   /**
+   * Quando o type for informado o estilo do Button será mudado
+   * O default é o estilo primary
+   */
+  type?: 'primary' | 'secondary' | 'tertiary'
+  /**
    * Quando iconRight for informado o ícone ficará à direita do label.
    * O padrão é a posição do ícone à esquerda
    */
@@ -23,13 +28,36 @@ export const Button: React.FC<ButtonProps> = ({
   disabled = false,
   iconRight = false,
   size = 'large',
+  type = 'primary',
   onClick
 }) => {
-  return (
-    <Styled.Container data-testeid='button' onClick={onClick} disabled={disabled} size={size}>
-      <Styled.Icon data-testeid='iconPrefix'>{!iconRight && icon}</Styled.Icon>
-      <Styled.BoxLabel data-testeid='boxLabel'>{children}</Styled.BoxLabel>
-      <Styled.Icon data-testeid='iconSuffix'>{iconRight && icon}</Styled.Icon>
-    </Styled.Container>
-  )
+  const returnElement = (value: string) => {
+    switch (value) {
+      case 'tertiary':
+        return (
+          <Styled.Tertiary data-testeid='button' onClick={onClick} disabled={disabled} size={size}>
+            <Styled.Icon data-testeid='iconPrefix'>{!iconRight && icon}</Styled.Icon>
+            <Styled.BoxLabel data-testeid='boxLabel'>{children}</Styled.BoxLabel>
+            <Styled.Icon data-testeid='iconSuffix'>{iconRight && icon}</Styled.Icon>
+          </Styled.Tertiary>
+        )
+      case 'secondary':
+        return (
+          <Styled.Secondary data-testeid='button' onClick={onClick} disabled={disabled} size={size}>
+            <Styled.Icon data-testeid='iconPrefix'>{!iconRight && icon}</Styled.Icon>
+            <Styled.BoxLabel data-testeid='boxLabel'>{children}</Styled.BoxLabel>
+            <Styled.Icon data-testeid='iconSuffix'>{iconRight && icon}</Styled.Icon>
+          </Styled.Secondary>
+        )
+      default:
+        return (
+          <Styled.Primary data-testeid='button' onClick={onClick} disabled={disabled} size={size}>
+            <Styled.Icon data-testeid='iconPrefix'>{!iconRight && icon}</Styled.Icon>
+            <Styled.BoxLabel data-testeid='boxLabel'>{children}</Styled.BoxLabel>
+            <Styled.Icon data-testeid='iconSuffix'>{iconRight && icon}</Styled.Icon>
+          </Styled.Primary>
+        )
+    }
+  }
+  return returnElement(type)
 }

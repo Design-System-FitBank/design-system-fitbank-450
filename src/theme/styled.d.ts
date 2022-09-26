@@ -16,6 +16,7 @@ declare module 'styled-components' {
       dark: string
       grey: string
       disabled: string
+      shadow: string
     }
     font: {
       weight: {
