@@ -18,5 +18,3 @@ export const Home = (props: React.SVGProps<SVGSVGElement>) => {
     </svg>
   )
 }
-
-export default Home
