@@ -2,15 +2,7 @@ import React from 'react'
 
 export const Options = (props: React.SVGProps<SVGSVGElement>) => {
   return (
-    <svg
-      width='100%'
-      height='100%'
-      viewBox='0 0 24 24'
-      fill='none'
-      xmlns='http://www.w3.org/2000/svg'
-      stroke='currentColor'
-      {...props}
-    >
+    <svg width='100%' height='100%' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg' {...props}>
       <path
         d='M12 7C13.1046 7 14 6.10457 14 5C14 3.89543 13.1046 3 12 3C10.8954 3 10 3.89543 10 5C10 6.10457 10.8954 7 12 7Z'
         fill='currentColor'

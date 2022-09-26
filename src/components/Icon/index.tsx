@@ -60,6 +60,7 @@ import { UserGroup } from './icons/UserGroup'
 import { UserSearch } from './icons/UserSearch'
 import { WithdrawMoney } from './icons/WithdrawMoney'
 import { Xlsx } from './icons/Xlsx'
+import { QrCodeOut } from './icons/QrCodeOut'
 
 interface IconsProps {
   name:
@@ -251,6 +252,9 @@ export const Icon: React.FC<IconsProps> = ({ name }) => {
 
     case 'qrCodeIn':
       return <QrCodeIn data-testid='qrCodeIn' />
+
+    case 'qrCodeOut':
+      return <QrCodeOut data-testid='qrCodeOut' />
 
     case 'receipt':
       return <Receipt data-testid='receipt' />
