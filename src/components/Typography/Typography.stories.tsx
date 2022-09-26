@@ -14,5 +14,5 @@ const Template: ComponentStory<typeof Typography> = args => <Typography {...args
 export const TypographyVariants = Template.bind({})
 TypographyVariants.args = {
   variant: 'h1',
-  children: 'h1'
+  children: 'Typography'
 }
