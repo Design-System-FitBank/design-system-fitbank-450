@@ -9,7 +9,7 @@ describe('Button Default', () => {
   const icon = <Home width={32} height={32} />
   beforeEach(() => {
     cy.mount(
-      <Button icon={icon} iconRight={false} onClick={cy.stub().as('onClick')} disabled={false}>
+      <Button icon={icon} iconRight={false} onClick={cy.stub().as('onClick')}>
         {label}
       </Button>
     )
@@ -39,13 +39,7 @@ describe('Button Default', () => {
   it('Deve ser o componente Default com tamanho small', () => {
     const size = 'small'
     cy.mount(
-      <Button
-        icon={<Home width={20} height={20} />}
-        iconRight={false}
-        size={size}
-        onClick={cy.stub().as('onClick')}
-        disabled={false}
-      >
+      <Button icon={<Home width={20} height={20} />} iconRight={false} size={size} onClick={cy.stub().as('onClick')}>
         {label}
       </Button>
     )
@@ -77,7 +71,7 @@ describe('Button Default', () => {
 
   it('Deve ter um ícone à direita do label', () => {
     cy.mount(
-      <Button icon={icon} iconRight={true} onClick={cy.stub().as('onClick')} disabled={false}>
+      <Button icon={icon} iconRight={true} onClick={cy.stub().as('onClick')}>
         {label}
       </Button>
     )
@@ -99,7 +93,7 @@ describe('Button Default', () => {
 
   it('Deve ser o componente Default desabled', () => {
     cy.mount(
-      <Button icon={icon} onClick={cy.stub().as('onClick')} disabled={true}>
+      <Button icon={icon} onClick={cy.stub().as('onClick')} disabled>
         {label}
       </Button>
     )
