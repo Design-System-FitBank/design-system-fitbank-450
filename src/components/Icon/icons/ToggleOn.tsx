@@ -2,7 +2,19 @@ import React from 'react'
 
 export const ToggleOn = (props: React.SVGProps<SVGSVGElement>) => {
   return (
+<<<<<<< HEAD
     <svg width='100%' height='100%' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg' {...props}>
+=======
+    <svg
+      width='100%'
+      height='100%'
+      viewBox='0 0 24 24'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+      stroke='currentColor'
+      {...props}
+    >
+>>>>>>> 72ec053f80d6a1cd366225096aeaaccae7171751
       <path d='M5.53051 11.2682L4.75977 12.0389L6.37904 13.6582L7.14979 12.8875L5.53051 11.2682Z' fill='currentColor' />
       <path d='M9.68409 9.8567L6.12734 13.4135L6.89809 14.1842L10.4548 10.6275L9.68409 9.8567Z' fill='currentColor' />
       <path

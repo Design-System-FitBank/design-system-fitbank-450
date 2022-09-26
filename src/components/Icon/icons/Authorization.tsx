@@ -2,7 +2,19 @@ import React from 'react'
 
 export const Authorization = (props: React.SVGProps<SVGSVGElement>) => {
   return (
+<<<<<<< HEAD
     <svg width='100%' height='100%' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg' {...props}>
+=======
+    <svg
+      width='100%'
+      height='100%'
+      viewBox='0 0 24 24'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+      stroke='currentColor'
+      {...props}
+    >
+>>>>>>> 72ec053f80d6a1cd366225096aeaaccae7171751
       <path
         d='M21.6499 12.05L22.3499 12.76L16.1499 18.97L13.6499 16.47L14.3499 15.77L16.1499 17.56L21.6499 12.05Z'
         fill='currentColor'
