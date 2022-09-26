@@ -46,49 +46,42 @@ describe('Typography', () => {
     switch (variant) {
       case 'h1':
         return {
-          type: 'headline',
           fontSize: '56px',
           lineHeight: '64px',
           fontWeight: '700'
         }
       case 'h2':
         return {
-          type: 'headline',
           fontSize: '48px',
           lineHeight: '56px',
           fontWeight: '700'
         }
       case 'h3':
         return {
-          type: 'headline',
           fontSize: '40px',
           lineHeight: '48px',
           fontWeight: '700'
         }
       case 'h4':
         return {
-          type: 'headline',
           fontSize: '32px',
           lineHeight: '40px',
           fontWeight: '700'
         }
       case 'h5':
         return {
-          type: 'headline',
           fontSize: '24px',
           lineHeight: '32px',
           fontWeight: '700'
         }
       case 'h6':
         return {
-          type: 'headline',
           fontSize: '20px',
           lineHeight: '24px',
           fontWeight: '700'
         }
       case 'subtitle':
         return {
-          type: 'subtitle',
           fontSize: '16px',
           lineHeight: 'normal',
           fontWeight: '500',
@@ -97,35 +90,30 @@ describe('Typography', () => {
 
       case 'body':
         return {
-          type: 'body',
           fontSize: '16px',
           lineHeight: '24px',
           fontWeight: '400'
         }
       case 'bodySmall':
         return {
-          type: 'body',
           fontSize: '14px',
           lineHeight: '20px',
           fontWeight: '400'
         }
       case 'bodyLarge':
         return {
-          type: 'body',
           fontSize: '18px',
           lineHeight: '28px',
           fontWeight: '400'
         }
       case 'bodyBold':
         return {
-          type: 'body',
           fontSize: '16px',
           lineHeight: '24px',
           fontWeight: '700'
         }
       case 'caption':
         return {
-          type: 'button',
           fontSize: '12px',
           lineHeight: '16px',
           fontWeight: '400',
