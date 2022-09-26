@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 type ButtonProps = {
-  disabled?: boolean
   size?: string
 }
 
@@ -10,27 +9,33 @@ export const Container = styled.button<ButtonProps>`
   height: ${({ size }) => (size === 'small' ? '32px' : '48px')};
   padding: ${({ size }) => (size === 'small' ? '4px 12px' : '8px 24px')};
   gap: ${({ size }) => (size === 'small' ? '6px' : '7px')};
-  background-color: ${({ disabled }) => (disabled ? '#ffffff' : '#323751')};
-  border: 1px solid ${({ disabled }) => (disabled ? '#c4c4c4' : '#323751')};
+  background-color: #323751;
+  border: 1px solid #323751;
   border-radius: ${({ size }) => (size === 'small' ? '8px' : '10px')};
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 
-  color: ${({ disabled }) => (disabled ? '#c4c4c4' : '#ffffff')};
+  color: #ffffff;
   font-weight: 500;
   font-size: ${({ size }) => (size === 'small' ? '12px' : '16px')};
   line-height: ${({ size }) => (size === 'small' ? '14px' : '19px')};
 
   :hover {
-    color: ${({ disabled }) => (disabled ? '#c4c4c4' : '#fcd669')};
+    color: #fcd669;
   }
 
   :active {
     background-color: #ffffff;
-    color: ${({ disabled }) => (disabled ? '#c4c4c4' : '#323751')};
-    border: 1px solid ${({ disabled }) => (disabled ? '#c4c4c4' : '#fcd669')};
+    color: #323751;
+    border: 1px solid #fcd669;
+  }
+
+  :disabled {
+    background-color: #ffffff;
+    border: 1px solid #c4c4c4;
+    color: #c4c4c4;
   }
 `
 export const Icon = styled.div<ButtonProps>`
