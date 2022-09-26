@@ -5,50 +5,53 @@ type ButtonProps = {
 }
 
 export const Container = styled.button<ButtonProps>`
-  width: ${({ size }) => (size === 'small' ? '142px' : '210px')};
-  height: ${({ size }) => (size === 'small' ? '32px' : '48px')};
-  padding: ${({ size }) => (size === 'small' ? '4px 12px' : '8px 24px')};
-  gap: ${({ size }) => (size === 'small' ? '6px' : '7px')};
-  background-color: #323751;
-  border: 1px solid #323751;
-  border-radius: ${({ size }) => (size === 'small' ? '8px' : '10px')};
+  width: ${({ size, theme }) => (size === 'small' ? theme.sizes['142px'] : theme.sizes['210px'])};
+  height: ${({ size, theme }) => (size === 'small' ? theme.sizes['32px'] : theme.sizes['48px'])};
+  padding-top: ${({ size, theme }) => (size === 'small' ? theme.sizes['4px'] : theme.sizes['8px'])};
+  padding-bottom: ${({ size, theme }) => (size === 'small' ? theme.sizes['4px'] : theme.sizes['8px'])};
+  padding-left: ${({ size, theme }) => (size === 'small' ? theme.sizes['12px'] : theme.sizes['24px'])};
+  padding-right: ${({ size, theme }) => (size === 'small' ? theme.sizes['12px'] : theme.sizes['24px'])};
+  gap: ${({ size, theme }) => (size === 'small' ? theme.sizes['6px'] : theme.sizes['7px'])};
+  background-color: ${({ theme }) => theme.colors.primary};
+  border: 1px solid ${({ theme }) => theme.colors.primary};
+  border-radius: ${({ size, theme }) => (size === 'small' ? theme.sizes['8px'] : theme.sizes['10px'])};
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.light};
   font-weight: 500;
-  font-size: ${({ size }) => (size === 'small' ? '12px' : '16px')};
-  line-height: ${({ size }) => (size === 'small' ? '14px' : '19px')};
+  font-size: ${({ size, theme }) => (size === 'small' ? theme.sizes['12px'] : theme.sizes['16px'])};
+  line-height: ${({ size, theme }) => (size === 'small' ? theme.sizes['14px'] : theme.sizes['19px'])};
 
   :hover {
-    color: #fcd669;
+    color: ${({ theme }) => theme.colors.tertiary};
   }
 
   :active {
-    background-color: #ffffff;
-    color: #323751;
-    border: 1px solid #fcd669;
+    background-color: ${({ theme }) => theme.colors.light};
+    color: ${({ theme }) => theme.colors.primary};
+    border: 1px solid ${({ theme }) => theme.colors.tertiary};
   }
 
   :disabled {
-    background-color: #ffffff;
-    border: 1px solid #c4c4c4;
-    color: #c4c4c4;
+    background-color: ${({ theme }) => theme.colors.light};
+    border: 1px solid ${({ theme }) => theme.colors.disabled};
+    color: ${({ theme }) => theme.colors.disabled};
   }
 `
 export const Icon = styled.div<ButtonProps>`
-  width: ${({ size }) => (size === 'small' ? '20px' : '32px')};
-  height: ${({ size }) => (size === 'small' ? '20px' : '32px')};
+  width: ${({ size, theme }) => (size === 'small' ? theme.sizes['20px'] : theme.sizes['32px'])};
+  height: ${({ size, theme }) => (size === 'small' ? theme.sizes['20px'] : theme.sizes['32px'])};
   display: flex;
   justify-content: center;
   align-items: center;
 `
 
 export const BoxLabel = styled.div<ButtonProps>`
-  width: ${({ size }) => (size === 'small' ? '62px' : '82px')};
-  height: ${({ size }) => (size === 'small' ? '14px' : '19px')};
+  width: ${({ size, theme }) => (size === 'small' ? theme.sizes['62px'] : theme.sizes['82px'])};
+  height: ${({ size, theme }) => (size === 'small' ? theme.sizes['14px'] : theme.sizes['19px'])};
   overflow: hidden;
   display: flex;
   justify-content: center;

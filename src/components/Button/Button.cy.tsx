@@ -1,17 +1,21 @@
 import React from 'react'
 import { faker } from '@faker-js/faker'
-import { Button } from '.'
 import 'cypress-real-events/support'
+import { Button } from '.'
 import { Home } from './img-test'
+import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
 
 describe('Button Default', () => {
   const label = faker.lorem.word()
   const icon = <Home width={32} height={32} />
   beforeEach(() => {
     cy.mount(
-      <Button icon={icon} iconRight={false} onClick={cy.stub().as('onClick')}>
-        {label}
-      </Button>
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button icon={icon} iconRight={false} onClick={cy.stub().as('onClick')}>
+          {label}
+        </Button>
+      </ThemeDSProvider>
     )
   })
 
@@ -39,9 +43,12 @@ describe('Button Default', () => {
   it('Deve ser o componente Default com tamanho small', () => {
     const size = 'small'
     cy.mount(
-      <Button icon={<Home width={20} height={20} />} iconRight={false} size={size} onClick={cy.stub().as('onClick')}>
-        {label}
-      </Button>
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button icon={<Home width={20} height={20} />} iconRight={false} size={size} onClick={cy.stub().as('onClick')}>
+          {label}
+        </Button>
+      </ThemeDSProvider>
     )
     cy.get('[data-testeid="button"]')
       .should('have.css', 'width', '142px')
@@ -71,9 +78,12 @@ describe('Button Default', () => {
 
   it('Deve ter um ícone à direita do label', () => {
     cy.mount(
-      <Button icon={icon} iconRight={true} onClick={cy.stub().as('onClick')}>
-        {label}
-      </Button>
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button icon={icon} iconRight={true} onClick={cy.stub().as('onClick')}>
+          {label}
+        </Button>
+      </ThemeDSProvider>
     )
     cy.get('[data-testeid="iconPrefix"]').should('be.empty')
     cy.get('[data-testeid="iconSuffix"]').should('not.be.empty')
@@ -93,9 +103,12 @@ describe('Button Default', () => {
 
   it('Deve ser o componente Default desabled', () => {
     cy.mount(
-      <Button icon={icon} onClick={cy.stub().as('onClick')} disabled>
-        {label}
-      </Button>
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button icon={icon} onClick={cy.stub().as('onClick')} disabled>
+          {label}
+        </Button>
+      </ThemeDSProvider>
     )
     cy.get('[data-testeid="button"]')
       .should('have.css', 'background-color', 'rgb(255, 255, 255)')
