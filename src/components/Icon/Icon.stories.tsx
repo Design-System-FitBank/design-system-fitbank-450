@@ -12,7 +12,14 @@ export default {
 const Template: ComponentStory<typeof Icon> = args => <Icon {...args} />
 
 export const Default = Template.bind({})
+export const IconWithSize = Template.bind({})
 
 Default.args = {
   name: 'home'
+}
+
+IconWithSize.args = {
+  name: 'home',
+  width: 32,
+  height: 32
 }

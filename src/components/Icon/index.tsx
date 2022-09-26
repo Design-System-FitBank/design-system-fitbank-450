@@ -60,8 +60,22 @@ import { UserGroup } from './icons/UserGroup'
 import { UserSearch } from './icons/UserSearch'
 import { WithdrawMoney } from './icons/WithdrawMoney'
 import { Xlsx } from './icons/Xlsx'
+import { QrCodeOut } from './icons/QrCodeOut'
 
 interface IconsProps {
+  /**
+   * Variavel para alterar altura.
+   * Caso não seja alterada o valor será de 32px.
+   */
+  height?: number
+  /**
+   * Variavel para alterar largura.
+   * Caso não seja alterada o valor será de 32px.
+   */
+  width?: number
+  /**
+   * Variavel de nomes de cada ícone.
+   */
   name:
     | 'adress'
     | 'arrowDown'
@@ -127,190 +141,193 @@ interface IconsProps {
     | 'xlsx'
 }
 
-export const Icon: React.FC<IconsProps> = ({ name }) => {
+export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) => {
   switch (name) {
     case 'home':
-      return <Home data-testid='home' />
+      return <Home data-testid='home' width={width} height={height} />
 
     case 'adress':
-      return <Adress data-testid='adress' />
+      return <Adress data-testid='adress' width={width} height={height} />
 
     case 'arrowDown':
-      return <ArrowDown data-testid='arrowDown' />
+      return <ArrowDown data-testid='arrowDown' width={width} height={height} />
 
     case 'arrowLeft':
-      return <ArroyLeft data-testid='arrowLeft' />
+      return <ArroyLeft data-testid='arrowLeft' width={width} height={height} />
 
     case 'arrowRight':
-      return <ArrowRight data-testid='arrowRight' />
+      return <ArrowRight data-testid='arrowRight' width={width} height={height} />
 
     case 'arrowUp':
-      return <ArrowUp data-testid='arrowUp' />
+      return <ArrowUp data-testid='arrowUp' width={width} height={height} />
 
     case 'authorization':
-      return <Authorization data-testid='authorization' />
+      return <Authorization data-testid='authorization' width={width} height={height} />
 
     case 'calendar':
-      return <Calendar data-testid='calendar' />
+      return <Calendar data-testid='calendar' width={width} height={height} />
 
     case 'cancel':
-      return <Cancel data-testid='cancel' />
+      return <Cancel data-testid='cancel' width={width} height={height} />
 
     case 'card':
-      return <Card data-testid='card' />
+      return <Card data-testid='card' width={width} height={height} />
 
     case 'cardMulti':
-      return <CardMulti data-testid='cardMulti' />
+      return <CardMulti data-testid='cardMulti' width={width} height={height} />
 
     case 'changeAccount':
-      return <ChangeAccount data-testid='changeAccount' />
+      return <ChangeAccount data-testid='changeAccount' width={width} height={height} />
 
     case 'code':
-      return <Code data-testid='code' />
+      return <Code data-testid='code' width={width} height={height} />
 
     case 'cnh':
-      return <Cnh data-testid='cnh' />
+      return <Cnh data-testid='cnh' width={width} height={height} />
 
     case 'details':
-      return <Detail data-testid='details' />
+      return <Detail data-testid='details' width={width} height={height} />
 
     case 'device':
-      return <Device data-testId='device' />
+      return <Device data-testId='device' width={width} height={height} />
 
     case 'done':
-      return <Done data-testid='done' />
+      return <Done data-testid='done' width={width} height={height} />
 
     case 'download':
-      return <Download data-testid='download' />
+      return <Download data-testid='download' width={width} height={height} />
 
     case 'edit':
-      return <Edit data-testid='edit' />
+      return <Edit data-testid='edit' width={width} height={height} />
 
     case 'email':
-      return <Email data-testid='email' />
+      return <Email data-testid='email' width={width} height={height} />
 
     case 'enterprise':
-      return <Enterprise data-testid='enterprise' />
+      return <Enterprise data-testid='enterprise' width={width} height={height} />
 
     case 'favorite':
-      return <Favorite data-testid='favorite' />
+      return <Favorite data-testid='favorite' width={width} height={height} />
 
     case 'favoriteAdd':
-      return <FavoriteAdd data-testid='favoriteAdd' />
+      return <FavoriteAdd data-testid='favoriteAdd' width={width} height={height} />
 
     case 'favoriteRemove':
-      return <FavoriteRemove data-testid='favoriteRemove' />
+      return <FavoriteRemove data-testid='favoriteRemove' width={width} height={height} />
 
     case 'filter':
-      return <Filter data-testid='filter' />
+      return <Filter data-testid='filter' width={width} height={height} />
 
     case 'pin':
-      return <Pin data-testid='pin' />
+      return <Pin data-testid='pin' width={width} height={height} />
 
     case 'link':
-      return <Link data-testid='link' />
+      return <Link data-testid='link' width={width} height={height} />
 
     case 'money':
-      return <Money data-testid='money' />
+      return <Money data-testid='money' width={width} height={height} />
 
     case 'moneyln':
-      return <MoneyIn data-testid='moneyln' />
+      return <MoneyIn data-testid='moneyln' width={width} height={height} />
 
     case 'moneyNote':
-      return <MoneyNote data-testid='moneyNote' />
+      return <MoneyNote data-testid='moneyNote' width={width} height={height} />
 
     case 'moneyOut':
-      return <MoneyOut data-testId='moneyOut' />
+      return <MoneyOut data-testId='moneyOut' width={width} height={height} />
 
     case 'moneyTransfer':
-      return <MoneyTransfer data-testid='moneyTransfer' />
+      return <MoneyTransfer data-testid='moneyTransfer' width={width} height={height} />
 
     case 'moneyTransferSMS':
-      return <MoneyTransferSMS data-testid='moneyTransferSMS' />
+      return <MoneyTransferSMS data-testid='moneyTransferSMS' width={width} height={height} />
 
     case 'onboardingCard':
-      return <OnboardingCard data-testid='onboardingCard' />
+      return <OnboardingCard data-testid='onboardingCard' width={width} height={height} />
 
     case 'onboardingSMS':
-      return <OnboardingSMS data-testid='onboardingSMS' />
+      return <OnboardingSMS data-testid='onboardingSMS' width={width} height={height} />
 
     case 'options':
-      return <Options data-testid='options' />
+      return <Options data-testid='options' width={width} height={height} />
 
     case 'payment':
-      return <Payment data-testid='payment' />
+      return <Payment data-testid='payment' width={width} height={height} />
 
     case 'pix':
-      return <Pix data-testid='pix' />
+      return <Pix data-testid='pix' width={width} height={height} />
 
     case 'plus':
-      return <Plus data-testid='plus' />
+      return <Plus data-testid='plus' width={width} height={height} />
 
     case 'qrCode':
-      return <QrCode data-testid='qrCode' />
+      return <QrCode data-testid='qrCode' width={width} height={height} />
 
     case 'qrCodeIn':
-      return <QrCodeIn data-testid='qrCodeIn' />
+      return <QrCodeIn data-testid='qrCodeIn' width={width} height={height} />
+
+    case 'qrCodeOut':
+      return <QrCodeOut data-testid='qrCodeOut' width={width} height={height} />
 
     case 'receipt':
-      return <Receipt data-testid='receipt' />
+      return <Receipt data-testid='receipt' width={width} height={height} />
 
     case 'refresh':
-      return <Refresh data-testid='refresh' />
+      return <Refresh data-testid='refresh' width={width} height={height} />
 
     case 'rg':
-      return <Rg data-testid='rg' />
+      return <Rg data-testid='rg' width={width} height={height} />
 
     case 'scheduled':
-      return <Scheduled data-testid='scheduled' />
+      return <Scheduled data-testid='scheduled' width={width} height={height} />
 
     case 'selectAll':
-      return <SelectAll data-testid='selectAll' />
+      return <SelectAll data-testid='selectAll' width={width} height={height} />
 
     case 'sendMoney':
-      return <SendMoney data-testid='sendMoney' />
+      return <SendMoney data-testid='sendMoney' width={width} height={height} />
 
     case 'setup':
-      return <Setup data-testid='setup' />
+      return <Setup data-testid='setup' width={width} height={height} />
 
     case 'share':
-      return <Share data-testid='share' />
+      return <Share data-testid='share' width={width} height={height} />
 
     case 'ticketPayment':
-      return <TicketPayment data-testid='ticketPayment' />
+      return <TicketPayment data-testid='ticketPayment' width={width} height={height} />
 
     case 'toggleOff':
-      return <ToggleOff data-testid='toggleOff' />
+      return <ToggleOff data-testid='toggleOff' width={width} height={height} />
 
     case 'toggleOn':
-      return <ToggleOn data-testid='toggleOn' />
+      return <ToggleOn data-testid='toggleOn' width={width} height={height} />
 
     case 'topup':
-      return <TopUp data-testid='topup' />
+      return <TopUp data-testid='topup' width={width} height={height} />
 
     case 'trash':
-      return <Trash data-testid='trash' />
+      return <Trash data-testid='trash' width={width} height={height} />
 
     case 'upload':
-      return <Upload data-testid='upload' />
+      return <Upload data-testid='upload' width={width} height={height} />
 
     case 'user':
-      return <User data-testid='user' />
+      return <User data-testid='user' width={width} height={height} />
 
     case 'userBank':
-      return <UserBank data-testid='userBank' />
+      return <UserBank data-testid='userBank' width={width} height={height} />
 
     case 'userGroup':
-      return <UserGroup data-testid='userGroup' />
+      return <UserGroup data-testid='userGroup' width={width} height={height} />
 
     case 'userSearch':
-      return <UserSearch data-testid='userSearch' />
+      return <UserSearch data-testid='userSearch' width={width} height={height} />
 
     case 'withdrawMoney':
-      return <WithdrawMoney data-testid='withdrawMoney' />
+      return <WithdrawMoney data-testid='withdrawMoney' width={width} height={height} />
 
     case 'xlsx':
-      return <Xlsx data-testid='xlsx' />
+      return <Xlsx data-testid='xlsx' width={width} height={height} />
 
     default:
       return <div>icon not found!</div>
