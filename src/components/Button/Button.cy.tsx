@@ -6,6 +6,8 @@ import { Home } from './img-test'
 import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
 
 describe('Button Default', () => {
+  beforeEach(() => cy.wait(100))
+  afterEach(() => cy.wait(100))
   const label = faker.lorem.word()
   const icon = <Home width={32} height={32} />
 
@@ -78,6 +80,8 @@ describe('Button Default', () => {
 })
 
 describe('Button Primary', () => {
+  beforeEach(() => cy.wait(100))
+  afterEach(() => cy.wait(100))
   const label = faker.lorem.word()
   const icon = <Home width={32} height={32} />
 
@@ -143,6 +147,8 @@ describe('Button Primary', () => {
   })
 })
 describe('Button Secondary', () => {
+  beforeEach(() => cy.wait(100))
+  afterEach(() => cy.wait(100))
   const label = faker.lorem.word()
   const icon = <Home width={32} height={32} />
 
@@ -210,6 +216,8 @@ describe('Button Secondary', () => {
 })
 
 describe('Button Tertiary', () => {
+  beforeEach(() => cy.wait(100))
+  afterEach(() => cy.wait(100))
   const label = faker.lorem.word()
   const icon = <Home width={32} height={32} />
 
@@ -258,6 +266,8 @@ describe('Button Tertiary', () => {
 })
 
 describe('Button Size', () => {
+  beforeEach(() => cy.wait(100))
+  afterEach(() => cy.wait(100))
   const label = faker.lorem.word()
 
   it('Deve ser o componente button com tamanho large', () => {
@@ -301,6 +311,8 @@ describe('Button Size', () => {
 })
 
 describe('Button Icon Position', () => {
+  beforeEach(() => cy.wait(100))
+  afterEach(() => cy.wait(100))
   const label = faker.lorem.word()
   const icon = <Home width={32} height={32} />
 
@@ -347,6 +359,8 @@ describe('Button Icon Position', () => {
 })
 
 describe('Button Function', () => {
+  beforeEach(() => cy.wait(100))
+  afterEach(() => cy.wait(100))
   const label = faker.lorem.word()
   const icon = <Home width={32} height={32} />
   it('Deve chamar uma função ao clicar', () => {
