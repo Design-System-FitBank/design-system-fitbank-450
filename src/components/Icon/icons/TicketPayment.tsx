@@ -2,19 +2,7 @@ import React from 'react'
 
 export const TicketPayment = (props: React.SVGProps<SVGSVGElement>) => {
   return (
-<<<<<<< HEAD
     <svg width='100%' height='100%' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg' {...props}>
-=======
-    <svg
-      width='100%'
-      height='100%'
-      viewBox='0 0 24 24'
-      fill='none'
-      xmlns='http://www.w3.org/2000/svg'
-      stroke='currentColor'
-      {...props}
-    >
->>>>>>> 72ec053f80d6a1cd366225096aeaaccae7171751
       <path fillRule='evenodd' clipRule='evenodd' d='M6 18V15H7V18H6Z' fill='currentColor' />
       <path fillRule='evenodd' clipRule='evenodd' d='M8 18V15H9V18H8Z' fill='currentColor' />
       <path fillRule='evenodd' clipRule='evenodd' d='M10 18V15H11V18H10Z' fill='currentColor' />

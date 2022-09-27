@@ -2,19 +2,7 @@ import React from 'react'
 
 export const QrCode = (props: React.SVGProps<SVGSVGElement>) => {
   return (
-<<<<<<< HEAD
     <svg width='100%' height='100%' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg' {...props}>
-=======
-    <svg
-      width='100%'
-      height='100%'
-      viewBox='0 0 24 24'
-      fill='none'
-      xmlns='http://www.w3.org/2000/svg'
-      stroke='currentColor'
-      {...props}
-    >
->>>>>>> 72ec053f80d6a1cd366225096aeaaccae7171751
       <path fillRule='evenodd' clipRule='evenodd' d='M21 20L18 20L18 19L20 19L20 17L21 17L21 20Z' fill='currentColor' />
       <path fillRule='evenodd' clipRule='evenodd' d='M3 3L6 3L6 4L4 4L4 6L3 6L3 3Z' fill='currentColor' />
       <path fillRule='evenodd' clipRule='evenodd' d='M21 3L21 6L20 6L20 4L18 4L18 3L21 3Z' fill='currentColor' />
