@@ -5,7 +5,6 @@ import { faker } from '@faker-js/faker'
 import { mount } from 'cypress/react18'
 import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
 import { Typography } from '.'
-import cypress from 'cypress'
 
 describe('Typography', () => {
   /**
