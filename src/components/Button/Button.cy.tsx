@@ -2,14 +2,14 @@ import React from 'react'
 import { faker } from '@faker-js/faker'
 import 'cypress-real-events/support'
 import { Button } from '.'
-import { Home } from './img-test'
 import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
+import { Icon } from '../Icon'
 
 describe('Button Default', () => {
   beforeEach(() => cy.wait(100))
   afterEach(() => cy.wait(100))
   const label = faker.lorem.word()
-  const icon = <Home width={32} height={32} />
+  const icon = <Icon name='home' width={32} height={32} />
 
   it('Deve ser o componente Default quando não for informado o type', () => {
     cy.mount(
@@ -83,7 +83,7 @@ describe('Button Primary', () => {
   beforeEach(() => cy.wait(100))
   afterEach(() => cy.wait(100))
   const label = faker.lorem.word()
-  const icon = <Home width={32} height={32} />
+  const icon = <Icon name='home' width={32} height={32} />
 
   it('Deve ser o componente Default quando for informado o type primary', () => {
     cy.mount(
@@ -150,7 +150,7 @@ describe('Button Secondary', () => {
   beforeEach(() => cy.wait(100))
   afterEach(() => cy.wait(100))
   const label = faker.lorem.word()
-  const icon = <Home width={32} height={32} />
+  const icon = <Icon name='home' width={32} height={32} />
 
   it('Deve ser o componente Secondary quando for informado o type secondary', () => {
     cy.mount(
@@ -219,7 +219,7 @@ describe('Button Tertiary', () => {
   beforeEach(() => cy.wait(100))
   afterEach(() => cy.wait(100))
   const label = faker.lorem.word()
-  const icon = <Home width={32} height={32} />
+  const icon = <Icon name='home' width={32} height={32} />
 
   it('Deve ser o componente Tertiary quando for informado o type tertiary', () => {
     cy.mount(
@@ -275,7 +275,7 @@ describe('Button Size', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Button icon={<Home width={20} height={20} />} size={size} onClick={cy.stub().as('onClick')}>
+        <Button icon={<Icon name='home' width={20} height={20} />} size={size} onClick={cy.stub().as('onClick')}>
           {label}
         </Button>
       </ThemeDSProvider>
@@ -295,7 +295,7 @@ describe('Button Size', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Button icon={<Home width={20} height={20} />} size={size} onClick={cy.stub().as('onClick')}>
+        <Button icon={<Icon name='home' width={20} height={20} />} size={size} onClick={cy.stub().as('onClick')}>
           {label}
         </Button>
       </ThemeDSProvider>
@@ -314,7 +314,7 @@ describe('Button Icon Position', () => {
   beforeEach(() => cy.wait(100))
   afterEach(() => cy.wait(100))
   const label = faker.lorem.word()
-  const icon = <Home width={32} height={32} />
+  const icon = <Icon name='home' width={32} height={32} />
 
   it('Deve ter um ícone por padrão a esquerda', () => {
     cy.mount(
@@ -362,7 +362,7 @@ describe('Button Function', () => {
   beforeEach(() => cy.wait(100))
   afterEach(() => cy.wait(100))
   const label = faker.lorem.word()
-  const icon = <Home width={32} height={32} />
+  const icon = <Icon name='home' width={32} height={32} />
   it('Deve chamar uma função ao clicar', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
