@@ -183,7 +183,7 @@ describe('Button Secondary', () => {
       .and('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 4px 6px 0px')
   })
 
-  it('Deve ser o componente Secondary quando o estado for active', () => {
+  it('Deve ser o componente Secondary quando o estado for hover', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
