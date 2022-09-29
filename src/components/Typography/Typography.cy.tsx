@@ -143,6 +143,7 @@ describe('Typography', () => {
         .and('have.css', 'font-weight', `${value?.fontWeight}`)
         .and('have.css', 'font-size', `${value?.fontSize}`)
         .and('have.css', 'line-height', `${value?.lineHeight}`)
+        .and('have.text', txt)
     })
   })
 })
