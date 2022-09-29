@@ -55,7 +55,7 @@ export const Typography = ({ variant = 'h1', children }: TypographyProps) => {
         return <Style.BodyLarge data-testid='bodyLarge'>{children}</Style.BodyLarge>
 
       case 'caption':
-        return <Style.Caption data-testid='caption'></Style.Caption>
+        return <Style.Caption data-testid='caption'>{children}</Style.Caption>
 
       default:
         return <Style.H1 data-testid='h1'>{children}</Style.H1>
