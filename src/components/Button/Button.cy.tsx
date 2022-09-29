@@ -290,7 +290,7 @@ describe('Button Size', () => {
       .and('have.css', 'gap', '7px')
   })
 
-  it('Deve ser o componente Default com tamanho small', () => {
+  it('Deve ser o componente button com tamanho small', () => {
     const size = 'small'
     cy.mount(
       <ThemeDSProvider theme={Theme}>
