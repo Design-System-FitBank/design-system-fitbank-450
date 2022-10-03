@@ -6,13 +6,13 @@ export const Container = styled.button`
   align-items: center;
   flex-direction: column;
 
-  width: 86px;
-  height: 86px;
+  width: ${({ theme }) => theme.sizes['86px']};
+  height: ${({ theme }) => theme.sizes['86px']};
 
   border: 1px solid transparent;
-  border-radius: 16px;
-  box-shadow: 2px 2px 4px #0000001a;
+  border-radius: ${({ theme }) => theme.sizes['16px']};
+  box-shadow: 2px 2px 4px ${({ theme }) => theme.colors.shadow};
 
-  background-color: #fff;
-  color: #323751;
+  background-color: ${({ theme }) => theme.colors.light};
+  color: ${({ theme }) => theme.colors.primary};
 `

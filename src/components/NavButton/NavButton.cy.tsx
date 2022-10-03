@@ -2,15 +2,19 @@ import { faker } from '@faker-js/faker'
 import { Icon } from '../Icon'
 import React from 'react'
 import { NavButton } from '.'
+import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
 
 describe('NavButton', () => {
   const icon = <Icon name='moneyNote' width={38} height={38} />
   const label = faker.lorem.word()
   it('Deve ser o componente Default e quando instanciá-lo devo passar o ícone obrigatoriamente e um título opcional', () => {
     cy.mount(
-      <NavButton icon={icon} onClick={cy.stub().as('onclick')}>
-        {label}
-      </NavButton>
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <NavButton icon={icon} onClick={cy.stub().as('onclick')}>
+          {label}
+        </NavButton>
+      </ThemeDSProvider>
     )
     cy.get('[data-testid="nav-button"]')
       .should('have.css', 'width', '86px')
