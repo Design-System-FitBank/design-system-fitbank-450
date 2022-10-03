@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker'
+import 'cypress-real-events/support'
 import { Icon } from '../Icon'
 import React from 'react'
 import { NavButton } from '.'
@@ -30,5 +31,18 @@ describe('NavButton', () => {
 
     cy.get('[data-testid="nav-button"]').click()
     cy.get('@onclick').should('have.been.calledOnce')
+  })
+
+  it('Deve ser o componente Default no estado Hover', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <NavButton icon={icon} onClick={cy.stub().as('onclick')}>
+          {label}
+        </NavButton>
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="nav-button"]').realHover()
+    cy.get('[data-testid="nav-button"]').should('have.css', 'border', '1px solid rgb(196, 196, 196)')
   })
 })
