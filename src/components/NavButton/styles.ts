@@ -23,4 +23,10 @@ export const Container = styled.button`
   :active {
     border: 1px solid ${({ theme }) => theme.colors.primary};
   }
+
+  :disabled {
+    border: 1px solid ${({ theme }) => theme.colors.disabled};
+    box-shadow: none;
+    color: ${({ theme }) => theme.colors.disabled};
+  }
 `
