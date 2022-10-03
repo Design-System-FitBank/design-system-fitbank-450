@@ -30,3 +30,8 @@ export const Container = styled.button`
     color: ${({ theme }) => theme.colors.disabled};
   }
 `
+
+export const Small = styled(Container)`
+  width: ${({ theme }) => theme.sizes['54px']};
+  height: ${({ theme }) => theme.sizes['54px']};
+`
