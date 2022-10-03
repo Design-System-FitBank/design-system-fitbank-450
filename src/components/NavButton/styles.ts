@@ -19,4 +19,8 @@ export const Container = styled.button`
   :hover {
     border: 1px solid ${({ theme }) => theme.colors.disabled};
   }
+
+  :active {
+    border: 1px solid ${({ theme }) => theme.colors.primary};
+  }
 `
