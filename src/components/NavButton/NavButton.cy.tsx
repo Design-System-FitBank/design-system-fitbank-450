@@ -1,19 +1,21 @@
+import React from 'react'
+
 import { faker } from '@faker-js/faker'
 import 'cypress-real-events/support'
+
 import { Icon } from '../Icon'
-import React from 'react'
 import { NavButton } from '.'
 import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
 
 describe('NavButton', () => {
+  const icon = <Icon name='moneyNote' width={38} height={38} />
+  const label = faker.lorem.word()
   beforeEach(() => {
     cy.wait(100)
   })
   afterEach(() => {
     cy.wait(100)
   })
-  const icon = <Icon name='moneyNote' width={38} height={38} />
-  const label = faker.lorem.word()
   it('Deve ser o componente Default e quando instanciá-lo devo passar o ícone obrigatoriamente e um título opcional', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
@@ -23,7 +25,7 @@ describe('NavButton', () => {
         </NavButton>
       </ThemeDSProvider>
     )
-    cy.get('[data-testid="nav-button"]')
+      .get('[data-testid="nav-button"]')
       .should('have.css', 'width', '86px')
       .and('have.css', 'height', '86px')
       .and('have.css', 'border', '1px solid rgba(0, 0, 0, 0)')
@@ -63,5 +65,20 @@ describe('NavButton', () => {
     )
     cy.get('[data-testid="nav-button"]').realMouseDown()
     cy.get('[data-testid="nav-button"]').should('have.css', 'border', '1px solid rgb(50, 55, 81)')
+  })
+
+  it('Deve ser o componente Default no estado Disabled', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <NavButton icon={icon} disabled={true} onClick={cy.stub().as('onclick')}>
+          {label}
+        </NavButton>
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="nav-button"]')
+      .should('have.css', 'border', '1px solid rgb(196, 196, 196)')
+      .and('have.css', 'color', 'rgb(196, 196, 196)')
+      .and('have.css', 'box-shadow', 'none')
   })
 })
