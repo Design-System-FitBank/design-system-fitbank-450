@@ -6,6 +6,12 @@ import { NavButton } from '.'
 import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
 
 describe('NavButton', () => {
+  beforeEach(() => {
+    cy.wait(100)
+  })
+  afterEach(() => {
+    cy.wait(100)
+  })
   const icon = <Icon name='moneyNote' width={38} height={38} />
   const label = faker.lorem.word()
   it('Deve ser o componente Default e quando instanciá-lo devo passar o ícone obrigatoriamente e um título opcional', () => {
@@ -44,5 +50,18 @@ describe('NavButton', () => {
     )
     cy.get('[data-testid="nav-button"]').realHover()
     cy.get('[data-testid="nav-button"]').should('have.css', 'border', '1px solid rgb(196, 196, 196)')
+  })
+
+  it('Deve ser o componente Default no estado Active', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <NavButton icon={icon} onClick={cy.stub().as('onclick')}>
+          {label}
+        </NavButton>
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="nav-button"]').realMouseDown()
+    cy.get('[data-testid="nav-button"]').should('have.css', 'border', '1px solid rgb(50, 55, 81)')
   })
 })
