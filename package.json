@@ -1,21 +1,17 @@
 {
-  "name": "@Fitbank-Pagamentos-Eletronicos/Design-System",
+  "name": "design-system-fitbank",
   "version": "0.0.1",
-  "description": "Design system para aplicações fitBank",
+  "description": "Design system para aplicações FitBank Pagamentos Eletrônicos",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Fitbank-Pagamentos-Eletronicos/Design-System.git"
+    "url": "https://github.com/fit-cledson-leite/design-system-fitbank.git"
   },
-  "publishConfig": {
-    "@Fitbank-Pagamentos-Eletronicos:registry": "https://npm.pkg.github.com"
-  },
-  "author": "fitbank-cledson-leite <cledson-leite@fitbank.com.br>",
+  "author": "fitbank-cledson-leite <cledson.leite@fitbank.com.br>",
   "license": "MIT",
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build": "tsc -p .",
-    "build:storybook": "build-storybook -s public",
     "cy:open": "cypress open",
     "test": "cypress",
     "build-storybook": "build-storybook"
