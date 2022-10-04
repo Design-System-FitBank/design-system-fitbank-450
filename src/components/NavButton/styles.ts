@@ -8,6 +8,8 @@ export const Container = styled.button`
 
   width: ${({ theme }) => theme.sizes['86px']};
   height: ${({ theme }) => theme.sizes['86px']};
+  padding: ${({ theme }) => theme.sizes['8px']} ${({ theme }) => theme.sizes['4px']};
+  gap: ${({ theme }) => theme.sizes['4px']};
 
   border: 1px solid transparent;
   border-radius: ${({ theme }) => theme.sizes['16px']};
@@ -34,4 +36,12 @@ export const Container = styled.button`
 export const Small = styled(Container)`
   width: ${({ theme }) => theme.sizes['54px']};
   height: ${({ theme }) => theme.sizes['54px']};
+`
+export const Large = styled(Container)`
+  flex-direction: row;
+  justify-content: flex-start;
+  width: ${({ theme }) => theme.sizes['160px']};
+  height: ${({ theme }) => theme.sizes['56px']};
+  padding: ${({ theme }) => theme.sizes['8px']};
+  gap: ${({ theme }) => theme.sizes['8px']};
 `
