@@ -1,5 +1,5 @@
 {
-  "name": "@fit-cledson-leite/design-system-fitbank",
+  "name": "design-system-fitbank",
   "version": "0.0.1",
   "description": "Design system para aplicações FitBank Pagamentos Eletrônicos",
   "main": "dist/index.js",
