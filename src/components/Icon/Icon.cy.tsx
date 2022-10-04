@@ -32,6 +32,8 @@ describe('Icon component', () => {
     'edit',
     'email',
     'enterprise',
+    'eyeClose',
+    'eyeOpen',
     'favorite',
     'favoriteAdd',
     'favoriteRemove',
