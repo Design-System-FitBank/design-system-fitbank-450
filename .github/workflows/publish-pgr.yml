@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - main
-  marge:
+  pull-request:
     branches:
       - main
 
