@@ -1,10 +1,9 @@
 on:
   push:
-    branches:
-      - main
-  pull-request:
-    branches:
-      - main
+    branches: [ "main" ]
+    
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   publish-gpr:
