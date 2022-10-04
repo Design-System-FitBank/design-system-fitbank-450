@@ -18,6 +18,8 @@ export const Container = styled.button`
   background-color: ${({ theme }) => theme.colors.light};
   color: ${({ theme }) => theme.colors.primary};
 
+  cursor: pointer;
+
   :hover {
     border: 1px solid ${({ theme }) => theme.colors.disabled};
   }

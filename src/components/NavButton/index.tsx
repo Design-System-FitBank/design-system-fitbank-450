@@ -7,7 +7,7 @@ interface NavButtonProps {
   children?: string
   disabled?: boolean
   size?: 'small' | 'medium' | 'large'
-  onClick: () => {}
+  onClick: () => void
 }
 
 export const NavButton = ({ icon, children, disabled = false, size = 'medium', onClick }: NavButtonProps) => {
