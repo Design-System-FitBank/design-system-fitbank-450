@@ -1,3 +1,4 @@
+import { Typography } from '../Typography'
 import React from 'react'
 import * as Styled from './styles'
 
@@ -18,7 +19,7 @@ export const NavButton = ({ icon, children, disabled = false, size = 'medium', o
         return (
           <Styled.Container data-testid='nav-button' onClick={onClick} disabled={disabled}>
             {icon}
-            {children}
+            <Typography variant='caption'>{children}</Typography>
           </Styled.Container>
         )
     }

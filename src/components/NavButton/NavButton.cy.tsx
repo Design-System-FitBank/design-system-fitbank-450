@@ -36,6 +36,7 @@ describe('NavButton Default', () => {
       .and('have.css', 'align-items', 'center')
       .and('have.css', 'flex-direction', 'column')
       .and('have.css', 'border-radius', '16px')
+      .and('have.text', label)
 
     cy.get('[data-testid="nav-button"]').click()
     cy.get('@onclick').should('have.been.calledOnce')
@@ -104,6 +105,7 @@ describe('NavButton Small', () => {
       .get('[data-testid="nav-button"]')
       .should('have.css', 'width', '54px')
       .and('have.css', 'height', '54px')
+      .and('have.not.text', label)
   })
 
   it('Deve ser o componente Small quando passar o size small no estado Hover', () => {
