@@ -38,6 +38,7 @@ describe('NavButton Default', () => {
       .and('have.css', 'align-items', 'center')
       .and('have.css', 'flex-direction', 'column')
       .and('have.css', 'border-radius', '16px')
+      .and('have.css', 'overflow', 'hidden')
       .find('[data-testid="caption"]')
       .should('exist')
       .and('have.text', label)
