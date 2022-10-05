@@ -8,7 +8,7 @@ import { NavButton } from '.'
 import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
 
 describe('NavButton Default', () => {
-  const icon = <Icon name='moneyNote' width={38} height={38} />
+  const icon = <Icon name='moneyNote' />
   const label = faker.lorem.word()
   beforeEach(() => {
     cy.wait(100)
@@ -45,6 +45,21 @@ describe('NavButton Default', () => {
 
     cy.get('[data-testid="nav-button"]').click()
     cy.get('@onclick').should('have.been.calledOnce')
+  })
+
+  it('Deve ser a div que contém o ícone', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <NavButton icon={icon} onClick={cy.stub().as('onclick')}>
+          {label}
+        </NavButton>
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="nav-button-icon"]')
+      .should('be.visible')
+      .and('have.css', 'width', '38px')
+      .and('have.css', 'height', '38px')
   })
 
   it('Deve ser o componente Default no estado Hover', () => {
@@ -90,8 +105,7 @@ describe('NavButton Default', () => {
 })
 
 describe('NavButton Small', () => {
-  const icon = <Icon name='moneyNote' width={38} height={38} />
-  const label = faker.lorem.word()
+  const icon = <Icon name='moneyNote' />
   beforeEach(() => {
     cy.wait(100)
   })
@@ -102,9 +116,7 @@ describe('NavButton Small', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <NavButton icon={icon} onClick={cy.stub().as('onclick')} size={'small'}>
-          {label}
-        </NavButton>
+        <NavButton icon={icon} onClick={cy.stub().as('onclick')} size={'small'}></NavButton>
       </ThemeDSProvider>
     )
       .get('[data-testid="nav-button"]')
@@ -118,9 +130,7 @@ describe('NavButton Small', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <NavButton icon={icon} onClick={cy.stub().as('onclick')} size={'small'}>
-          {label}
-        </NavButton>
+        <NavButton icon={icon} onClick={cy.stub().as('onclick')} size={'small'}></NavButton>
       </ThemeDSProvider>
     )
     cy.get('[data-testid="nav-button"]').realHover()
@@ -131,9 +141,7 @@ describe('NavButton Small', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <NavButton icon={icon} onClick={cy.stub().as('onclick')} size={'small'}>
-          {label}
-        </NavButton>
+        <NavButton icon={icon} onClick={cy.stub().as('onclick')} size={'small'}></NavButton>
       </ThemeDSProvider>
     )
     cy.get('[data-testid="nav-button"]').realMouseDown()
@@ -144,9 +152,7 @@ describe('NavButton Small', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <NavButton icon={icon} disabled={true} onClick={cy.stub().as('onclick')} size={'small'}>
-          {label}
-        </NavButton>
+        <NavButton icon={icon} disabled={true} onClick={cy.stub().as('onclick')} size={'small'}></NavButton>
       </ThemeDSProvider>
     )
     cy.get('[data-testid="nav-button"]')
@@ -157,7 +163,7 @@ describe('NavButton Small', () => {
 })
 
 describe('NavButton Large', () => {
-  const icon = <Icon name='moneyNote' width={38} height={38} />
+  const icon = <Icon name='moneyNote' />
   const label = faker.lorem.word()
   beforeEach(() => {
     cy.wait(100)
