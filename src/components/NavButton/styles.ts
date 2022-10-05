@@ -48,3 +48,7 @@ export const Large = styled(Container)`
   padding: ${({ theme }) => theme.sizes['8px']};
   gap: ${({ theme }) => theme.sizes['8px']};
 `
+export const Icon = styled.div`
+  width: ${({ theme }) => theme.sizes['38px']};
+  height: ${({ theme }) => theme.sizes['38px']};
+`

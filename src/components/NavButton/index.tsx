@@ -29,7 +29,7 @@ export const NavButton = ({ icon, children, disabled = false, size = 'medium', o
       default:
         return (
           <Styled.Container data-testid='nav-button' onClick={onClick} disabled={disabled}>
-            {icon}
+            <Styled.Icon data-testid='nav-button-icon'>{icon}</Styled.Icon>
             <Typography variant='caption'>{children}</Typography>
           </Styled.Container>
         )
