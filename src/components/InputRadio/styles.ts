@@ -2,9 +2,23 @@ import styled from 'styled-components'
 
 type RadioProps = {
   checked: boolean
+  direction?: string
 }
 
 export const Container = styled.div<RadioProps>`
+  display: flex;
+  flex-direction: ${({ direction }) => (direction === 'row' ? 'row' : 'column')};
+`
+
+export const ContainerChild = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: ${({ theme }) => theme.sizes['12px']};
+  gap: ${({ theme }) => theme.sizes['12px']};
+`
+
+export const Radio = styled.div<RadioProps>`
   width: ${({ theme }) => theme.sizes['16px']};
   height: ${({ theme }) => theme.sizes['16px']};
 
@@ -16,7 +30,7 @@ export const Container = styled.div<RadioProps>`
   justify-content: center;
   align-items: center;
 `
-export const Child = styled.div`
+export const RadioChild = styled.div`
   width: ${({ theme }) => theme.sizes['12px']};
   height: ${({ theme }) => theme.sizes['12px']};
 
