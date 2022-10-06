@@ -1,12 +1,30 @@
 import styled, { keyframes } from 'styled-components'
 
 const animationModal = keyframes`
+  0% {
+    height: 0px;
+  }
+
   100% {
-    transform: scaleY(-0);
+    height: 210px;
+  }
+`
+
+const animationIcon = keyframes`
+  0% {
+    translate: 0px;
+  }
+
+  100% {
+    height: 210px;
   }
 `
 
 export const Container = styled.div`
+  position: relative;
+`
+
+export const ContainerInput = styled.div<{ isOpen: boolean }>`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -26,8 +44,10 @@ export const Container = styled.div`
   max-height: ${({ theme }) => theme.sizes['48px']};
 
   &:hover {
-    box-shadow: 2px 2px 4px ${({ theme }) => theme.colors.shadow};
+    box-shadow: 2px 2px 4px ${({ isOpen, theme }) => (isOpen ? 'transparent' : theme.colors.shadow)};
   }
+
+  border-color: ${({ isOpen, theme }) => (isOpen ? theme.colors.primary : theme.colors.disabled)};
 `
 
 export const Label = styled.label`
@@ -52,24 +72,35 @@ export const Input = styled.input`
     line-height: ${({ theme }) => theme.sizes['24px']};
     color: ${({ theme }) => theme.colors.disabled};
   }
-
-  textarea {
-    border: none;
-    background-color: transparent;
-    resize: none;
-  }
 `
+
 export const Modal = styled.div<{ isOpen: boolean }>`
   width: ${({ theme }) => theme.sizes['320px']};
-  height: ${({ theme }) => theme.sizes['235px']};
+  height: ${({ isOpen, theme }) => (isOpen ? theme.sizes['210px'] : '0px')};
 
-  display: flex;
   justify-content: flex-start;
+  position: absolute;
 
-  border: 1px solid ${({ theme }) => theme.colors.dark};
+  top: ${({ theme }) => theme.sizes['46px']};
+  z-index: -1;
 
-  animation-name: ${animationModal};
-  animation-duration: 1s;
-  animation-direction: reverse;
-  animation-fill-mode: ${({ isOpen }) => (isOpen ? 'forwards' : 'backwards')};
+  border-radius: ${({ theme }) => theme.sizes['6px']};
+
+  padding-left: ${({ theme }) => theme.sizes['16px']};
+  padding-top: ${({ theme }) => theme.sizes['28px']};
+
+  overflow: hidden;
+
+  border: 1px solid ${({ theme }) => theme.colors.primary};
+
+  animation-name: ${({ isOpen }) => isOpen && animationModal};
+  animation-duration: 1.5s;
+  animation-direction: normal;
+`
+export const Item = styled.div`
+  width: 80%;
+  height: ${({ theme }) => theme.sizes['48px']};
+  margin-top: ${({ theme }) => theme.sizes['10px']};
+
+  cursor: pointer;
 `

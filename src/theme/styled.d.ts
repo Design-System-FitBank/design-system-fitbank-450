@@ -42,11 +42,13 @@ declare module 'styled-components' {
       '28px': string
       '32px': string
       '40px': string
+      '46px': string
       '48px': string
       '56px': string
       '62px': string
       '64px': string
       '82px': string
+      '108px': string
       '142px': string
       '210px': string
       '235px': string

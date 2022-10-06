@@ -11,7 +11,7 @@ export default {
 
 const Template: ComponentStory<typeof Select> = args => <Select {...args} />
 
-const opts = ['0', '1', '2', '3', '4', '5']
+const opts = ['First Item', 'Second Item', 'Third Item', 'Fourth Item', 'Fifth Item']
 
 export const SelectComponent = Template.bind({})
 SelectComponent.args = {
