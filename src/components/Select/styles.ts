@@ -6,17 +6,7 @@ const animationModal = keyframes`
   }
 
   100% {
-    height: 210px;
-  }
-`
-
-const animationIcon = keyframes`
-  0% {
-    translate: 0px;
-  }
-
-  100% {
-    height: 210px;
+    height: 230px;
   }
 `
 
@@ -55,13 +45,19 @@ export const Label = styled.label`
   max-height: ${({ theme }) => theme.sizes['20px']};
 `
 
-export const Icon = styled.div`
+export const Icon = styled.div<{ isOpen: boolean }>`
   cursor: pointer;
+
+  transition: 0.8s;
+
+  transform: ${({ isOpen }) => isOpen && 'rotate(180deg)'};
 `
 
 export const Input = styled.input`
   width: ${({ theme }) => theme.sizes['255px']};
   height: ${({ theme }) => theme.sizes['48px']};
+
+  font-size: ${({ theme }) => theme.sizes['18px']};
 
   background: transparent;
   border: none;
@@ -76,7 +72,7 @@ export const Input = styled.input`
 
 export const Modal = styled.div<{ isOpen: boolean }>`
   width: ${({ theme }) => theme.sizes['320px']};
-  height: ${({ isOpen, theme }) => (isOpen ? theme.sizes['210px'] : '0px')};
+  height: ${({ isOpen, theme }) => (isOpen ? theme.sizes['235px'] : '0px')};
 
   justify-content: flex-start;
   position: absolute;
@@ -97,10 +93,14 @@ export const Modal = styled.div<{ isOpen: boolean }>`
   animation-duration: 1.5s;
   animation-direction: normal;
 `
+
 export const Item = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
   width: 80%;
   height: ${({ theme }) => theme.sizes['48px']};
-  margin-top: ${({ theme }) => theme.sizes['10px']};
 
   cursor: pointer;
 `
