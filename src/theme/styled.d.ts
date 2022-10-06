@@ -17,6 +17,9 @@ declare module 'styled-components' {
       grey: string
       disabled: string
       shadow: string
+      radioUnchecked: string
+      radioChecked: string
+      transparent: string
     }
     font: {
       weight: {

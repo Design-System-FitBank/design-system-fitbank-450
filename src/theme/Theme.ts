@@ -12,7 +12,10 @@ export const Theme = {
     light: '#ffffff',
     dark: '#010716',
     disabled: '#c4c4c4',
-    shadow: '#0000001A'
+    shadow: '#0000001A',
+    radioUnchecked: '#A7A7A7',
+    radioChecked: '#E8E8E8',
+    transparent: 'transparent'
   },
   font: {
     weight: {
