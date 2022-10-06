@@ -1,13 +1,17 @@
 import React from 'react'
+import { faker } from '@faker-js/faker'
 import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
-import { Radio } from '.'
+import { InputRadio } from '.'
 
 describe('Radio', () => {
+  const title = faker.lorem.words()
+  const list = [faker.lorem.words(), faker.lorem.words(), faker.lorem.words(), faker.lorem.words()]
+
   it('Deve ser o componente radio', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Radio />
+        <InputRadio onclick={cy.stub().as('onclick')} title={title} optionsList={list} />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="radio"]')
@@ -27,7 +31,7 @@ describe('Radio', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Radio checked={true} />
+        <InputRadio onclick={cy.stub().as('onclick')} title={title} checked={true} optionsList={list} />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="radio-child"]')
@@ -36,5 +40,24 @@ describe('Radio', () => {
       .and('have.css', 'width', '12px')
       .and('have.css', 'height', '12px')
       .and('have.css', 'border-radius', '20px')
+  })
+
+  it('Deve ser o container com o radio, titulo e lista', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <InputRadio onclick={cy.stub().as('onclick')} title={title} optionsList={list} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="radio-container"]')
+      .should('have.css', 'display', 'flex')
+      .and('have.css', 'flex-direction', 'row')
+      .and('have.css', 'align-items', 'center')
+      .and('have.css', 'margin', '12px')
+      .and('have.css', 'gap', '12px')
+
+    cy.get('[data-testid="bodyBold"]').should('exist').and('not.be.empty')
+    cy.get('[data-testid="radio"]').should('exist')
+    cy.get('[data-testid="typography"]').should('exist').and('not.be.empty')
   })
 })
