@@ -59,4 +59,25 @@ describe('Select', () => {
     cy.get('[data-testid="container"]').realHover()
     cy.get('[data-testid="container"]').should('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 2px 4px 0px')
   })
+
+  it('Deve ter a animação de rotação no icone de seta', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Select title={title} placeholder={placeholder} options={opts} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testeid="arrowDown"]').realMouseDown()
+    cy.get('[data-testid="arrowDown"]').should('have.css', 'transform', 'rotate(180deg)')
+  })
+
+  it('O valor do input deve começar como vazio', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Select title={title} placeholder={placeholder} options={opts} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="input"]').should('have.value', '')
+  })
 })
