@@ -43,6 +43,8 @@ export const Theme = {
     '64px': '4rem',
     '82px': '5.125rem',
     '142px': '8.875rem',
-    '210px': '13.125rem'
+    '210px': '13.125rem',
+    '287px': '17.9375rem',
+    '320px': '20rem'
   }
 }
