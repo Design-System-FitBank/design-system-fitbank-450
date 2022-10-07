@@ -17,13 +17,13 @@ export const Select: React.FC<SelectProps> = ({ title, placeholder, options }) =
   const [optionsValue, setOptionsValue] = useState<string>()
   const [optionsToFilter, setOptionsToFilter] = useState(options)
 
-  const handleItemClick = (value: string) => {
+  const handleClickedItem = (value: string) => {
     setOptionsValue(value)
 
     setOpenModal(false)
   }
 
-  const handleOptionsFilter = (value: string) => {
+  const handleFilteredOptions = (value: string) => {
     const filteredOptions = options.filter(item => item.toLowerCase().includes(value.toLowerCase()))
 
     setOptionsToFilter(filteredOptions)
@@ -39,18 +39,18 @@ export const Select: React.FC<SelectProps> = ({ title, placeholder, options }) =
         <Styles.Input
           data-testid='input'
           onClick={() => setOpenModal(!openModal)}
-          onChange={({ target }) => handleOptionsFilter(target.value)}
+          onChange={({ target }) => handleFilteredOptions(target.value)}
           value={optionsValue}
           placeholder={placeholder}
         />
         <Styles.Icon onClick={() => setOpenModal(!openModal)} isOpen={openModal}>
-          <Icon name='arrowDown' width={24} height={24} />
+          <Icon data-testeid='arrowDown' name='arrowDown' width={24} height={24} />
         </Styles.Icon>
       </Styles.ContainerInput>
 
       <Styles.Modal isOpen={openModal} onFocus={() => setOpenModal(false)}>
         {optionsToFilter.map(value => (
-          <Styles.Item onClick={() => handleItemClick(value)}>
+          <Styles.Item onClick={() => handleClickedItem(value)}>
             <Typography variant='bodyLarge'>{value}</Typography>
           </Styles.Item>
         ))}

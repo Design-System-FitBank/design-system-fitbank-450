@@ -10,6 +10,16 @@ const animationModal = keyframes`
   }
 `
 
+const closeModalAnimation = keyframes`
+  0% {
+    height: 230px;
+  }
+
+  100% {
+    height: 0px;
+  }
+`
+
 export const Container = styled.div`
   position: relative;
 `
@@ -89,7 +99,7 @@ export const Modal = styled.div<{ isOpen: boolean }>`
 
   border: 1px solid ${({ theme }) => theme.colors.primary};
 
-  animation-name: ${({ isOpen }) => isOpen && animationModal};
+  animation-name: ${({ isOpen }) => (isOpen ? animationModal : closeModalAnimation)};
   animation-duration: 1.5s;
   animation-direction: normal;
 `
