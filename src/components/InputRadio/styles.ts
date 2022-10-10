@@ -29,11 +29,13 @@ export const Radio = styled.div<RadioProps>`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  cursor: pointer;
 `
-export const RadioChild = styled.div`
+export const RadioChild = styled.div<RadioProps>`
   width: ${({ theme }) => theme.sizes['12px']};
   height: ${({ theme }) => theme.sizes['12px']};
 
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ checked, theme }) => (checked ? theme.colors.primary : theme.colors.light)};
   border-radius: ${({ theme }) => theme.sizes['20px']};
 `
