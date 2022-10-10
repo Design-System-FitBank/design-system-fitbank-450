@@ -16,13 +16,13 @@ export const NavButton = ({ icon, children, disabled = false, size = 'medium', o
       case 'small':
         return (
           <Styled.Small data-testid='nav-button' onClick={onClick} disabled={disabled}>
-            {icon}
+            <Styled.Icon data-testid='nav-button-icon'>{icon}</Styled.Icon>
           </Styled.Small>
         )
       case 'large':
         return (
           <Styled.Large data-testid='nav-button' onClick={onClick} disabled={disabled}>
-            {icon}
+            <Styled.Icon data-testid='nav-button-icon'>{icon}</Styled.Icon>
             <Typography variant='bodySmall'>{children}</Typography>
           </Styled.Large>
         )
