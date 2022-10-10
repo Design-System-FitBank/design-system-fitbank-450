@@ -9,19 +9,18 @@ interface RadioProps {
 }
 
 export const InputRadio = ({ title, optionsList, direction = 'column' }: RadioProps) => {
-  const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState('')
   const onclick = (value: string) => {
-    setChecked(!checked)
+    setChecked(value)
   }
-  console.log(checked)
   return (
     <>
       <Typography variant='bodyBold'>{title}</Typography>
-      <Styled.Container direction={direction} checked={checked}>
+      <Styled.Container direction={direction}>
         {optionsList.map(option => (
           <Styled.ContainerChild data-testid='radio-container'>
-            <Styled.Radio data-testid='radio' checked={checked} onClick={({ target }) => onclick(option)}>
-              <Styled.RadioChild data-testid='radio-child' checked={checked} />
+            <Styled.Radio data-testid='radio' checked={checked === option} onClick={() => onclick(option)}>
+              <Styled.RadioChild data-testid='radio-child' checked={checked === option} />
             </Styled.Radio>
             <Typography variant='body'>{option}</Typography>
           </Styled.ContainerChild>

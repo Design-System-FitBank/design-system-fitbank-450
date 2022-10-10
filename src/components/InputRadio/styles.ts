@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 type RadioProps = {
-  checked: boolean
+  checked?: boolean
   direction?: string
 }
 
