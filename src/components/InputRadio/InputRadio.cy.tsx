@@ -11,7 +11,7 @@ describe('Radio', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <InputRadio onclick={cy.stub().as('onclick')} title={title} optionsList={list} />
+        <InputRadio title={title} optionsList={list} />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="radio"]')
@@ -31,7 +31,7 @@ describe('Radio', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <InputRadio onclick={cy.stub().as('onclick')} title={title} checked={true} optionsList={list} />
+        <InputRadio title={title} optionsList={list} />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="radio-child"]')
@@ -46,7 +46,7 @@ describe('Radio', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <InputRadio onclick={cy.stub().as('onclick')} title={title} optionsList={list} />
+        <InputRadio title={title} optionsList={list} />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="radio-container"]')
