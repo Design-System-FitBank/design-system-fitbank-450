@@ -35,19 +35,3 @@ Tertiary.args = {
   type: 'tertiary',
   onClick: () => {}
 }
-
-export const SmallButton = Template.bind({})
-SmallButton.args = {
-  children: 'small',
-  icon: <Icon name='home' width={20} height={20} />,
-  size: 'small',
-  onClick: () => {}
-}
-
-export const LargeButton = Template.bind({})
-LargeButton.args = {
-  children: 'large',
-  icon: <Icon name='home' />,
-  size: 'large',
-  onClick: () => {}
-}
