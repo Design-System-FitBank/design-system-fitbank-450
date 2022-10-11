@@ -39,9 +39,9 @@ describe('NavButton Default', () => {
       .and('have.css', 'flex-direction', 'column')
       .and('have.css', 'border-radius', '16px')
       .and('have.css', 'overflow', 'hidden')
-      .find('[data-testid="caption"]')
-      .should('exist')
       .and('have.text', label)
+      .and('have.css', 'font-weight', '500')
+      .and('have.css', 'font-size', '11px')
 
     cy.get('[data-testid="nav-button"]').click()
     cy.get('@onclick').should('have.been.calledOnce')
@@ -187,9 +187,9 @@ describe('NavButton Large', () => {
       .and('have.css', 'gap', '8px')
       .and('have.css', 'padding', '8px')
       .and('have.css', 'justify-content', 'flex-start')
-      .find('[data-testid="bodySmall"]')
-      .should('exist')
       .and('have.text', label)
+      .and('have.css', 'font-weight', '500')
+      .and('have.css', 'font-size', '14px')
   })
 
   it('Deve ser o componente Large quando passar o size large no estado Hover', () => {
