@@ -10,16 +10,6 @@ const animationModal = keyframes`
   }
 `
 
-const closeModalAnimation = keyframes`
-  0% {
-    height: 174px;
-  }
-
-  100% {
-    height: 0px;
-  }
-`
-
 export const Container = styled.div`
   position: relative;
 `
@@ -66,8 +56,8 @@ export const Icon = styled.div<{ isOpen: boolean }>`
 `
 
 export const Input = styled.input`
-  width: ${({ theme }) => theme.sizes['255px']};
-  height: ${({ theme }) => theme.sizes['48px']};
+  width: 100%;
+  height: max-content;
 
   font-size: ${({ theme }) => theme.sizes['18px']};
 
@@ -137,18 +127,19 @@ export const Tags = styled.div`
   justify-content: space-around;
   align-items: center;
 
-  color: #fff;
+  color: ${({ theme }) => theme.colors.light};
 
   background: ${({ theme }) => theme.colors.secondary};
-  border-radius: 5px;
+  border-radius: ${({ theme }) => theme.sizes['4px']};
 `
 
 export const SpanTag = styled.span`
-  width: 50%;
-  padding-left: ${({ theme }) => theme.sizes['6px']};
+  width: 100%;
+
+  padding-top: ${({ theme }) => theme.sizes['2px']};
   padding-right: ${({ theme }) => theme.sizes['6px']};
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding-bottom: ${({ theme }) => theme.sizes['2px']};
+  padding-left: ${({ theme }) => theme.sizes['6px']};
 `
 
 export const TagIcon = styled.div`
