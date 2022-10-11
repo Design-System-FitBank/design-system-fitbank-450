@@ -16,7 +16,7 @@ describe('Select', () => {
   /**
    *  Default test
    */
-  it('Deve conter titulo e placeholder', () => {
+  it('Deve conter titulo, placeholder e uma lista de opções', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
@@ -25,6 +25,7 @@ describe('Select', () => {
     )
     cy.get('[data-testid = "label"]').should('have.text', title)
     cy.get('[data-testid = "input"]').should('have.attr', 'placeholder', placeholder)
+    .and('have.text', 'options', opts)
   })
 
   it('Deve conter o componente Select default', () => {
@@ -47,6 +48,17 @@ describe('Select', () => {
       .and('have.css', 'align-items', 'center')
       .and('have.css', 'justify-content', 'space-evenly')
       .and('have.css', 'border-radius', '6px')
+  })
+
+  it('Deve conter o titulo com a cor primaria', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Select title={title} placeholder={placeholder} options={opts} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="label"]')
+      .should('have.css', 'color', 'rgb(50, 55, 81)')
   })
 
   it('Deve conter o estado Hover', () => {
