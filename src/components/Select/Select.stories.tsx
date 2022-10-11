@@ -11,11 +11,20 @@ export default {
 
 const Template: ComponentStory<typeof Select> = args => <Select {...args} />
 
-const opts = ['First Item', 'Second Item', 'Third Item', 'Fourth Item', 'Fifth Item']
+const optList = ['First', 'Second', 'Third', 'Fourth', 'Fifth']
 
-export const SelectComponent = Template.bind({})
-SelectComponent.args = {
+export const SelectDefault = Template.bind({})
+SelectDefault.args = {
   placeholder: 'Select',
   title: 'Select',
-  options: opts
+  options: optList,
+  isMulti: false
+}
+
+export const MultiSelect = Template.bind({})
+MultiSelect.args = {
+  placeholder: 'Multi Select',
+  title: 'Multi Select',
+  options: optList,
+  isMulti: true
 }

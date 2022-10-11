@@ -6,13 +6,13 @@ const animationModal = keyframes`
   }
 
   100% {
-    height: 230px;
+    height: 174px;
   }
 `
 
 const closeModalAnimation = keyframes`
   0% {
-    height: 230px;
+    height: 174px;
   }
 
   100% {
@@ -53,6 +53,8 @@ export const ContainerInput = styled.div<{ isOpen: boolean }>`
 export const Label = styled.label`
   max-width: ${({ theme }) => theme.sizes['320px']};
   max-height: ${({ theme }) => theme.sizes['20px']};
+
+  color: ${({ theme }) => theme.colors['primary']};
 `
 
 export const Icon = styled.div<{ isOpen: boolean }>`
@@ -82,7 +84,7 @@ export const Input = styled.input`
 
 export const Modal = styled.div<{ isOpen: boolean }>`
   width: ${({ theme }) => theme.sizes['320px']};
-  height: ${({ isOpen, theme }) => (isOpen ? theme.sizes['235px'] : '0px')};
+  height: ${({ isOpen, theme }) => (isOpen ? theme.sizes['174px'] : '0px')};
 
   justify-content: flex-start;
   position: absolute;
@@ -99,9 +101,24 @@ export const Modal = styled.div<{ isOpen: boolean }>`
 
   border: 1px solid ${({ theme }) => theme.colors.primary};
 
-  animation-name: ${({ isOpen }) => (isOpen ? animationModal : closeModalAnimation)};
+  animation-name: ${({ isOpen }) => (isOpen ? animationModal : '')};
   animation-duration: 1.5s;
   animation-direction: normal;
+
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: ${({ theme }) => theme.sizes['6px']};
+  }
+
+  &::-webkit-scrollbar-track {
+    background: ${({ theme }) => theme.colors.textDisabled};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.colors.textGrey};
+    border-radius: ${({ theme }) => theme.sizes['20px']};
+  }
 `
 
 export const Item = styled.div`
@@ -112,5 +129,32 @@ export const Item = styled.div`
   width: 80%;
   height: ${({ theme }) => theme.sizes['48px']};
 
+  cursor: pointer;
+`
+
+export const Tags = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  color: #fff;
+
+  background: ${({ theme }) => theme.colors.secondary};
+  border-radius: 5px;
+`
+
+export const SpanTag = styled.span`
+  width: 50%;
+  padding-left: ${({ theme }) => theme.sizes['6px']};
+  padding-right: ${({ theme }) => theme.sizes['6px']};
+  padding-top: 2px;
+  padding-bottom: 2px;
+`
+
+export const TagIcon = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  
   cursor: pointer;
 `

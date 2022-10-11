@@ -50,6 +50,8 @@ declare module 'styled-components' {
       '82px': string
       '108px': string
       '142px': string
+      '144px': string
+      '174px': string
       '210px': string
       '235px': string
       '255px': string
