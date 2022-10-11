@@ -1,8 +1,8 @@
 {
   "name": "design-system-fitbank",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Design system para aplicações FitBank Pagamentos Eletrônicos",
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/fit-cledson-leite/design-system-fitbank.git"
@@ -57,6 +57,5 @@
   "peerDependencies": {
     "react": ">=18.2.0",
     "react-dom": ">=18.2.0"
-  },
-  "dependencies": {}
+  }
 }

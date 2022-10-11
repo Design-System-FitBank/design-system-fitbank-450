@@ -3,7 +3,7 @@
 > Design system usado nas aplicações da FitBank pagamentos eletrônicos
 
 ## Pre-requisitos
-Este design system requer [React](https://pt-br.reactjs.org/docs/create-a-new-react-app.html) e [React-Dom](https://pt-br.reactjs.org/docs/create-a-new-react-app.html) na versão 18.2.0. Além disso é necessário ter a font [Roboto](https://fonts.google.com/specimen/Roboto) na head do projeto.
+Este design system requer [React](https://pt-br.reactjs.org/docs/create-a-new-react-app.html) e [React-Dom](https://pt-br.reactjs.org/docs/create-a-new-react-app.html) na versão 18.2.0 e [Styled Components](https://styled-components.com/docs/basics#installation) na versão 5.x.x.. Além disso é necessário ter a font [Roboto](https://fonts.google.com/specimen/Roboto) na head do projeto.
 
 ## Sumario
 
