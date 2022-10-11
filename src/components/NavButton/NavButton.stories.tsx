@@ -11,9 +11,25 @@ export default {
 
 const Template: ComponentStory<typeof NavButton> = args => <NavButton {...args} />
 
-export const NavigatonButton = Template.bind({})
-NavigatonButton.args = {
+export const Default = Template.bind({})
+Default.args = {
   children: 'NavButton',
   icon: <Icon name='moneyNote' />,
+  onClick: () => {}
+}
+
+export const Small = Template.bind({})
+Small.args = {
+  children: 'small',
+  icon: <Icon name='moneyNote' />,
+  size: 'small',
+  onClick: () => {}
+}
+
+export const Large = Template.bind({})
+Large.args = {
+  children: 'large',
+  icon: <Icon name='moneyNote' />,
+  size: 'large',
   onClick: () => {}
 }
