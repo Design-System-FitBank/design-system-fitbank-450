@@ -101,6 +101,7 @@ describe('NavButton Default', () => {
       .should('have.css', 'border', '1px solid rgb(196, 196, 196)')
       .and('have.css', 'color', 'rgb(196, 196, 196)')
       .and('have.css', 'box-shadow', 'none')
+      .and('have.css', 'cursor', 'auto')
   })
 })
 
@@ -159,6 +160,7 @@ describe('NavButton Small', () => {
       .should('have.css', 'border', '1px solid rgb(196, 196, 196)')
       .and('have.css', 'color', 'rgb(196, 196, 196)')
       .and('have.css', 'box-shadow', 'none')
+      .and('have.css', 'cursor', 'auto')
   })
 })
 
@@ -231,5 +233,6 @@ describe('NavButton Large', () => {
       .should('have.css', 'border', '1px solid rgb(196, 196, 196)')
       .and('have.css', 'color', 'rgb(196, 196, 196)')
       .and('have.css', 'box-shadow', 'none')
+      .and('have.css', 'cursor', 'auto')
   })
 })
