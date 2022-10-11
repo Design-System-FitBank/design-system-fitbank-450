@@ -27,21 +27,6 @@ describe('Radio', () => {
       .and('have.css', 'align-items', 'center')
   })
 
-  it('Deve ser o componente radio checked', () => {
-    cy.mount(
-      <ThemeDSProvider theme={Theme}>
-        <GlobalStyles />
-        <InputRadio title={title} optionsList={list} />
-      </ThemeDSProvider>
-    )
-    cy.get('[data-testid="radio-child"]')
-      .should('exist')
-      .and('have.css', 'background-color', 'rgb(50, 55, 81)')
-      .and('have.css', 'width', '12px')
-      .and('have.css', 'height', '12px')
-      .and('have.css', 'border-radius', '20px')
-  })
-
   it('Deve ser o container com o radio, titulo e lista', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
@@ -49,15 +34,25 @@ describe('Radio', () => {
         <InputRadio title={title} optionsList={list} />
       </ThemeDSProvider>
     )
-    cy.get('[data-testid="radio-container"]')
+    cy.get('[data-testid="radio-container-child"]')
       .should('have.css', 'display', 'flex')
       .and('have.css', 'flex-direction', 'row')
       .and('have.css', 'align-items', 'center')
-      .and('have.css', 'margin', '12px')
+      .and('have.css', 'margin-left', '12px')
       .and('have.css', 'gap', '12px')
 
     cy.get('[data-testid="bodyBold"]').should('exist').and('not.be.empty')
     cy.get('[data-testid="radio"]').should('exist')
     cy.get('[data-testid="typography"]').should('exist').and('not.be.empty')
+  })
+
+  it('Deve ser o container', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <InputRadio title={title} optionsList={list} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="radio-container"]')
   })
 })
