@@ -19,6 +19,9 @@ export const Container = styled.button`
   color: ${({ theme }) => theme.colors.primary};
   overflow: hidden;
 
+  font-weight: 500;
+  font-size: 11px;
+
   cursor: pointer;
 
   :hover {
@@ -33,6 +36,7 @@ export const Container = styled.button`
     border: 1px solid ${({ theme }) => theme.colors.disabled};
     box-shadow: none;
     color: ${({ theme }) => theme.colors.disabled};
+    cursor: auto;
   }
 `
 
@@ -47,6 +51,8 @@ export const Large = styled(Container)`
   height: ${({ theme }) => theme.sizes['56px']};
   padding: ${({ theme }) => theme.sizes['8px']};
   gap: ${({ theme }) => theme.sizes['8px']};
+
+  font-size: 14px;
 `
 export const Icon = styled.div`
   width: ${({ theme }) => theme.sizes['38px']};
