@@ -92,4 +92,14 @@ describe('Select', () => {
     )
     cy.get('[data-testid="input"]').should('have.value', '')
   })
+
+  // it('', () => {
+  //   cy.mount(
+  //     <ThemeDSProvider theme={Theme}>
+  //       <GlobalStyles />
+  //       <Select title={title} placeholder={placeholder} options={opts} />
+  //     </ThemeDSProvider>
+  //   )
+  //   cy.get('')
+  // })
 })
