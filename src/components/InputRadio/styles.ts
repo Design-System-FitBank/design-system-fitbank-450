@@ -8,13 +8,15 @@ type RadioProps = {
 export const Container = styled.div<RadioProps>`
   display: flex;
   flex-direction: ${({ direction }) => (direction === 'row' ? 'row' : 'column')};
+
+  color: ${({ theme }) => theme.colors.primary};
 `
 
 export const ContainerChild = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: ${({ theme }) => theme.sizes['12px']};
+  margin-left: ${({ theme }) => theme.sizes['12px']};
   gap: ${({ theme }) => theme.sizes['12px']};
 `
 

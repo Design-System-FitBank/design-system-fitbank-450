@@ -15,10 +15,10 @@ export const InputRadio = ({ title, optionsList, direction = 'column' }: RadioPr
   }
   return (
     <>
-      <Typography variant='bodyBold'>{title}</Typography>
-      <Styled.Container direction={direction}>
+      <Styled.Container data-testid='radio-container' direction={direction}>
+        <Typography variant='bodyBold'>{title}</Typography>
         {optionsList.map(option => (
-          <Styled.ContainerChild data-testid='radio-container'>
+          <Styled.ContainerChild data-testid='radio-container-child'>
             <Styled.Radio data-testid='radio' checked={checked === option} onClick={() => onclick(option)}>
               <Styled.RadioChild data-testid='radio-child' checked={checked === option} />
             </Styled.Radio>
