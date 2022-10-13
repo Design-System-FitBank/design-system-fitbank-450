@@ -12,7 +12,8 @@ export const Theme = {
     light: '#ffffff',
     dark: '#010716',
     disabled: '#c4c4c4',
-    shadow: '#0000001A'
+    shadow: '#0000001A',
+    inputDesabled: '#e8e8e8'
   },
   font: {
     weight: {
@@ -44,6 +45,7 @@ export const Theme = {
     '82px': '5.125rem',
     '142px': '8.875rem',
     '210px': '13.125rem',
+    '255px': '15.125rem',
     '287px': '17.9375rem',
     '320px': '20rem'
   }
