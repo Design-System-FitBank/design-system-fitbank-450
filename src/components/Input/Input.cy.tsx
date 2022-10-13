@@ -6,12 +6,13 @@ import { Input } from '.'
 describe('Input component', () => {
   const titleFake = 'Input Label'
   const placeholderFake = 'Placeholder'
+  const valide = 'Mensagem de erro'
 
   it('Deve ser informado o titulo e placeholder no componente Default', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Input type='text' title={titleFake} placeholder={placeholderFake} />
+        <Input type='text' title={titleFake} placeholder={placeholderFake} disabled={false} />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="label"]').should('have.text', titleFake)
@@ -22,7 +23,7 @@ describe('Input component', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Input type='text' title={titleFake} placeholder={placeholderFake} />
+        <Input type='text' title={titleFake} placeholder={placeholderFake} disabled={false} />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="label"]')
@@ -42,12 +43,15 @@ describe('Input component', () => {
       .and('have.css', 'background-color', 'rgb(255, 255, 255)')
   })
 
+  const passworld = 'password'
+
   it('Deve mostrar o componente Input Password', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Input type='password' title={titleFake} placeholder={placeholderFake} />
+        <Input type='password' title={titleFake} placeholder={placeholderFake} disabled={false} />
       </ThemeDSProvider>
     )
+    cy.get('[data-testid="input"]').should('have.attr', 'placeholder', '•••••••••••')
   })
 })
