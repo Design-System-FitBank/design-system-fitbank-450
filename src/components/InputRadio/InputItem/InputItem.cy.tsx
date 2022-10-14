@@ -10,7 +10,7 @@ describe('Radio', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <InputItem option={option} />
+        <InputItem option={option} onclick={cy.stub().as('onclick')} />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="radio"]')
@@ -24,22 +24,48 @@ describe('Radio', () => {
       .and('have.css', 'display', 'flex')
       .and('have.css', 'justify-content', 'center')
       .and('have.css', 'align-items', 'center')
+      .and('have.css', 'cursor', 'pointer')
   })
 
-  it('Deve ser o container com o radio, titulo e lista', () => {
+  it('Deve ser o componente radio checkado', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <InputItem option={option} />
+        <InputItem option={option} checked={true} onclick={cy.stub().as('onclick')} />
       </ThemeDSProvider>
     )
-    cy.get('[data-testid="radio-container-child"]')
-      .should('have.css', 'display', 'flex')
-      .and('have.css', 'flex-direction', 'row')
+    cy.get('[data-testid="radio"]')
+      .should('be.visible')
+      .and('have.css', 'width', '16px')
+      .and('have.css', 'height', '16px')
+      .and('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
+      .and('have.css', 'border', '1px solid rgb(232, 232, 232)')
+      .and('have.css', 'border-radius', '20px')
+      .and('have.css', 'box-shadow', 'none')
+      .and('have.css', 'display', 'flex')
+      .and('have.css', 'justify-content', 'center')
       .and('have.css', 'align-items', 'center')
-      .and('have.css', 'gap', '12px')
+      .and('have.css', 'cursor', 'pointer')
+  })
 
-    cy.get('[data-testid="radio"]').should('exist')
-    cy.get('[data-testid="typography"]').should('exist').and('not.be.empty')
+  it('Deve ser o inputItem com label', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <InputItem option={option} onclick={cy.stub().as('onclick')} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="body"]').should('exist').and('have.text', option)
+  })
+
+  it('Deve chamar a função onclick ao clicar no radio', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <InputItem option={option} onclick={cy.stub().as('onclick')} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="radio-child"]').click()
+    cy.get('@onclick').should('have.been.calledOnce')
   })
 })
