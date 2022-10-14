@@ -14,9 +14,14 @@ interface InputProps {
 
 export const Input: React.FC<InputProps> = ({ openModal, onClick, onChange, optionsValue, placeholder }) => {
   return (
-    <ContainerInput isOpen={openModal} onClick={() => onClick()}>
-      <InputContent onChange={({ target }) => onChange(target.value)} value={optionsValue} placeholder={placeholder} />
-      <IconContent isOpen={openModal}>
+    <ContainerInput data-testid='input' isOpen={openModal} onClick={() => onClick()}>
+      <InputContent
+        data-testid='inputContent'
+        value={optionsValue}
+        placeholder={placeholder}
+        onChange={({ target }) => onChange(target.value)}
+      />
+      <IconContent data-testeid='arrowDownContent' isOpen={openModal}>
         <Icon data-testeid='arrowDown' name='arrowDown' width={24} height={24} />
       </IconContent>
     </ContainerInput>

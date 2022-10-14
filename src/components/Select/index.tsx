@@ -34,16 +34,15 @@ export const Select: React.FC<SelectProps> = ({ title, placeholder, options }) =
 
   return (
     <Container data-testid='select'>
-      <Label data-testid='label'>{title}</Label>
+      <Label>{title}</Label>
       <Input
-        data-testid='input'
         openModal={openModal}
         placeholder={placeholder}
         optionsValue={optionsValue}
         onChange={handleFilteredOptions}
         onClick={handleClickedInput}
       />
-      <Modal data-testid='modal' options={optionsToFilter} onClick={handleClickedItem} openModal={openModal} />
+      <Modal options={optionsToFilter} onClick={handleClickedItem} openModal={openModal} />
     </Container>
   )
 }

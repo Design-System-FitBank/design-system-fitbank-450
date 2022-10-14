@@ -33,7 +33,7 @@ export const ModalContent = styled.div<{ isOpen: boolean }>`
   animation-name: ${({ isOpen }) => (isOpen ? animationModal : '')};
   animation-duration: 1.5s;
   animation-direction: normal;
-
+  
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
@@ -55,7 +55,7 @@ export const Item = styled.div`
   justify-content: flex-start;
   align-items: center;
 
-  width: 80%;
+  width: 100%;
   height: ${({ theme }) => theme.sizes['48px']};
 
   cursor: pointer;

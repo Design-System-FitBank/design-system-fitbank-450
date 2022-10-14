@@ -11,7 +11,7 @@ interface ModalContentProps {
 
 export const Modal: React.FC<ModalContentProps> = ({ openModal, options, onClick }) => {
   return (
-    <ModalContent isOpen={openModal}>
+    <ModalContent data-testid='modal' isOpen={openModal}>
       {options.map(value => (
         <Item onClick={() => onClick(value)}>
           <Typography variant='bodyLarge'>{value}</Typography>

@@ -8,7 +8,7 @@ interface LabelProps {
 
 export const Label: React.FC<LabelProps> = ({ children }) => {
   return (
-    <LabelContent>
+    <LabelContent data-testid='label'>
       <Typography variant='bodyLarge'>{children}</Typography>
     </LabelContent>
   )

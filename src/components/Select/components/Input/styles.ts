@@ -19,6 +19,8 @@ export const ContainerInput = styled.div<{ isOpen: boolean }>`
   max-width: ${({ theme }) => theme.sizes['320px']};
   max-height: ${({ theme }) => theme.sizes['48px']};
 
+  transition: 0.5s;
+
   &:hover {
     box-shadow: 2px 2px 4px ${({ isOpen, theme }) => (isOpen ? 'transparent' : theme.colors.shadow)};
   }
@@ -44,9 +46,7 @@ export const InputContent = styled.input`
 `
 
 export const IconContent = styled.div<{ isOpen: boolean }>`
-  cursor: pointer;
-
   transition: 0.8s;
-
-  transform: ${({ isOpen }) => isOpen && 'rotate(180deg)'};
+  transform: ${({ isOpen }) => isOpen ? 'rotate(180deg)' : 'none'};
+  cursor: pointer;
 `
