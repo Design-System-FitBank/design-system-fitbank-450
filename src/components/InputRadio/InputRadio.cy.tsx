@@ -5,9 +5,9 @@ import { InputRadio } from '.'
 
 describe('Radio', () => {
   const title = faker.lorem.words()
-  const list = [faker.lorem.words(), faker.lorem.words(), faker.lorem.words(), faker.lorem.words()]
+  const list = [faker.lorem.word(), faker.lorem.word(), faker.lorem.word(), faker.lorem.word()]
 
-  it('Deve ser o container', () => {
+  it('Deve ser o InputRadio Default', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
@@ -15,5 +15,43 @@ describe('Radio', () => {
       </ThemeDSProvider>
     )
     cy.get('[data-testid="radio-container"]')
+      .should('have.css', 'text-transform', 'capitalize')
+      .and('have.css', 'color', 'rgb(50, 55, 81)')
+  })
+
+  it('Deve ser o InputRadio quando a direction informada for column', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <InputRadio title={title} optionsList={list} direction={'column'} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="radio-container"]')
+      .should('have.css', 'text-transform', 'capitalize')
+      .and('have.css', 'color', 'rgb(50, 55, 81)')
+  })
+
+  it('Deve ser o InputRadio quando a direction informada for row', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <InputRadio title={title} optionsList={list} direction={'row'} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="radio-container"]')
+      .should('have.css', 'text-transform', 'capitalize')
+      .and('have.css', 'color', 'rgb(50, 55, 81)')
+  })
+
+  list.forEach((text: string) => {
+    it(`Deve ser o texto ${text} da lista de InputRadio`, () => {
+      cy.mount(
+        <ThemeDSProvider theme={Theme}>
+          <GlobalStyles />
+          <InputRadio title={title} optionsList={list} direction={'row'} />
+        </ThemeDSProvider>
+      )
+      cy.contains(text).should('exist')
+    })
   })
 })
