@@ -11,6 +11,7 @@ const animationModal = keyframes`
 `
 
 export const ModalContent = styled.div<{ isOpen: boolean }>`
+  width: 100%;
   max-width: ${({ theme }) => theme.sizes['320px']};
   height: ${({ isOpen, theme }) => (isOpen ? theme.sizes['174px'] : '0px')};
 
