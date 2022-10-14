@@ -10,7 +10,6 @@ export const Container = styled.div<RadioProps>`
   align-items: center;
   margin-left: ${({ theme }) => theme.sizes['12px']};
   gap: ${({ theme }) => theme.sizes['12px']};
-  margin: 16.5px;
 `
 
 export const Radio = styled.div<RadioProps>`
