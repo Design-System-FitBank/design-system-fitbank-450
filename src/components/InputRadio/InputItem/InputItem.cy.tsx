@@ -55,6 +55,7 @@ describe('Radio', () => {
         <InputItem option={option} onclick={cy.stub().as('onclick')} />
       </ThemeDSProvider>
     )
+    cy.get('[data-testid="radio-container"]').and('have.css', 'gap', '26px')
     cy.get('[data-testid="body"]').should('exist').and('have.text', option)
   })
 
