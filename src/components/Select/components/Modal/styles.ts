@@ -33,7 +33,7 @@ export const ModalContent = styled.div<{ isOpen: boolean }>`
   animation-name: ${({ isOpen }) => (isOpen ? animationModal : '')};
   animation-duration: 1.5s;
   animation-direction: normal;
-  
+
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
@@ -42,6 +42,7 @@ export const ModalContent = styled.div<{ isOpen: boolean }>`
 
   &::-webkit-scrollbar-track {
     background: ${({ theme }) => theme.colors.textDisabled};
+    border-radius: ${({ theme }) => theme.sizes['20px']};
   }
 
   &::-webkit-scrollbar-thumb {
