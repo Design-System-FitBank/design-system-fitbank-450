@@ -4,8 +4,18 @@ import React, { useState } from 'react'
 import * as Styled from './styles'
 
 interface RadioProps {
+  /**
+   * Deve ser o título do inputRadio
+   */
   title: string
+  /**
+   * Deve ser a lista de opções do input
+   */
   optionsList: string[]
+  /**
+   * Deve ser a direção vertical ou horizontal.
+   * Por padrão a direção é vertical
+   */
   direction?: 'column' | 'row'
 }
 

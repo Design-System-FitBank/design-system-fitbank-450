@@ -13,6 +13,5 @@ const Template: ComponentStory<typeof InputRadio> = args => <InputRadio {...args
 export const Primary = Template.bind({})
 Primary.args = {
   title: 'Escolha uma opção',
-  optionsList: ['Norte', 'Sul', 'Leste', 'Oeste'],
-  onclick: () => {}
+  optionsList: ['Norte', 'Sul', 'Leste', 'Oeste']
 }
