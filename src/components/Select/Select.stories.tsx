@@ -17,14 +17,5 @@ export const SelectComponent = Template.bind({})
 SelectComponent.args = {
   placeholder: 'Select',
   title: 'Select',
-  options: optList,
-  isMulti: false
-}
-
-export const MultiSelect = Template.bind({})
-MultiSelect.args = {
-  placeholder: 'Multi Select',
-  title: 'Multi Select',
-  options: optList,
-  isMulti: true
+  options: optList
 }
