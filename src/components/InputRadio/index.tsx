@@ -1,4 +1,5 @@
 import { Typography } from '../Typography'
+import { InputItem } from './InputItem'
 import React, { useState } from 'react'
 import * as Styled from './styles'
 
@@ -14,18 +15,13 @@ export const InputRadio = ({ title, optionsList, direction = 'column' }: RadioPr
     setChecked(value)
   }
   return (
-    <>
-      <Styled.Container data-testid='radio-container' direction={direction}>
-        <Typography variant='bodyBold'>{title}</Typography>
+    <Styled.Container>
+      <Typography variant='bodyBold'>{title}</Typography>
+      <Styled.ContainerDirection data-testid='radio-container' direction={direction}>
         {optionsList.map(option => (
-          <Styled.ContainerChild data-testid='radio-container-child'>
-            <Styled.Radio data-testid='radio' checked={checked === option} onClick={() => onclick(option)}>
-              <Styled.RadioChild data-testid='radio-child' checked={checked === option} />
-            </Styled.Radio>
-            <Typography variant='body'>{option}</Typography>
-          </Styled.ContainerChild>
+          <InputItem option={option} onclick={onclick} checked={checked === option} />
         ))}
-      </Styled.Container>
-    </>
+      </Styled.ContainerDirection>
+    </Styled.Container>
   )
 }

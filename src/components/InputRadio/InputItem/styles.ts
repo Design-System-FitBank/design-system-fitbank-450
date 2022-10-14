@@ -2,29 +2,15 @@ import styled from 'styled-components'
 
 type RadioProps = {
   checked?: boolean
-  direction?: string
 }
 
 export const Container = styled.div<RadioProps>`
-  color: ${({ theme }) => theme.colors.primary};
-`
-
-export const ContainerDirection = styled.div<RadioProps>`
-  display: flex;
-  flex-direction: ${({ direction }) => (direction === 'row' ? 'row' : 'column')};
-`
-
-export const ContainerChild = styled.div<RadioProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-left: ${({ theme }) => theme.sizes['12px']};
   gap: ${({ theme }) => theme.sizes['12px']};
   margin: 16.5px;
-
-  :nth-last-child(1) {
-    margin-bottom: ${({ direction }) => (direction === 'row' ? '0px' : '16.5px')};
-  }
 `
 
 export const Radio = styled.div<RadioProps>`
