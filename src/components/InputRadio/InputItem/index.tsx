@@ -11,10 +11,12 @@ interface RadioProps {
 export const InputItem = ({ option, checked, onclick }: RadioProps) => {
   return (
     <Styled.Container data-testid='radio-container-child'>
-      <Styled.Radio data-testid='radio' checked={checked}>
-        <Styled.RadioChild data-testid='radio-child' checked={checked} onClick={() => onclick(option)} />
+      <Styled.Radio data-testid='radio' checked={checked} onClick={() => onclick(option)}>
+        <Styled.RadioChild data-testid='radio-child' checked={checked} />
       </Styled.Radio>
-      <Typography variant='body'>{option}</Typography>
+      <Typography data-testid='radio-text' variant='body'>
+        {option}
+      </Typography>
     </Styled.Container>
   )
 }

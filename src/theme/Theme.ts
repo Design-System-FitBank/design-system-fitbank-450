@@ -33,6 +33,7 @@ export const Theme = {
     '12px': '0.75rem',
     '14px': '0.875rem',
     '16px': '1rem',
+    '16.5px': '1.03125rem',
     '18px': '1.125rem',
     '19px': '1.1875rem',
     '20px': '1.25rem',
