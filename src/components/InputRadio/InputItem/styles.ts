@@ -9,7 +9,7 @@ export const Container = styled.div<RadioProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: ${({ theme }) => theme.sizes['12px']};
+  gap: ${({ theme }) => theme.sizes['26px']};
 
   margin: ${({ theme }) => theme.sizes['16.5px']};
 
