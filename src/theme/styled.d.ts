@@ -20,6 +20,7 @@ declare module 'styled-components' {
       radioUnchecked: string
       radioChecked: string
       transparent: string
+      checkbox: string
     }
     font: {
       weight: {
@@ -29,6 +30,7 @@ declare module 'styled-components' {
       }
     }
     sizes: {
+      '3px': string
       '4px': string
       '6px': string
       '7px': string
@@ -36,6 +38,7 @@ declare module 'styled-components' {
       '10px': string
       '12px': string
       '14px': string
+      '15px': string
       '16px': string
       '18px': string
       '19px': string
