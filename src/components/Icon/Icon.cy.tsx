@@ -24,6 +24,7 @@ describe('Icon component', () => {
     'card',
     'cardMulti',
     'changeAccount',
+    'checked',
     'cnh',
     'details',
     'device',
