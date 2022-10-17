@@ -15,8 +15,7 @@ export const Theme = {
     shadow: '#0000001A',
     radioUnchecked: '#A7A7A7',
     radioChecked: '#E8E8E8',
-    transparent: 'transparent',
-    checkbox: '#333750'
+    transparent: 'transparent'
   },
   font: {
     weight: {
@@ -40,6 +39,7 @@ export const Theme = {
     '19px': '1.1875rem',
     '20px': '1.25rem',
     '24px': '1.5rem',
+    '26px': '1.625rem',
     '28px': '1.75rem',
     '32px': '2rem',
     '38px': '2.375rem',

@@ -44,6 +44,7 @@ declare module 'styled-components' {
       '19px': string
       '20px': string
       '24px': string
+      '26px': string
       '28px': string
       '28px': string
       '32px': string
