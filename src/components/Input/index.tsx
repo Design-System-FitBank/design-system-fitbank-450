@@ -21,11 +21,21 @@ export const Input: React.FC<InputProps> = ({ type = 'text', title, placeholder,
     let textEntry: string = e.target.value
     setText(textEntry)
     setTimeout(() => {
-      setChecked(true)
+      if (!validated) {
+        setChecked(true)
+      }
     }, 800)
   }
 
-  const toggleIcon = hideIcon ? 'eyeClose' : 'eyeOpen'
+  // const handleChange = (e: any) => {
+  //   let textEntry: string = e.target.value
+  //   setText(textEntry)
+  //   setTimeout(() => {
+  //     setChecked(true)
+  //   }, 800)
+  // }
+
+  const toggleIcon = checked === true ? 'done' : hideIcon ? 'eyeClose' : 'eyeOpen'
 
   return (
     <>
@@ -36,16 +46,20 @@ export const Input: React.FC<InputProps> = ({ type = 'text', title, placeholder,
       <Styled.Wrap>
         <Styled.InputContainer
           data-testid='input'
+          value={text}
           placeholder={type === 'text' ? placeholder : '••••••••'}
           type={type === 'text' ? 'text' : hideIcon ? 'text' : 'password'}
           disabled={disabled}
+          onChange={e => handleChange(e)}
           hasMessage={Boolean(validated)}
         />
-        <Styled.Icon data-testid='icon' onClick={() => setHideIcon(!hideIcon)}>
-          {type === 'password' && <Icon name={toggleIcon as any} />}
-        </Styled.Icon>
+        {!disabled && type === 'password' && (
+          <Styled.Icon data-testid='icon' onClick={() => setHideIcon(!hideIcon)} isChecket={checked}>
+            <Icon name={toggleIcon as any} />
+          </Styled.Icon>
+        )}
       </Styled.Wrap>
-      <div data-testid='message'>{validated}</div>
+      <Styled.MessageError data-testid='message'>{validated}</Styled.MessageError>
     </>
   )
 }

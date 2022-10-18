@@ -15,6 +15,5 @@ Default.args = {
   title: 'Input Label',
   placeholder: 'Placeholder',
   type: 'text',
-  disabled: false,
+  disabled: false
 }
-
