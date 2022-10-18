@@ -17,7 +17,6 @@ declare module 'styled-components' {
       grey: string
       disabled: string
       shadow: string
-      inputDesabled: string
     }
     font: {
       weight: {
@@ -27,6 +26,7 @@ declare module 'styled-components' {
       }
     }
     sizes: {
+      '2px': string
       '4px': string
       '6px': string
       '7px': string

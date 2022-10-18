@@ -14,5 +14,7 @@ export const Default = Template.bind({})
 Default.args = {
   title: 'Input Label',
   placeholder: 'Placeholder',
-  type: 'text'
+  type: 'text',
+  disabled: false,
 }
+

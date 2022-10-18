@@ -7,13 +7,12 @@ export const Theme = {
     error: '#ea3e3e',
     alert: '#deaa24',
     info: '#3c78b8',
-    textGrey: '#555555',
+    textGrey: '#797979',
     textDisabled: '#c4c4c4',
     light: '#ffffff',
     dark: '#010716',
     disabled: '#c4c4c4',
-    shadow: '#0000001A',
-    inputDesabled: '#e8e8e8'
+    shadow: '#0000001A'
   },
   font: {
     weight: {
@@ -23,6 +22,7 @@ export const Theme = {
     }
   },
   sizes: {
+    '2px': '0.125rem',
     '4px': '0.25rem',
     '6px': '0.375rem',
     '7px': '0.4375rem',
