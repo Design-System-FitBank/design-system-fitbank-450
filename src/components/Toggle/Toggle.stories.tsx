@@ -13,3 +13,9 @@ const Template: ComponentStory<typeof Toggle> = args => <Toggle {...args} />
 export const DafaultToggle = Template.bind({})
 DafaultToggle.args = {
 }
+
+export const LabelToggle = Template.bind({})
+LabelToggle.args = {
+  isTitled: true,
+  label: 'Toggle'
+}
