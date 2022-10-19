@@ -28,8 +28,8 @@ export const InputRadio = ({ title, optionsList, direction = 'column' }: RadioPr
     <Styled.Container>
       <Typography variant='bodyBold'>{title}</Typography>
       <Styled.ContainerDirection data-testid='radio-container' direction={direction}>
-        {optionsList.map(option => (
-          <InputItem option={option} onclick={onclick} checked={checked === option} />
+        {optionsList.map((option, key) => (
+          <InputItem key={key} option={option} onclick={onclick} checked={checked === option} />
         ))}
       </Styled.ContainerDirection>
     </Styled.Container>
