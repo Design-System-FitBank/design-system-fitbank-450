@@ -39,10 +39,12 @@ declare module 'styled-components' {
       '12px': string
       '14px': string
       '16px': string
+      '16.5px': string
       '18px': string
       '19px': string
       '20px': string
       '24px': string
+      '26px': string
       '28px': string
       '28px': string
       '32px': string
