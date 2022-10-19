@@ -15,7 +15,13 @@ describe('Input component', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Input type='text' title={titleFake} placeholder={placeholderFake} disabled={false} />
+        <Input
+          type='text'
+          title={titleFake}
+          placeholder={placeholderFake}
+          disabled={false}
+          onchange={cy.stub().as('onchange')}
+        />
       </ThemeDSProvider>
     )
   })
@@ -46,7 +52,13 @@ describe('Input component', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Input type='password' title={titleFake} placeholder={placeholderFake} disabled={false} />
+        <Input
+          type='password'
+          title={titleFake}
+          placeholder={placeholderFake}
+          disabled={false}
+          onchange={cy.stub().as('onchange')}
+        />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="input"]').should('have.attr', 'placeholder', '••••••••')
@@ -93,7 +105,13 @@ describe('Input component', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Input type='text' title={titleFake} placeholder={placeholderFake} disabled={true} />
+        <Input
+          type='text'
+          title={titleFake}
+          placeholder={placeholderFake}
+          disabled={true}
+          onchange={cy.stub().as('onchange')}
+        />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="input"]')
@@ -105,7 +123,13 @@ describe('Input component', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Input type='password' title={titleFake} placeholder={placeholderFake} disabled={true} />
+        <Input
+          type='password'
+          title={titleFake}
+          placeholder={placeholderFake}
+          disabled={true}
+          onchange={cy.stub().as('onchange')}
+        />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="input"]')
@@ -119,7 +143,14 @@ describe('Input component', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Input type='text' title={titleFake} placeholder={placeholderFake} disabled={false} validated={messageErro} />
+        <Input
+          type='text'
+          title={titleFake}
+          placeholder={placeholderFake}
+          disabled={false}
+          validated={messageErro}
+          onchange={cy.stub().as('onchange')}
+        />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="input"]').should('have.css', 'border', '1px solid rgb(234, 62, 62)')
@@ -130,30 +161,26 @@ describe('Input component', () => {
       .and('have.css', 'justify-content', 'flex-start')
   })
 
-  it('Deve mostrar componente default validado quando a função validadora não retornar mensagem', () => {
-    mount(
-      <ThemeDSProvider theme={Theme}>
-        <GlobalStyles />
-        <Input type='text' title={titleFake} placeholder={placeholderFake} disabled={false} />
-      </ThemeDSProvider>
-    )
-    cy.get('[data-testid="input"]').type(textFaker)
-    cy.wait(4000)
-    cy.get('[data-testid="input"]').should('have.css', 'border', '1px solid rgb(196, 196, 196)')
-  })
-
   it('Deve mostrar componente password validado quando a função validadora não retornar mensagem', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Input type='password' title={titleFake} placeholder={placeholderFake} disabled={false} />
+        <Input
+          type='password'
+          title={titleFake}
+          placeholder={placeholderFake}
+          disabled={false}
+          onchange={cy.stub().as('onchange')}
+        />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="input"]').type(textFaker)
-    cy.get('[data-testid="icon"]')
-      .get('[data-testid="done"]')
-      .should('exist')
-      .and('have.css', 'color', 'rgb(12, 194, 96)')
+    cy.get('[data-testid="icon"]').get('[data-testid="eyeOpen"]').should('exist')
+    cy.get('[data-testid="icon"]').get('[data-testid="done"]').should('not.exist')
+    cy.wait(800)
+    cy.get('@onchange').should('have.been.called')
+    cy.get('[data-testid="icon"]').get('[data-testid="eyeOpen"]').should('not.exist')
+    cy.get('[data-testid="icon"]').get('[data-testid="done"]').and('have.css', 'color', 'rgb(12, 194, 96)')
   })
 
   // it('Deve mostrar o componente do tipo Default com valores no campo de texto', () => {
