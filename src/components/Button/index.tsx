@@ -1,7 +1,9 @@
-import React from 'react'
+import React from 'react';
+
 import * as Styled from './styles'
 
 interface ButtonProps {
+
   children: string
   disabled?: boolean
   icon: JSX.Element
