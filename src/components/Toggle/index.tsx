@@ -1,27 +1,26 @@
 import React, { useState } from 'react'
 import { Typography } from '../Typography'
-import { ToggleContainer, Switcher, Container, LabelContent } from './styles'
+import { ToggleContainer, Switcher, Container } from './styles'
 
 interface ToggleProps {
-  isTitled?: boolean
-  label?: string
+  title?: string
 }
 
-export const Toggle: React.FC<ToggleProps> = ({ isTitled = false, label }) => {
+export const Toggle: React.FC<ToggleProps> = ({ title }) => {
   const [isToggled, setIsToggled] = useState(false)
 
   const handleOnToggleSwitched = () => {
     setIsToggled(!isToggled)
   }
 
-  return isTitled ? (
+  return title ? (
     <Container>
       <ToggleContainer data-testid='toggle' isToggled={isToggled} onClick={() => handleOnToggleSwitched()}>
         <Switcher data-testid='switcher' isToggled={isToggled} />
       </ToggleContainer>
-      <LabelContent data-testid='label'>
-        <Typography variant='bodyLarge'>{label}</Typography>
-      </LabelContent>
+      <Typography data-testid='bodyLarge' variant='bodyLarge'>
+        {title}
+      </Typography>
     </Container>
   ) : (
     <ToggleContainer data-testid='toggle' isToggled={isToggled} onClick={() => handleOnToggleSwitched()}>

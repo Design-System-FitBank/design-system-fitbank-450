@@ -5,7 +5,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-around;
 
-  max-width: 120px;
+  max-width: ${({ theme }) => theme.sizes['120px']};
 `
 
 export const ToggleContainer = styled.div<{ isToggled: boolean }>`
@@ -15,7 +15,7 @@ export const ToggleContainer = styled.div<{ isToggled: boolean }>`
   border-radius: ${({ theme }) => theme.sizes['8px']};
   border: 1px solid ${({ theme }) => theme.colors.primary};
 
-  background-color: ${({ isToggled, theme }) => (isToggled ? theme.colors.primary : '#ebe7e7')};
+  background-color: ${({ isToggled, theme }) => (isToggled ? theme.colors.primary : theme.colors.greyLight)};
 
   display: flex;
   align-items: center;
@@ -36,5 +36,3 @@ export const Switcher = styled.div<{ isToggled: boolean }>`
   transition: 0.8s;
   transform: ${({ isToggled }) => (isToggled ? 'translateX(140%)' : 'translateX(10%)')};
 `
-
-export const LabelContent = styled.div``

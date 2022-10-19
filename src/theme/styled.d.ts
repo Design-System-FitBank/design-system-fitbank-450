@@ -10,6 +10,7 @@ declare module 'styled-components' {
       error: string
       alert: string
       info: string
+      greyLight: string
       textGrey: string
       textDisabled: string
       light: string
@@ -56,6 +57,7 @@ declare module 'styled-components' {
       '82px': string
       '86px': string
       '100px': string
+      '120px': string
       '142px': string
       '160px': string
       '210px': string

@@ -7,6 +7,7 @@ export const Theme = {
     error: '#ea3e3e',
     alert: '#deaa24',
     info: '#3c78b8',
+    greyLight: '#E8E8E8',
     textGrey: '#555555',
     textDisabled: '#c4c4c4',
     light: '#ffffff',
@@ -51,6 +52,7 @@ export const Theme = {
     '82px': '5.125rem',
     '86px': '5.375rem',
     '100px': '6.25rem',
+    '120px': '7.5rem',
     '142px': '8.875rem',
     '160px': '10rem',
     '210px': '13.125rem'
