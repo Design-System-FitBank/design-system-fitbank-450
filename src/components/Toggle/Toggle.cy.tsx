@@ -57,10 +57,10 @@ describe('Toggle', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Toggle isTitled label={labelTxt} />
+        <Toggle title={labelTxt} />
       </ThemeDSProvider>
     )
-    cy.get('[data-testid = "label"]').should('have.text', labelTxt)
+    cy.get('[data-testid = "bodyLarge"]').should('have.text', labelTxt)
   })
 
   it('Deve mudar a cor de fundo ao clicar no toggle', () => {
