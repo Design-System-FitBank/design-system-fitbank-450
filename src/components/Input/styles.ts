@@ -7,29 +7,6 @@ export const Label = styled.label`
   margin-bottom: 4px;
 `
 
-// export const Wrap = styled.div<{ isValid: boolean }>`
-//   border: 1px solid ${({ theme }) => theme.colors.disabled};
-//   color: ${({ theme }) => theme.colors.disabled};
-/* display: flex;
-  justify-content: space-between;
-
-  width: ${({ theme }) => theme.sizes['320px']};
-  height: ${({ theme }) => theme.sizes['48px']};
-  border-radius: ${({ theme }) => theme.sizes['6px']};
-  border: 1px solid ${({ isValid, theme }) => (isValid ? theme.colors.error : theme.colors.disabled)};
-  background-color: ${({ theme }) => theme.colors.light};
-
-  &:hover {
-    box-shadow: 2px 2px 4px ${({ theme }) => theme.colors.shadow};
-  }
-
-  &:focus-within {
-    border: 1px solid ${({ isValid, theme }) => (isValid ? theme.colors.error : theme.colors.primary)};
-    background-color: ${({ theme }) => theme.colors.light};
-    box-shadow: 2px 2px 4px ${({ theme }) => theme.colors.shadow}; */
-//   }
-// `
-
 export const InputContainer = styled.input<{ hasMessage?: boolean }>`
   display: flex;
   position: relative;
@@ -75,24 +52,17 @@ export const Wrap = styled.div`
   width: ${({ theme }) => theme.sizes['320px']};
 `
 
-export const Icon = styled.div<{ isChecket: boolean }>`
+export const Icon = styled.div<{ isChecked?: boolean }>`
   display: flex;
   position: absolute;
-  cursor: pointer;
+  cursor: ${({isChecked})=>(!isChecked ? 'pointer' : 'auto')};
   right: ${({ theme }) => theme.sizes['16px']};
   top: 7px;
   width: ${({ theme }) => theme.sizes['24px']};
   height: ${({ theme }) => theme.sizes['24px']};
-  color: ${({ isChecket,theme }) => (!isChecket ? theme.colors.primary: theme.colors.success)};
+  color: ${({ isChecked,theme }) => (!isChecked ? theme.colors.primary: theme.colors.success)};
 `
-// export const Icon = styled.div<{ isDisable: boolean; isValid: boolean }>`
-//   cursor: pointer;
-//   display: ${({ isDisable }) => (isDisable ? 'none' : 'flex')};
-//   align-items: center;
-//   padding-right: ${({ theme }) => theme.sizes['16px']};
-//   border: none;
-//   color: ${({ isValid, theme }) => (!isValid ? theme.colors.primary : theme.colors.success)};
-// `
+
 export const MessageError = styled.span`
   display: flex;
   color: ${({ theme }) => theme.colors.error};
