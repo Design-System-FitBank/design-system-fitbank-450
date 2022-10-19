@@ -1,5 +1,5 @@
 import { Typography } from '../Typography'
-import { InputItem } from './InputItem'
+import { InputRadioItem } from './InputRadioItem'
 import React, { useState } from 'react'
 import * as Styled from './styles'
 
@@ -29,7 +29,7 @@ export const InputRadio = ({ title, optionsList, direction = 'column' }: RadioPr
       <Typography variant='bodyBold'>{title}</Typography>
       <Styled.ContainerDirection data-testid='radio-container' direction={direction}>
         {optionsList.map((option, key) => (
-          <InputItem key={key} option={option} onclick={onclick} checked={checked === option} />
+          <InputRadioItem key={key} option={option} onclick={onclick} checked={checked === option} />
         ))}
       </Styled.ContainerDirection>
     </Styled.Container>

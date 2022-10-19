@@ -10,6 +10,7 @@ export const Container = styled.div<RadioProps>`
   flex-direction: row;
   align-items: center;
   gap: ${({ theme }) => theme.sizes['26px']};
+  cursor: pointer;
 
   margin: ${({ theme }) => theme.sizes['16.5px']};
 
@@ -29,8 +30,6 @@ export const Radio = styled.div<RadioProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  cursor: pointer;
 `
 export const RadioChild = styled.div<RadioProps>`
   width: ${({ theme }) => theme.sizes['12px']};
