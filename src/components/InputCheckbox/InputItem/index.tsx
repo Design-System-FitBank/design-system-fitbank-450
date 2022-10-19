@@ -13,7 +13,7 @@ export const InputItem = ({ checked = false, option, onclick }: CheckboxProps) =
   return (
     <Styled.Container data-testid='input-checkbox'>
       <Styled.Check data-testid='checkbox' checked={checked} onClick={() => onclick(option)}>
-        {checked ? <Icon name='valid' width={8} height={8} /> : ''}
+        {checked ? <Icon name='checked' width={8} height={8} /> : ''}
       </Styled.Check>
       <Typography variant='body'>{option}</Typography>
     </Styled.Container>

@@ -18,6 +18,8 @@ export const Check = styled.div<CheckboxProps>`
   background-color: ${({ checked, theme }) => (checked ? theme.colors.primary : theme.colors.light)};
   color: ${({ theme }) => theme.colors.light};
 
+  cursor: pointer;
+
   :hover {
     border: 1px solid ${({ theme }) => theme.colors.disabled};
   }
