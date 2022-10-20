@@ -11,19 +11,22 @@ interface InputCheckboxProps {
 
 export const InputCheckbox = ({ title, optionsList, direction = 'column' }: InputCheckboxProps) => {
   const [checked, setChecked] = useState(false)
-  const [options, setOptions] = useState<string[]>([])
+  const [selected, setSelected] = useState<string[]>([])
 
   const onclick = (value: string) => {
-    const result = options.includes(value)
-    if (!result) {
-      setOptions([...options, value])
-      setChecked(true)
+    if (selected.includes(value)) {
+      selected.splice(selected.indexOf(value), 1)
+      setSelected(selected)
       return
     }
-    if (!checked) setOptions(options.splice(options.indexOf(value), 1))
+    if (!selected.includes(value)) {
+      setSelected([...selected, value])
+      return
+    }
   }
+  console.log(selected)
 
-  console.log(options)
+  useEffect(() => {})
 
   return (
     <>
@@ -34,7 +37,7 @@ export const InputCheckbox = ({ title, optionsList, direction = 'column' }: Inpu
       </Styled.Container>
       <Styled.Container data-testid='input-checkbox' direction={direction}>
         {optionsList.map((option, key) => (
-          <InputCheckboxItem key={key} checked={options?.includes(option)} option={option} onclick={onclick} />
+          <InputCheckboxItem key={key} checked={selected.includes(option)} option={option} onclick={onclick} />
         ))}
       </Styled.Container>
     </>
