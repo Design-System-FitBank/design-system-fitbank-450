@@ -4,7 +4,7 @@ type CheckboxProps = {
   checked: boolean
 }
 
-export const Check = styled.div<CheckboxProps>`
+export const Checkbox = styled.div<CheckboxProps>`
   width: ${({ theme }) => theme.sizes['15px']};
   height: ${({ theme }) => theme.sizes['15px']};
 

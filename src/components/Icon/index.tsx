@@ -62,7 +62,7 @@ import { UserSearch } from './icons/UserSearch'
 import { WithdrawMoney } from './icons/WithdrawMoney'
 import { Xlsx } from './icons/Xlsx'
 import { QrCodeOut } from './icons/QrCodeOut'
-import { Check } from 'components/InputCheckbox/InputItem/styles'
+import { Check } from 'components/InputCheckbox/InputCheckboxItem/styles'
 
 interface IconsProps {
   /**

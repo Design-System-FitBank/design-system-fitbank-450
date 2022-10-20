@@ -9,12 +9,12 @@ interface CheckboxProps {
   onclick: (value: string) => void
 }
 
-export const InputItem = ({ checked = false, option, onclick }: CheckboxProps) => {
+export const InputCheckboxItem = ({ checked = false, option, onclick }: CheckboxProps) => {
   return (
     <Styled.Container data-testid='input-checkbox'>
-      <Styled.Check data-testid='checkbox' checked={checked} onClick={() => onclick(option)}>
+      <Styled.Checkbox data-testid='checkbox' checked={checked} onClick={() => onclick(option)}>
         {checked ? <Icon name='checked' width={8} height={8} /> : ''}
-      </Styled.Check>
+      </Styled.Checkbox>
       <Typography variant='body'>{option}</Typography>
     </Styled.Container>
   )
