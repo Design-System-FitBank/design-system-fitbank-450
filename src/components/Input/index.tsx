@@ -8,7 +8,7 @@ interface InputProps {
    */
   title: string
   /**
-   * Texto obscurecido .
+   * Variável que se referencia ao texto do placeholder que ficará em condições obscurecida.
    */
   placeholder: string
   /**
