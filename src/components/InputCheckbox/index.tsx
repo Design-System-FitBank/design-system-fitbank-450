@@ -7,26 +7,23 @@ interface InputCheckboxProps {
   title: string
   optionsList: string[]
   direction?: 'column' | 'row'
+  onSelect: (values: string[]) => void
 }
 
-export const InputCheckbox = ({ title, optionsList, direction = 'column' }: InputCheckboxProps) => {
-  const [checked, setChecked] = useState(false)
+export const InputCheckbox = ({ title, optionsList, direction = 'column', onSelect }: InputCheckboxProps) => {
   const [selected, setSelected] = useState<string[]>([])
 
   const onclick = (value: string) => {
     if (selected.includes(value)) {
-      selected.splice(selected.indexOf(value), 1)
-      setSelected(selected)
+      setSelected(selected.filter(el => el !== value))
       return
     }
     if (!selected.includes(value)) {
       setSelected([...selected, value])
       return
     }
+    onSelect(selected)
   }
-  console.log(selected)
-
-  useEffect(() => {})
 
   return (
     <>
