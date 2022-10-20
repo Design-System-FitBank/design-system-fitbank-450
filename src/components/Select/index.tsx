@@ -10,9 +10,10 @@ interface SelectProps {
   title: string
   placeholder: string
   options: string[]
+  onSelected: (value: string) => void
 }
 
-export const Select: React.FC<SelectProps> = ({ title, placeholder, options }) => {
+export const Select: React.FC<SelectProps> = ({ title, placeholder, options, onSelected }) => {
   const [openModal, setOpenModal] = useState(false)
   const [optionsValue, setOptionsValue] = useState<string>()
   const [optionsToFilter, setOptionsToFilter] = useState(options)
@@ -20,6 +21,7 @@ export const Select: React.FC<SelectProps> = ({ title, placeholder, options }) =
   const handleClickedItem = (value: string) => {
     setOptionsValue(value)
     setOpenModal(false)
+    onSelected(value)
   }
 
   const handleFilteredOptions = (value: string) => {
