@@ -14,7 +14,7 @@ export const Toggle: React.FC<ToggleProps> = ({ title }) => {
   }
 
   return title ? (
-    <Container>
+    <Container data-testid='container'>
       <ToggleContainer data-testid='toggle' isToggled={isToggled} onClick={() => handleOnToggleSwitched()}>
         <Switcher data-testid='switcher' isToggled={isToggled} />
       </ToggleContainer>

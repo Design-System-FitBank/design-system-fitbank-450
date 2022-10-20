@@ -5,7 +5,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-around;
 
-  max-width: ${({ theme }) => theme.sizes['120px']};
+  width: ${({ theme }) => theme.sizes['120px']};
 `
 
 export const ToggleContainer = styled.div<{ isToggled: boolean }>`
