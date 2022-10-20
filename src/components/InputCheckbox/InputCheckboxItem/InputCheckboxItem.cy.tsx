@@ -1,7 +1,7 @@
 import React from 'react'
 import 'cypress-real-events/support'
 import { GlobalStyles, Theme, ThemeDSProvider } from '../../../theme'
-import { InputItem } from '.'
+import { InputCheckboxItem } from '.'
 import { faker } from '@faker-js/faker'
 
 describe('Checkbox', () => {
@@ -16,7 +16,7 @@ describe('Checkbox', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <InputItem option={option} onclick={cy.stub().as('onclick')} />
+        <InputCheckboxItem option={option} onclick={cy.stub().as('onclick')} />
       </ThemeDSProvider>
     )
 
@@ -35,7 +35,7 @@ describe('Checkbox', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <InputItem option={option} onclick={cy.stub().as('onclick')} />
+        <InputCheckboxItem option={option} onclick={cy.stub().as('onclick')} />
       </ThemeDSProvider>
     )
 
@@ -55,7 +55,7 @@ describe('Checkbox', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <InputItem checked={true} option={option} onclick={cy.stub().as('onclick')} />
+        <InputCheckboxItem checked={true} option={option} onclick={cy.stub().as('onclick')} />
       </ThemeDSProvider>
     )
 
@@ -77,7 +77,7 @@ describe('Checkbox', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <InputItem option={option} onclick={cy.stub().as('onclick')} />
+        <InputCheckboxItem option={option} onclick={cy.stub().as('onclick')} />
       </ThemeDSProvider>
     )
 
