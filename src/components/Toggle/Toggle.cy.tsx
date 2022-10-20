@@ -23,11 +23,11 @@ describe('Toggle', () => {
       </ThemeDSProvider>
     )
     cy.get('[data-testid = "toggle"]')
-      .should('have.css', 'border', '1px solid rgb(50, 55, 81)')
-      .and('have.css', 'width', '32px')
-      .and('have.css', 'height', '16px')
+      .should('have.css', 'border', '0.994318px solid rgb(50, 55, 81)')
+      .and('have.css', 'width', '31.988636016845703px')
+      .and('have.css', 'height', '15.994318008422852px')
       .and('have.css', 'border-radius', '8px')
-      .and('have.css', 'background-color', 'rgb(235, 231, 231)')
+      .and('have.css', 'background-color', 'rgb(232, 232, 232)')
       .and('have.css', 'display', 'flex')
       .and('have.css', 'align-items', 'center')
       .and('have.css', 'justify-content', 'flex-start')
@@ -43,12 +43,12 @@ describe('Toggle', () => {
       </ThemeDSProvider>
     )
     cy.get('[data-testid = "switcher"]')
-      .should('have.css', 'width', '12px')
-      .and('have.css', 'height', '12px')
+      .should('have.css', 'width', '11.988636016845703px')
+      .and('have.css', 'height', '11.988636016845703px')
       .and('have.css', 'border-radius', '50%')
       .and('have.css', 'background-color', 'rgb(50, 55, 81)')
       .and('have.css', 'transition', 'all 0.8s ease 0s')
-      .and('have.css', 'transform', 'matrix(1, 0, 0, 1, 1.23636, 0)')
+      .and('have.css', 'transform', 'matrix(1, 0, 0, 1, 1.18182, 0)')
   })
 
   const labelTxt = faker.lorem.word()
@@ -60,6 +60,11 @@ describe('Toggle', () => {
         <Toggle title={labelTxt} />
       </ThemeDSProvider>
     )
+    cy.get('[data-testid = "container"]')
+      .should('have.css', 'display', 'flex')
+      .and('have.css', 'align-items', 'center')
+      .and('have.css', 'justify-content', 'space-around')
+      .and('have.css', 'width', '119.99999237060547px')
     cy.get('[data-testid = "bodyLarge"]').should('have.text', labelTxt)
   })
 
@@ -84,6 +89,6 @@ describe('Toggle', () => {
     cy.get('[data-testid = "switcher"]').click()
     cy.get('[data-testid = "switcher"]')
       .should('have.css', 'background-color', 'rgb(255, 255, 255)')
-      .and('have.css', 'transform', 'matrix(1, 0, 0, 1, 17.3091, 0)')
+      .and('have.css', 'transform', 'matrix(1, 0, 0, 1, 16.5455, 0)')
   })
 })
