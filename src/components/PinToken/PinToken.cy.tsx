@@ -14,16 +14,18 @@ describe('PinToken', () => {
     cy.wait(100)
   })
 
+  const pin = new Array()
+
   it('Deve conter o PinToken default', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <PinToken />
+        <PinToken  />
       </ThemeDSProvider>
     )
     cy.get('[data-testid = "container"]')
     cy.get('[data-testid = "pinToken"]')
-      .should('have.css', 'width', '42px')
-      .and('have.css', 'height', '42px')
+      .should('have.css', 'width', '41.9886360168457px')
+      .and('have.css', 'height', '41.9886360168457px')
   })
 })
