@@ -15,9 +15,7 @@ describe('Button Default', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Button icon={icon} iconRight={false} onClick={cy.stub().as('onClick')}>
-          {label}
-        </Button>
+        <Button onClick={cy.stub().as('onClick')}>{label}</Button>
       </ThemeDSProvider>
     )
       .get('[data-testeid="button"]')
@@ -36,9 +34,7 @@ describe('Button Default', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Button icon={icon} iconRight={false} onClick={cy.stub().as('onClick')}>
-          {label}
-        </Button>
+        <Button onClick={cy.stub().as('onClick')}>{label}</Button>
       </ThemeDSProvider>
     )
     cy.get('[data-testeid="button"]').realHover()
@@ -49,9 +45,7 @@ describe('Button Default', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Button icon={icon} iconRight={false} onClick={cy.stub().as('onClick')}>
-          {label}
-        </Button>
+        <Button onClick={cy.stub().as('onClick')}>{label}</Button>
       </ThemeDSProvider>
     )
     cy.get('[data-testeid="button"]').realMouseDown()
@@ -66,7 +60,7 @@ describe('Button Default', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Button icon={icon} onClick={cy.stub().as('onClick')} disabled>
+        <Button onClick={cy.stub().as('onClick')} disabled>
           {label}
         </Button>
       </ThemeDSProvider>
@@ -89,7 +83,7 @@ describe('Button Primary', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Button icon={icon} iconRight={false} onClick={cy.stub().as('onClick')} type={'primary'}>
+        <Button onClick={cy.stub().as('onClick')} type={'primary'}>
           {label}
         </Button>
       </ThemeDSProvider>
@@ -104,7 +98,7 @@ describe('Button Primary', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Button icon={icon} iconRight={false} onClick={cy.stub().as('onClick')} type={'primary'}>
+        <Button onClick={cy.stub().as('onClick')} type={'primary'}>
           {label}
         </Button>
       </ThemeDSProvider>
@@ -117,7 +111,7 @@ describe('Button Primary', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Button icon={icon} iconRight={false} onClick={cy.stub().as('onClick')} type={'primary'}>
+        <Button onClick={cy.stub().as('onClick')} type={'primary'}>
           {label}
         </Button>
       </ThemeDSProvider>
@@ -134,7 +128,7 @@ describe('Button Primary', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Button icon={icon} onClick={cy.stub().as('onClick')} disabled type={'primary'}>
+        <Button onClick={cy.stub().as('onClick')} disabled type={'primary'}>
           {label}
         </Button>
       </ThemeDSProvider>
@@ -156,7 +150,7 @@ describe('Button Secondary', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Button icon={icon} iconRight={false} onClick={cy.stub().as('onClick')} type={'secondary'}>
+        <Button onClick={cy.stub().as('onClick')} type={'secondary'}>
           {label}
         </Button>
       </ThemeDSProvider>
@@ -172,7 +166,7 @@ describe('Button Secondary', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Button icon={icon} iconRight={false} onClick={cy.stub().as('onClick')} type={'secondary'}>
+        <Button onClick={cy.stub().as('onClick')} type={'secondary'}>
           {label}
         </Button>
       </ThemeDSProvider>
@@ -187,7 +181,7 @@ describe('Button Secondary', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Button icon={icon} iconRight={false} onClick={cy.stub().as('onClick')} type={'secondary'}>
+        <Button onClick={cy.stub().as('onClick')} type={'secondary'}>
           {label}
         </Button>
       </ThemeDSProvider>
@@ -202,7 +196,7 @@ describe('Button Secondary', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Button icon={icon} onClick={cy.stub().as('onClick')} disabled type={'secondary'}>
+        <Button onClick={cy.stub().as('onClick')} disabled type={'secondary'}>
           {label}
         </Button>
       </ThemeDSProvider>
@@ -225,7 +219,7 @@ describe('Button Tertiary', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Button icon={icon} onClick={cy.stub().as('onClick')} type={'tertiary'}>
+        <Button onClick={cy.stub().as('onClick')} type={'tertiary'}>
           {label}
         </Button>
       </ThemeDSProvider>
@@ -239,7 +233,7 @@ describe('Button Tertiary', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Button icon={icon} onClick={cy.stub().as('onClick')} type={'tertiary'}>
+        <Button onClick={cy.stub().as('onClick')} type={'tertiary'}>
           {label}
         </Button>
       </ThemeDSProvider>
@@ -254,7 +248,7 @@ describe('Button Tertiary', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Button icon={icon} onClick={cy.stub().as('onClick')} disabled type={'tertiary'}>
+        <Button onClick={cy.stub().as('onClick')} disabled type={'tertiary'}>
           {label}
         </Button>
       </ThemeDSProvider>
@@ -316,19 +310,15 @@ describe('Button Icon Position', () => {
   const label = faker.lorem.word()
   const icon = <Icon name='home' width={32} height={32} />
 
-  it('Deve ter um ícone por padrão a esquerda', () => {
+  it('Deve não ter um ícone por padrão', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Button icon={icon} onClick={cy.stub().as('onClick')}>
-          {label}
-        </Button>
+        <Button onClick={cy.stub().as('onClick')}>{label}</Button>
       </ThemeDSProvider>
     )
-      .get('[data-testeid="iconSuffix"]')
-      .should('have.css', 'width', '32px')
-      .and('have.css', 'height', '32px')
-      .and('have.css', 'color', 'rgb(255, 255, 255)')
+    cy.get('[data-testeid="iconPrefix"]').should('be.empty')
+    cy.get('[data-testeid="iconSuffix"]').should('be.empty')
   })
 
   it('Deve ter um ícone à esquerda do label', () => {
@@ -367,9 +357,7 @@ describe('Button Function', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Button icon={icon} iconRight={false} onClick={cy.stub().as('onClick')}>
-          {label}
-        </Button>
+        <Button onClick={cy.stub().as('onClick')}>{label}</Button>
       </ThemeDSProvider>
     )
     cy.get('[data-testeid="button"]').click()
