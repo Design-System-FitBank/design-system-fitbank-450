@@ -11,10 +11,24 @@ export default {
 
 const Template: ComponentStory<typeof Button> = args => <Button {...args} />
 
-export const Primary = Template.bind({})
-Primary.args = {
+export const Default = Template.bind({})
+Default.args = {
+  children: 'Primary',
+  onClick: () => {}
+}
+
+export const PrimaryWithIconLeft = Template.bind({})
+PrimaryWithIconLeft.args = {
   children: 'Primary',
   icon: <Home />,
+  onClick: () => {}
+}
+
+export const PrimaryWithIconRight = Template.bind({})
+PrimaryWithIconRight.args = {
+  children: 'Primary',
+  icon: <Home />,
+  iconRight: true,
   onClick: () => {}
 }
 

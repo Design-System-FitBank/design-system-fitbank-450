@@ -4,7 +4,7 @@ import * as Styled from './styles'
 interface ButtonProps {
   children: string
   disabled?: boolean
-  icon: JSX.Element
+  icon?: JSX.Element
   size?: 'small' | 'large'
   /**
    * Quando o type for informado o estilo do Button será mudado
