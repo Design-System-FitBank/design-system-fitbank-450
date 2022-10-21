@@ -7,9 +7,21 @@ import { Modal } from './components/Modal'
 import { Container } from './styles'
 
 interface SelectProps {
+  /**
+   * Titulo do Select.
+   */
   title: string
+  /**
+   * Placeholder do input do Select.
+   */
   placeholder: string
+  /**
+   * Lista de opções em string para os elementos do Select.
+   */
   options: string[]
+  /**
+   * Função que retorna o valor selecionado no Select.
+   */
   onSelected: (value: string) => void
 }
 
