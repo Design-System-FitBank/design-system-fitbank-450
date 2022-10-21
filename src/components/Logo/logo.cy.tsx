@@ -3,6 +3,7 @@ import { mount } from 'cypress/react18'
 import { Logo } from '.'
 
 describe('Logo-FB-default componente', () => {
+  
   it('Deve mostrar o componente logo default com o nome fitbank', () => {
     mount(<Logo name='logoDefault' />)
     cy.get('[data-testid="default"]').should('be.visible')
