@@ -32,11 +32,11 @@ export const InputCheckbox = ({ title, optionsList, direction = 'column', onSele
           {title}
         </Typography>
       </Styled.Container>
-      <Styled.Container data-testid='input-checkbox' direction={direction}>
+      <Styled.ContainerChild data-testid='input-checkbox' direction={direction}>
         {optionsList.map((option, key) => (
           <InputCheckboxItem key={key} checked={selected.includes(option)} option={option} onclick={onclick} />
         ))}
-      </Styled.Container>
+      </Styled.ContainerChild>
     </>
   )
 }
