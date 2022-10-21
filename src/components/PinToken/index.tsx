@@ -1,23 +1,20 @@
 import React, { useState } from 'react'
-import { Container, PinBox } from './styles'
+import { PinGrid } from './PinGrid'
 
-interface PinTokenProps {
-  isDisabled?: boolean
-}
+const PIN_LENGTH = 4;
 
-const PIN_TOKEN_LENTGH = 6
+export const PinToken = () => {
+  const [pin, setPin] = useState<Array<number | undefined>>(new Array(PIN_LENGTH))
 
-export const PinToken: React.FC<PinTokenProps> = ({ isDisabled }) => {
-  const [pin, setPin] = useState<Array<number | null>>(new Array(PIN_TOKEN_LENTGH))
+  const onPinChanged = (pinEntry: number | undefined, index: number) => {
+    const newPin = [...pin];
+    newPin[index] = pinEntry;
+    setPin(newPin);
+  };
 
   return (
-    <Container data-testid='container'>
-      <PinBox data-testid='pinToken'>0</PinBox>
-      <PinBox data-testid='pinToken'>1</PinBox>
-      <PinBox data-testid='pinToken'>2</PinBox>
-      <PinBox data-testid='pinToken'>3</PinBox>
-      <PinBox data-testid='pinToken'>4</PinBox>
-      <PinBox data-testid='pinToken'>5</PinBox>
-    </Container>
+    <div>
+      <PinGrid pin={pin} onPinChange={onPinChanged}/>
+    </div>
   )
 }

@@ -4,10 +4,12 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+
+  gap: ${({ theme }) => theme.sizes['16px']};
 `
 
-export const PinBox = styled.div`
+export const PinBox = styled.input`
   width: ${({ theme }) => theme.sizes['42px']};
   height: ${({ theme }) => theme.sizes['42px']};
 
@@ -19,4 +21,8 @@ export const PinBox = styled.div`
 
   border: 1px solid ${({ theme }) => theme.colors.textDisabled};
   border-radius: ${({ theme }) => theme.sizes['6px']};
+
+  text-align: center;
+  font-size: ${({ theme }) => theme.sizes['18px']};
+  line-height: ${({ theme }) => theme.sizes['24px']}; ;
 `

@@ -3,9 +3,11 @@ import styled from 'styled-components'
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
 
-  width: ${({ theme }) => theme.sizes['120px']};
+  overflow: hidden;
+
+  gap: ${({ theme }) => theme.sizes['16px']};
 `
 
 export const ToggleContainer = styled.div<{ isToggled: boolean }>`
