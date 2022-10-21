@@ -1,10 +1,11 @@
+import { Icon } from '../Icon'
 import React from 'react'
 import * as Styled from './styles'
 
 interface ButtonProps {
   children: string
   disabled?: boolean
-  icon?: JSX.Element
+  icon?: string
   size?: 'small' | 'large'
   /**
    * Quando o type for informado o estilo do Button será mudado
@@ -32,29 +33,32 @@ export const Button: React.FC<ButtonProps> = ({
   onClick
 }) => {
   const returnElement = (value: string) => {
+    const test = () => <div>icon not found!</div>
+    console.log(icon)
+    console.log(typeof icon)
     switch (value) {
       case 'tertiary':
         return (
           <Styled.Tertiary data-testeid='button' onClick={onClick} disabled={disabled} size={size}>
-            <Styled.Icon data-testeid='iconPrefix'>{!iconRight && icon}</Styled.Icon>
+            <Styled.Icon data-testeid='iconPrefix'>{!iconRight && icon ? <Icon name={icon}></Icon> : ''}</Styled.Icon>
             <Styled.BoxLabel data-testeid='boxLabel'>{children}</Styled.BoxLabel>
-            <Styled.Icon data-testeid='iconSuffix'>{iconRight && icon}</Styled.Icon>
+            <Styled.Icon data-testeid='iconSuffix'>{iconRight && icon ? <Icon name={icon}></Icon> : ''}</Styled.Icon>
           </Styled.Tertiary>
         )
       case 'secondary':
         return (
           <Styled.Secondary data-testeid='button' onClick={onClick} disabled={disabled} size={size}>
-            <Styled.Icon data-testeid='iconPrefix'>{!iconRight && icon}</Styled.Icon>
+            <Styled.Icon data-testeid='iconPrefix'>{!iconRight && icon ? <Icon name={icon}></Icon> : ''}</Styled.Icon>
             <Styled.BoxLabel data-testeid='boxLabel'>{children}</Styled.BoxLabel>
-            <Styled.Icon data-testeid='iconSuffix'>{iconRight && icon}</Styled.Icon>
+            <Styled.Icon data-testeid='iconSuffix'>{iconRight && icon ? <Icon name={icon}></Icon> : ''}</Styled.Icon>
           </Styled.Secondary>
         )
       default:
         return (
           <Styled.Primary data-testeid='button' onClick={onClick} disabled={disabled} size={size}>
-            <Styled.Icon data-testeid='iconPrefix'>{!iconRight && icon}</Styled.Icon>
+            <Styled.Icon data-testeid='iconPrefix'>{!iconRight && icon ? <Icon name={icon}></Icon> : ''}</Styled.Icon>
             <Styled.BoxLabel data-testeid='boxLabel'>{children}</Styled.BoxLabel>
-            <Styled.Icon data-testeid='iconSuffix'>{iconRight && icon}</Styled.Icon>
+            <Styled.Icon data-testeid='iconSuffix'>{iconRight && icon ? <Icon name={icon}></Icon> : ''}</Styled.Icon>
           </Styled.Primary>
         )
     }
