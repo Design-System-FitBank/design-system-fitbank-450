@@ -1,7 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { Button } from '.'
-import { Home } from './img-test'
+import { Button } from './'
 
 export default {
   title: 'Button',

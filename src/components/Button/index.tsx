@@ -1,12 +1,16 @@
 import { Icon } from '../Icon'
 import React from 'react'
+import { IconsProps } from '../Icon'
 import * as Styled from './styles'
 
 interface ButtonProps {
   children: string
   disabled?: boolean
-  icon?: string
-  size?: 'small' | 'large'
+  icon?: IconsProps['name']
+  /**
+   * o size auto deixa o tamanho responsivo adaptando-se a largura máxima do pai
+   */
+  size?: 'small' | 'large' | 'auto'
   /**
    * Quando o type for informado o estilo do Button será mudado
    * O default é o estilo primary

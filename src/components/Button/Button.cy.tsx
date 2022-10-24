@@ -1,8 +1,7 @@
 import React from 'react'
 import { faker } from '@faker-js/faker'
 import 'cypress-real-events/support'
-import { Button } from '.'
-import { Home } from './img-test'
+import { Button } from './'
 import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
 
 describe('Button Default', () => {

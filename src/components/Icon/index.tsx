@@ -62,7 +62,7 @@ import { WithdrawMoney } from './icons/WithdrawMoney'
 import { Xlsx } from './icons/Xlsx'
 import { QrCodeOut } from './icons/QrCodeOut'
 
-interface IconsProps {
+export interface IconsProps {
   /**
    * Variavel para alterar altura.
    * Caso não seja alterada o valor será de 32px.
