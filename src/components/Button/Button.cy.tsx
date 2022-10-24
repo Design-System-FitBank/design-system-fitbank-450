@@ -3,13 +3,13 @@ import { faker } from '@faker-js/faker'
 import 'cypress-real-events/support'
 import { Button } from './'
 import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
+import { Icon } from '../Icon'
 
 describe('Button Default', () => {
   beforeEach(() => cy.wait(100))
   afterEach(() => cy.wait(100))
   const label = faker.lorem.word()
   const icon = 'home'
-
   it('Deve ser o componente Default quando não for informado o type', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
@@ -173,7 +173,6 @@ describe('Button Secondary', () => {
   afterEach(() => cy.wait(100))
   const label = faker.lorem.word()
   const icon = 'home'
-
   it('Deve ser o componente Secondary quando for informado o type secondary', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
@@ -333,6 +332,53 @@ describe('Button Size', () => {
   })
 })
 
+describe('Button Icon Position', () => {
+  beforeEach(() => cy.wait(100))
+  afterEach(() => cy.wait(100))
+  const label = faker.lorem.word()
+  const icon = <Icon name='home' width={32} height={32} />
+
+  it('Deve ter um ícone por padrão a esquerda', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button icon={icon} onClick={cy.stub().as('onClick')}>
+          {label}
+        </Button>
+      </ThemeDSProvider>
+    )
+      .get('[data-testeid="iconSuffix"]')
+      .should('have.css', 'width', '32px')
+      .and('have.css', 'height', '32px')
+      .and('have.css', 'color', 'rgb(255, 255, 255)')
+  })
+
+  it('Deve ter um ícone à esquerda do label', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button icon={icon} iconRight={false} onClick={cy.stub().as('onClick')}>
+          {label}
+        </Button>
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testeid="iconPrefix"]').should('not.be.empty')
+    cy.get('[data-testeid="iconSuffix"]').should('be.empty')
+  })
+
+  it('Deve ter um ícone à direita do label', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button icon={icon} iconRight={true} onClick={cy.stub().as('onClick')}>
+          {label}
+        </Button>
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testeid="iconPrefix"]').should('be.empty')
+    cy.get('[data-testeid="iconSuffix"]').should('not.be.empty')
+  })
+})
 describe('Button Function', () => {
   beforeEach(() => cy.wait(100))
   afterEach(() => cy.wait(100))
