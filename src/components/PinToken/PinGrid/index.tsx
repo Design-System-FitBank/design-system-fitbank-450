@@ -1,68 +1,78 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Container, PinBox } from '../styles'
 
 interface PinTokenProps {
-  pin: Array<number | undefined>
-  onPinChange: (pinEntry: number | undefined, index: number) => void
+  onPinChange: (pinEntry: number[]) => void
   isDisabled?: boolean
-  children?: string
 }
 
-export const PinGrid: React.FC<PinTokenProps> = ({ isDisabled = false, onPinChange, pin}) => {
+export const PinGrid: React.FC<PinTokenProps> = ({ isDisabled = false, onPinChange }) => {
+  const [pinValue, setPinValue] = useState<number[]>()
+  const [error, setError] = useState<string>()
   const inputRefs = useRef<HTMLInputElement[]>([])
-  const PIN_TOKEN_LENTGH = 6
+  const [disable, setDisable] = useState(isDisabled)
 
-  const changePinTokenFocus = pinIndex => {
-    const ref = inputRefs.current[pinIndex]
-    if (ref) {
-      ref.focus()
-    }
+  const changePinTokenFocus = (pinIndex: number) => {
+    inputRefs.current[pinIndex].focus()
+  }
+
+  const onBlur = (pinIndex: number) => {
+    inputRefs.current[pinIndex].blur()
   }
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
     const value = event.target.value
     const pinNumber = Number(value.trim())
-    if (isNaN(pinNumber) || value.length === 0) {
+
+    if (isNaN(pinNumber)) {
+      return setError('O campo só permite numeros')
+    }
+
+    if (!Boolean(pinValue)) {
+      setPinValue([pinNumber])
+      changePinTokenFocus(index + 1)
       return
     }
 
-    if (pinNumber >= 0 && pinNumber <= 9) {
-      onPinChange(pinNumber, index)
+    setPinValue([...pinValue!, pinNumber])
 
-      if (index < PIN_TOKEN_LENTGH - 1)
-      {
-        changePinTokenFocus(index + 1)
-      }
+    if (index === 5) {
+      // console.log(pinValue)
+      // console.log(pinNumber)
+      onPinChange(pinValue!)
+      setDisable(true)
+      onBlur(5)
+      return
+    }
+
+    if (index < 5) {
+      changePinTokenFocus(index + 1)
     }
   }
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>, index: number) => {
     const keyboardkeyCode = event.nativeEvent.code
-    if (keyboardkeyCode !== 'Backspace') {
-      return
-    }
-
-    if (pin[index] === undefined) {
+    if (keyboardkeyCode === 'Backspace') {
       changePinTokenFocus(index - 1)
-    } else {
-      onPinChange(undefined, index)
+      return
     }
   }
 
   return (
     <Container data-testid='container'>
-      {Array.from({ length: PIN_TOKEN_LENTGH }, (_, index) => (
+      {Array.from({ length: 6 }, (_, index) => (
         <PinBox
           data-testid='pinToken'
-          onKeyDown={(event) => onKeyDown(event, index)}
           disabled={isDisabled}
+          isDisabled={isDisabled}
           key={index}
-          value={pin[index] || ''}
+          value={pinValue ? pinValue![index] : ''}
           ref={item => {
             if (item) {
               inputRefs.current[index] = item
             }
           }}
+          onKeyDown={event => onKeyDown(event, index)}
           onChange={event => onChange(event, index)}
         />
       ))}

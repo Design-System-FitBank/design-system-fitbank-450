@@ -8,14 +8,14 @@ export default {
   argTypes: {}
 } as ComponentMeta<typeof PinToken>
 
-const Template: ComponentStory<typeof PinToken> = args => <PinToken />
+const Template: ComponentStory<typeof PinToken> = args => <PinToken {...args} />
 
 export const PinTokenDefault = Template.bind({})
 PinTokenDefault.args = {
-  isDisabled: false,
+  disabled: false,
 }
 
 export const DisabledPinToken = Template.bind({})
 DisabledPinToken.args = {
-  isDisabled: true,
+  disabled: true,
 }
