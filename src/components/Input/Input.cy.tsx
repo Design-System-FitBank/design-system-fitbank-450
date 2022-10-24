@@ -42,12 +42,11 @@ describe('Input component', () => {
       .and('have.css', 'font-size', '18px')
       .and('have.css', 'justify-content', 'flex-start')
       .and('have.css', 'padding-left', '16px')
-      .and('have.css', 'width', '320px')
       .and('have.css', 'height', '48px')
       .and('have.css', 'border-radius', '6px')
   })
 
-  it('Deve mostrar o componente tipo password', () => {
+  it.only('Deve mostrar o componente tipo password', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
