@@ -8,9 +8,8 @@ export const Label = styled.label`
 `
 
 export const InputContainer = styled.input<{ hasMessage?: boolean }>`
-  display: flex;
-  position: relative;
-  width: ${({ theme }) => theme.sizes['320px']};
+  width: 100%;
+  /* min-width: ${({ theme }) => theme.sizes['320px']}; */
   height: ${({ theme }) => theme.sizes['48px']};
   border-radius: ${({ theme }) => theme.sizes['6px']};
   border: 1px solid ${({ theme, hasMessage }) => (hasMessage ? theme.colors.error : theme.colors.disabled)};
@@ -19,7 +18,8 @@ export const InputContainer = styled.input<{ hasMessage?: boolean }>`
   font-size: ${({ theme }) => theme.sizes['18px']};
   line-height: ${({ theme }) => theme.sizes['24px']};
   justify-content: flex-start;
-  padding-left: ${({ theme }) => theme.sizes['16px']};
+  padding: 0px ${({ theme }) => theme.sizes['16px']};
+  overflow-x: hidden;
 
   :hover {
     box-shadow: ${({ theme }) => theme.sizes['2px']} ${({ theme }) => theme.sizes['2px']}
@@ -49,7 +49,7 @@ export const InputContainer = styled.input<{ hasMessage?: boolean }>`
 export const Wrap = styled.div`
   display: flex;
   position: relative;
-  width: ${({ theme }) => theme.sizes['320px']};
+  width: 100%;
 `
 
 export const Icon = styled.div<{ isChecked?: boolean }>`
