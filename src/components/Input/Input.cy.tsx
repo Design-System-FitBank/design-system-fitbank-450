@@ -279,7 +279,7 @@ describe('Input component', () => {
     cy.get('[data-testid="message"]')
       .should('have.text', "CNPJ inválido")
   })
-  it('Deve mostrar mensagem erro quando a validação for cpf ou CNPJ e o mesmo não for validado', () => {
+  it('Deve mostrar mensagem erro quando a validação for cpf e o mesmo não for validado na variante cpf/cnpj', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
@@ -288,7 +288,26 @@ describe('Input component', () => {
           title={titleFake}
           placeholder={placeholderFake}
           disabled={false}
-          validator='cnpj'
+          validator='cpf/cnpj'
+          onchange={cy.stub().as('onchange')}
+        />
+      </ThemeDSProvider>
+    )
+    const sequence = faker.datatype.number({min: 10000000000, max: 99999999999})
+    cy.get('[data-testid="input"]').type(sequence.toString())
+    cy.get('[data-testid="message"]')
+      .should('have.text', "Cpf inválido")
+  })
+  it('Deve mostrar mensagem erro quando a validação for cnpj e o mesmo não for validado na variante cpf/cnpj', () => {
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Input
+          type='text'
+          title={titleFake}
+          placeholder={placeholderFake}
+          disabled={false}
+          validator='cpf/cnpj'
           onchange={cy.stub().as('onchange')}
         />
       </ThemeDSProvider>
@@ -355,6 +374,98 @@ describe('Input component', () => {
     cy.get('[data-testid="input"]').type(`85${sequence}`)
     cy.get('[data-testid="message"]')
       .should('have.text', "Telefone invalido")
+  })
+  it('Deve mostrar mascara para cpf quando essa opção for marcada na variant', () => {
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Input
+          type='text'
+          title={titleFake}
+          placeholder={placeholderFake}
+          disabled={false}
+          validator='cpf'
+          onchange={cy.stub().as('onchange')}
+        />
+      </ThemeDSProvider>
+    )
+    const sequence = faker.datatype.number({min: 10000000000, max: 99999999999})
+    const masked = sequence.toString().replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, "\$1.\$2.\$3\-\$4")
+    cy.get('[data-testid="input"]').type(sequence.toString()).should('have.value', masked)
+
+  })
+  it('Deve mostrar mascara para cnpj quando essa opção for marcada na variant', () => {
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Input
+          type='text'
+          title={titleFake}
+          placeholder={placeholderFake}
+          disabled={false}
+          validator='cnpj'
+          onchange={cy.stub().as('onchange')}
+        />
+      </ThemeDSProvider>
+    )
+    const sequence = faker.datatype.number({min: 10000000000000, max: 99999999999999})
+    const masked = sequence.toString().replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/g,"\$1.\$2.\$3\/\$4\-\$5")
+    cy.get('[data-testid="input"]').type(sequence.toString()).should('have.value', masked)
+
+  })
+  it('Deve mostrar mascara para cpf caso o mesmo seja passado e a variante for cpf/cnpj', () => {
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Input
+          type='text'
+          title={titleFake}
+          placeholder={placeholderFake}
+          disabled={false}
+          validator='cpf/cnpj'
+          onchange={cy.stub().as('onchange')}
+        />
+      </ThemeDSProvider>
+    )
+    const sequence = faker.datatype.number({min: 10000000000, max: 99999999999})
+    const masked = sequence.toString().replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, "\$1.\$2.\$3\-\$4")
+    cy.get('[data-testid="input"]').type(sequence.toString()).should('have.value', masked)
+  })
+  it('Deve mostrar mascara para cnpj caso o mesmo seja passado e a variante for cpf/cnpj', () => {
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Input
+          type='text'
+          title={titleFake}
+          placeholder={placeholderFake}
+          disabled={false}
+          validator='cpf/cnpj'
+          onchange={cy.stub().as('onchange')}
+        />
+      </ThemeDSProvider>
+    )
+    const sequence = faker.datatype.number({min: 10000000000000, max: 99999999999999})
+    const masked = sequence.toString().replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/g,"\$1.\$2.\$3\/\$4\-\$5")
+    cy.get('[data-testid="input"]').type(sequence.toString()).should('have.value', masked)
+  })
+  it('Deve mostrar mascara para telefone caso a variante for a mesma', () => {
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Input
+          type='text'
+          title={titleFake}
+          placeholder={placeholderFake}
+          disabled={false}
+          validator='telefone'
+          onchange={cy.stub().as('onchange')}
+        />
+      </ThemeDSProvider>
+    )
+    const sequence = faker.datatype.number({ min: 1000000000, max: 9999999999 })
+    const masked = sequence.toString().replace(/(\d{2})(\d{4,5})(\d{4})/g,"\($1)\ \$2\-\$3")
+    cy.get('[data-testid="input"]').type(sequence.toString()).should('have.value', masked)
   })
 
   // it('Deve mostrar componente password validado quando a função validadora não retornar mensagem', () => {
