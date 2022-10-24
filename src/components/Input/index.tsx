@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Typography } from '../Typography'
 import * as Styled from './styles'
 import { Icon } from '../Icon'
+import { Validator } from '../../_utils/validator'
 interface InputProps {
   /**
    * Referente ao Label do input.
@@ -20,12 +21,7 @@ interface InputProps {
    * Referente aos tipos do input.
    */
   type: 'text' | 'password'
-
-  /**
-   * Função de retorno de uma mensagem de erro quando um valor digitado
-   * não é validado.
-   */
-  validated?: string
+  validator?: 'email' | 'numero' | 'cpf' | 'cnpj' | 'telefone' | 'cpf/cnpj'
   /**
    * Função que capta os valores digitados no campo de entrada de texto
    */
@@ -37,25 +33,34 @@ export const Input: React.FC<InputProps> = ({
   title,
   placeholder,
   disabled = false,
-  validated,
+  validator,
   onchange
 }) => {
   const [text, setText] = useState<string>()
+  const [errorMessage, setErrorMessage] = useState<string>()
   const [hideIcon, setHideIcon] = useState<boolean>(false)
   const [checked, setChecked] = useState<boolean>(false)
 
   const handleChange = (e: any) => {
+    console.log('handle');
     let textEntry: string = e.target.value
+    console.log(Validator.validation(validator!, textEntry));
+
+
+    if (validator) {
+      setErrorMessage(Validator.validation(validator, textEntry))
+    }
     onchange(textEntry)
     setText(textEntry)
-    setTimeout(() => {
-      if (!validated) {
-        setChecked(true)
-        return
-      }
-      setChecked(false)
-    }, 800)
+    // setTimeout(() => {
+    //   if (!validated) {
+    //     setChecked(true)
+    //     return
+    //   }
+    //   setChecked(false)
+    // }, 800)
   }
+
 
   const toggleIcon = hideIcon ? 'eyeClose' : 'eyeOpen'
 
@@ -73,7 +78,7 @@ export const Input: React.FC<InputProps> = ({
           type={type === 'text' ? 'text' : hideIcon ? 'text' : 'password'}
           disabled={disabled}
           onChange={e => handleChange(e)}
-          hasMessage={Boolean(validated)}
+          hasMessage={Boolean(errorMessage)}
         />
         {checked ? (
           <Styled.Icon data-testid='icon' isChecked={checked}>
@@ -88,7 +93,7 @@ export const Input: React.FC<InputProps> = ({
           )
         )}
       </Styled.Wrap>
-      <Styled.MessageError data-testid='message'>{validated}</Styled.MessageError>
+      {errorMessage && <Styled.MessageError data-testid='message'>{errorMessage}</Styled.MessageError>}
     </>
   )
 }
