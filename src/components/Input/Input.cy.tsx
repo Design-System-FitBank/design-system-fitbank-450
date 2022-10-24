@@ -9,7 +9,6 @@ describe('Input component', () => {
   const titleFake = 'Input Label'
   const placeholderFake = 'Placeholder'
   const textFaker = faker.lorem.word()
-
   beforeEach(() => {
     cy.wait(500)
     mount(
@@ -138,8 +137,7 @@ describe('Input component', () => {
       .and('have.css', 'background-color', 'rgb(196, 196, 196)')
   })
 
-  it('Deve mostrar mensagem quando receber mensagem de erro de validação', () => {
-    const messageErro = faker.lorem.sentence()
+  it('Deve mostrar mensagem erro quando a validação for email e o mesmo não for passado', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
@@ -148,38 +146,236 @@ describe('Input component', () => {
           title={titleFake}
           placeholder={placeholderFake}
           disabled={false}
-          validated={messageErro}
+          validator='email'
           onchange={cy.stub().as('onchange')}
         />
       </ThemeDSProvider>
     )
-    cy.get('[data-testid="input"]').should('have.css', 'border', '1px solid rgb(234, 62, 62)')
+    cy.get('[data-testid="input"]').should('have.css', 'border', '1px solid rgb(196, 196, 196)')
+    cy.get('[data-testid="input"]')
+      .type(faker.lorem.sentence())
+    cy.get('[data-testid="input"]')
+      .should('have.css', 'border', '1px solid rgb(50, 55, 81)')
     cy.get('[data-testid="message"]')
-      .should('have.text', messageErro)
+      .should('have.text', "Não é um email válido")
       .and('have.css', 'color', 'rgb(234, 62, 62)')
       .and('have.css', 'margin-top', '4px')
       .and('have.css', 'justify-content', 'flex-start')
   })
-
-  it('Deve mostrar componente password validado quando a função validadora não retornar mensagem', () => {
+  it('Deve mostrar mensagem erro quando a validação for numero e o mesmo não for passado', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
         <Input
-          type='password'
+          type='text'
           title={titleFake}
           placeholder={placeholderFake}
           disabled={false}
+          validator='numero'
           onchange={cy.stub().as('onchange')}
         />
       </ThemeDSProvider>
     )
-    cy.get('[data-testid="input"]').type(textFaker)
-    cy.get('[data-testid="icon"]').get('[data-testid="eyeOpen"]').should('exist')
-    cy.get('[data-testid="icon"]').get('[data-testid="done"]').should('not.exist')
-    cy.wait(800)
-    cy.get('@onchange').should('have.been.called')
-    cy.get('[data-testid="icon"]').get('[data-testid="eyeOpen"]').should('not.exist')
-    cy.get('[data-testid="icon"]').get('[data-testid="done"]').and('have.css', 'color', 'rgb(12, 194, 96)')
+    cy.get('[data-testid="input"]').type(faker.lorem.word())
+    cy.get('[data-testid="message"]')
+      .should('have.text', "Campo só aceita números")
   })
+  it('Deve mostrar mensagem erro quando a validação for cpf ou CNPJ e o mesmo não for numero', () => {
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Input
+          type='text'
+          title={titleFake}
+          placeholder={placeholderFake}
+          disabled={false}
+          validator='cpf'
+          onchange={cy.stub().as('onchange')}
+        />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="input"]').type(faker.lorem.word())
+    cy.get('[data-testid="message"]')
+      .should('have.text', "Campo só aceita números")
+  })
+  it('Deve mostrar mensagem erro quando a validação for cpf ou CNPJ e o mesmo não for sequencia de números iguais', () => {
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Input
+          type='text'
+          title={titleFake}
+          placeholder={placeholderFake}
+          disabled={false}
+          validator='cpf'
+          onchange={cy.stub().as('onchange')}
+        />
+      </ThemeDSProvider>
+    )
+    const number = faker.datatype.number({min: 0, max:9})
+    const sequence = Array(11).fill(number)
+    cy.get('[data-testid="input"]').type(sequence.join(''))
+    cy.get('[data-testid="message"]')
+      .should('have.text', "Cpf inválido")
+  })
+
+  it('Deve mostrar mensagem erro quando a validação for cpf ou CNPJ e o mesmo não for validado', () => {
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Input
+          type='text'
+          title={titleFake}
+          placeholder={placeholderFake}
+          disabled={false}
+          validator='cpf'
+          onchange={cy.stub().as('onchange')}
+        />
+      </ThemeDSProvider>
+    )
+    const sequence = faker.datatype.number({min: 10000000000, max: 99999999999})
+    cy.get('[data-testid="input"]').type(sequence.toString())
+    cy.get('[data-testid="message"]')
+      .should('have.text', "Cpf inválido")
+  })
+
+  it('Deve mostrar mensagem erro quando a validação for cpf e o mesmo não for sequencia de números igual 11', () => {
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Input
+          type='text'
+          title={titleFake}
+          placeholder={placeholderFake}
+          disabled={false}
+          validator='cpf'
+          onchange={cy.stub().as('onchange')}
+        />
+      </ThemeDSProvider>
+    )
+    const number = faker.datatype.number({min: 0, max:9})
+    const sequence = Array(number + 1).fill(number)
+    cy.get('[data-testid="input"]').type(sequence.join(''))
+    cy.get('[data-testid="message"]')
+      .should('have.text', "Cpf inválido")
+  })
+  it('Deve mostrar mensagem erro quando a validação for CNPJ e o mesmo não for sequencia de números igual 14', () => {
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Input
+          type='text'
+          title={titleFake}
+          placeholder={placeholderFake}
+          disabled={false}
+          validator='cnpj'
+          onchange={cy.stub().as('onchange')}
+        />
+      </ThemeDSProvider>
+    )
+    const number = faker.datatype.number({min: 0, max:9})
+    const sequence = Array(number + 4).fill(number)
+    cy.get('[data-testid="input"]').type(sequence.join(''))
+    cy.get('[data-testid="message"]')
+      .should('have.text', "CNPJ inválido")
+  })
+  it('Deve mostrar mensagem erro quando a validação for cpf ou CNPJ e o mesmo não for validado', () => {
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Input
+          type='text'
+          title={titleFake}
+          placeholder={placeholderFake}
+          disabled={false}
+          validator='cnpj'
+          onchange={cy.stub().as('onchange')}
+        />
+      </ThemeDSProvider>
+    )
+    const sequence = faker.datatype.number({min: 10000000000000, max: 99999999999999})
+    cy.get('[data-testid="input"]').type(sequence.toString())
+    cy.get('[data-testid="message"]')
+      .should('have.text', "CNPJ inválido")
+  })
+
+  it('Deve mostrar mensagem erro quando a validação for telefone e o mesmo não conter um ddd válido', () => {
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Input
+          type='text'
+          title={titleFake}
+          placeholder={placeholderFake}
+          disabled={false}
+          validator='telefone'
+          onchange={cy.stub().as('onchange')}
+        />
+      </ThemeDSProvider>
+    )
+    const sequence = `${0}${faker.datatype.number({min: 0, max: 9})}`
+    cy.get('[data-testid="input"]').type(sequence)
+    cy.get('[data-testid="message"]')
+      .should('have.text', "o DDD não é válido")
+  })
+  it('Deve mostrar mensagem erro quando a validação for telefone e o mesmo conter menos 10 dígitos', () => {
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Input
+          type='text'
+          title={titleFake}
+          placeholder={placeholderFake}
+          disabled={false}
+          validator='telefone'
+          onchange={cy.stub().as('onchange')}
+        />
+      </ThemeDSProvider>
+    )
+    const sequence = faker.datatype.number({min: 1000000, max: 9999999})
+    cy.get('[data-testid="input"]').type(`85${sequence}`)
+    cy.get('[data-testid="message"]')
+      .should('have.text', "Telefone invalido")
+  })
+  it('Deve mostrar mensagem erro quando a validação for telefone e o mesmo conter mais 11 dígitos', () => {
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Input
+          type='text'
+          title={titleFake}
+          placeholder={placeholderFake}
+          disabled={false}
+          validator='telefone'
+          onchange={cy.stub().as('onchange')}
+        />
+      </ThemeDSProvider>
+    )
+    const sequence = faker.datatype.number({min: 1000000000, max: 9999999999})
+    cy.get('[data-testid="input"]').type(`85${sequence}`)
+    cy.get('[data-testid="message"]')
+      .should('have.text', "Telefone invalido")
+  })
+
+  // it('Deve mostrar componente password validado quando a função validadora não retornar mensagem', () => {
+  //   mount(
+  //     <ThemeDSProvider theme={Theme}>
+  //       <GlobalStyles />
+  //       <Input
+  //         type='password'
+  //         title={titleFake}
+  //         placeholder={placeholderFake}
+  //         disabled={false}
+  //         onchange={cy.stub().as('onchange')}
+  //       />
+  //     </ThemeDSProvider>
+  //   )
+  //   cy.get('[data-testid="input"]').type(textFaker)
+  //   cy.get('[data-testid="icon"]').get('[data-testid="eyeOpen"]').should('exist')
+  //   cy.get('[data-testid="icon"]').get('[data-testid="done"]').should('not.exist')
+  //   cy.wait(800)
+  //   cy.get('@onchange').should('have.been.called')
+  //   cy.get('[data-testid="icon"]').get('[data-testid="eyeOpen"]').should('not.exist')
+  //   cy.get('[data-testid="icon"]').get('[data-testid="done"]').and('have.css', 'color', 'rgb(12, 194, 96)')
+  // })
 })
