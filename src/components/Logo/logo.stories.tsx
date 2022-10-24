@@ -14,5 +14,5 @@ const Template: ComponentStory<typeof Logo> = args => <Logo {...args} />
 export const Default = Template.bind({})
 
 Default.args = {
-  name: 'logoDefault'
+  name: 'default'
 }

@@ -1,6 +1,10 @@
 import React from 'react'
 
 interface LogoCustomProps {
+  /**
+   * Variável que recebe uma logo personalizada de qualquer tipo.
+   * O tamanho da logo personalizada precisa está implícito no arquivo passado.
+   */
   children: React.ReactNode
 }
 

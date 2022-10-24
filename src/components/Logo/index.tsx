@@ -5,21 +5,37 @@ import { LogoSmallPrimary } from './logos/LogoSmallPrimary'
 import { LogoSmallSecundary } from './logos/LogoSmallSecundary'
 
 interface LogoProps {
-  name: 'logoDefault' | 'logoSecundary' | 'smallPrimary' | 'smallSecundary'
+  /**
+   *referente à largura do componente.
+   *caso não seja setada o seu valor default é de 110px
+   */
+  width?: number
+  /**
+   * referente à altura do componente.
+   * caso não seja setada o seu valor default é de 110px
+   */
+  heigth?: number
+  /**
+   * Variáveis referente aos tipos de logos
+   */
+  name: 'default' | 'secundary' | 'smallPrimary' | 'smallSecundary'
 }
 
-export const Logo: React.FC<LogoProps> = ({ name }) => {
+export const Logo: React.FC<LogoProps> = ({ name, width = 110, heigth = 110 }) => {
   switch (name) {
-    case 'logoDefault':
-      return <LogoPrimary data-testid='default' />
+    case 'default':
+      return <LogoPrimary data-testid='primary' width={width} height={heigth} />
 
-    case 'logoSecundary':
-      return <LogoSecundary data-testid='secundary' />
+    case 'secundary':
+      return <LogoSecundary data-testid='secundary' width={width} height={heigth} />
 
     case 'smallPrimary':
-      return <LogoSmallPrimary data-testid='smallPrimary' />
+      return <LogoSmallPrimary data-testid='smallPrimary' width={width} height={heigth} />
 
     case 'smallSecundary':
-      return <LogoSmallSecundary data-testid='smallSecundary' />
+      return <LogoSmallSecundary data-testid='smallSecundary' width={width} height={heigth} />
+
+    default:
+      return <div></div>
   }
 }
