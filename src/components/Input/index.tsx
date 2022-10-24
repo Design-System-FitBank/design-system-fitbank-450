@@ -21,6 +21,10 @@ interface InputProps {
    * Referente aos tipos do input.
    */
   type: 'text' | 'password'
+
+  /**
+   * Atributo define qual validador será usado
+   */
   validator?: 'email' | 'numero' | 'cpf' | 'cnpj' | 'telefone' | 'cpf/cnpj'
   /**
    * Função que capta os valores digitados no campo de entrada de texto

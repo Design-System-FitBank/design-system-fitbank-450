@@ -57,7 +57,7 @@ export class Validator {
 
     }
     if (telLimpo.length < 10 || telLimpo.length > 11) return "Telefone invalido"
-    
+
     return ''
   }
   private static cpf(value: string): string{
