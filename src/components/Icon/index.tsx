@@ -62,7 +62,7 @@ import { WithdrawMoney } from './icons/WithdrawMoney'
 import { Xlsx } from './icons/Xlsx'
 import { QrCodeOut } from './icons/QrCodeOut'
 
-interface IconsProps {
+export interface IconsProps {
   /**
    * Variavel para alterar altura.
    * Caso não seja alterada o valor será de 32px.
@@ -330,6 +330,6 @@ export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) =>
       return <Xlsx data-testid='xlsx' width={width} height={height} />
 
     default:
-      return <div>icon not found!</div>
+      return <div></div>
   }
 }
