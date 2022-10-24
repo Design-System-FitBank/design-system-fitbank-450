@@ -105,11 +105,6 @@ export class Validator {
         return this.cpf(validated)
       case "cnpj":
         return this.cnpj(validated)
-      case "cpf/cnpj":
-        setTimeout(() => {
-          if (validated.length <= 11) return this.cpf(validated)
-          return this.cnpj(validated)
-        }, 800)
       case "telefone":
         return this.telefone(validated)
       default:

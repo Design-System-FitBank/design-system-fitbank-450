@@ -3,6 +3,7 @@ import { Typography } from '../Typography'
 import * as Styled from './styles'
 import { Icon } from '../Icon'
 import { Validator } from '../../_utils/validator'
+import { Mask } from '../../_utils/mask'
 interface InputProps {
   /**
    * Referente ao Label do input.
@@ -46,23 +47,47 @@ export const Input: React.FC<InputProps> = ({
   const [checked, setChecked] = useState<boolean>(false)
 
   const handleChange = (e: any) => {
-    console.log('handle');
     let textEntry: string = e.target.value
-    console.log(Validator.validation(validator!, textEntry));
-
+    // case "cpf/cnpj":
+    //     setTimeout(() => {
+    //       if (validated.length <= 11) return this.cpf(validated)
+    //       return this.cnpj(validated)
+    //     }, 800)
 
     if (validator) {
+      if (validator === 'cpf/cnpj') {
+      const textCpfCnpj = textEntry
+
+      setTimeout(() => {
+        if (textEntry.length <= 11) {
+          setErrorMessage(Validator.validation('cpf', textCpfCnpj.replace(/\D+/g, '')))
+          return
+        } else {
+          setErrorMessage(Validator.validation('cnpj', textCpfCnpj.replace(/\D+/g, '')))
+        }
+      }, 800)
+
+    } else {
       setErrorMessage(Validator.validation(validator, textEntry))
     }
+
+    }
     onchange(textEntry)
-    setText(textEntry)
-    // setTimeout(() => {
-    //   if (!validated) {
-    //     setChecked(true)
-    //     return
-    //   }
-    //   setChecked(false)
-    // }, 800)
+    if (validator === 'cpf/cnpj') {
+      const textCpfCnpj = textEntry
+
+      setTimeout(() => {
+        if (textEntry.length <= 11) {
+          setText(Mask.masked('cpf', textCpfCnpj.replace(/\D+/g, '')))
+          return
+        } else {
+          setText(Mask.masked('cnpj', textCpfCnpj))
+        }
+      }, 800)
+
+    } else {
+      setText(Mask.masked(validator!, textEntry))
+    }
   }
 
 
