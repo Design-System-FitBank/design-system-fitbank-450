@@ -11,19 +11,31 @@ export default {
 
 const Template: ComponentStory<typeof Button> = args => <Button {...args} />
 
-export const Primary = Template.bind({})
-Primary.args = {
+export const Default = Template.bind({})
+Default.args = {
   children: 'Primary',
-  icon: <Home />,
-  size: 'large',
-  type: 'primary',
+  onClick: () => {}
+}
+
+export const PrimaryWithIconLeft = Template.bind({})
+PrimaryWithIconLeft.args = {
+  children: 'Primary',
+  icon: 'home',
+  onClick: () => {}
+}
+
+export const PrimaryWithIconRight = Template.bind({})
+PrimaryWithIconRight.args = {
+  children: 'Primary',
+  icon: 'home',
+  iconRight: true,
   onClick: () => {}
 }
 
 export const Secondary = Template.bind({})
 Secondary.args = {
   children: 'Secondary',
-  icon: <Home />,
+  icon: 'home',
   size: 'large',
   type: 'secondary',
   onClick: () => {}
@@ -32,7 +44,7 @@ Secondary.args = {
 export const Tertiary = Template.bind({})
 Tertiary.args = {
   children: 'Tertiary',
-  icon: <Home />,
+  icon: 'home',
   size: 'large',
   type: 'tertiary',
   onClick: () => {}

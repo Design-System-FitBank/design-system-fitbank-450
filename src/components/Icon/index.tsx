@@ -330,6 +330,6 @@ export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) =>
       return <Xlsx data-testid='xlsx' width={width} height={height} />
 
     default:
-      return <div>icon not found!</div>
+      return <div></div>
   }
 }
