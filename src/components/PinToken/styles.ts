@@ -30,6 +30,6 @@ export const PinBox = styled.input<{ isDisabled: boolean, isError }>`
   }
 
   &:focus {
-    border: 1px solid ${({ isDisabled, theme }) => (isDisabled ? 'none' : theme.colors.dark)};
+    border: 1px solid ${({ isError, theme }) => (isError ? theme.colors.error : theme.colors.dark)};
   }
 `

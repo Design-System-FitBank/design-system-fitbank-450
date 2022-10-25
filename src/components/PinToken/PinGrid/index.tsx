@@ -89,9 +89,9 @@ export const PinGrid: React.FC<PinTokenProps> = ({ isDisabled = false, onPinChan
 
       console.log("pin[]: " + pinValue)
 
-      // if (pinValue) {
-      //   changePinTokenFocus(pinValue![index])
-      // }
+      if (pinValue) {
+        changePinTokenFocus(pinValue![index])
+      }
     }
   }
 
