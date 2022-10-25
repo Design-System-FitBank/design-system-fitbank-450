@@ -26,7 +26,7 @@ describe('PinToken', () => {
       .should('have.css', 'display', 'flex')
       .and('have.css', 'flex-direction', 'row')
       .and('have.css', 'align-items', 'center')
-      .and('have.css', 'justify-content', 'flex-start')
+      .and('have.css', 'justify-content', 'center')
       .and('have.css', 'gap', '16px')
   })
 
@@ -77,4 +77,9 @@ describe('PinToken', () => {
     cy.get('[data-testid="pinToken"]').realHover()
     cy.get('[data-testid="pinToken"]').should('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 2px 4px 0px')
   })
+
+  // it('Deve a chamar a função onPinChange', () => {
+  //   cy.get('[data-testid="pinToken"]').click()
+  //   cy.get('@onPinChange').should('have.been.calledOnce')
+  // })
 })
