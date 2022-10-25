@@ -16,7 +16,7 @@ describe('Checkbox', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <InputCheckboxItem option={option} onclick={cy.stub().as('onclick')} />
+        <InputCheckboxItem option={option} />
       </ThemeDSProvider>
     )
 
@@ -29,13 +29,16 @@ describe('Checkbox', () => {
       .and('have.css', 'display', 'flex')
       .and('have.css', 'justify-content', 'center')
       .and('have.css', 'align-items', 'center')
+
+    cy.get(`[data-testid="container-${option}"]`).click()
+    cy.get('@onclick').should('have.been.calledWith', option)
   })
 
   it('Deve ser o componente checkbox hover', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <InputCheckboxItem option={option} onclick={cy.stub().as('onclick')} />
+        <InputCheckboxItem option={option}/>
       </ThemeDSProvider>
     )
 
@@ -55,7 +58,7 @@ describe('Checkbox', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <InputCheckboxItem checked={true} option={option} onclick={cy.stub().as('onclick')} />
+        <InputCheckboxItem checked={true} option={option} />
       </ThemeDSProvider>
     )
 
@@ -77,7 +80,7 @@ describe('Checkbox', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <InputCheckboxItem option={option} onclick={cy.stub().as('onclick')} />
+        <InputCheckboxItem option={option} />
       </ThemeDSProvider>
     )
 
@@ -93,6 +96,6 @@ describe('Checkbox', () => {
 
     cy.get('[data-testid="typography"]').should('exist').and('have.css', 'color', 'rgb(50, 55, 81)')
 
-    cy.get('[data-testid="input-checkbox"]').should('have.css', 'gap', '26px')
+    cy.get(`[data-testid="container-${option}"]`).should('have.css', 'gap', '26px')
   })
 })

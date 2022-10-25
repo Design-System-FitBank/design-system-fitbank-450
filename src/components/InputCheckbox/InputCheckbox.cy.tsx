@@ -13,12 +13,17 @@ describe('Input Checkbox', () => {
         <InputCheckbox title={title} optionsList={list} onSelect={cy.stub().as('onSelect')} />
       </ThemeDSProvider>
     )
+    cy.get('[data-testid="input-checkbox"]').children().should('have.length', list.length)
     cy.get('[data-testid="input-checkbox"]')
-      .should('not.be.empty')
-      .and('have.css', 'text-transform', 'capitalize')
-      .and('have.css', 'color', 'rgb(50, 55, 81)')
-      .and('have.css', 'display', 'flex')
-      .and('have.css', 'flex-direction', 'column')
+      .should('have.css', 'flex-direction', 'column')
+      .and('have.css', 'gap', '52px')
+
+    cy.get(`[data-testid="container-${list[0]}"]`).click()
+    cy.get('@onSelect').should('have.been.calledWith', [list[0]])
+    cy.get(`[data-testid="container-${list[1]}"]`).click()
+    cy.get('@onSelect').should('have.been.calledWith', [list[0], list[1]])
+    cy.get(`[data-testid="container-${list[1]}"]`).click()
+    cy.get('@onSelect').should('have.been.calledWith', [list[0]])
 
     cy.get('[data-testid="input-checkbox-title"]').should('have.text', title)
   })
@@ -27,10 +32,15 @@ describe('Input Checkbox', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <InputCheckbox title={title} direction={'row'} optionsList={list} onSelect={cy.stub().as('onSelect')} />
+        <InputCheckbox
+          title={title}
+          isRow={true}
+          optionsList={list}
+          onSelect={cy.stub().as('onSelect')}
+        />
       </ThemeDSProvider>
     )
-    cy.get('[data-testid="input-checkbox"]').should('not.be.empty').and('have.css', 'flex-direction', 'row')
+    cy.get('[data-testid="input-checkbox"]').should('have.css', 'flex-direction', 'row').and('have.css', 'gap', '34px')
 
     cy.get('[data-testid="input-checkbox-title"]').should('have.text', title)
   })
