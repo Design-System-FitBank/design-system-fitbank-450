@@ -19,6 +19,6 @@ InputCheckboxColumn.args = {
 export const InputCheckboxRow = Template.bind({})
 InputCheckboxRow.args = {
   title: 'Escolha uma opção',
-  direction: 'row',
+  isRow: true,
   optionsList: ['Norte', 'Sul', 'Leste', 'Oeste']
 }

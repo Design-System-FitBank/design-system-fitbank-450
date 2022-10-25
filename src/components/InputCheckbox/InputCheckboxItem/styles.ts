@@ -18,8 +18,6 @@ export const Checkbox = styled.div<CheckboxProps>`
   background-color: ${({ checked, theme }) => (checked ? theme.colors.primary : theme.colors.light)};
   color: ${({ theme }) => theme.colors.light};
 
-  cursor: pointer;
-
   :hover {
     border: 1px solid ${({ theme }) => theme.colors.disabled};
   }
@@ -30,6 +28,8 @@ export const Container = styled.div`
   flex-direction: row;
   align-items: center;
   gap: ${({ theme }) => theme.sizes['26px']};
+
+  cursor: pointer;
 
   color: ${({ theme }) => theme.colors.primary};
 `
