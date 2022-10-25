@@ -9,6 +9,12 @@ import { Toggle } from '.'
 describe('Toggle', () => {
   beforeEach(() => {
     cy.wait(100)
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Toggle isActive={cy.stub().as('isActive')} />
+      </ThemeDSProvider>
+    )
   })
 
   afterEach(() => {
@@ -16,12 +22,6 @@ describe('Toggle', () => {
   })
 
   it('Deve conter o toggle default', () => {
-    mount(
-      <ThemeDSProvider theme={Theme}>
-        <GlobalStyles />
-        <Toggle isActive={cy.stub().as('isActive')} />
-      </ThemeDSProvider>
-    )
     cy.get('[data-testid = "toggle"]')
       .should('have.css', 'border', '0.994318px solid rgb(50, 55, 81)')
       .and('have.css', 'width', '31.988636016845703px')
@@ -36,12 +36,6 @@ describe('Toggle', () => {
   })
 
   it('Deve conter um switcher', () => {
-    mount(
-      <ThemeDSProvider theme={Theme}>
-        <GlobalStyles />
-        <Toggle isActive={cy.stub().as('isActive')} />
-      </ThemeDSProvider>
-    )
     cy.get('[data-testid = "switcher"]')
       .should('have.css', 'width', '11.988636016845703px')
       .and('have.css', 'height', '11.988636016845703px')
@@ -70,23 +64,11 @@ describe('Toggle', () => {
   })
 
   it('Deve mudar a cor de fundo ao clicar no toggle', () => {
-    mount(
-      <ThemeDSProvider theme={Theme}>
-        <GlobalStyles />
-        <Toggle isActive={cy.stub().as('isActive')} />
-      </ThemeDSProvider>
-    )
     cy.get('[data-testid = "toggle"]').click()
     cy.get('[data-testid = "toggle"]').should('have.css', 'background-color', 'rgb(50, 55, 81)')
   })
 
   it('Deve conter uma animação do switcher ao clicar no toggle', () => {
-    mount(
-      <ThemeDSProvider theme={Theme}>
-        <GlobalStyles />
-        <Toggle isActive={cy.stub().as('isActive')} />
-      </ThemeDSProvider>
-    )
     cy.get('[data-testid = "switcher"]').click()
     cy.get('[data-testid = "switcher"]')
       .should('have.css', 'background-color', 'rgb(255, 255, 255)')
@@ -94,12 +76,6 @@ describe('Toggle', () => {
   })
 
   it('Deve a chamar a função isActive', () => {
-    mount(
-      <ThemeDSProvider theme={Theme}>
-        <GlobalStyles />
-        <Toggle isActive={cy.stub().as('isActive')} />
-      </ThemeDSProvider>
-    )
     cy.get('[data-testid = "toggle"]').click()
     cy.get('@isActive').should('have.been.calledOnce')
   })
