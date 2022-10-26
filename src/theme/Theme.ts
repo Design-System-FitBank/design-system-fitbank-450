@@ -8,15 +8,12 @@ export const Theme = {
     alert: '#deaa24',
     greyLight: '#E8E8E8',
     info: '#3c78b8',
-    textGrey: '#555555',
+    textGrey: '#797979',
     textDisabled: '#c4c4c4',
     light: '#ffffff',
     dark: '#010716',
     disabled: '#c4c4c4',
-    shadow: '#0000001A',
-    radioUnchecked: '#A7A7A7',
-    radioChecked: '#E8E8E8',
-    transparent: 'transparent'
+    shadow: '#0000001A'
   },
   font: {
     weight: {
@@ -26,6 +23,7 @@ export const Theme = {
     }
   },
   sizes: {
+    '2px': '0.125rem',
     '3px': '0.1875rem',
     '4px': '0.25rem',
     '6px': '0.375rem',
@@ -56,7 +54,10 @@ export const Theme = {
     '82px': '5.125rem',
     '86px': '5.375rem',
     '142px': '8.875rem',
-    '160px': '10rem',
-    '210px': '13.125rem'
+    '210px': '13.125rem',
+    '255px': '15.125rem',
+    '287px': '17.9375rem',
+    '320px': '20rem'
+
   }
 }

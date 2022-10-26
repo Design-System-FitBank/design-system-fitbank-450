@@ -31,6 +31,7 @@ declare module 'styled-components' {
       }
     }
     sizes: {
+      '2px': string
       '3px': string
       '4px': string
       '6px': string
@@ -64,6 +65,9 @@ declare module 'styled-components' {
       '142px': string
       '160px': string
       '210px': string
+      '255px': string
+      '287px': string
+      '320px': string
     }
   }
 }

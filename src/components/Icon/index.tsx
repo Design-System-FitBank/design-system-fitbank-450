@@ -62,6 +62,8 @@ import { UserSearch } from './icons/UserSearch'
 import { WithdrawMoney } from './icons/WithdrawMoney'
 import { Xlsx } from './icons/Xlsx'
 import { QrCodeOut } from './icons/QrCodeOut'
+import { EyeClose } from './icons/EyeClose'
+import { EyeOpen } from './icons/EyeOpen'
 import { Check } from 'components/InputCheckbox/InputCheckboxItem/styles'
 
 export interface IconsProps {
@@ -100,6 +102,7 @@ export interface IconsProps {
     | 'edit'
     | 'email'
     | 'enterprise'
+    | 'eyeClose'
     | 'favorite'
     | 'favoriteAdd'
     | 'favoriteRemove'
@@ -143,6 +146,7 @@ export interface IconsProps {
     | 'valid'
     | 'withdrawMoney'
     | 'xlsx'
+    | 'eyeOpen'
 }
 
 export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) => {
@@ -338,6 +342,12 @@ export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) =>
 
     case 'xlsx':
       return <Xlsx data-testid='xlsx' width={width} height={height} />
+
+    case 'eyeClose':
+      return <EyeClose data-testid='eyeClose' width={width} height={height} />
+
+    case 'eyeOpen':
+      return <EyeOpen data-testid='eyeOpen' width={width} height={height} />
 
     default:
       return <div></div>

@@ -338,19 +338,15 @@ describe('Button Icon Position', () => {
   const label = faker.lorem.word()
   const icon = <Icon name='home' width={32} height={32} />
 
-  it('Deve ter um ícone por padrão a esquerda', () => {
+  it('Deve não ter um ícone por padrão', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Button icon={icon} onClick={cy.stub().as('onClick')}>
-          {label}
-        </Button>
+        <Button onClick={cy.stub().as('onClick')}>{label}</Button>
       </ThemeDSProvider>
     )
-      .get('[data-testeid="iconSuffix"]')
-      .should('have.css', 'width', '32px')
-      .and('have.css', 'height', '32px')
-      .and('have.css', 'color', 'rgb(255, 255, 255)')
+    cy.get('[data-testeid="iconPrefix"]').should('be.empty')
+    cy.get('[data-testeid="iconSuffix"]').should('be.empty')
   })
 
   it('Deve ter um ícone à esquerda do label', () => {
