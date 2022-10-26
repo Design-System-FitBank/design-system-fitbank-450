@@ -1,9 +1,12 @@
+
 import { Icon } from '../Icon'
 import React from 'react'
 import { IconsProps } from '../Icon'
+
 import * as Styled from './styles'
 
 interface ButtonProps {
+
   children: string
   disabled?: boolean
   icon?: IconsProps['name']
