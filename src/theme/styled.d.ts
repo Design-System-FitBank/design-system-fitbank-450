@@ -10,6 +10,7 @@ declare module 'styled-components' {
       error: string
       alert: string
       info: string
+      greyLight: string
       textGrey: string
       textDisabled: string
       light: string
