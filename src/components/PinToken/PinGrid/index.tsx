@@ -55,7 +55,7 @@ export const PinGrid: React.FC<PinTokenProps> = ({ isDisabled = false, onPinChan
       changePinTokenFocus(index + 1)
       return
     }
-
+    
     setPinValue([...pinValue!, pinNumber])
 
     if (index === 5) {
@@ -79,47 +79,24 @@ export const PinGrid: React.FC<PinTokenProps> = ({ isDisabled = false, onPinChan
     backspaceKeyVerification(index)
   }
 
-  const onClick = (event: any, index: number) => {
-    const value = event.target.value
-
-    console.log("pinIndex: " + pinValue![index])
-    
-    if (index !== 0 && !value) {
-      changePinTokenFocus(0)
-
-      console.log("pin[]: " + pinValue)
-
-      if (pinValue) {
-        changePinTokenFocus(pinValue![index])
-      }
-    }
-  }
-
-  console.log(`error: ${error}, pinValue[]: {${pinValue}}`);
-  
-
   return (
     <Container data-testid='container'>
       {Array.from({ length: 6 }, (_, index) => (
-        <>
-          <PinBox
-            data-testid='pinToken'
-            disabled={isDisabled}
-            isDisabled={isDisabled}
-            key={index}
-            value={pinValue ? pinValue![index] : ''}
-            ref={item => {
-              if (item) {
-                inputRefs.current[index] = item
-              }
-            }}
-            isError={error}
-            onChange={event => onChange(event, index)}
-            onKeyDown={event => onKeyDown(event, index)}
-            onClick={event => onClick(event, index)}
-          />
-          {/* {error && <div>{error}</div>} */}
-        </>
+        <PinBox
+          data-testid='pinToken'
+          disabled={isDisabled}
+          isDisabled={isDisabled}
+          key={index}
+          value={pinValue ? pinValue![index] : ''}
+          ref={item => {
+            if (item) {
+              inputRefs.current[index] = item
+            }
+          }}
+          isError={error}
+          onChange={event => onChange(event, index)}
+          onKeyDown={event => onKeyDown(event, index)}
+        />
       ))}
     </Container>
   )
