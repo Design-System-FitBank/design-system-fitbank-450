@@ -5,7 +5,7 @@ type ButtonProps = {
 }
 
 export const Container = styled.button<ButtonProps>`
-  width: ${({ size, theme }) => (size === 'small' ? theme.sizes['142px'] : theme.sizes['210px'])};
+  width: ${({ size, theme }) => (size === 'auto' ? '100%' : size === 'small' ? theme.sizes['142px'] : theme.sizes['210px'])};
   height: ${({ size, theme }) => (size === 'small' ? theme.sizes['32px'] : theme.sizes['48px'])};
   padding-top: ${({ size, theme }) => (size === 'small' ? theme.sizes['4px'] : theme.sizes['8px'])};
   padding-bottom: ${({ size, theme }) => (size === 'small' ? theme.sizes['4px'] : theme.sizes['8px'])};

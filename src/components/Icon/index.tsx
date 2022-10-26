@@ -64,7 +64,7 @@ import { QrCodeOut } from './icons/QrCodeOut'
 import { EyeClose } from './icons/EyeClose'
 import { EyeOpen } from './icons/EyeOpen'
 
-interface IconsProps {
+export interface IconsProps {
   /**
    * Variavel para alterar altura.
    * Caso não seja alterada o valor será de 32px.
@@ -340,6 +340,6 @@ export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) =>
       return <EyeOpen data-testid='eyeOpen' width={width} height={height} />
 
     default:
-      return <div>icon not found!</div>
+      return <div></div>
   }
 }
