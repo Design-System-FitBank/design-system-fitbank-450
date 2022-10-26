@@ -22,7 +22,7 @@ export const NavButton = ({ icon, children, disabled = false, size = 'medium', o
         return (
           <Styled.Large data-testid='nav-button' onClick={onClick} disabled={disabled}>
             <Styled.Icon data-testid='nav-button-icon'>{icon}</Styled.Icon>
-            {children}
+            <Typography variant='bodySmall'>{children}</Typography>
           </Styled.Large>
         )
       default:
