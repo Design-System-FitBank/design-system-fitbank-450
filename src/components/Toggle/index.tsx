@@ -22,18 +22,16 @@ export const Toggle: React.FC<ToggleProps> = ({ title, isActive }) => {
     isActive(activeToggle)
   }
 
-  return title ? (
+  return (
     <Container data-testid='container'>
       <ToggleContainer data-testid='toggle' isToggled={isToggled} onClick={() => handleOnToggleSwitched()}>
         <Switcher data-testid='switcher' isToggled={isToggled} />
       </ToggleContainer>
-      <Typography data-testid='bodyLarge' variant='bodyLarge'>
-        {title}
-      </Typography>
+      {title && (
+        <Typography data-testid='bodyLarge' variant='bodyLarge'>
+          {title}
+        </Typography>
+      )}
     </Container>
-  ) : (
-    <ToggleContainer data-testid='toggle' isToggled={isToggled} onClick={() => handleOnToggleSwitched()}>
-      <Switcher data-testid='switcher' isToggled={isToggled} />
-    </ToggleContainer>
   )
 }
