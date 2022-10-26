@@ -5,7 +5,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { Modal } from '.'
 
 export default {
-  title: 'Modal',
+  title: 'Select',
   component: Modal,
   argTypes: {}
 } as ComponentMeta<typeof Modal>
