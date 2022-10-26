@@ -11,6 +11,7 @@ import { Cancel } from './icons/Cancel'
 import { Card } from './icons/Card'
 import { CardMulti } from './icons/CardMulti'
 import { ChangeAccount } from './icons/ChangeAccount'
+import { Checked } from './icons/Checked'
 import { Cnh } from './icons/Cnh'
 import { Detail } from './icons/Detail'
 import { Device } from './icons/Device'
@@ -61,6 +62,7 @@ import { UserSearch } from './icons/UserSearch'
 import { WithdrawMoney } from './icons/WithdrawMoney'
 import { Xlsx } from './icons/Xlsx'
 import { QrCodeOut } from './icons/QrCodeOut'
+import { Check } from 'components/InputCheckbox/InputCheckboxItem/styles'
 
 export interface IconsProps {
   /**
@@ -88,6 +90,7 @@ export interface IconsProps {
     | 'card'
     | 'cardMulti'
     | 'changeAccount'
+    | 'checked'
     | 'code'
     | 'cnh'
     | 'details'
@@ -137,6 +140,7 @@ export interface IconsProps {
     | 'userBank'
     | 'userGroup'
     | 'userSearch'
+    | 'valid'
     | 'withdrawMoney'
     | 'xlsx'
 }
@@ -178,6 +182,9 @@ export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) =>
 
     case 'changeAccount':
       return <ChangeAccount data-testid='changeAccount' width={width} height={height} />
+
+    case 'checked':
+      return <Checked data-testid='checked' width={width} height={height} />
 
     case 'code':
       return <Code data-testid='code' width={width} height={height} />
@@ -322,6 +329,9 @@ export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) =>
 
     case 'userSearch':
       return <UserSearch data-testid='userSearch' width={width} height={height} />
+
+    case 'valid':
+      return <Checked data-testid='valid' width={width} height={height} />
 
     case 'withdrawMoney':
       return <WithdrawMoney data-testid='withdrawMoney' width={width} height={height} />
