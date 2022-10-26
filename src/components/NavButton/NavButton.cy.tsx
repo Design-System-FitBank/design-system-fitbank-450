@@ -126,42 +126,6 @@ describe('NavButton Small', () => {
 
     cy.get('[data-testid="caption"]').should('not.exist')
   })
-
-  it('Deve ser o componente Small quando passar o size small no estado Hover', () => {
-    cy.mount(
-      <ThemeDSProvider theme={Theme}>
-        <GlobalStyles />
-        <NavButton icon={icon} onClick={cy.stub().as('onclick')} size={'small'}></NavButton>
-      </ThemeDSProvider>
-    )
-    cy.get('[data-testid="nav-button"]').realHover()
-    cy.get('[data-testid="nav-button"]').should('have.css', 'border', '1px solid rgb(196, 196, 196)')
-  })
-
-  it('Deve ser o componente Small quando passar o size small no estado Active', () => {
-    cy.mount(
-      <ThemeDSProvider theme={Theme}>
-        <GlobalStyles />
-        <NavButton icon={icon} onClick={cy.stub().as('onclick')} size={'small'}></NavButton>
-      </ThemeDSProvider>
-    )
-    cy.get('[data-testid="nav-button"]').realMouseDown()
-    cy.get('[data-testid="nav-button"]').should('have.css', 'border', '1px solid rgb(50, 55, 81)')
-  })
-
-  it('Deve ser o componente Small quando passar o size small no estado Disabled', () => {
-    cy.mount(
-      <ThemeDSProvider theme={Theme}>
-        <GlobalStyles />
-        <NavButton icon={icon} disabled={true} onClick={cy.stub().as('onclick')} size={'small'}></NavButton>
-      </ThemeDSProvider>
-    )
-    cy.get('[data-testid="nav-button"]')
-      .should('have.css', 'border', '1px solid rgb(196, 196, 196)')
-      .and('have.css', 'color', 'rgb(196, 196, 196)')
-      .and('have.css', 'box-shadow', 'none')
-      .and('have.css', 'cursor', 'auto')
-  })
 })
 
 describe('NavButton Large', () => {
@@ -189,50 +153,5 @@ describe('NavButton Large', () => {
       .and('have.css', 'gap', '8px')
       .and('have.css', 'padding', '8px')
       .and('have.css', 'justify-content', 'flex-start')
-      .and('have.text', label)
-      .and('have.css', 'font-weight', '500')
-      .and('have.css', 'font-size', '14px')
-  })
-
-  it('Deve ser o componente Large quando passar o size large no estado Hover', () => {
-    cy.mount(
-      <ThemeDSProvider theme={Theme}>
-        <GlobalStyles />
-        <NavButton icon={icon} onClick={cy.stub().as('onclick')} size={'large'}>
-          {label}
-        </NavButton>
-      </ThemeDSProvider>
-    )
-    cy.get('[data-testid="nav-button"]').realHover()
-    cy.get('[data-testid="nav-button"]').should('have.css', 'border', '1px solid rgb(196, 196, 196)')
-  })
-
-  it('Deve ser o componente Large quando passar o size large no estado Active', () => {
-    cy.mount(
-      <ThemeDSProvider theme={Theme}>
-        <GlobalStyles />
-        <NavButton icon={icon} onClick={cy.stub().as('onclick')} size={'large'}>
-          {label}
-        </NavButton>
-      </ThemeDSProvider>
-    )
-    cy.get('[data-testid="nav-button"]').realMouseDown()
-    cy.get('[data-testid="nav-button"]').should('have.css', 'border', '1px solid rgb(50, 55, 81)')
-  })
-
-  it('Deve ser o componente Large quando passar o size large no estado Disabled', () => {
-    cy.mount(
-      <ThemeDSProvider theme={Theme}>
-        <GlobalStyles />
-        <NavButton icon={icon} disabled={true} onClick={cy.stub().as('onclick')} size={'large'}>
-          {label}
-        </NavButton>
-      </ThemeDSProvider>
-    )
-    cy.get('[data-testid="nav-button"]')
-      .should('have.css', 'border', '1px solid rgb(196, 196, 196)')
-      .and('have.css', 'color', 'rgb(196, 196, 196)')
-      .and('have.css', 'box-shadow', 'none')
-      .and('have.css', 'cursor', 'auto')
   })
 })
