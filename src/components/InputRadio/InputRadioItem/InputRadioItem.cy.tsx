@@ -16,8 +16,7 @@ describe('InputRadioItem', () => {
 
   it('Deve ser o componente InputRadioItem', () => {
     cy.get('[data-testid="radio"]')
-      .should('be.visible')
-      .and('have.css', 'width', '16px')
+      .should('have.css', 'width', '16px')
       .and('have.css', 'height', '16px')
       .and('have.css', 'background-color', 'rgb(255, 255, 255)')
       .and('have.css', 'border', '1px solid rgb(167, 167, 167)')
@@ -37,8 +36,7 @@ describe('InputRadioItem', () => {
       </ThemeDSProvider>
     )
     cy.get('[data-testid="radio"]')
-      .should('be.visible')
-      .and('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
+      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
       .and('have.css', 'border', '1px solid rgb(232, 232, 232)')
   })
 
@@ -49,6 +47,6 @@ describe('InputRadioItem', () => {
 
   it('Deve chamar a função onclick ao clicar no InputRadioItem', () => {
     cy.get('[data-testid="radio-child"]').click()
-    cy.get('@onclick').should('have.been.calledOnce')
+    cy.get('@onclick').should('have.been.calledOnceWithExactly', option)
   })
 })
