@@ -38,12 +38,11 @@ describe('Select', () => {
 
   optionsList.forEach((text: string) => {
     it(`Deve ser o texto ${text} da lista de Options`, () => {
-      cy.contains(text).should('exist')
+      cy.contains(text).should('exist').and('have.text', text)
     })
   })
 
   it('Deve conter o componente Select default', () => {
-    cy.get('[data-testid = "select"]')
     cy.get('[data-testid = "input"]')
       .should('have.css', 'max-width', '320px')
       .and('have.css', 'padding-top', '12px')
@@ -73,8 +72,11 @@ describe('Select', () => {
 
   it('Deve conter a lista de opções quando clicar no input com no maximo 3 itens.', () => {
     cy.get('[data-testid="input"]').click()
-    cy.get('[data-testid="modal"]').should('have.css', 'width', '320px').and('have.css', 'max-width', '320px')
-    cy.get('[data-testid="modal"]').should('have.css', 'font-family', 'Roboto').and('have.css', 'font-size', '16px')
+    cy.get('[data-testid="modal"]')
+      .should('have.css', 'width', '320px')
+      .and('have.css', 'max-width', '320px')
+      .and('have.css', 'font-family', 'Roboto')
+      .and('have.css', 'font-size', '16px')
   })
 
   it('Deve conter o background light no modal. Junto com a barra de scroll quando tiver mais de 3 itens de opção', () => {
