@@ -83,7 +83,7 @@ export const PinGrid: React.FC<PinTokenProps> = ({ isDisabled = false, onPinChan
     <Container data-testid='container'>
       {Array.from({ length: 6 }, (_, index) => (
         <PinBox
-          data-testid='pinToken'
+          data-testid={`pinToken-${index}`}
           disabled={isDisabled}
           isDisabled={isDisabled}
           key={index}
