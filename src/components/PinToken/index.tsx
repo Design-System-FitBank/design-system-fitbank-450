@@ -15,7 +15,6 @@ interface PinProps {
 export const PinToken: React.FC<PinProps> = ({ onChange, disabled = false }) => {
   const onPinChanged = (pinEntry: number[]) => {
     onChange(pinEntry)
-    console.log(`pinValue[]: {${pinEntry}}`)
   }
 
   return (

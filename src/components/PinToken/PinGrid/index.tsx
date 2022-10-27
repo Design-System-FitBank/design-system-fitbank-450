@@ -12,6 +12,9 @@ export const PinGrid: React.FC<PinTokenProps> = ({ isDisabled = false, onPinChan
   const inputRefs = useRef<HTMLInputElement[]>([])
 
   const changePinTokenFocus = (pinIndex: number) => {
+    if (pinIndex === undefined) {
+      inputRefs.current[0].focus()
+    }
     inputRefs.current[pinIndex].focus()
   }
 
@@ -72,13 +75,25 @@ export const PinGrid: React.FC<PinTokenProps> = ({ isDisabled = false, onPinChan
   const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>, index: number) => {
     const keyboardkeyCode = event.nativeEvent.code
 
-    if (keyboardkeyCode !== 'Backspace') {
+    if (keyboardkeyCode !== 'Backspace' ) {
       return
     }
 
     backspaceKeyVerification(index)
   }
 
+  const onClick = () => {
+    if (pinValue?.length === 6) {
+      changePinTokenFocus(5)
+    }
+
+    if (pinValue?.length === 0) {
+      changePinTokenFocus(0)
+    }
+    
+    changePinTokenFocus(pinValue?.length!)
+  }
+  
   return (
     <Container data-testid='container'>
       {Array.from({ length: 6 }, (_, index) => (
@@ -96,6 +111,7 @@ export const PinGrid: React.FC<PinTokenProps> = ({ isDisabled = false, onPinChan
           isError={error}
           onChange={event => onChange(event, index)}
           onKeyDown={event => onKeyDown(event, index)}
+          onClick={() => onClick()}
         />
       ))}
     </Container>
