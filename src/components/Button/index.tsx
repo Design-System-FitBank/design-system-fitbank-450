@@ -1,33 +1,83 @@
-import React from 'react';
 
+import { Icon } from '../Icon'
+import React from 'react'
+import { ContainerButton } from './components/ContainerButton'
+import { IconsProps } from '../Icon'
 import * as Styled from './styles'
 
 interface ButtonProps {
-  secondary?: boolean;
-  size?: 'small' | 'large';
-  label: string;
+
+  children: string
+  disabled?: boolean
+  icon?: IconsProps['name']
   /**
-   * Função sem retorno que será chamada ao clicar no botão
+   * o size auto deixa o tamanho responsivo adaptando-se a largura máxima do pai
    */
-  onClick: () => void;
+  size?: 'small' | 'large' | 'auto'
+  /**
+   * Quando o type for informado o estilo do Button será mudado
+   * O default é o estilo primary
+   */
+  type?: 'primary' | 'secondary' | 'tertiary'
+  /**
+   * Quando iconRight for informado o ícone ficará à direita do label.
+   * O padrão é a posição do ícone à esquerda
+   */
+  iconRight?: boolean
+  /**
+   * Função sem retorno que será chamada ao acionar o click
+   */
+  onClick: () => void
 }
 
-
-export const Button = ({
-  secondary = false,
+export const Button: React.FC<ButtonProps> = ({
+  children,
+  icon,
+  disabled = false,
+  iconRight = false,
   size = 'large',
-  label,
-  onClick,
-  ...props
-}: ButtonProps) => {
-  return (
-    <Styled.Container
-      secondary={secondary}
-      type="button"
-      onClick={onClick}
-      {...props}
-    >
-      {label}
-    </Styled.Container>
-  );
-};
+  type = 'primary',
+  onClick
+}) => {
+  const returnElement = () => {
+    switch (type) {
+      case 'tertiary':
+        return (
+          <Styled.Tertiary data-testeid='button' onClick={onClick} disabled={disabled} size={size}>
+            <ContainerButton
+              icon={icon}
+              iconRight={iconRight}
+              isSmall={size === 'small'}
+            >
+              {children}
+            </ContainerButton>
+          </Styled.Tertiary>
+        )
+      case 'secondary':
+        return (
+          <Styled.Secondary data-testeid='button' onClick={onClick} disabled={disabled} size={size}>
+            <ContainerButton
+              icon={icon}
+              iconRight={iconRight}
+              isSmall={size === 'small'}
+            >
+              {children}
+            </ContainerButton>
+          </Styled.Secondary>
+        )
+      default:
+        return (
+          <Styled.Primary data-testeid='button' onClick={onClick} disabled={disabled} size={size}>
+            <ContainerButton
+              icon={icon}
+              iconRight={iconRight}
+              isSmall={size === 'small'}
+            >
+              {children}
+            </ContainerButton>
+          </Styled.Primary>
+        )
+    }
+  }
+  return returnElement()
+}

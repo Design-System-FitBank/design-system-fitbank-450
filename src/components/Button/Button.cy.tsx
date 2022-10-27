@@ -1,30 +1,334 @@
 import React from 'react'
 import { faker } from '@faker-js/faker'
-import { Button } from '.'
+import 'cypress-real-events/support'
+import { Button } from './'
+import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
+import { Icon } from '../Icon'
 
-describe('Button', () => {
-  let sut: any
-  const size = 'small'
+describe('Button Default', () => {
+  beforeEach(() => cy.wait(100))
+  afterEach(() => cy.wait(100))
+  const label = faker.lorem.word()
+  const icon = 'home'
+  it('Deve ser o componente Default quando não for informado o type', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button onClick={cy.stub().as('onClick')}>{label}</Button>
+      </ThemeDSProvider>
+    )
+      cy.get('[data-testeid="button"]')
+      .should('have.css', 'display', 'flex')
+      .and('have.css', 'justify-content', 'center')
+      .and('have.css', 'align-items', 'center')
+      .and('have.text', label)
+      .and('have.css', 'cursor', 'pointer')
+      .and('have.css', 'font-weight', '500')
+      .and('have.css', 'color', 'rgb(255, 255, 255)')
+      .and('have.css', 'background-color', 'rgb(50, 55, 81)')
+      .and('have.css', 'border', '1px solid rgb(50, 55, 81)')
+
+    cy.get('.sc-dkrFOg > :nth-child(1)').should('be.empty')
+    cy.get('.sc-dkrFOg > :nth-child(3)').should('be.empty')
+  })
+
+  it('Deve ser o componente Default quando for passado icon', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button icon={icon} onClick={cy.stub().as('onClick')}>
+          {label}
+        </Button>
+      </ThemeDSProvider>
+    )
+    cy.get('.sc-dkrFOg > :nth-child(1)').should('not.be.empty')
+    cy.get(`[data-testid=${icon}]`).should('exist')
+    cy.get('.sc-dkrFOg > :nth-child(3)').should('be.empty')
+  })
+
+  it('Deve ser o componente Default quando for passado icon e iconRight true', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button icon={icon} iconRight={true} onClick={cy.stub().as('onClick')}>
+          {label}
+        </Button>
+      </ThemeDSProvider>
+    )
+    cy.get('.sc-dkrFOg > :nth-child(1)').should('be.empty')
+    cy.get('.sc-dkrFOg > :nth-child(3)').should('not.be.empty')
+  })
+
+  it('Deve ser o componente Default quando o estado for hover', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button onClick={cy.stub().as('onClick')}>{label}</Button>
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testeid="button"]').realHover()
+    cy.get('[data-testeid="button"]').should('have.css', 'color', 'rgb(252, 214, 105)')
+  })
+
+  it('Deve ser o componente Default quando o estado for active', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button onClick={cy.stub().as('onClick')}>{label}</Button>
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testeid="button"]').realMouseDown()
+    cy.get('[data-testeid="button"]')
+      .should('have.css', 'color', 'rgb(50, 55, 81)')
+      .and('have.css', 'background-color', 'rgb(255, 255, 255)')
+      .and('have.css', 'border', '1px solid rgb(252, 214, 105)')
+      .and('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 4px 6px 0px')
+  })
+
+  it('Deve ser o componente Default quando o estado for disabled', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button onClick={cy.stub().as('onClick')} disabled>
+          {label}
+        </Button>
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testeid="button"]')
+      .should('have.css', 'background-color', 'rgb(255, 255, 255)')
+      .and('have.css', 'border', '1px solid rgb(196, 196, 196)')
+      .and('have.css', 'color', 'rgb(196, 196, 196)')
+      .and('have.css', 'box-shadow', 'none')
+  })
+})
+
+describe('Button Primary', () => {
+  beforeEach(() => cy.wait(100))
+  afterEach(() => cy.wait(100))
+  const label = faker.lorem.word()
+  const icon = 'home'
+
+  it('Deve ser o componente Default quando for informado o type primary', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button onClick={cy.stub().as('onClick')} type={'primary'}>
+          {label}
+        </Button>
+      </ThemeDSProvider>
+    )
+      .get('[data-testeid="button"]')
+      .should('have.css', 'color', 'rgb(255, 255, 255)')
+      .and('have.css', 'background-color', 'rgb(50, 55, 81)')
+      .and('have.css', 'border', '1px solid rgb(50, 55, 81)')
+  })
+
+  it('Deve ser o componente Default quando for informado o type primary e o estado for hover', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button onClick={cy.stub().as('onClick')} type={'primary'}>
+          {label}
+        </Button>
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testeid="button"]').realHover()
+    cy.get('[data-testeid="button"]').should('have.css', 'color', 'rgb(252, 214, 105)')
+  })
+
+  it('Deve ser o componente Default quando for informado o type primary e o estado for active', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button onClick={cy.stub().as('onClick')} type={'primary'}>
+          {label}
+        </Button>
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testeid="button"]').realMouseDown()
+    cy.get('[data-testeid="button"]')
+      .should('have.css', 'color', 'rgb(50, 55, 81)')
+      .and('have.css', 'background-color', 'rgb(255, 255, 255)')
+      .and('have.css', 'border', '1px solid rgb(252, 214, 105)')
+      .and('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 4px 6px 0px')
+  })
+
+  it('Deve ser o componente Default desabled', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button onClick={cy.stub().as('onClick')} disabled type={'primary'}>
+          {label}
+        </Button>
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testeid="button"]')
+      .should('have.css', 'background-color', 'rgb(255, 255, 255)')
+      .and('have.css', 'border', '1px solid rgb(196, 196, 196)')
+      .and('have.css', 'color', 'rgb(196, 196, 196)')
+      .and('have.css', 'box-shadow', 'none')
+  })
+})
+describe('Button Secondary', () => {
+  beforeEach(() => cy.wait(100))
+  afterEach(() => cy.wait(100))
+  const label = faker.lorem.word()
+  const icon = 'home'
+  it('Deve ser o componente Secondary quando for informado o type secondary', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button onClick={cy.stub().as('onClick')} type={'secondary'}>
+          {label}
+        </Button>
+      </ThemeDSProvider>
+    )
+      .get('[data-testeid="button"]')
+      .should('have.css', 'color', 'rgb(50, 55, 81)')
+      .and('have.css', 'background-color', 'rgb(255, 255, 255)')
+      .and('have.css', 'border', '1px solid rgb(50, 55, 81)')
+      .and('have.css', 'box-shadow', 'none')
+  })
+
+  it('Deve ser o componente Secondary quando o estado for hover', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button onClick={cy.stub().as('onClick')} type={'secondary'}>
+          {label}
+        </Button>
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testeid="button"]').realHover()
+    cy.get('[data-testeid="button"]')
+      .should('have.css', 'border', '1px solid rgba(0, 0, 0, 0)')
+      .and('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 4px 6px 0px')
+  })
+
+  it('Deve ser o componente Secondary quando o estado for active', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button onClick={cy.stub().as('onClick')} type={'secondary'}>
+          {label}
+        </Button>
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testeid="button"]').realMouseDown()
+    cy.get('[data-testeid="button"]')
+      .should('have.css', 'border', '1px solid rgb(252, 214, 105)')
+      .and('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 4px 6px 0px')
+  })
+
+  it('Deve ser o componente Secondary desabled', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button onClick={cy.stub().as('onClick')} disabled type={'secondary'}>
+          {label}
+        </Button>
+      </ThemeDSProvider>
+    )
+      .get('[data-testeid="button"]')
+      .should('have.css', 'background-color', 'rgb(255, 255, 255)')
+      .and('have.css', 'border', '1px solid rgb(196, 196, 196)')
+      .and('have.css', 'color', 'rgb(196, 196, 196)')
+      .and('have.css', 'box-shadow', 'none')
+  })
+})
+
+describe('Button Tertiary', () => {
+  beforeEach(() => cy.wait(100))
+  afterEach(() => cy.wait(100))
+  const label = faker.lorem.word()
+  const icon = 'home'
+
+  it('Deve ser o componente Tertiary quando for informado o type tertiary', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button onClick={cy.stub().as('onClick')} type={'tertiary'}>
+          {label}
+        </Button>
+      </ThemeDSProvider>
+    )
+      .get('[data-testeid="button"]')
+      .should('have.css', 'color', 'rgb(50, 55, 81)')
+      .and('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
+  })
+
+  it('Deve ser o componente Tertiary quando o estado for hover', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button onClick={cy.stub().as('onClick')} type={'tertiary'}>
+          {label}
+        </Button>
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testeid="button"]').realHover()
+    cy.get('[data-testeid="button"]')
+      .should('have.css', 'color', 'rgb(95, 130, 166)')
+      .and('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
+  })
+
+  it('Deve ser o componente Tertiary desabled', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button onClick={cy.stub().as('onClick')} disabled type={'tertiary'}>
+          {label}
+        </Button>
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testeid="button"]')
+      .should('have.css', 'color', 'rgb(196, 196, 196)')
+      .and('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
+  })
+})
+
+describe('Button Size', () => {
+  const icon = 'home'
+  beforeEach(() => cy.wait(100))
+  afterEach(() => cy.wait(100))
   const label = faker.lorem.word()
 
-  beforeEach(() => {
-    cy.mount(<Button label={label} onClick={cy.stub().as('onClick')} size={size} />)
+  it('Deve ser o componente button com tamanho large', () => {
+    const size = 'large'
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button icon={icon} size={size} onClick={cy.stub().as('onClick')}>
+          {label}
+        </Button>
+      </ThemeDSProvider>
+    )
+      .get('[data-testeid="button"]')
+      .should('have.css', 'width', '210px')
+      .and('have.css', 'height', '48px')
+      .and('have.css', 'font-size', '16px')
+      .and('have.css', 'line-height', '19px')
+      .and('have.css', 'border-radius', '10px')
+      .and('have.css', 'padding', '8px 24px')
+      .and('have.css', 'gap', '7px')
   })
 
-  it('Deve ter componente visível', () => {
-    cy.get('[data-testeid="button"]').should('be.visible')
-  })
-
-  it('Deve mostrar a label recebida', () => {
-    cy.get('[data-testeid="button"]').should('have.text', label)
-  })
-
-  it('Deve ter uma função', () => {
-    cy.get('[data-testeid="button"]').click()
-    cy.get('@onClick').should('have.been.calledOnce')
-  })
-
-  it('Deve ter tamanho 142px quando o tamanho for small', () => {
-    cy.get('[data-testeid="button"]').should('have.css', 'width', '142px')
+  it('Deve ser o componente Default com tamanho small', () => {
+    const size = 'small'
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Button icon={icon} size={size} onClick={cy.stub().as('onClick')}>
+          {label}
+        </Button>
+      </ThemeDSProvider>
+    )
+      .get('[data-testeid="button"]')
+      .should('have.css', 'width', '142px')
+      .and('have.css', 'height', '32px')
+      .and('have.css', 'font-size', '12px')
+      .and('have.css', 'line-height', '14px')
+      .and('have.css', 'border-radius', '8px')
+      .and('have.css', 'padding', '4px 12px')
   })
 })

@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+/// <reference types="cypress-real-events"/>
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
