@@ -64,4 +64,3 @@ Para as versões disponíveis, consulte o [Versões](https://github.com/fit-cled
 [Autores](https://github.com/fit-cledson-leite/design-system-fitbank/graphs/contributors)
 
 ----------------------------------
-  icon: React.FunctionComponent<React.SVGProps<SVGSVGElement> & any>
