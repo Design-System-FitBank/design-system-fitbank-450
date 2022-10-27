@@ -37,7 +37,7 @@ describe('InputRadioItem', () => {
     )
     cy.get('[data-testid="radio"]')
       .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .and('have.css', 'border', '1px solid rgb(232, 232, 232)')
+      .and('have.css', 'border', '1px solid rgb(50, 55, 81)')
   })
 
   it('Deve ser o InputRadioItem com label', () => {

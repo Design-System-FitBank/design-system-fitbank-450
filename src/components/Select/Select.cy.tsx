@@ -80,11 +80,19 @@ describe('Select', () => {
   })
 
   it('Deve conter o background light no modal. Junto com a barra de scroll quando tiver mais de 3 itens de opção', () => {
+    const optionsList = [faker.lorem.word(), faker.lorem.word(), faker.lorem.word(), faker.lorem.word()]
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Select title={title} placeholder={placeholder} options={optionsList} onSelected={cy.stub().as('onSelected')} />
+      </ThemeDSProvider>
+    )
     cy.get('[data-testid="input"]').click()
     cy.get('[data-testid="modal"]')
       .should('have.css', 'width', '320px')
       .and('have.css', 'max-width', '320px')
       .and('have.css', 'overflow-y', 'scroll')
+    cy.get('[data-testid="modal"]').children().should('have.length', optionsList.length)
   })
 
   it('Deve a chamar a função onSelected', () => {

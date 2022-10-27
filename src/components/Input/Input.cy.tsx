@@ -46,7 +46,7 @@ describe('Input component', () => {
       .and('have.css', 'border-radius', '6px')
   })
 
-  it.only('Deve mostrar o componente tipo password', () => {
+  it('Deve mostrar o componente tipo password', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
@@ -466,26 +466,4 @@ describe('Input component', () => {
     const masked = sequence.toString().replace(/(\d{2})(\d{4,5})(\d{4})/g,"\($1)\ \$2\-\$3")
     cy.get('[data-testid="input"]').type(sequence.toString()).should('have.value', masked)
   })
-
-  // it('Deve mostrar componente password validado quando a função validadora não retornar mensagem', () => {
-  //   mount(
-  //     <ThemeDSProvider theme={Theme}>
-  //       <GlobalStyles />
-  //       <Input
-  //         type='password'
-  //         title={titleFake}
-  //         placeholder={placeholderFake}
-  //         disabled={false}
-  //         onchange={cy.stub().as('onchange')}
-  //       />
-  //     </ThemeDSProvider>
-  //   )
-  //   cy.get('[data-testid="input"]').type(textFaker)
-  //   cy.get('[data-testid="icon"]').get('[data-testid="eyeOpen"]').should('exist')
-  //   cy.get('[data-testid="icon"]').get('[data-testid="done"]').should('not.exist')
-  //   cy.wait(800)
-  //   cy.get('@onchange').should('have.been.called')
-  //   cy.get('[data-testid="icon"]').get('[data-testid="eyeOpen"]').should('not.exist')
-  //   cy.get('[data-testid="icon"]').get('[data-testid="done"]').and('have.css', 'color', 'rgb(12, 194, 96)')
-  // })
 })

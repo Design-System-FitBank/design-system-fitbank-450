@@ -1,17 +1,17 @@
 import React from 'react'
 import { faker } from '@faker-js/faker'
 import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
-import { InputRadio } from '.'
+import { Radio } from '.'
 
-describe('InputRadio', () => {
+describe('Radio', () => {
   const title = faker.lorem.words()
   const list = [faker.lorem.word(), faker.lorem.word(), faker.lorem.word(), faker.lorem.word()]
 
-  it('Deve ser o label InputRadio Default', () => {
+  it('Deve ser o label Radio Default', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <InputRadio title={title} optionsList={list} />
+        <Radio title={title} optionsList={list} />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="radio-container"]')
@@ -19,11 +19,11 @@ describe('InputRadio', () => {
       .and('have.css', 'color', 'rgb(50, 55, 81)')
   })
 
-  it('Deve ser o InputRadio default', () => {
+  it('Deve ser o Radio default', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <InputRadio title={title} optionsList={list} />
+        <Radio title={title} optionsList={list} />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="container"]')
@@ -34,22 +34,22 @@ describe('InputRadio', () => {
   })
 
   list.forEach((text: string, index: number) => {
-    it(`Deve ser o texto ${text} da lista de InputRadio`, () => {
+    it(`Deve ser o texto ${text} da lista de Radio`, () => {
       cy.mount(
         <ThemeDSProvider theme={Theme}>
           <GlobalStyles />
-          <InputRadio title={title} optionsList={list} />
+          <Radio title={title} optionsList={list} />
         </ThemeDSProvider>
       )
       cy.get(`[data-testid="container"] > :nth-child(${index + 1})`).should('have.text', text)
     })
   })
 
-  it('Deve ser o InputRadio quando isRow for passado', () => {
+  it('Deve ser o Radio quando isRow for passado', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <InputRadio title={title} optionsList={list} isRow />
+        <Radio title={title} optionsList={list} isRow />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="radio-container"]').should('have.css', 'flex-direction', 'row')
