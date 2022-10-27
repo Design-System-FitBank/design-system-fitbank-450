@@ -3,7 +3,7 @@ import { PinGrid } from './PinGrid'
 
 interface PinProps {
   /**
-   * Função que retorna um array de números registrados no token 
+   * Função sem retorno que será chamada ao digitar o pin 
    */
   onChange: (pinToken: number[]) => void
   /**
