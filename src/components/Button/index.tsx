@@ -1,6 +1,7 @@
-import { Icon } from '../Icon'
 import React from 'react'
+import { ContainerButton } from './components/ContainerButton'
 import { IconsProps } from '../Icon'
+
 import * as Styled from './styles'
 
 interface ButtonProps {
@@ -36,36 +37,45 @@ export const Button: React.FC<ButtonProps> = ({
   type = 'primary',
   onClick
 }) => {
-  const returnElement = (value: string) => {
-    const test = () => <div>icon not found!</div>
-    console.log(icon)
-    console.log(typeof icon)
-    switch (value) {
+  const returnElement = () => {
+    switch (type) {
       case 'tertiary':
         return (
           <Styled.Tertiary data-testeid='button' onClick={onClick} disabled={disabled} size={size}>
-            <Styled.Icon data-testeid='iconPrefix'>{!iconRight && icon ? <Icon name={icon}></Icon> : ''}</Styled.Icon>
-            <Styled.BoxLabel data-testeid='boxLabel'>{children}</Styled.BoxLabel>
-            <Styled.Icon data-testeid='iconSuffix'>{iconRight && icon ? <Icon name={icon}></Icon> : ''}</Styled.Icon>
+            <ContainerButton
+              icon={icon}
+              iconRight={iconRight}
+              isSmall={size === 'small'}
+            >
+              {children}
+            </ContainerButton>
           </Styled.Tertiary>
         )
       case 'secondary':
         return (
           <Styled.Secondary data-testeid='button' onClick={onClick} disabled={disabled} size={size}>
-            <Styled.Icon data-testeid='iconPrefix'>{!iconRight && icon ? <Icon name={icon}></Icon> : ''}</Styled.Icon>
-            <Styled.BoxLabel data-testeid='boxLabel'>{children}</Styled.BoxLabel>
-            <Styled.Icon data-testeid='iconSuffix'>{iconRight && icon ? <Icon name={icon}></Icon> : ''}</Styled.Icon>
+            <ContainerButton
+              icon={icon}
+              iconRight={iconRight}
+              isSmall={size === 'small'}
+            >
+              {children}
+            </ContainerButton>
           </Styled.Secondary>
         )
       default:
         return (
           <Styled.Primary data-testeid='button' onClick={onClick} disabled={disabled} size={size}>
-            <Styled.Icon data-testeid='iconPrefix'>{!iconRight && icon ? <Icon name={icon}></Icon> : ''}</Styled.Icon>
-            <Styled.BoxLabel data-testeid='boxLabel'>{children}</Styled.BoxLabel>
-            <Styled.Icon data-testeid='iconSuffix'>{iconRight && icon ? <Icon name={icon}></Icon> : ''}</Styled.Icon>
+            <ContainerButton
+              icon={icon}
+              iconRight={iconRight}
+              isSmall={size === 'small'}
+            >
+              {children}
+            </ContainerButton>
           </Styled.Primary>
         )
     }
   }
-  return returnElement(type)
+  return returnElement()
 }

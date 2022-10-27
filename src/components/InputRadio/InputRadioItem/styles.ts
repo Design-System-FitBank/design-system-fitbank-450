@@ -24,7 +24,7 @@ export const Radio = styled.div<RadioProps>`
   height: ${({ theme }) => theme.sizes['16px']};
 
   background-color: ${({ checked, theme }) => (checked ? theme.colors.transparent : theme.colors.light)};
-  border: 1px solid ${({ checked, theme }) => (checked ? theme.colors.radioChecked : theme.colors.radioUnchecked)};
+  border: 1px solid ${({ checked, theme }) => (checked ? theme.colors.primary : theme.colors.textGrey)};
   border-radius: ${({ theme }) => theme.sizes['20px']};
   box-shadow: 2px 4px 6px ${({ checked, theme }) => (checked ? 'none' : theme.colors.shadow)};
   display: flex;

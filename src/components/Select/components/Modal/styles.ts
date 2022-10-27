@@ -2,10 +2,12 @@ import styled, { keyframes } from 'styled-components'
 
 const animationModal = keyframes`
   0% {
+    top: 40px;
     height: 0px;
   }
 
   100% {
+    top: 68px;
     height: 174px;
   }
 `
@@ -18,13 +20,15 @@ export const ModalContent = styled.div<{ isOpen: boolean }>`
   justify-content: flex-start;
   position: absolute;
 
-  top: ${({ theme }) => theme.sizes['46px']};
+  flex-direction: column;
+
+  top: ${({ isOpen, theme }) => (isOpen ? theme.sizes['68px'] : theme.sizes['30px'])};
   z-index: -1;
 
   border-radius: ${({ theme }) => theme.sizes['6px']};
 
   padding-left: ${({ theme }) => theme.sizes['16px']};
-  padding-top: ${({ theme }) => theme.sizes['28px']};
+  padding-top: ${({ theme }) => theme.sizes['10px']};
 
   overflow: hidden;
 

@@ -50,6 +50,7 @@ declare module 'styled-components' {
       '26px': string
       '28px': string
       '28px': string
+      '30px': string
       '32px': string
       '34px': string
       '38px': string
@@ -61,8 +62,11 @@ declare module 'styled-components' {
       '56px': string
       '62px': string
       '64px': string
+      '68px': string
       '82px': string
       '86px': string
+      '90px': string
+      '96px': string
       '108px': string
       '142px': string
       '144px': string

@@ -1,8 +1,9 @@
 import React from 'react'
+import { Icon, IconsProps } from '../Icon'
 import * as Styled from './styles'
 
 interface NavButtonProps {
-  icon: JSX.Element
+  icon: IconsProps['name']
   children?: string
   disabled?: boolean
   size?: 'small' | 'medium' | 'large'
@@ -15,21 +16,31 @@ export const NavButton = ({ icon, children, disabled = false, size = 'medium', o
       case 'small':
         return (
           <Styled.Small data-testid='nav-button' onClick={onClick} disabled={disabled}>
-            <Styled.Icon data-testid='nav-button-icon'>{icon}</Styled.Icon>
+            <Styled.Icon data-testid='nav-button-icon'>
+              <Icon name={icon as any} />
+            </Styled.Icon>
           </Styled.Small>
         )
       case 'large':
         return (
           <Styled.Large data-testid='nav-button' onClick={onClick} disabled={disabled}>
-            <Styled.Icon data-testid='nav-button-icon'>{icon}</Styled.Icon>
-            <Typography variant='bodySmall'>{children}</Typography>
+            <Styled.Icon data-testid='nav-button-icon'>
+              <Icon name={icon as any} />
+            </Styled.Icon>
+            <Styled.LabelLarge data-testid='nav-labelLarge'>
+              {children}
+            </Styled.LabelLarge>
           </Styled.Large>
         )
       default:
         return (
           <Styled.Container data-testid='nav-button' onClick={onClick} disabled={disabled}>
-            <Styled.Icon data-testid='nav-button-icon'>{icon}</Styled.Icon>
-            {children}
+            <Styled.Icon data-testid='nav-icon'>
+              <Icon name={icon as any} width={38} height={38} />
+            </Styled.Icon>
+            <Styled.Label data-testid='nav-label'>
+              {children}
+            </Styled.Label>
           </Styled.Container>
         )
     }

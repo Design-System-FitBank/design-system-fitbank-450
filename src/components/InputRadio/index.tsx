@@ -18,7 +18,7 @@ interface RadioProps {
   isRow?: boolean
 }
 
-export const InputRadio = ({ title, optionsList, isRow = false }: RadioProps) => {
+export const Radio = ({ title, optionsList, isRow = false }: RadioProps) => {
   const [checked, setChecked] = useState('')
   const onclick = (value: string) => {
     setChecked(value)

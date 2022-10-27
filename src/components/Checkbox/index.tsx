@@ -1,16 +1,25 @@
 import { Typography } from '../Typography'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { InputCheckboxItem } from './InputCheckboxItem'
 import * as Styled from './styles'
 
 interface InputCheckboxProps {
   title: string
+  /**
+   * Lista com as opções
+   */
   optionsList: string[]
+  /**
+   * Opção para deixar alinhado na direção linha por default é falso
+   */
   isRow?: boolean
+  /**
+   * função para receber os itens selecionados que recebe um array como parâmetro
+   */
   onSelect: (values: string[]) => void
 }
 
-export const InputCheckbox = ({ title, optionsList, isRow = false, onSelect}: InputCheckboxProps) => {
+export const Checkbox = ({ title, optionsList, isRow = false, onSelect}: InputCheckboxProps) => {
   const [selected, setSelected] = useState<string[]>([])
 
   const onclick = (value: string) => {

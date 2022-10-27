@@ -8,7 +8,7 @@ export const Theme = {
     alert: '#deaa24',
     greyLight: '#E8E8E8',
     info: '#3c78b8',
-    textGrey: '#797979',
+    textGrey: '#a7a7a7',
     textDisabled: '#c4c4c4',
     light: '#ffffff',
     dark: '#010716',
@@ -41,6 +41,7 @@ export const Theme = {
     '24px': '1.5rem',
     '26px': '1.625rem',
     '28px': '1.75rem',
+    '30px': '1.875rem',
     '32px': '2rem',
     '34px': '2.125rem',
     '38px': '2.375rem',
@@ -52,8 +53,11 @@ export const Theme = {
     '56px': '3.5rem',
     '62px': '3.875rem',
     '64px': '4rem',
+    '68px': '4.25rem',
     '82px': '5.125rem',
     '86px': '5.375rem',
+    '90px': '5.625rem',
+    '96px': '6rem',
     '108px': '6.75rem',
     '142px': '8.875rem',
     '144px': '9rem',
@@ -62,9 +66,6 @@ export const Theme = {
     '210px': '13.125rem',
     '235px': '14.6875rem',
     '255px': '15.9375rem',
-    '320px': '20rem'
-    '210px': '13.125rem',
-    '255px': '15.125rem',
     '287px': '17.9375rem',
     '320px': '20rem'
   }
