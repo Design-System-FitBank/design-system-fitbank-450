@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { mount } from 'cypress/react18'
+import { faker } from '@faker-js/faker'
 import 'cypress-real-events/support'
 
 import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
 import { PinToken } from '.'
-import { faker } from '@faker-js/faker'
 
 describe('PinToken', () => {
   beforeEach(() => {
@@ -62,12 +62,12 @@ describe('PinToken', () => {
       .should('have.css', 'border', '1px solid rgb(234, 62, 62)')
   })
 
-  it('Deve conter o estado Filed quando o pinToken clicado for digitado um numero', () => {
-    const validPin = faker.random.alphaNumeric()
+  const validPin = faker.random.numeric(1)
 
+  it('Deve conter o estado Filed quando o pinToken clicado for digitado um numero', () => {
     cy.get('[data-testid="pinToken-0"]')
       .click()
-      .type('1')
+      .type(validPin)
       .should('have.css', 'border', '1px solid rgb(196, 196, 196)')
       .and('have.css', 'text-align', 'center')
       .and('have.css', 'font-size', '18px')
@@ -86,14 +86,24 @@ describe('PinToken', () => {
       .and('have.css', 'background-color', 'rgb(196, 196, 196)')
   })
 
-  // it('Deve a chamar a função onPinChange', () => {
-  //   cy.get('[data-testid="pinToken-0"]')
-  //     .click()
-  //     .type('1')
-  //   cy.get('@onPinChange').should('have.been.calledOnce')
-  // })
+  const pinValues = [
+    faker.random.numeric(1),
+    faker.random.numeric(1),
+    faker.random.numeric(1),
+    faker.random.numeric(1),
+    faker.random.numeric(1),
+    faker.random.numeric(1)
+  ]
 
-  it('Deve conter ', () => {
-    cy.get('[data-testid = "pinToken-0"]')
+  it.only('Deve a chamar a função onPinChange', () => {
+    pinValues.forEach((pin, index) => {
+      cy.get(`[data-testid="pinToken-${index}"]`).click().type(pin)
+    })
+    cy.get('@onPinChange').should('have.been.calledOnce')
+  })
+
+  it('Dado o primeiro elemento já preenchido, então o elemento seguinte ficará focado e pronto para preencher', () => {
+    cy.get('[data-testid = "pinToken-0"]').click().type(validPin).wait(100).should('not.have.focus')
+    cy.get('[data-testid = "pinToken-1"]').should('have.focus').and('have.css', 'border', '1px solid rgb(1, 7, 22)')
   })
 })
