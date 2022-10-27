@@ -6,8 +6,8 @@ export const Container = styled.button`
   align-items: center;
   flex-direction: column;
 
-  width: ${({ theme }) => theme.sizes['86px']};
-  height: ${({ theme }) => theme.sizes['86px']};
+  width: ${({ theme }) => theme.sizes['90px']};
+  height: ${({ theme }) => theme.sizes['90px']};
   padding: ${({ theme }) => theme.sizes['8px']} ${({ theme }) => theme.sizes['4px']};
   gap: ${({ theme }) => theme.sizes['4px']};
 
@@ -19,8 +19,8 @@ export const Container = styled.button`
   color: ${({ theme }) => theme.colors.primary};
   overflow: hidden;
 
-  font-weight: 500;
-  font-size: 11px;
+  font-weight: 700;
+  font-size: 12px;
 
   cursor: pointer;
 
@@ -57,4 +57,20 @@ export const Large = styled(Container)`
 export const Icon = styled.div`
   width: ${({ theme }) => theme.sizes['38px']};
   height: ${({ theme }) => theme.sizes['38px']};
+`
+export const Label = styled.div`
+  width: ${({ theme }) => theme.sizes['78px']};
+  height: ${({ theme }) => theme.sizes['30px']};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+`
+export const LabelLarge = styled.div`
+  width: ${({ theme }) => theme.sizes['96px']};
+  height: ${({ theme }) => theme.sizes['32px']};
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
 `
