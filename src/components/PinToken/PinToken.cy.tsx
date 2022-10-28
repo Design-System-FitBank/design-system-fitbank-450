@@ -69,7 +69,7 @@ describe('PinToken', () => {
 
   const validPin = faker.datatype.number({min: 0, max: 9})
 
-  it.only('Deve conter o estado Filed quando o pinToken clicado for digitado um numero', () => {
+  it('Deve conter o estado Filed quando o pinToken clicado for digitado um numero', () => {
     cy.get('[data-testid="pinToken-0"]')
       .type(validPin.toString())
       .should('have.css', 'border', '1px solid rgb(196, 196, 196)')
@@ -104,7 +104,7 @@ describe('PinToken', () => {
     faker.datatype.number({min: 0, max: 9}),
   ]
 
-  it('Deve a chamar a função onPinChange', () => {
+  it.only('Deve a chamar a função onPinChange', () => {
     pinValues.forEach((pin, index) => {
       cy.get(`[data-testid="pinToken-${index}"]`).type(pin.toString())
     })
