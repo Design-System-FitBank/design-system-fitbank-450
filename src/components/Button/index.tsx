@@ -1,5 +1,3 @@
-
-import { Icon } from '../Icon'
 import React from 'react'
 import { ContainerButton } from './components/ContainerButton'
 import { IconsProps } from '../Icon'
