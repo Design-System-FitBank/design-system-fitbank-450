@@ -55,7 +55,7 @@ function App() {
 export default App;
 ```
 ## Documentação
-Documentação completa dos componentes [StoryBook](https://pt-br.reactjs.org/docs/create-a-new-react-app.html).
+Documentação completa dos componentes [StoryBook](https://sharedimages.fitbank.com.br/sharedimages/designSystemDoc/index.html?path=/story/button--default).
 
 ## Versionamento
 Para as versões disponíveis, consulte o [Versões](https://github.com/fit-cledson-leite/design-system-fitbank/releases)
