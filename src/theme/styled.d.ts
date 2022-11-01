@@ -79,6 +79,7 @@ declare module 'styled-components' {
       '255px': string
       '287px': string
       '320px': string
+      '410px': string
     }
   }
 }
