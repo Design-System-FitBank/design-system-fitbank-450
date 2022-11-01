@@ -1,6 +1,6 @@
 import React from 'react'
 
-import * as Style from './styles'
+import * as Styled from './styles'
 interface TypographyProps {
   variant:
     | 'h1'
@@ -22,43 +22,43 @@ export const Typography = ({ variant = 'h1', children }: TypographyProps) => {
   const component = (variant: string) => {
     switch (variant) {
       case 'h1':
-        return <Style.H1 data-testid='h1'>{children}</Style.H1>
+        return <Styled.H1 data-testid='h1'>{children}</Styled.H1>
 
       case 'h2':
-        return <Style.H2 data-testid='h2'>{children}</Style.H2>
+        return <Styled.H2 data-testid='h2'>{children}</Styled.H2>
 
       case 'h3':
-        return <Style.H3 data-testid='h3'>{children}</Style.H3>
+        return <Styled.H3 data-testid='h3'>{children}</Styled.H3>
 
       case 'h4':
-        return <Style.H4 data-testid='h4'>{children}</Style.H4>
+        return <Styled.H4 data-testid='h4'>{children}</Styled.H4>
 
       case 'h5':
-        return <Style.H5 data-testid='h5'>{children}</Style.H5>
+        return <Styled.H5 data-testid='h5'>{children}</Styled.H5>
 
       case 'h6':
-        return <Style.H6 data-testid='h6'>{children}</Style.H6>
+        return <Styled.H6 data-testid='h6'>{children}</Styled.H6>
 
       case 'subtitle':
-        return <Style.Subtitle data-testid='subtitle'>{children}</Style.Subtitle>
+        return <Styled.Subtitle data-testid='subtitle'>{children}</Styled.Subtitle>
 
       case 'body':
-        return <Style.Body data-testid='body'>{children}</Style.Body>
+        return <Styled.Body data-testid='body'>{children}</Styled.Body>
 
       case 'bodySmall':
-        return <Style.BodySmall data-testid='bodySmall'>{children}</Style.BodySmall>
+        return <Styled.BodySmall data-testid='bodySmall'>{children}</Styled.BodySmall>
 
       case 'bodyBold':
-        return <Style.BodyBold data-testid='bodyBold'>{children}</Style.BodyBold>
+        return <Styled.BodyBold data-testid='bodyBold'>{children}</Styled.BodyBold>
 
       case 'bodyLarge':
-        return <Style.BodyLarge data-testid='bodyLarge'>{children}</Style.BodyLarge>
+        return <Styled.BodyLarge data-testid='bodyLarge'>{children}</Styled.BodyLarge>
 
       case 'caption':
-        return <Style.Caption data-testid='caption'>{children}</Style.Caption>
+        return <Styled.Caption data-testid='caption'>{children}</Styled.Caption>
 
       default:
-        return <Style.H1 data-testid='h1'>{children}</Style.H1>
+        return <Styled.H1 data-testid='h1'>{children}</Styled.H1>
     }
   }
 
