@@ -67,6 +67,7 @@ export const Theme = {
     '235px': '14.6875rem',
     '255px': '15.9375rem',
     '287px': '17.9375rem',
-    '320px': '20rem'
+    '320px': '20rem',
+    '410px': '25.625rem'
   }
 }
