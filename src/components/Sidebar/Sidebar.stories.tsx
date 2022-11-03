@@ -11,7 +11,7 @@ export default {
 
 const Template: ComponentStory<typeof Sidebar> = args => <Sidebar {...args} />
 
-export const SidebarDefault = Template.bind({})
-SidebarDefault.args = {
-  children: 'navButton'
+export const SidebarNavigation = Template.bind({})
+SidebarNavigation.args = {
+  
 }
