@@ -1,5 +1,4 @@
 import React from 'react'
-import { mount } from 'cypress/react18'
 import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
 import { Header } from '.'
 
@@ -15,7 +14,8 @@ describe('Header Default', () => {
     it('Deve mostrar componente com 64px de altura', () => {
         cy.get('[data-testid="container"]')
         .should('be.visible')
-        .and('have.css', 'height', '64px').and('have.css', 'width', '500px')
+        .and('have.css', 'height', '64px')
+        .and('have.css', 'width', '500px')
         .and('have.css', 'background-color', 'rgb(50, 55, 81)')
         .and('have.css', 'align-items', 'center')
         .and('have.css', 'padding-left', '12px')
@@ -38,7 +38,14 @@ describe('Header Default', () => {
         .and('have.css', 'border-color', 'rgba(255, 255, 255, 0.1)')
     })
 
-    // it('deve mostrar o icone de lupa de pesquisa', () => {
-    //     cy.get('[data-testid=""]')
-    // })
+     it('deve mostrar o icone de lupa de pesquisa', () => {
+        cy.get('[data-testid="lupa"]')
+        .should('exist')
+        .and('have.css', 'color', 'rgb(255, 255, 255)')
+        .and('have.css', 'right', '20px')
+        .and('have.css', 'top', '8px')
+        .and('have.css', 'cursor', 'pointer')
+        .get('[data-testid="wrap"]')
+        .should('have.css', 'align-items', 'center')
+     })
 })
