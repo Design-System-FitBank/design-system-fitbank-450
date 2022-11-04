@@ -5,14 +5,23 @@ import 'cypress-real-events/support'
 import { mount } from 'cypress/react18'
 import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
 
-import { Sidebar } from '.'
+import { Sidebar, NavButtonProps } from '.'
 
-describe('Sidebar', () => {
+describe('Sidebar', () => {  
+  const navButtonList: NavButtonProps[] = [
+    { label: 'Transferencia', icon: 'moneyTransfer', onClick: () => {cy.stub().as('')} },
+    { label: 'Area Pix', icon: 'pix', onClick: () => {cy.stub().as('')} },
+    { label: 'Pagamento', icon: 'payment', onClick: () => {cy.stub().as('')} },
+    { label: 'Recarga', icon: 'topup', onClick: () => {cy.stub().as('')} },
+    { label: 'Agendamento', icon: 'calendar', onClick: () => {cy.stub().as('')} },
+    { label: 'Cartões', icon: 'cardMulti', onClick: () => {cy.stub().as('')} }
+  ]
+
   beforeEach(() => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Sidebar />
+        <Sidebar navButtonList={navButtonList} />
       </ThemeDSProvider>
     )
     cy.wait(100)
@@ -26,7 +35,7 @@ describe('Sidebar', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Sidebar />
+        <Sidebar navButtonList={navButtonList} />
       </ThemeDSProvider>
     )
     cy.get('[data-testid = "sidebar-container"]')
