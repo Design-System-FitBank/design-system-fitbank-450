@@ -19,7 +19,8 @@ interface SidebarProps {
    * NavButtonProps[] {
    *  label: string;
    *  icon: IconsProps['name'];
-   *  onClick: () => void}
+   *  onClick: () => void
+   * }
    * no qual é preciso passar dentro do objeto
    * o Label, o nome do Icone e a rota que o botão deve levar
    */
@@ -46,12 +47,12 @@ export const Sidebar = ({ navButtonList, onSignOut }: SidebarProps) => {
         {isOpen && <Typography variant='caption'>Reduzir</Typography>}
       </Styled.CloseNavBar>
 
-      <Styled.AccountDetail onClick={() => setIsOpen(!isOpen)} isClosed={!isOpen}>
+      <Styled.AccountDetail data-testid='user-detail' onClick={() => setIsOpen(!isOpen)} isClosed={!isOpen}>
         <Icon name='user' width={24} height={24} />
         {isOpen && 'User Detail component'}
       </Styled.AccountDetail>
 
-      <Styled.ButtonsGrid isClosed={!isOpen}>
+      <Styled.ButtonsGrid data-testid='nav-button-grid' isClosed={!isOpen}>
         {navButtonList.map(({ label, icon, onClick }: NavButtonListProps) =>
           isOpen ? (
             <NavButton onClick={() => onClick()} icon={icon}>
@@ -63,7 +64,7 @@ export const Sidebar = ({ navButtonList, onSignOut }: SidebarProps) => {
         )}
       </Styled.ButtonsGrid>
 
-      <Styled.CloseNavBar isClosed={!isOpen} onClick={onSignOut}>
+      <Styled.CloseNavBar data-testid='sign-out-button' isClosed={!isOpen} onClick={onSignOut}>
         <Icon name='cancel' width={24} height={24} />
         {isOpen && <Typography variant='caption'>Sair</Typography>}
       </Styled.CloseNavBar>
