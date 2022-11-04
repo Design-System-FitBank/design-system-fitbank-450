@@ -7,11 +7,13 @@ export const Container = styled.div<{ isClosed: boolean }>`
   transition: 0.8s;
 `
 
-export const IconContainer = styled.div<{ isClosed: boolean }>`
+export const LogoContainer = styled.div<{ isClosed: boolean }>`
   width: ${({ isClosed, theme }) => (isClosed ? theme.sizes['56px'] : theme.sizes['142px'])};
   height: ${({ theme }) => theme.sizes['38px']};
 
-  margin: ${({ theme }) => theme.sizes['20px']} 0;
+  margin: ${({ isClosed, theme }) => (isClosed ? '20px 4px' : '20px 0px')};
+
+  transition: 0.8s;
 `
 
 export const CloseNavBar = styled.div<{ isClosed: boolean }>`
@@ -32,24 +34,24 @@ export const AccountDetail = styled.div<{ isClosed: boolean }>`
   justify-content: center;
   align-items: center;
 
-  height: ${({ isClosed }) => isClosed ? '80px' : '300px'};
+  height: ${({ isClosed }) => (isClosed ? '80px' : '300px')};
   text-align: center;
 `
 
-export const ButtonsGrid = styled.div<{ isClosed: boolean }>`  
-  display: ${({ isClosed }) => isClosed ? 'flex' : 'grid'};
+export const ButtonsGrid = styled.div<{ isClosed: boolean }>`
+  display: ${({ isClosed }) => (isClosed ? 'flex' : 'grid')};
 
   margin: 50px 0;
 
   grid-template-columns: auto auto auto;
-  grid-template-rows: auto auto auto; 
-  
+  grid-template-rows: auto auto auto;
+
   justify-items: center;
   column-gap: 10px;
   row-gap: 15px;
-  
-  flex-direction: ${({ isClosed }) => isClosed ? 'column' : ''};
-  justify-content: ${({ isClosed }) => isClosed ? 'center' : ''};
-  align-items: ${({ isClosed }) => isClosed ? 'center' : ''};
+
+  flex-direction: ${({ isClosed }) => (isClosed ? 'column' : '')};
+  justify-content: ${({ isClosed }) => (isClosed ? 'center' : '')};
+  align-items: ${({ isClosed }) => (isClosed ? 'center' : '')};
   overflow-x: hidden;
 `
