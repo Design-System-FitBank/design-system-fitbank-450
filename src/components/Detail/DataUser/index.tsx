@@ -1,10 +1,10 @@
 import React from 'react'
-import { DetailProps } from '../.'
+import { User } from '../Data'
 import { Typography } from '../../Typography'
 import * as Styled from './styles'
 
 interface DataProps {
-  dataUser: { businessUnit: string; accountName: string; uniqueIdentifier: string }
+  dataUser: User
 }
 
 export const DataUser: React.FC<DataProps> = ({ dataUser }) => {
@@ -19,7 +19,7 @@ export const DataUser: React.FC<DataProps> = ({ dataUser }) => {
       <Styled.Identifier data-testid='wrap'>
         <Styled.Label data-testid='labelIdentifier'>CPF/CNPJ:</Styled.Label>
         <Styled.UniqueIdentifier data-testid='uniqueIdentifier'>
-          <Typography variant='bodySmall'>{dataUser.uniqueIdentifier}</Typography>
+          <Typography variant='bodySmall'>{dataUser.userId}</Typography>
         </Styled.UniqueIdentifier>
       </Styled.Identifier>
     </Styled.Container>
