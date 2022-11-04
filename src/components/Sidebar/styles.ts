@@ -2,23 +2,25 @@ import styled from 'styled-components'
 
 export const Container = styled.div<{ isClosed: boolean }>`
   background-color: #f9f9f9;
+
   height: 100vh;
-  width: ${({ isClosed, theme }) => (isClosed ? theme.sizes['62px'] : theme.sizes['320px'])};
-  transition: 0.8s;
+  width: ${({ isClosed, theme }) => isClosed ? theme.sizes['62px'] : theme.sizes['320px']};
+  
+  transition: 1s;
 `
 
 export const LogoContainer = styled.div<{ isClosed: boolean }>`
-  width: ${({ isClosed, theme }) => (isClosed ? theme.sizes['56px'] : theme.sizes['142px'])};
+  width: ${({ isClosed, theme }) => isClosed ? theme.sizes['56px'] : theme.sizes['142px']};
   height: ${({ theme }) => theme.sizes['38px']};
 
-  margin: ${({ isClosed, theme }) => (isClosed ? '20px 4px' : '20px 0px')};
+  margin: ${({ isClosed }) => isClosed ? '20px 4px' : '20px 0px'};
 
-  transition: 0.8s;
+  transition: 1s;
 `
 
 export const CloseNavBar = styled.div<{ isClosed: boolean }>`
   display: flex;
-  justify-content: ${({ isClosed }) => (isClosed ? 'center' : 'flex-end')};
+  justify-content: ${({ isClosed }) => isClosed ? 'center' : 'flex-end'};
   align-items: center;
 
   margin: ${({ theme }) => theme.sizes['12px']};
@@ -26,6 +28,8 @@ export const CloseNavBar = styled.div<{ isClosed: boolean }>`
 
   font-weight: ${({ theme }) => theme.font.weight.regular};
   cursor: pointer;
+  
+  transition: 1s;
 `
 
 export const AccountDetail = styled.div<{ isClosed: boolean }>`
@@ -34,24 +38,27 @@ export const AccountDetail = styled.div<{ isClosed: boolean }>`
   justify-content: center;
   align-items: center;
 
-  height: ${({ isClosed }) => (isClosed ? '80px' : '300px')};
+  height: ${({ isClosed }) => isClosed ? '80px' : '300px'};
   text-align: center;
+  transition: 1s;
 `
 
 export const ButtonsGrid = styled.div<{ isClosed: boolean }>`
-  display: ${({ isClosed }) => (isClosed ? 'flex' : 'grid')};
+  display: ${({ isClosed }) => isClosed ? 'flex' : 'grid'};
 
-  margin: 50px 0;
+  margin: 50px 0px;
 
   grid-template-columns: auto auto auto;
   grid-template-rows: auto auto auto;
 
   justify-items: center;
-  column-gap: 10px;
-  row-gap: 15px;
+  column-gap: ${({ theme }) => theme.sizes['10px']};
+  row-gap: ${({ theme }) => theme.sizes['15px']};
 
-  flex-direction: ${({ isClosed }) => (isClosed ? 'column' : '')};
-  justify-content: ${({ isClosed }) => (isClosed ? 'center' : '')};
-  align-items: ${({ isClosed }) => (isClosed ? 'center' : '')};
+  flex-direction: ${({ isClosed }) => isClosed && 'column'};
+  justify-content: ${({ isClosed }) => isClosed && 'center'};
+  align-items: ${({ isClosed }) => isClosed && 'center'};
+
   overflow-x: hidden;
+  transition: 1s;
 `
