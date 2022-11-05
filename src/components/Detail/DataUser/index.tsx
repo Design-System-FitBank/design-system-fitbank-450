@@ -3,11 +3,11 @@ import { User } from '../Data'
 import { Typography } from '../../Typography'
 import * as Styled from './styles'
 
-interface DataProps {
+interface DataUserProps {
   dataUser: User
 }
 
-export const DataUser: React.FC<DataProps> = ({ dataUser }) => {
+export const DataUser: React.FC<DataUserProps> = ({ dataUser }) => {
   return (
     <Styled.Container>
       <Styled.BU data-testid='businessUnit'>
@@ -18,9 +18,7 @@ export const DataUser: React.FC<DataProps> = ({ dataUser }) => {
       </Styled.Account>
       <Styled.Identifier data-testid='wrap'>
         <Styled.Label data-testid='labelIdentifier'>CPF/CNPJ:</Styled.Label>
-        <Styled.UniqueIdentifier data-testid='uniqueIdentifier'>
-          <Typography variant='bodySmall'>{dataUser.userId}</Typography>
-        </Styled.UniqueIdentifier>
+        <Styled.UniqueIdentifier data-testid='userId'>{dataUser.userId}</Styled.UniqueIdentifier>
       </Styled.Identifier>
     </Styled.Container>
   )

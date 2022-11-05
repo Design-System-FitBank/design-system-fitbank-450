@@ -1,33 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as Styled from './styles'
 import { Icon } from '../Icon'
 import { DataUser } from './DataUser'
 import { Typography } from '../Typography'
 import { Button } from '../Button'
-import { User } from './Data'
+import { User, DataBank } from './Data'
+import { DataAccount } from './DataAccount'
 
 export interface DetailProps {
   dataUser: User
-  onClick: () => void
+  dataBank: DataBank
+  copy: () => void
 }
 
-export const Detail: React.FC<DetailProps> = ({ dataUser, onClick }) => {
+export const Detail: React.FC<DetailProps> = ({ dataUser, dataBank, copy }) => {
+  const [isActive, setIsActive] = useState(false)
+  console.log(isActive)
+
   return (
     <Styled.Container data-testid='container'>
       <Styled.Avatar data-testid='avatar'>
         <Icon name='enterprise' />
       </Styled.Avatar>
       <DataUser data-testid='data' dataUser={dataUser} />
-      <Styled.Accordion data-testid='accordion'>
+      <Styled.Accordion data-testid='accordion' onClick={() => setIsActive(!isActive)}>
         <Styled.Arrow data-testid='arrow'>
-          <Icon name='arrowDown' width={20} height={20}></Icon>
+          {!isActive ? (
+            <Icon name='arrowDown' width={20} height={20}></Icon>
+          ) : (
+            <Icon name='arrowUp' width={20} height={20}></Icon>
+          )}
         </Styled.Arrow>
         <Styled.LabelAccordion data-testid='labelAccordion'>
-          <Typography variant='subtitle'>Ver dados da conta</Typography>
+          {!isActive ? (
+            <Typography variant='subtitle'>Ver dados da conta</Typography>
+          ) : (
+            <Typography variant='subtitle'>Esconder dados da conta</Typography>
+          )}
         </Styled.LabelAccordion>
       </Styled.Accordion>
+      {isActive && <DataAccount data-testid='dataBank' dataBank={dataBank} />}
       <Styled.CopyData data-testid='copyData'>
-        <Button icon='share' onClick={onClick} size='small'>
+        <Button icon='share' size='small' onClick={copy}>
           Copiar
         </Button>
       </Styled.CopyData>

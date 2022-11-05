@@ -22,9 +22,12 @@ export const Identifier = styled.div`
   margin-top: ${({ theme }) => theme.sizes['4px']};
 `
 export const Label = styled.span`
+  font-weight: 300;
   color: ${({ theme }) => theme.colors.primary};
 `
 export const UniqueIdentifier = styled.div`
+  font-weight: 500;
   padding-left: ${({ theme }) => theme.sizes['8px']};
+  padding-bottom: 4px;
   color: ${({ theme }) => theme.colors.primary};
 `
