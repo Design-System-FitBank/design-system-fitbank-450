@@ -4,7 +4,7 @@ export interface User {
   userId: string
 }
 
-export interface DataAccount {
+export interface DataBank {
   bank: string
   bankBranch: string
   bankAccount: string

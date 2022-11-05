@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   height: ${({ theme }) => theme.sizes['320px']};
-  width: ${({ theme }) => theme.sizes['210px']};
+  width: ${({ theme }) => theme.sizes['255px']};
 `
 export const Avatar = styled.div`
   margin-top: ${({ theme }) => theme.sizes['8px']};
