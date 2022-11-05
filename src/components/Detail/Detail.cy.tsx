@@ -7,17 +7,27 @@ describe('Detail component', () => {
   const dataUser = {
     businessUnit: 'ACME Bank',
     accountName: 'KIMBAP ASIAN FOOD LTDA',
-    uniqueIdentifier: '12345678-910'
+    userId: '12345678-910'
+  }
+  const dataBank = {
+    bank: '450 - FitBank Pagamentos SA',
+    bankBranch: '0000001',
+    bankAccount: '02021-5',
+    accountId: '020202.02020.202.0'
   }
 
-  it('deve mostrar componente default', () => {
+  beforeEach(() => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Detail dataUser={dataUser} onClick={cy.stub().as('onClick')} />
+        <Detail dataUser={dataUser} dataBank={dataBank} copy={cy.stub().as('copy')} />
       </ThemeDSProvider>
     )
-    cy.get('[data-testid="avatar"]').should('exist')
+  })
+
+  it('deve mostrar componente default', () => {
+    cy.get('[data-testid="avatar"]').get('[data-testid="arrowDown"]').should('exist')
+    cy.get('[data-testid="avatar"]').get('[data-testid="arrowUp"]').should('not.exist')
     cy.get('[data-testid="businessUnit"]')
       .should('have.text', dataUser.businessUnit)
       .and('have.css', 'text-align', 'center')
@@ -32,8 +42,8 @@ describe('Detail component', () => {
     cy.get('[data-testid="labelIdentifier"]')
       .should('have.text', 'CPF/CNPJ:')
       .and('have.css', 'color', 'rgb(50, 55, 81)')
-    cy.get('[data-testid="uniqueIdentifier"]')
-      .should('have.text', dataUser.uniqueIdentifier)
+    cy.get('[data-testid="userId"]')
+      .should('have.text', dataUser.userId)
       .and('have.css', 'color', 'rgb(50, 55, 81)')
       .and('have.css', 'padding-left', '8px')
     cy.get('[data-testid="wrap"]').should('have.css', 'margin-top', '4px')
@@ -50,6 +60,24 @@ describe('Detail component', () => {
       .and('have.css', 'color', 'rgb(50, 55, 81)')
     cy.get('[data-testid="labelChangeAccount"]')
       .should('have.css', 'padding-left', '12px')
+      .and('have.css', 'color', 'rgb(50, 55, 81)')
+  })
+
+  it('deve mostrar componente em estado de aberto', () => {
+    cy.get('[ data-testid="accordion"]').click()
+    cy.get('[data-testid="avatar"]').get('[data-testid="arrowUp"]').should('exist')
+    cy.get('[data-testid="avatar"]').get('[data-testid="arrowDown"]').should('not.exist')
+    cy.get('[data-testid="labelNameBank"]').should('have.text', 'Banco:').and('have.css', 'color', 'rgb(50, 55, 81)')
+    cy.get('[data-testid="bank"]').should('have.text', dataBank.bank).and('have.css', 'color', 'rgb(50, 55, 81)')
+    cy.get('[data-testid="labelBranch"]').should('have.text', 'Ag:').and('have.css', 'color', 'rgb(50, 55, 81)')
+    cy.get('[data-testid="branch"]')
+      .should('have.text', dataBank.bankBranch)
+      .and('have.css', 'color', 'rgb(50, 55, 81)')
+    cy.get('[data-testid="labelBanckAccount"]')
+      .should('have.text', 'Conta:')
+      .and('have.css', 'color', 'rgb(50, 55, 81)')
+    cy.get('[data-testid="bankAccount"]')
+      .should('have.text', dataBank.bankAccount)
       .and('have.css', 'color', 'rgb(50, 55, 81)')
   })
 })
