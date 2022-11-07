@@ -4,18 +4,29 @@ import { Icon } from '../Icon'
 import { DataUser } from './DataUser'
 import { Typography } from '../Typography'
 import { Button } from '../Button'
-import { User, DataBank } from './Data'
+import { User, DataBank } from './AccountDataType'
 import { DataAccount } from './DataAccount'
+import { data } from 'cypress/types/jquery'
 
 export interface DetailProps {
+  /*
+   * Objeto referente aos dados do usuário, para esse objeto deve ser passado:
+   * BU, nome da conta, cpf ou cnpj.
+   */
   dataUser: User
+  /*
+   * Objeto referente aos dados da conta, nesse objeto deve ser passado:
+   * nome do banco, número da agência, número da conta e o indentificador da conta.
+   */
   dataBank: DataBank
-  copy: () => void
 }
 
-export const Detail: React.FC<DetailProps> = ({ dataUser, dataBank, copy }) => {
+export const Detail: React.FC<DetailProps> = ({ dataUser, dataBank }) => {
   const [isActive, setIsActive] = useState(false)
-  console.log(isActive)
+
+  const copyAccountData = () => {
+    const datas = dataBank
+  }
 
   return (
     <Styled.Container data-testid='container'>
@@ -25,23 +36,15 @@ export const Detail: React.FC<DetailProps> = ({ dataUser, dataBank, copy }) => {
       <DataUser data-testid='data' dataUser={dataUser} />
       <Styled.Accordion data-testid='accordion' onClick={() => setIsActive(!isActive)}>
         <Styled.Arrow data-testid='arrow'>
-          {!isActive ? (
-            <Icon name='arrowDown' width={20} height={20}></Icon>
-          ) : (
-            <Icon name='arrowUp' width={20} height={20}></Icon>
-          )}
+          <Icon name={!isActive ? 'arrowDown' : 'arrowUp'} width={20} height={20}></Icon>
         </Styled.Arrow>
         <Styled.LabelAccordion data-testid='labelAccordion'>
-          {!isActive ? (
-            <Typography variant='subtitle'>Ver dados da conta</Typography>
-          ) : (
-            <Typography variant='subtitle'>Esconder dados da conta</Typography>
-          )}
+          <Typography variant='subtitle'>{!isActive ? 'Ver dados da conta' : 'Esconder dados da conta'}</Typography>
         </Styled.LabelAccordion>
       </Styled.Accordion>
       {isActive && <DataAccount data-testid='dataBank' dataBank={dataBank} />}
       <Styled.CopyData data-testid='copyData'>
-        <Button icon='share' size='small' onClick={copy}>
+        <Button icon='share' size='small' onClick={copyAccountData}>
           Copiar
         </Button>
       </Styled.CopyData>
@@ -49,9 +52,7 @@ export const Detail: React.FC<DetailProps> = ({ dataUser, dataBank, copy }) => {
         <Styled.Refresh data-testid='refresh'>
           <Icon name='refresh' width={20} height={20}></Icon>
         </Styled.Refresh>
-        <Styled.LabelChangeAccount data-testid='labelChangeAccount'>
-          <Typography variant='subtitle'>Trocar de conta</Typography>
-        </Styled.LabelChangeAccount>
+        <Styled.LabelChangeAccount data-testid='labelChangeAccount'>Trocar de conta</Styled.LabelChangeAccount>
       </Styled.ChangeAccount>
     </Styled.Container>
   )

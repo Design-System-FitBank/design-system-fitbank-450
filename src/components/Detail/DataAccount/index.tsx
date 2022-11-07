@@ -1,5 +1,5 @@
 import React from 'react'
-import { DataBank } from '../Data'
+import { DataBank } from '../AccountDataType'
 import { Typography } from '../../Typography'
 import * as Styled from './styles'
 

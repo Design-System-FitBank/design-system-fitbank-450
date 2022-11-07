@@ -19,15 +19,20 @@ export const Account = styled.div`
 `
 export const Identifier = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: ${({ theme }) => theme.sizes['4px']};
 `
 export const Label = styled.span`
   font-weight: 300;
+  font-size: ${({ theme }) => theme.sizes['14px']};
+  line-height: ${({ theme }) => theme.sizes['16px']};
   color: ${({ theme }) => theme.colors.primary};
 `
 export const UniqueIdentifier = styled.div`
   font-weight: 500;
+  font-size: ${({ theme }) => theme.sizes['14px']};
   padding-left: ${({ theme }) => theme.sizes['8px']};
-  padding-bottom: 4px;
+  padding-bottom: ${({ theme }) => theme.sizes['2px']};
   color: ${({ theme }) => theme.colors.primary};
 `
