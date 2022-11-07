@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
   width: 100%;
   display: flex;
-  border: 1px solid;
+  border: none;
   align-items: center;
   height: ${({ theme }) => theme.sizes['64px']};
   padding-left: ${({ theme }) => theme.sizes['12px']};
@@ -47,6 +47,21 @@ export const Wrap = styled.div`
 export const Avatar = styled.div`
   color: ${({ theme }) => theme.colors.light};
 `
+export const Home = styled.div`
+  color: ${({ theme }) => theme.colors.light};
+`
+export const Usuario = styled.div`
+  color: ${({ theme }) => theme.colors.light};
+  display: flex;
+  gap: 2px;
+  max-width: 170px;
+  overflow: hidden;
+`
 export const Span = styled.span`
-  padding-right: ${({ theme }) => theme.sizes['144px']};
+  top: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: ${({ theme }) => theme.sizes['15px']};
+  margin-right: ${({ theme }) => theme.sizes['28px']};
 `
