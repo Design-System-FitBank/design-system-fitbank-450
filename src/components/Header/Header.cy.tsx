@@ -1,13 +1,15 @@
 import React from 'react'
 import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
 import { Header } from '.'
+import { faker } from '@faker-js/faker'
 
 describe('Header Default', () => {
+  const text = faker.lorem.word()
   beforeEach(() => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Header onSearchChange={cy.stub().as('onSearchChange')} />
+        <Header onSearch={cy.stub().as('onSearch')} />
       </ThemeDSProvider>
     )
   })
@@ -51,5 +53,27 @@ describe('Header Default', () => {
 
   it('Deve mostrar o icone de Avatar do Usuario', () => {
     cy.get('[data-testid="avatar"]').should('exist').and('have.css', 'color', 'rgb(255, 255, 255)')
+  })
+
+  it('Deve a chamar a função onSearch', () => {
+    cy.get('[data-testid = "input"]').type(text)
+    cy.get('[data-testid = "lupa"]').click()
+    cy.get('@onSearch').should('have.been.calledWith', text)
+  })
+
+  it('Deve conter o nome de usuario', () => {
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Header onSearch={cy.stub().as('onSearch')} accountName={text} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid = "usuario"]')
+      .should('have.text', `Olá, ${text}`)
+      .and('have.css', 'color', 'rgb(255, 255, 255)')
+  })
+
+  it('Deve mostrar o icone de home', () => {
+    cy.get('[data-testid="home"]').should('exist').and('have.css', 'color', 'rgb(255, 255, 255)')
   })
 })
