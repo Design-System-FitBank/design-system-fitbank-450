@@ -15,8 +15,8 @@ export const Accordion = styled.div`
   display: flex;
   margin-top: ${({ theme }) => theme.sizes['16px']};
   cursor: pointer;
-`
 
+`
 export const Arrow = styled.div`
   padding-top: ${({ theme }) => theme.sizes['4px']};
   color: ${({ theme }) => theme.colors.primary};
@@ -32,15 +32,19 @@ export const CopyData = styled.div`
 
 export const ChangeAccount = styled.div`
   display: flex;
-  margin-top: 16px;
+  margin-top: ${({ theme }) => theme.sizes['28px']};
   cursor: pointer;
+  align-items: center;
 `
 export const Refresh = styled.div`
-  padding-top: ${({ theme }) => theme.sizes['4px']};
   color: ${({ theme }) => theme.colors.primary};
 `
 
 export const LabelChangeAccount = styled.div`
+  font-weight: 500;
+  font-size: ${({ theme }) => theme.sizes['12px']};
+  line-height: ${({ theme }) => theme.sizes['14px']};
   color: ${({ theme }) => theme.colors.primary};
-  padding-left: ${({ theme }) => theme.sizes['12px']};
+  padding-left: ${({ theme }) => theme.sizes['8px']};
+  padding-bottom: 4px;
 `

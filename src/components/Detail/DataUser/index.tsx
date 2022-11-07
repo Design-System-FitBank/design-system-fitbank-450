@@ -1,5 +1,5 @@
 import React from 'react'
-import { User } from '../Data'
+import { User } from '../AccountDataType'
 import { Typography } from '../../Typography'
 import * as Styled from './styles'
 
@@ -14,7 +14,7 @@ export const DataUser: React.FC<DataUserProps> = ({ dataUser }) => {
         <Typography variant='subtitle'>{dataUser.businessUnit}</Typography>
       </Styled.BU>
       <Styled.Account data-testid='account'>
-        <Typography variant='bodySmall'>{dataUser.accountName}</Typography>
+        <Typography variant='body'>{dataUser.accountName}</Typography>
       </Styled.Account>
       <Styled.Identifier data-testid='wrap'>
         <Styled.Label data-testid='labelIdentifier'>CPF/CNPJ:</Styled.Label>
