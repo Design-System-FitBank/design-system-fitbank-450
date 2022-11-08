@@ -1,8 +1,8 @@
 import React from 'react'
-import { LogoPrimary } from './logos/LogoPrimary'
-import { LogoSecundary } from './logos/LogoSecundary'
-import { LogoSmallPrimary } from './logos/LogoSmallPrimary'
-import { LogoSmallSecundary } from './logos/LogoSmallSecundary'
+import { LogoPrimary } from './Logos/LogoPrimary'
+import { LogoSecundary } from './Logos/LogoSecundary'
+import { LogoSmallPrimary } from './Logos/LogoSmallPrimary'
+import { LogoSmallSecundary } from './Logos/LogoSmallSecundary'
 
 interface LogoProps {
   /**
