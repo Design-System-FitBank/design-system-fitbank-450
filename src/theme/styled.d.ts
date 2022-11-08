@@ -57,6 +57,7 @@ declare module 'styled-components' {
       '40px': string
       '46px': string
       '48px': string
+      '50px': string
       '52px': string
       '54px': string
       '56px': string

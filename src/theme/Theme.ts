@@ -48,6 +48,7 @@ export const Theme = {
     '40px': '2.5rem',
     '46px': '2.875rem',
     '48px': '3rem',
+    '50px': '3.125rem',
     '52px': '3.25rem',
     '54px': '3.375rem',
     '56px': '3.5rem',
