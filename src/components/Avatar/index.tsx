@@ -9,14 +9,18 @@ interface AvatarProps {
    * PJ referente à pessoa jurídica.
    */
   type: 'PF' | 'PJ'
+  /**
+   * Troca a cor de fundo do avatar
+   */
+  secondary?: boolean
 }
 
-export const Avatar: React.FC<AvatarProps> = ({ type }) => {
+export const Avatar: React.FC<AvatarProps> = ({ type, secondary = false }) => {
   const name = type === 'PF' ? 'user' : 'enterprise'
 
   return (
-    <Styled.Container data-testid='container'>
-      <Styled.Icon data-testid='icon'>
+    <Styled.Container data-testid='container' secondary={secondary}>
+      <Styled.Icon data-testid='icon' secondary={secondary}>
         <Icon name={name} />
       </Styled.Icon>
     </Styled.Container>

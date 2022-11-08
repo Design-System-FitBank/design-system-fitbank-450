@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.circle`
+export const Container = styled.circle<{secondary: boolean}>`
   display: flex;
   position: relative;
   align-items: center;
@@ -9,10 +9,10 @@ export const Container = styled.circle`
   width: ${({ theme }) => theme.sizes['50px']};
   height: ${({ theme }) => theme.sizes['50px']};
   border-radius: ${({ theme }) => theme.sizes['50px']};
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ secondary, theme }) => secondary ? theme.colors.light : theme.colors.primary};
 `
 
-export const Icon = styled.div`
+export const Icon = styled.div<{ secondary: boolean }>`
   position: absolute;
-  color: ${({ theme }) => theme.colors.light};
+  color: ${({ secondary, theme }) => secondary ? theme.colors.primary : theme.colors.light};
 `

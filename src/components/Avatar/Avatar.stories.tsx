@@ -14,6 +14,11 @@ export const PF = Template.bind({})
 PF.args = {
   type: 'PF'
 }
+export const Secondary = Template.bind({})
+Secondary.args = {
+  type: 'PF',
+  secondary: true
+}
 
 export const PJ = Template.bind({})
 PJ.args = {
