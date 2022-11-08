@@ -33,8 +33,13 @@ interface SidebarProps {
 
 export const Sidebar = ({ navButtonList, onSignOut }: SidebarProps) => {
   const [isOpen, setIsOpen] = useState(true)
+  const [isExpandedUserDetail, setIsExpandedUserDetail] = useState(false)
   const arrowIconTransition = isOpen ? 'arrowLeft' : 'arrowRight'
   const mainLogoTransition = isOpen ? 'default' : 'smallPrimary'
+
+  const handleExpandUserDetail = () => {
+    setIsExpandedUserDetail(!isExpandedUserDetail)
+  }
 
   return (
     <Styled.Container isClosed={!isOpen} data-testid='sidebar-container'>
@@ -47,9 +52,15 @@ export const Sidebar = ({ navButtonList, onSignOut }: SidebarProps) => {
         {isOpen && <Typography variant='caption'>Reduzir</Typography>}
       </Styled.CloseNavBar>
 
-      <Styled.AccountDetail data-testid='user-detail' onClick={() => setIsOpen(!isOpen)} isClosed={!isOpen}>
+      <Styled.AccountDetail
+        data-testid='user-detail'
+        isClosed={!isOpen}
+        onClick={() => handleExpandUserDetail()}
+        isAccordeon={isExpandedUserDetail}
+      >
         <Icon name='user' width={24} height={24} />
         {isOpen && 'User Detail component'}
+        {isExpandedUserDetail && <Typography variant='subtitle'>CPF/CNPJ ...</Typography>}
       </Styled.AccountDetail>
 
       <Styled.ButtonsGrid data-testid='nav-button-grid' isClosed={!isOpen}>

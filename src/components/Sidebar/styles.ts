@@ -14,7 +14,7 @@ export const LogoContainer = styled.div<{ isClosed: boolean }>`
   height: ${({ theme }) => theme.sizes['38px']};
 
   margin: ${({ isClosed }) => isClosed ? '20px 4px' : '20px 0px'};
-
+  
   transition: 1s;
 `
 
@@ -32,13 +32,13 @@ export const CloseNavBar = styled.div<{ isClosed: boolean }>`
   transition: 1s;
 `
 
-export const AccountDetail = styled.div<{ isClosed: boolean }>`
+export const AccountDetail = styled.div<{ isClosed: boolean, isAccordeon: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  height: ${({ isClosed }) => isClosed ? '80px' : '300px'};
+  height: ${({ isClosed, isAccordeon }) => isClosed ? '80px' : isAccordeon ? '400px' : '300px'};
   text-align: center;
   transition: 1s;
 `
