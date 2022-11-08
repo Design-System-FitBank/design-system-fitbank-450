@@ -9,7 +9,11 @@ describe('Header Default', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Header onSearch={cy.stub().as('onSearch')} />
+        <Header
+          onSearch={cy.stub().as('onSearch')}
+          accountName={text}
+          onClickOptions={cy.stub().as('onClickOptions')}
+        />
       </ThemeDSProvider>
     )
   })
@@ -52,7 +56,7 @@ describe('Header Default', () => {
   })
 
   it('Deve mostrar o icone de Avatar do Usuario', () => {
-    cy.get('[data-testid="avatar"]').should('exist').and('have.css', 'color', 'rgb(255, 255, 255)')
+    cy.get('[data-testid="avatar"]').should('exist')
   })
 
   it('Deve a chamar a função onSearch', () => {
@@ -61,19 +65,28 @@ describe('Header Default', () => {
     cy.get('@onSearch').should('have.been.calledWith', text)
   })
 
-  it('Deve conter o nome de usuario', () => {
+  it('Deve conter o nome de Usuario', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Header onSearch={cy.stub().as('onSearch')} accountName={text} />
+        <Header
+          onSearch={cy.stub().as('onSearch')}
+          accountName={text}
+          onClickOptions={cy.stub().as('onClickOptions')}
+        />
       </ThemeDSProvider>
     )
     cy.get('[data-testid = "usuario"]')
-      .should('have.text', `Olá, ${text}`)
+      .should('contain.text', 'Olá,')
+      .and('contain.text', text)
       .and('have.css', 'color', 'rgb(255, 255, 255)')
   })
 
-  it('Deve mostrar o icone de home', () => {
-    cy.get('[data-testid="home"]').should('exist').and('have.css', 'color', 'rgb(255, 255, 255)')
+  it('Deve mostrar o icone de Options', () => {
+    cy.get('[data-testid="options"]').should('exist').and('have.css', 'color', 'rgb(255, 255, 255)')
+  })
+  it('Deve chamar a função onOptionsClick', () => {
+    cy.get('[data-testid="opt"]').click().wait(350)
+    cy.get('@onClickOptions').should('have.been.called')
   })
 })
