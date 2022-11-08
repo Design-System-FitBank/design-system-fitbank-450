@@ -1,7 +1,7 @@
 import React from 'react'
 import { faker } from '@faker-js/faker'
 import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
-import { InputRadio } from '.'
+import { Radio } from '.'
 
 describe('InputRadio', () => {
   const title = faker.lorem.words()
@@ -11,7 +11,7 @@ describe('InputRadio', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <InputRadio title={title} optionsList={list} />
+        <Radio title={title} optionsList={list} />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="radio-container"]')
@@ -49,5 +49,6 @@ describe('InputRadio', () => {
       )
       cy.contains(text).should('exist').and('have.text', text)
     })
+
   })
 })

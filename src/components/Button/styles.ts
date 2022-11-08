@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 type ButtonProps = {
   size?: string
@@ -89,21 +89,4 @@ export const Tertiary = styled(Container)<ButtonProps>`
   :disabled {
     color: ${({ theme }) => theme.colors.disabled};
   }
-`
-
-export const Icon = styled.div<ButtonProps>`
-  width: ${({ size, theme }) => (size === 'small' ? theme.sizes['20px'] : theme.sizes['32px'])};
-  height: ${({ size, theme }) => (size === 'small' ? theme.sizes['20px'] : theme.sizes['32px'])};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
-export const BoxLabel = styled.div<ButtonProps>`
-  width: ${({ size, theme }) => (size === 'small' ? theme.sizes['62px'] : theme.sizes['82px'])};
-  height: ${({ size, theme }) => (size === 'small' ? theme.sizes['14px'] : theme.sizes['19px'])};
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `

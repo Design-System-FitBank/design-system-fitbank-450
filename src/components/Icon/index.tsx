@@ -61,6 +61,9 @@ import { UserSearch } from './icons/UserSearch'
 import { WithdrawMoney } from './icons/WithdrawMoney'
 import { Xlsx } from './icons/Xlsx'
 import { QrCodeOut } from './icons/QrCodeOut'
+import { EyeClose } from './icons/EyeClose'
+import { EyeOpen } from './icons/EyeOpen'
+import { Checked } from './icons/Checked'
 
 export interface IconsProps {
   /**
@@ -88,6 +91,7 @@ export interface IconsProps {
     | 'card'
     | 'cardMulti'
     | 'changeAccount'
+    | 'checked'
     | 'code'
     | 'cnh'
     | 'details'
@@ -97,6 +101,7 @@ export interface IconsProps {
     | 'edit'
     | 'email'
     | 'enterprise'
+    | 'eyeClose'
     | 'favorite'
     | 'favoriteAdd'
     | 'favoriteRemove'
@@ -139,6 +144,7 @@ export interface IconsProps {
     | 'userSearch'
     | 'withdrawMoney'
     | 'xlsx'
+    | 'eyeOpen'
 }
 
 export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) => {
@@ -178,6 +184,9 @@ export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) =>
 
     case 'changeAccount':
       return <ChangeAccount data-testid='changeAccount' width={width} height={height} />
+
+    case 'checked':
+      return <Checked data-testid='checked' width={width} height={height} />
 
     case 'code':
       return <Code data-testid='code' width={width} height={height} />
@@ -328,6 +337,12 @@ export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) =>
 
     case 'xlsx':
       return <Xlsx data-testid='xlsx' width={width} height={height} />
+
+    case 'eyeClose':
+      return <EyeClose data-testid='eyeClose' width={width} height={height} />
+
+    case 'eyeOpen':
+      return <EyeOpen data-testid='eyeOpen' width={width} height={height} />
 
     default:
       return <div></div>

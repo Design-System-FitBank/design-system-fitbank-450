@@ -17,7 +17,7 @@ describe('Button Default', () => {
         <Button onClick={cy.stub().as('onClick')}>{label}</Button>
       </ThemeDSProvider>
     )
-      .get('[data-testeid="button"]')
+      cy.get('[data-testeid="button"]')
       .should('have.css', 'display', 'flex')
       .and('have.css', 'justify-content', 'center')
       .and('have.css', 'align-items', 'center')
@@ -28,8 +28,8 @@ describe('Button Default', () => {
       .and('have.css', 'background-color', 'rgb(50, 55, 81)')
       .and('have.css', 'border', '1px solid rgb(50, 55, 81)')
 
-    cy.get('[data-testeid="iconPrefix"]').should('be.empty')
-    cy.get('[data-testeid="iconSuffix"]').should('be.empty')
+    cy.get('.sc-dkrFOg > :nth-child(1)').should('be.empty')
+    cy.get('.sc-dkrFOg > :nth-child(3)').should('be.empty')
   })
 
   it('Deve ser o componente Default quando for passado icon', () => {
@@ -41,11 +41,12 @@ describe('Button Default', () => {
         </Button>
       </ThemeDSProvider>
     )
-    cy.get('[data-testeid="iconPrefix"]').should('not.be.empty')
-    cy.get('[data-testeid="iconSuffix"]').should('be.empty')
+    cy.get('.sc-dkrFOg > :nth-child(1)').should('not.be.empty')
+    cy.get(`[data-testid=${icon}]`).should('exist')
+    cy.get('.sc-dkrFOg > :nth-child(3)').should('be.empty')
   })
 
-  it('Deve ser o componente Default quando for passado icon e inconRight true', () => {
+  it('Deve ser o componente Default quando for passado icon e iconRight true', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
@@ -54,8 +55,8 @@ describe('Button Default', () => {
         </Button>
       </ThemeDSProvider>
     )
-    cy.get('[data-testeid="iconPrefix"]').should('be.empty')
-    cy.get('[data-testeid="iconSuffix"]').should('not.be.empty')
+    cy.get('.sc-dkrFOg > :nth-child(1)').should('be.empty')
+    cy.get('.sc-dkrFOg > :nth-child(3)').should('not.be.empty')
   })
 
   it('Deve ser o componente Default quando o estado for hover', () => {
@@ -329,69 +330,5 @@ describe('Button Size', () => {
       .and('have.css', 'line-height', '14px')
       .and('have.css', 'border-radius', '8px')
       .and('have.css', 'padding', '4px 12px')
-  })
-})
-
-describe('Button Icon Position', () => {
-  beforeEach(() => cy.wait(100))
-  afterEach(() => cy.wait(100))
-  const label = faker.lorem.word()
-  const icon = <Icon name='home' width={32} height={32} />
-
-  it('Deve ter um ícone por padrão a esquerda', () => {
-    cy.mount(
-      <ThemeDSProvider theme={Theme}>
-        <GlobalStyles />
-        <Button icon={icon} onClick={cy.stub().as('onClick')}>
-          {label}
-        </Button>
-      </ThemeDSProvider>
-    )
-      .get('[data-testeid="iconSuffix"]')
-      .should('have.css', 'width', '32px')
-      .and('have.css', 'height', '32px')
-      .and('have.css', 'color', 'rgb(255, 255, 255)')
-  })
-
-  it('Deve ter um ícone à esquerda do label', () => {
-    cy.mount(
-      <ThemeDSProvider theme={Theme}>
-        <GlobalStyles />
-        <Button icon={icon} iconRight={false} onClick={cy.stub().as('onClick')}>
-          {label}
-        </Button>
-      </ThemeDSProvider>
-    )
-    cy.get('[data-testeid="iconPrefix"]').should('not.be.empty')
-    cy.get('[data-testeid="iconSuffix"]').should('be.empty')
-  })
-
-  it('Deve ter um ícone à direita do label', () => {
-    cy.mount(
-      <ThemeDSProvider theme={Theme}>
-        <GlobalStyles />
-        <Button icon={icon} iconRight={true} onClick={cy.stub().as('onClick')}>
-          {label}
-        </Button>
-      </ThemeDSProvider>
-    )
-    cy.get('[data-testeid="iconPrefix"]').should('be.empty')
-    cy.get('[data-testeid="iconSuffix"]').should('not.be.empty')
-  })
-})
-describe('Button Function', () => {
-  beforeEach(() => cy.wait(100))
-  afterEach(() => cy.wait(100))
-  const label = faker.lorem.word()
-  const icon = 'home'
-  it('Deve chamar uma função ao clicar', () => {
-    cy.mount(
-      <ThemeDSProvider theme={Theme}>
-        <GlobalStyles />
-        <Button onClick={cy.stub().as('onClick')}>{label}</Button>
-      </ThemeDSProvider>
-    )
-    cy.get('[data-testeid="button"]').click()
-    cy.get('@onClick').should('have.been.calledOnce')
   })
 })

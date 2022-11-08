@@ -35,7 +35,6 @@ export const Secondary = Template.bind({})
 Secondary.args = {
   children: 'Secondary',
   icon: 'home',
-  size: 'large',
   type: 'secondary',
   onClick: () => {}
 }
@@ -44,7 +43,6 @@ export const Tertiary = Template.bind({})
 Tertiary.args = {
   children: 'Tertiary',
   icon: 'home',
-  size: 'large',
   type: 'tertiary',
   onClick: () => {}
 }
