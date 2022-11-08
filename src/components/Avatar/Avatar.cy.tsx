@@ -25,9 +25,21 @@ describe('Avatar Component', () => {
       .and('have.css', 'padding-top', '4px')
     cy.get(`[data-testid="icon"]`).should('have.css', 'color', 'rgb(255, 255, 255)')
   })
+  it('deve mostrar o componente default com fundo branco', () => {
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Avatar type='PF' secondary/>
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="container"]')
+      .and('have.css', 'background-color', 'rgb(255, 255, 255)')
+      .and('have.css', 'border-radius', '50px')
+    cy.get(`[data-testid="icon"]`).should('have.css', 'color', 'rgb(50, 55, 81)')
+  })
 
   it('deve mostrar icone user quando passado PF', () => {
-  
+
     cy.get('[data-testid="user"]').should('be.visible')
   })
 
