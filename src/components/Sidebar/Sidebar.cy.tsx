@@ -9,48 +9,12 @@ import { Sidebar, NavButtonListProps } from '.'
 
 describe('Sidebar', () => {
   const navButtonList: NavButtonListProps[] = [
-    {
-      label: 'Transferencia',
-      icon: 'moneyTransfer',
-      onClick: () => {
-        cy.stub().as('')
-      }
-    },
-    {
-      label: 'Area Pix',
-      icon: 'pix',
-      onClick: () => {
-        cy.stub().as('')
-      }
-    },
-    {
-      label: 'Pagamento',
-      icon: 'payment',
-      onClick: () => {
-        cy.stub().as('')
-      }
-    },
-    {
-      label: 'Recarga',
-      icon: 'topup',
-      onClick: () => {
-        cy.stub().as('')
-      }
-    },
-    {
-      label: 'Agendamento',
-      icon: 'calendar',
-      onClick: () => {
-        cy.stub().as('')
-      }
-    },
-    {
-      label: 'Cartões',
-      icon: 'cardMulti',
-      onClick: () => {
-        cy.stub().as('')
-      }
-    }
+    { label: 'Transferencia', icon: 'moneyTransfer', onClick: () => { cy.stub().as('') }},
+    { label: 'Area Pix', icon: 'pix', onClick: () => { cy.stub().as('') }},
+    { label: 'Pagamento', icon: 'payment', onClick: () => { cy.stub().as('') }},
+    { label: 'Recarga', icon: 'topup', onClick: () => { cy.stub().as('') }},
+    { label: 'Agendamento', icon: 'calendar', onClick: () => { cy.stub().as('') }},
+    { label: 'Cartões', icon: 'cardMulti', onClick: () => { cy.stub().as('') }}
   ]
 
   beforeEach(() => {
@@ -69,7 +33,7 @@ describe('Sidebar', () => {
 
   it('Deve conter o componente Sidebar', () => {
     cy.get('[data-testid = "sidebar-container"]')
-      .should('have.css', 'background-color', 'rgb(249, 249, 249)')
+      .should('have.css', 'background-color', 'rgb(232, 232, 232)')
       .and('have.css', 'height', '500px')
       .and('have.css', 'width', '320px')
     cy.get('[data-testid = "logo-container"]')
@@ -107,5 +71,13 @@ describe('Sidebar', () => {
       .and('have.css', 'gap', '12px')
       .and('have.css', 'font-weight', '500')
       .and('have.css', 'cursor', 'pointer')
+  })
+
+  it('Deve conter o componente Sidebar com o fechado', () => {
+    cy.get('[data-testid = "close-button-container"]').click()
+  })
+
+  it('Deve conter o componente Sidebar aberto depois de ter sido fechado', () => {
+    cy.get('[data-testid = "close-button-container"]').wait(700).click()
   })
 })
