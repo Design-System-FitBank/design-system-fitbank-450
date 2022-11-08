@@ -2,13 +2,13 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 100%;
-  display: flex;
   border: none;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   height: ${({ theme }) => theme.sizes['64px']};
   padding-left: ${({ theme }) => theme.sizes['12px']};
   background-color: ${({ theme }) => theme.colors.primary};
-  justify-content: space-between;
 `
 export const Input = styled.input`
   overflow-x: hidden;
@@ -44,17 +44,15 @@ export const Wrap = styled.div`
   position: relative;
   align-items: center;
 `
-export const Avatar = styled.div`
+export const Options = styled.div`
   color: ${({ theme }) => theme.colors.light};
+  cursor: pointer;
 `
-export const Home = styled.div`
-  color: ${({ theme }) => theme.colors.light};
-`
-export const Usuario = styled.div`
+export const User = styled.div`
   color: ${({ theme }) => theme.colors.light};
   display: flex;
-  gap: 2px;
-  max-width: 170px;
+  gap: ${({ theme }) => theme.sizes['2px']};
+  max-width: ${({ theme }) => theme.sizes['174px']};
   overflow: hidden;
 `
 export const Span = styled.span`

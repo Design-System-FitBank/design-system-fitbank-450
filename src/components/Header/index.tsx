@@ -1,21 +1,25 @@
 import { Icon } from '../Icon'
-import React, { Children, useState } from 'react'
+import React, { useState } from 'react'
 import * as Styled from './styles'
 import { Typography } from '../Typography'
+import { Avatar } from '../Avatar'
 
 interface HeaderProps {
   /**
    * Função que capta os valores digitados no campo de entrada de texto
    */
   onSearch: (text: string) => void
+  onClickOptions: () => void
+
   /**
    * Variável que ira retornar o nome do Usuario.
    */
   accountName?: string
 }
 
-export const Header = ({ onSearch, accountName = 'Usuario' }: HeaderProps) => {
+export const Header = ({ onSearch, accountName = 'User', onClickOptions }: HeaderProps) => {
   const [textValue, setTextValue] = useState<string>()
+  const username = accountName.replaceAll(' ', '')
 
   const handleChange = (event: any) => {
     let textEntry: string = event.target.value
@@ -34,17 +38,15 @@ export const Header = ({ onSearch, accountName = 'Usuario' }: HeaderProps) => {
           <Icon width={24} height={24} name='search' />
         </Styled.Search>
       </Styled.Wrap>
-      <Styled.Span>
-        <Styled.Avatar data-testid='avatar'>
-          <Icon width={35} height={35} name='user' />
-        </Styled.Avatar>
-        <Styled.Usuario data-testid='usuario'>
-          <Typography variant='body'>Olá,</Typography>
-          <Typography variant='body'>{accountName ? accountName : 'usuario'}</Typography>
-        </Styled.Usuario>
-        <Styled.Home data-testid='home'>
-          <Icon width={22} height={22} name='options' />
-        </Styled.Home>
+      <Styled.Span data-testid='avatar'>
+        <Avatar secondary small type='PF' />
+        <Styled.User data-testid='usuario'>
+          <Typography variant='body'>Olá, </Typography>
+          <Typography variant='body'>{username}</Typography>
+        </Styled.User>
+        <Styled.Options data-testid='opt' onClick={() => onClickOptions()}>
+          <Icon width={24} height={24} name='options' />
+        </Styled.Options>
       </Styled.Span>
     </Styled.Container>
   )
