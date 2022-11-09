@@ -11,7 +11,7 @@ export default {
 const Template: ComponentStory<typeof Detail> = args => <Detail {...args} />
 
 export const Default = Template.bind({})
-export const Open = Template.bind({})
+export const Collapsed = Template.bind({})
 Default.args = {
   dataUser: {
     businessUnit: 'ACME bank',
@@ -26,7 +26,8 @@ Default.args = {
   }
 }
 
-Open.args = {
+Collapsed.args = {
+  collapsed: true,
   dataUser: {
     businessUnit: 'ACME bank',
     accountName: 'kimbap asian food litda',

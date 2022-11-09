@@ -10,6 +10,12 @@ import { Avatar } from '../Avatar'
 
 export interface DetailProps {
   /*
+   * variável referente ao estado em que se encontra o compoente:
+   * false estado de visibilidade dos dados da conta.
+   * true estado sem visibilidade dos dados da conta.
+   */
+  collapsed: boolean
+  /*
    * Objeto referente aos dados do usuário, para esse objeto deve ser passado:
    * BU, nome da conta, cpf ou cnpj.
    */
@@ -21,7 +27,7 @@ export interface DetailProps {
   dataBank: DataBank
 }
 
-export const Detail: React.FC<DetailProps> = ({ dataUser, dataBank }) => {
+export const Detail: React.FC<DetailProps> = ({ dataUser, dataBank, collapsed = false }) => {
   const [isActive, setIsActive] = useState(false)
 
   const copyAccountData = () => {
@@ -30,7 +36,7 @@ export const Detail: React.FC<DetailProps> = ({ dataUser, dataBank }) => {
 
   return (
     <Styled.Container data-testid='container'>
-      <Styled.Accordion data-testid='accordion' isOpen={isActive}>
+      <Styled.Accordion data-testid='accordion' isOpen={isActive} collapsed={collapsed}>
         <Styled.Avatar data-testid='avatar'>
           <Avatar type='PJ' />
         </Styled.Avatar>
@@ -45,16 +51,26 @@ export const Detail: React.FC<DetailProps> = ({ dataUser, dataBank }) => {
         </Styled.ButtonData>
         <DataAccount data-testid='dataBank' dataBank={dataBank} />
       </Styled.Accordion>
-      <Styled.CopyData data-testid='copyData'>
-        <Button icon='share' size='small' onClick={copyAccountData}>
-          Copiar
-        </Button>
+      <Styled.CopyData data-testid='copyData' isOpen={isActive}>
+        {collapsed ? (
+          <Styled.Collapsed data-testid='buttonCollapsed'>
+            <Styled.IconCollapsed data-testid='iconCollapsed'>
+              <Icon name='share' width={20} height={20} />
+            </Styled.IconCollapsed>
+          </Styled.Collapsed>
+        ) : (
+          <Button icon='share' size='small' onClick={copyAccountData}>
+            Copiar
+          </Button>
+        )}
       </Styled.CopyData>
       <Styled.ChangeAccount data-testid='changeAccount'>
         <Styled.Refresh data-testid='refresh'>
           <Icon name='refresh' width={24} height={24}></Icon>
         </Styled.Refresh>
-        <Styled.LabelChangeAccount data-testid='labelChangeAccount'>Trocar conta</Styled.LabelChangeAccount>
+        {!collapsed && (
+          <Styled.LabelChangeAccount data-testid='labelChangeAccount'>Trocar conta</Styled.LabelChangeAccount>
+        )}
       </Styled.ChangeAccount>
     </Styled.Container>
   )
