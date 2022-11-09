@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div<{ isClosed: boolean }>`
-  background-color: ${({ theme }) => theme.colors.disabled};
+  background-color: ${({ theme }) => theme.colors.textDisabled};
 
   height: 100vh;
   width: ${({ isClosed, theme }) => isClosed ? theme.sizes['62px'] : theme.sizes['320px']};
