@@ -16,7 +16,7 @@ export const SidebarNavigation = Template.bind({})
 SidebarNavigation.args = {
   navButtonList: [
     { label: 'Transferencia', icon: 'moneyTransfer', onClick: () => {} },
-    { label: 'Area Pix', icon: 'pix', onClick: () => {} },
+    { label: 'Área Pix', icon: 'pix', onClick: () => {} },
     { label: 'Pagamento', icon: 'payment', onClick: () => {} },
     { label: 'Recarga', icon: 'topup', onClick: () => {} },
     { label: 'Agendamento', icon: 'calendar', onClick: () => {} },
