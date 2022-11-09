@@ -14,5 +14,5 @@ const Template: ComponentStory<typeof Loading> = args => <Loading {...args} />
 export const LoadingComponent = Template.bind({})
 
 LoadingComponent.args = {
-  
+  text: 'Aguarde...'
 }
