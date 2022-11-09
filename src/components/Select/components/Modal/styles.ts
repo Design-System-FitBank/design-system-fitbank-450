@@ -45,7 +45,7 @@ export const ModalContent = styled.div<{ isOpen: boolean }>`
   }
 
   &::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.colors.textDisabled};
+    background: ${({ theme }) => theme.colors.disabled};
     border-radius: ${({ theme }) => theme.sizes['20px']};
   }
 
