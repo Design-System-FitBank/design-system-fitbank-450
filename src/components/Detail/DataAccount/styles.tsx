@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
   text-align: center;
   margin-top: ${({ theme }) => theme.sizes['16px']};
+  width: auto;
 `
 export const LabelBank = styled.div`
   color: ${({ theme }) => theme.colors.primary};

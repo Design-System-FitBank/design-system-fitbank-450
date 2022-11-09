@@ -69,6 +69,7 @@ declare module 'styled-components' {
       '90px': string
       '96px': string
       '108px': string
+      '140px': string
       '142px': string
       '144px': string
       '160px': string
@@ -76,7 +77,7 @@ declare module 'styled-components' {
       '210px': string
       '235px': string
       '255px': string
-      '255px': string
+      '260px': string
       '287px': string
       '320px': string
     }

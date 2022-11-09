@@ -25,13 +25,14 @@ export const Identifier = styled.div`
 `
 export const Label = styled.span`
   font-weight: 300;
-  font-size: ${({ theme }) => theme.sizes['14px']};
+  font-size: ${({ theme }) => theme.sizes['16px']};
   line-height: ${({ theme }) => theme.sizes['16px']};
   color: ${({ theme }) => theme.colors.primary};
 `
 export const UniqueIdentifier = styled.div`
   font-weight: 500;
-  font-size: ${({ theme }) => theme.sizes['14px']};
+  font-size: ${({ theme }) => theme.sizes['16px']};
+  line-height: ${({ theme }) => theme.sizes['16px']};
   padding-left: ${({ theme }) => theme.sizes['8px']};
   padding-bottom: ${({ theme }) => theme.sizes['2px']};
   color: ${({ theme }) => theme.colors.primary};
