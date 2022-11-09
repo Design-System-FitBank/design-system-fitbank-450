@@ -12,7 +12,7 @@ describe('Loading', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Loading children='Loading...' />
+        <Loading text='Loading...' />
       </ThemeDSProvider>
     )
     cy.wait(100)
@@ -22,9 +22,18 @@ describe('Loading', () => {
     cy.wait(100)
   })
 
-  it('Deve conter', () => {
+  it('Deve conter o componente Loading', () => {
+    cy.get('[data-testid = "container"]')
+      .should('have.css', 'width', '500px')
+      .and('have.css', 'height', '500px')
+      .and('have.css', 'display', 'flex')
+      .and('have.css', 'flex-direction', 'column')
+      .and('have.css', 'justify-content', 'center')
+      .and('have.css', 'gap', '16px')
     cy.get('[data-testid = "loader-container"]')
-      .should('have.css', 'width', '100vw')
-      .and('have.css', 'height', '100vh')
+      .should('have.css', 'animation', '0.8s ease 0s infinite normal none running kSzaaH')
+      .and('have.css', 'border-right-color', 'rgb(50, 55, 81)')
+      .and('have.css', 'border-right-color', 'rgb(50, 55, 81)')
+      .and('have.css', 'border-radius', '50%')
   })
 })
