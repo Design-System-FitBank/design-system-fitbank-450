@@ -8,6 +8,8 @@ interface LoadingProps {
 
 export const Loading: React.FC<LoadingProps> = ({ children = 'Loading' }) => {
   return (
-    <Styled.Container>{children}</Styled.Container>
+    <Styled.Container data-testid='loader-container'>
+      <Styled.Loader />
+    </Styled.Container>
   )
 }
