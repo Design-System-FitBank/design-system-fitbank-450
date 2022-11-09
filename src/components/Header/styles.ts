@@ -11,9 +11,9 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.primary};
 `
 export const Input = styled.input`
+  width: 100%;
   overflow-x: hidden;
   height: ${({ theme }) => theme.sizes['38px']};
-  width: ${({ theme }) => theme.sizes['410px']};
 
   font-style: italic;
   font-size: ${({ theme }) => theme.sizes['12px']};
@@ -33,27 +33,29 @@ export const Input = styled.input`
   }
 `
 export const Search = styled.div`
-  top: 8px;
   cursor: pointer;
   position: absolute;
-  right: ${({ theme }) => theme.sizes['20px']};
+  top: ${({ theme }) => theme.sizes['8px']};
   color: ${({ theme }) => theme.colors.light};
+  right: ${({ theme }) => theme.sizes['20px']};
 `
 export const Wrap = styled.div`
+  width: 100%;
   display: flex;
   position: relative;
   align-items: center;
+  max-width: ${({ theme }) => theme.sizes['410px']};
 `
 export const Options = styled.div`
-  color: ${({ theme }) => theme.colors.light};
   cursor: pointer;
+  color: ${({ theme }) => theme.colors.light};
 `
 export const User = styled.div`
-  color: ${({ theme }) => theme.colors.light};
   display: flex;
-  gap: ${({ theme }) => theme.sizes['2px']};
-  max-width: ${({ theme }) => theme.sizes['174px']};
   overflow: hidden;
+  gap: ${({ theme }) => theme.sizes['2px']};
+  color: ${({ theme }) => theme.colors.light};
+  max-width: ${({ theme }) => theme.sizes['174px']};
 `
 export const Span = styled.span`
   top: 17px;

@@ -9,6 +9,10 @@ interface HeaderProps {
    * Função que capta os valores digitados no campo de entrada de texto
    */
   onSearch: (text: string) => void
+
+   /**
+   * Função que ira retornar a opção de menu
+   */
   onClickOptions: () => void
 
   /**
@@ -35,7 +39,7 @@ export const Header = ({ onSearch, accountName = 'User', onClickOptions }: Heade
           placeholder='Pesquise'
         />
         <Styled.Search data-testid='lupa' onClick={() => onSearch(textValue!)}>
-          <Icon width={24} height={24} name='search' />
+          <Icon name='search' width={24} height={24} />
         </Styled.Search>
       </Styled.Wrap>
       <Styled.Span data-testid='avatar'>
@@ -45,7 +49,7 @@ export const Header = ({ onSearch, accountName = 'User', onClickOptions }: Heade
           <Typography variant='body'>{username}</Typography>
         </Styled.User>
         <Styled.Options data-testid='opt' onClick={() => onClickOptions()}>
-          <Icon width={24} height={24} name='options' />
+          <Icon name='options' width={24} height={24} />
         </Styled.Options>
       </Styled.Span>
     </Styled.Container>
