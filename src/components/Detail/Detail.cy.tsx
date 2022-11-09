@@ -20,14 +20,15 @@ describe('Detail component', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Detail dataUser={dataUser} dataBank={dataBank} />
+        <Detail dataUser={dataUser} dataBank={dataBank} collapsed={false} />
       </ThemeDSProvider>
     )
   })
 
   it('deve mostrar componente default', () => {
-    cy.get('[data-testid="avatar"]').get('[data-testid="arrowDown"]').should('exist')
-    cy.get('[data-testid="avatar"]').get('[data-testid="arrowUp"]').should('not.exist')
+    cy.get('[data-testid="avatar"]').get('[data-testid="enterprise"]').should('exist')
+    cy.get('[data-testid="arrow"]').get('[data-testid="arrowDown"]').should('exist')
+    cy.get('[data-testid="arrow"]').get('[data-testid="arrowUp"]').should('not.exist')
     cy.get('[data-testid="businessUnit"]')
       .should('have.text', dataUser.businessUnit)
       .and('have.css', 'text-align', 'center')
@@ -54,7 +55,7 @@ describe('Detail component', () => {
       .and('have.css', 'color', 'rgb(50, 55, 81)')
     cy.get('[data-testid="changeAccount"]')
       .should('have.css', 'cursor', 'pointer')
-      .and('have.css', 'margin-top', '28px')
+      .and('have.css', 'margin-top', '24px')
     cy.get('[data-testid="refresh"]').should('have.css', 'color', 'rgb(50, 55, 81)')
     cy.get('[data-testid="labelChangeAccount"]')
       .should('have.css', 'padding-left', '8px')
@@ -88,5 +89,31 @@ describe('Detail component', () => {
     cy.get('[data-testid="labelNameBank"]').should('not.be.visible')
     cy.get('[data-testid="bank"]').should('not.be.visible')
     cy.get('[data-testid="labelBranch"]').should('not.be.visible')
+  })
+
+  it('deve mostrar o componente em estado collapsed', () => {
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Detail dataUser={dataUser} dataBank={dataBank} collapsed={true} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="avatar"]').get('[data-testid="enterprise"]').should('exist')
+    cy.get('[data-testid="buttonData"]').should('not.be.visible')
+    cy.get('[data-testid="arrow"]').should('not.be.visible')
+    cy.get('[data-testid="labelAccordion"]').should('not.be.visible')
+    cy.get('[data-testid="dataBank"]').should('not.be.visible')
+    cy.get('[data-testid="buttonCollapsed"]').get('[data-testid="share"]').should('be.visible')
+    cy.get('[data-testid="buttonCollapsed"]').should('have.css', 'justify-content', 'center')
+    cy.get('[data-testid="iconCollapsed"]')
+      .should('have.css', 'width', '46px')
+      .and('have.css', 'height', '28px')
+      .and('have.css', 'align-items', 'center')
+      .and('have.css', 'color', 'rgb(255, 255, 255)')
+      .and('have.css', 'background-color', 'rgb(50, 55, 81)')
+      .and('have.css', 'border-radius', '8px')
+      .and('have.css', 'padding-left', '12px')
+    cy.get('[data-testid="refresh"]').get('[data-testid="enterprise"]').should('exist')
+    cy.get('[data-testid="labelChangeAccount"]').should('not.exist')
   })
 })
