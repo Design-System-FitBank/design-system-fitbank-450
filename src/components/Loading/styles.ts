@@ -10,19 +10,22 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
 
-  align-items: center;
   display: flex;
+  align-items: center;
+  flex-direction: column;
   justify-content: center;
 
-  transform: scale(1);
+  gap: ${({ theme }) => theme.sizes['16px']};
 `
+
 export const Loader = styled.div`
-  animation-name: isRotating;
+  animation: ${isRotating} 0.8s infinite;
 
-  width: 50px;
-  height: 50px;
+  width: ${({ theme }) => theme.sizes['50px']};
+  height: ${({ theme }) => theme.sizes['50px']};
 
-  border: 6px solid #e5e5e5;
+  border: ${({ theme }) => theme.sizes['3px']} solid ${({ theme }) => theme.colors.greyLight};
   border-top-color: ${({ theme }) => theme.colors.primary};
+  border-right-color: ${({ theme }) => theme.colors.primary};
   border-radius: 50%;
 `

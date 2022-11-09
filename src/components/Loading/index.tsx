@@ -1,15 +1,17 @@
-import React, { ReactNode } from 'react'
+import { Typography } from '../Typography'
+import React from 'react'
 
 import * as Styled from './styles'
 
 interface LoadingProps {
-  children?: ReactNode
+  text?: string
 }
 
-export const Loading: React.FC<LoadingProps> = ({ children = 'Loading' }) => {
+export const Loading: React.FC<LoadingProps> = ({ text }) => {
   return (
-    <Styled.Container data-testid='loader-container'>
-      <Styled.Loader />
+    <Styled.Container data-testid='container'>
+      <Styled.Loader data-testid='loader-container' />
+      {text && <Typography variant='h6'>{text}</Typography>}
     </Styled.Container>
   )
 }
