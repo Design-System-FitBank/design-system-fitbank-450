@@ -33,7 +33,7 @@ describe('Sidebar', () => {
 
   it('Deve conter o componente Sidebar', () => {
     cy.get('[data-testid = "sidebar-container"]')
-      .should('have.css', 'background-color', 'rgb(232, 232, 232)')
+      .should('have.css', 'background-color', 'rgb(249, 249, 249)')
       .and('have.css', 'height', '500px')
       .and('have.css', 'width', '320px')
     cy.get('[data-testid = "logo-container"]')
