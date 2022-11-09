@@ -94,4 +94,15 @@ describe('Sidebar', () => {
     cy.get('[data-testid = "close-button-container"]').click()
     cy.get('[data-testid = "close-button-container"]').wait(700).click()
   })
+
+  it('Deve chamar a função onSignOut', () => {
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Sidebar navButtonList={navButtonList} onSignOut={cy.stub().as('onSignOut')}/>
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid = "sign-out-button"]').click()
+    cy.get('@onSignOut').should('have.been.called')
+  })
 })
