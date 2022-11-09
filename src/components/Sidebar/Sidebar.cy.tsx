@@ -73,7 +73,7 @@ describe('Sidebar', () => {
       .and('have.css', 'cursor', 'pointer')
   })
 
-  it('Deve conter o componente Sidebar com o fechado', () => {
+  it('Deve conter o componente Sidebar como fechado', () => {
     cy.get('[data-testid = "close-button-container"]').click()
     cy.get('[data-testid = "sidebar-container"]')
       .should('have.css', 'width', '62px')
