@@ -44,7 +44,7 @@ describe('Avatar Component', () => {
         <Avatar type='PF' small />
       </ThemeDSProvider>
     )
-    cy.get('[data-testid="container"]').and('have.css', 'width', '34px').and('have.css', 'height', '34px')
+    cy.get('[data-testid="container"]').and('have.css', 'width', '35px').and('have.css', 'height', '35px')
     cy.get('[data-testid="user"]').should('have.attr', 'width', '22').and('have.attr', 'height', '22')
   })
 

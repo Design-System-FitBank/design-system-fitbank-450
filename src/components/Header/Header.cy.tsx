@@ -31,7 +31,6 @@ describe('Header Default', () => {
     cy.get('[data-testid="input"]')
       .should('exist')
       .and('have.css', 'height', '38px')
-      .and('have.css', 'width', '410px')
       .and('have.css', 'border-radius', '10px')
       .and('have.attr', 'placeholder', 'Pesquise')
       .and('have.css', 'padding-left', '28px')
@@ -53,6 +52,7 @@ describe('Header Default', () => {
       .and('have.css', 'cursor', 'pointer')
       .get('[data-testid="wrap"]')
       .should('have.css', 'align-items', 'center')
+      .and('have.css', 'max-width', '410px')
   })
 
   it('Deve mostrar o icone de Avatar do Usuario', () => {
