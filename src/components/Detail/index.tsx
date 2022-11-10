@@ -14,7 +14,7 @@ export interface DetailProps {
    * false estado de visibilidade dos dados da conta.
    * true estado sem visibilidade dos dados da conta.
    */
-  collapsed: boolean
+  collapsed?: boolean
   /*
    * Objeto referente aos dados do usuário, para esse objeto deve ser passado:
    * BU, nome da conta, cpf ou cnpj.
@@ -25,13 +25,19 @@ export interface DetailProps {
    * nome do banco, número da agência, número da conta e o indentificador da conta.
    */
   dataBank: DataBank
+
+  /*
+   * Função que recebe o dados da conta após o click no botão copiar.
+   */
+  copyAccountData: (data: DataBank) => void
 }
 
-export const Detail: React.FC<DetailProps> = ({ dataUser, dataBank, collapsed = false }) => {
+export const Detail: React.FC<DetailProps> = ({ dataUser, dataBank, collapsed = false, copyAccountData }) => {
   const [isActive, setIsActive] = useState(false)
 
-  const copyAccountData = () => {
+  const handleCopy = () => {
     const datas = dataBank
+    copyAccountData(datas)
   }
 
   return (
@@ -43,7 +49,7 @@ export const Detail: React.FC<DetailProps> = ({ dataUser, dataBank, collapsed = 
         <DataUser data-testid='data' dataUser={dataUser} />
         <Styled.ButtonData data-testid='buttonData' onClick={() => setIsActive(!isActive)}>
           <Styled.Arrow data-testid='arrow'>
-            <Icon name={!isActive ? 'arrowDown' : 'arrowUp'} width={20} height={20}></Icon>
+            <Icon name={!isActive ? 'arrowDown' : 'arrowUp'} width={20} height={20} />
           </Styled.Arrow>
           <Styled.LabelAccordion data-testid='labelAccordion'>
             <Typography variant='bodySmall'>{!isActive ? 'Ver dados da conta' : 'Esconder dados da conta'}</Typography>
@@ -52,17 +58,17 @@ export const Detail: React.FC<DetailProps> = ({ dataUser, dataBank, collapsed = 
         <DataAccount data-testid='dataBank' dataBank={dataBank} />
       </Styled.Accordion>
       <Styled.CopyData data-testid='copyData' isOpen={isActive}>
-        {collapsed ? (
-          <Styled.Collapsed data-testid='buttonCollapsed'>
+        <Styled.Collapsed data-testid='buttonCopy'>
+          {collapsed ? (
             <Styled.IconCollapsed data-testid='iconCollapsed'>
               <Icon name='share' width={20} height={20} />
             </Styled.IconCollapsed>
-          </Styled.Collapsed>
-        ) : (
-          <Button icon='share' size='small' onClick={copyAccountData}>
-            Copiar
-          </Button>
-        )}
+          ) : (
+            <Button icon='share' size='small' onClick={handleCopy}>
+              Copiar
+            </Button>
+          )}
+        </Styled.Collapsed>
       </Styled.CopyData>
       <Styled.ChangeAccount data-testid='changeAccount'>
         <Styled.Refresh data-testid='refresh'>

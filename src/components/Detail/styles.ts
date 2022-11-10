@@ -21,13 +21,12 @@ export const Avatar = styled.div`
 `
 export const ButtonData = styled.span`
   display: inline-flex;
-  margin-top: 16px;
+  margin-top: ${({ theme }) => theme.sizes['16px']};
 `
 export const Collapsed = styled.div`
   display: flex;
   justify-content: center;
 `
-
 export const IconCollapsed = styled.div`
   display: flex;
   width: ${({ theme }) => theme.sizes['46px']};
@@ -39,12 +38,10 @@ export const IconCollapsed = styled.div`
   padding-left: ${({ theme }) => theme.sizes['12px']};
   cursor: pointer;
 `
-
 export const Arrow = styled.div`
   padding-top: ${({ theme }) => theme.sizes['4px']};
   color: ${({ theme }) => theme.colors.primary};
 `
-
 export const LabelAccordion = styled.div`
   color: ${({ theme }) => theme.colors.primary};
   padding-left: ${({ theme }) => theme.sizes['12px']};
@@ -53,7 +50,6 @@ export const LabelAccordion = styled.div`
 export const CopyData = styled.div<{ isOpen: boolean }>`
   margin-top: ${({ isOpen }) => (isOpen ? '16px' : '28px')}; ;
 `
-
 export const ChangeAccount = styled.div`
   display: flex;
   margin-top: ${({ theme }) => theme.sizes['24px']};
