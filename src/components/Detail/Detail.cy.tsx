@@ -20,7 +20,12 @@ describe('Detail component', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Detail dataUser={dataUser} dataBank={dataBank} collapsed={false} />
+        <Detail
+          dataUser={dataUser}
+          dataBank={dataBank}
+          collapsed={false}
+          copyAccountData={cy.stub().as('copyAccountData')}
+        />
       </ThemeDSProvider>
     )
   })
@@ -95,7 +100,12 @@ describe('Detail component', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Detail dataUser={dataUser} dataBank={dataBank} collapsed={true} />
+        <Detail
+          dataUser={dataUser}
+          dataBank={dataBank}
+          collapsed={true}
+          copyAccountData={cy.stub().as('copyAccountData')}
+        />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="avatar"]').get('[data-testid="enterprise"]').should('exist')
@@ -103,8 +113,8 @@ describe('Detail component', () => {
     cy.get('[data-testid="arrow"]').should('not.be.visible')
     cy.get('[data-testid="labelAccordion"]').should('not.be.visible')
     cy.get('[data-testid="dataBank"]').should('not.be.visible')
-    cy.get('[data-testid="buttonCollapsed"]').get('[data-testid="share"]').should('be.visible')
-    cy.get('[data-testid="buttonCollapsed"]').should('have.css', 'justify-content', 'center')
+    cy.get('[data-testid="buttonCopy"]').get('[data-testid="share"]').should('be.visible')
+    cy.get('[data-testid="buttonCopy"]').should('have.css', 'justify-content', 'center')
     cy.get('[data-testid="iconCollapsed"]')
       .should('have.css', 'width', '46px')
       .and('have.css', 'height', '28px')
@@ -115,5 +125,10 @@ describe('Detail component', () => {
       .and('have.css', 'padding-left', '12px')
     cy.get('[data-testid="refresh"]').get('[data-testid="enterprise"]').should('exist')
     cy.get('[data-testid="labelChangeAccount"]').should('not.exist')
+  })
+
+  it('deve mostrar se foi chamada a função que copia os dados após o clicar no botão copiar', () => {
+    cy.get('[data-testid="buttonCopy"]').click()
+    cy.get('@copyAccountData').should('have.been.called')
   })
 })
