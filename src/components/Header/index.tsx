@@ -23,12 +23,13 @@ interface HeaderProps {
 
 export const Header = ({ onSearch, accountName = 'User', onClickOptions }: HeaderProps) => {
   const [textValue, setTextValue] = useState<string>()
-  const username = accountName
+  const username = accountName[0].toUpperCase() + accountName.substring(1)
 
   const handleChange = (event: any) => {
     let textEntry: string = event.target.value
     setTextValue(textEntry)
   }
+  
   return (
     <Styled.Container data-testid='container'>
       <Styled.Wrap data-testid='wrap'>

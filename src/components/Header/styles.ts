@@ -53,7 +53,7 @@ export const Options = styled.div`
 export const User = styled.div`
   display: flex;
   overflow: hidden;
-  gap: ${({ theme }) => theme.sizes['2px']};
+  gap: ${({ theme }) => theme.sizes['4px']};
   color: ${({ theme }) => theme.colors.light};
   max-width: ${({ theme }) => theme.sizes['174px']};
   white-space: nowrap;
