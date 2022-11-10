@@ -78,7 +78,7 @@ describe('Header Default', () => {
     )
     cy.get('[data-testid = "usuario"]')
       .should('contain.text', 'Olá,')
-      .and('contain.text', text)
+      .and('contain.text', text[0].toUpperCase() + text.substring(1))
       .and('have.css', 'color', 'rgb(255, 255, 255)')
   })
 
