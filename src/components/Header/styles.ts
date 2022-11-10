@@ -56,6 +56,7 @@ export const User = styled.div`
   gap: ${({ theme }) => theme.sizes['2px']};
   color: ${({ theme }) => theme.colors.light};
   max-width: ${({ theme }) => theme.sizes['174px']};
+  white-space: nowrap;
 `
 export const Span = styled.span`
   top: 17px;

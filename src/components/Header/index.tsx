@@ -23,7 +23,7 @@ interface HeaderProps {
 
 export const Header = ({ onSearch, accountName = 'User', onClickOptions }: HeaderProps) => {
   const [textValue, setTextValue] = useState<string>()
-  const username = accountName.replaceAll(' ', '')
+  const username = accountName
 
   const handleChange = (event: any) => {
     let textEntry: string = event.target.value
