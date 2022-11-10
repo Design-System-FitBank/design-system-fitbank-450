@@ -38,7 +38,7 @@ export const AccountDetail = styled.div<{ isClosed: boolean, isAccordeon: boolea
   justify-content: center;
   align-items: center;
 
-  height: ${({ isClosed, isAccordeon }) => isClosed ? '80px' : isAccordeon ? '400px' : '300px'};
+  height: ${({ isClosed, isAccordeon }) => isClosed ? '64px' : isAccordeon ? '400px' : '200px'};
   text-align: center;
   transition: 1s;
 `
