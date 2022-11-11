@@ -46,7 +46,7 @@ describe('Sidebar', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Sidebar navButtonList={navButtonListInOverFlow} detailProps={details} />
+        <Sidebar navButtonList={navButtonList} detailProps={details} />
       </ThemeDSProvider>
     )
     cy.wait(100)
@@ -56,7 +56,7 @@ describe('Sidebar', () => {
     cy.wait(100)
   })
 
-  it.only('Deve conter o componente Sidebar', () => {
+  it('Deve conter o componente Sidebar', () => {
     cy.get('[data-testid = "sidebar-container"]')
       .should('have.css', 'background-color', 'rgb(249, 249, 249)')
       .and('have.css', 'height', '500px')
@@ -107,7 +107,7 @@ describe('Sidebar', () => {
     cy.get('[data-testid = "close-button-container"]')
       .should('have.css', 'justify-content', 'center')
     cy.get('[data-testid = "user-detail"]')
-      .should('have.css', 'height', '64px')
+      .should('have.css', 'height', '172px')
     cy.get('[data-testid = "nav-button-grid"]')
       .should('have.css', 'flex-direction', 'column')
       .and('have.css', 'justify-content', 'center')
@@ -132,14 +132,14 @@ describe('Sidebar', () => {
 
   it('Deve conter o componente Detail com suas variações de altura ao ser clicado e collapsado', () => {
     cy.get('[data-testid = "user-detail"]')
-      .should('have.css', 'height', '200px')
+      .should('have.css', 'height', '312px')
     cy.get('[data-testid = "user-detail"]').click().wait(1000)
-      .should('have.css', 'height', '400px')
+      .should('have.css', 'height', '312px')
     cy.get('[data-testid = "user-detail"]').click().wait(1000)
-      .should('have.css', 'height', '200px')
+      .should('have.css', 'height', '312px')
     cy.get('[data-testid = "close-button-container"]').click().wait(1000)
     cy.get('[data-testid = "user-detail"]')
-    .should('have.css', 'height', '64px')
+    .should('have.css', 'height', '172px')
   })
 
   it('Deve conter o componente Sidebar sem o componente Detail', () => {
@@ -150,18 +150,18 @@ describe('Sidebar', () => {
       </ThemeDSProvider>
     )
     cy.get('[data-testid = "sidebar-container"]')
-      .should('have.css', 'height', '100vh')
+      .should('have.css', 'height', '500px')
   })
 
   it('Deve conter o componente Sidebar com overflow', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Sidebar navButtonList={navButtonListInOverFlow} />
+        <Sidebar navButtonList={navButtonListInOverFlow} detailProps={details} />
       </ThemeDSProvider>
     )
-    cy.get('[data-testid = "sidebar-container"]')
-      .should('have.css', 'height', '100vh')
+    cy.get('[data-testid = "close-button-container"]').click()
+      .should('have.css', 'overflow-y', 'visible')
   })
 
   
