@@ -18,7 +18,7 @@ describe('Detail component', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Detail dataUser={dataAccount} collapsed={false} copyAccountData={cy.stub().as('copyAccountData')} />
+        <Detail accountData={dataAccount} collapsed={false} copyAccountData={cy.stub().as('copyAccountData')} />
       </ThemeDSProvider>
     )
   })
@@ -93,7 +93,7 @@ describe('Detail component', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Detail dataUser={dataAccount} collapsed={true} copyAccountData={cy.stub().as('copyAccountData')} />
+        <Detail accountData={dataAccount} collapsed={true} copyAccountData={cy.stub().as('copyAccountData')} />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="avatar"]').get('[data-testid="enterprise"]').should('exist')
