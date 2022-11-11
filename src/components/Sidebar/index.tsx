@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
+import React, { ReactNode, useState } from 'react'
 
 import * as Styled from './styles'
 
 import { Logo } from '../Logo'
-import { Detail } from '../Detail'
+import { Avatar } from '../Avatar'
 import { NavButton } from '../NavButton'
 import { Typography } from '../Typography'
 import { Icon, IconsProps } from '../Icon'
-import { AccountData } from '../Detail/AccountDataType'
 
 export interface NavButtonListProps {
   label: string
@@ -32,17 +31,16 @@ interface SidebarProps {
    */
   onSignOut?: () => void
   /**
-   * Variavel que é responsavel por passar as informaões para o componente Detail que é o detalhamento de conta,
-   * se necessário. Dentro dele tempos o accountData para os dados da conta e a função copyAccountData, função
-   * que recebe os dados do botão de copiar.
+   * Tipo do avatar que pode ser PF pessoa fisica ou PJ pessoa juridica
    */
-  detailProps?: {
-    accountData: AccountData
-    copyAccountData: (data: AccountData) => void
-  }
+  avatarType?: 'PF' | 'PJ'
+  /**
+   * Dados referentes ao user
+   */
+  children?: ReactNode
 }
 
-export const Sidebar = ({ navButtonList, onSignOut, detailProps }: SidebarProps) => {
+export const Sidebar = ({ navButtonList, onSignOut, avatarType = 'PF', children }: SidebarProps) => {
   const [isOpen, setIsOpen] = useState(true)
   const arrowIconTransition = isOpen ? 'arrowLeft' : 'arrowRight'
   const mainLogoTransition = isOpen ? 'default' : 'smallPrimary'
@@ -58,11 +56,11 @@ export const Sidebar = ({ navButtonList, onSignOut, detailProps }: SidebarProps)
         {isOpen && <Typography variant='caption'>Reduzir</Typography>}
       </Styled.CloseNavBar>
 
-      {detailProps && (
-        <Styled.AccountDetail data-testid='user-detail'>
-          <Detail accountData={detailProps.accountData} copyAccountData={detailProps.copyAccountData!} collapsed={!isOpen} />
-        </Styled.AccountDetail>
-      )}
+      <Styled.AccountDetail data-testid='user-detail'>
+        <Avatar type={avatarType} />
+      </Styled.AccountDetail>
+
+      { children }
 
       <Styled.ButtonsGrid data-testid='nav-button-grid' isClosed={!isOpen}>
         {navButtonList.map(({ label, icon, onClick }: NavButtonListProps) =>

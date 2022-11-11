@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div<{ isClosed: boolean }>`
   background-color: ${({ theme }) => theme.colors.textDisabled};
 
-  height: 100vh;
+  height: 100%;
   width: ${({ isClosed, theme }) => isClosed ? theme.sizes['62px'] : theme.sizes['320px']};
   
   transition: 1s;
@@ -58,20 +58,6 @@ export const ButtonsGrid = styled.div<{ isClosed: boolean }>`
   justify-content: ${({ isClosed }) => isClosed && 'center'};
   align-items: ${({ isClosed }) => isClosed && 'center'};
 
-  overflow-y: hidden  ${({ isClosed }) => isClosed ? 'scroll' : 'auto'};
+  overflow: hidden;
   transition: 1s;
-
-  &::-webkit-scrollbar {
-    width: ${({ theme }) => theme.sizes['6px']};
-  }
-
-  &::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.colors.disabled};
-    border-radius: ${({ theme }) => theme.sizes['20px']};
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.colors.textGrey};
-    border-radius: ${({ theme }) => theme.sizes['20px']};
-  }
 `
