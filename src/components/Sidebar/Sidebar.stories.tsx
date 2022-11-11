@@ -21,5 +21,6 @@ SidebarNavigation.args = {
     { label: 'Recarga', icon: 'topup', onClick: () => {} },
     { label: 'Agendamento', icon: 'calendar', onClick: () => {} },
     { label: 'Cartões', icon: 'cardMulti', onClick: () => {} }
-  ]
+  ],
+  isDetail: true
 }
