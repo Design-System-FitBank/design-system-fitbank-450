@@ -4,7 +4,8 @@ import { Header } from '.'
 import { faker } from '@faker-js/faker'
 
 describe('Header Default', () => {
-  const text = faker.lorem.word()
+  let text = faker.lorem.word()
+
   beforeEach(() => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
@@ -17,6 +18,7 @@ describe('Header Default', () => {
       </ThemeDSProvider>
     )
   })
+
   it('Deve mostrar componente de Barra de Pesquisa', () => {
     cy.get('[data-testid="container"]')
       .should('be.visible')
@@ -78,13 +80,14 @@ describe('Header Default', () => {
     )
     cy.get('[data-testid = "usuario"]')
       .should('contain.text', 'Olá,')
-      .and('contain.text', text[0].toUpperCase() + text.substring(1))
+      .and('contain.text', text[0].toUpperCase() + text.substring(1).toLowerCase())
       .and('have.css', 'color', 'rgb(255, 255, 255)')
   })
 
   it('Deve mostrar o icone de Options', () => {
     cy.get('[data-testid="options"]').should('exist').and('have.css', 'color', 'rgb(255, 255, 255)')
   })
+
   it('Deve chamar a função onOptionsClick', () => {
     cy.get('[data-testid="opt"]').click().wait(350)
     cy.get('@onClickOptions').should('have.been.called')
