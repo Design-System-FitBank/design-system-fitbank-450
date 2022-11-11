@@ -1,5 +1,6 @@
 import { Typography } from '../Typography'
-import { InputItem } from './InputItem'
+
+import { InputRadioItem } from './InputRadioItem'
 import React, { useState } from 'react'
 import * as Styled from './styles'
 
@@ -13,13 +14,12 @@ interface RadioProps {
    */
   optionsList: string[]
   /**
-   * Deve ser a direção vertical ou horizontal.
-   * Por padrão a direção é vertical
+   * Troca a direção de coluna para linha
    */
-  direction?: 'column' | 'row'
+  isRow?: boolean
 }
 
-export const InputRadio = ({ title, optionsList, direction = 'column' }: RadioProps) => {
+export const Radio = ({ title, optionsList, isRow = false }: RadioProps) => {
   const [checked, setChecked] = useState('')
   const onclick = (value: string) => {
     setChecked(value)
@@ -27,9 +27,9 @@ export const InputRadio = ({ title, optionsList, direction = 'column' }: RadioPr
   return (
     <Styled.Container>
       <Typography variant='bodyBold'>{title}</Typography>
-      <Styled.ContainerDirection data-testid='radio-container' direction={direction}>
+      <Styled.ContainerDirection data-testid='container' isRow={isRow}>
         {optionsList.map((option, key) => (
-          <InputItem key={key} option={option} onclick={onclick} checked={checked === option} />
+          <InputRadioItem key={key} option={option} onclick={onclick} checked={checked === option} />
         ))}
       </Styled.ContainerDirection>
     </Styled.Container>

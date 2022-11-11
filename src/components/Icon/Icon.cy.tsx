@@ -24,6 +24,7 @@ describe('Icon component', () => {
     'card',
     'cardMulti',
     'changeAccount',
+    'checked',
     'cnh',
     'details',
     'device',
@@ -32,6 +33,8 @@ describe('Icon component', () => {
     'edit',
     'email',
     'enterprise',
+    'eyeClose',
+    'eyeOpen',
     'favorite',
     'favoriteAdd',
     'favoriteRemove',
@@ -72,7 +75,8 @@ describe('Icon component', () => {
     'userGroup',
     'userSearch',
     'withdrawMoney',
-    'xlsx'
+    'xlsx',
+    'search'
   ]
   names.forEach(item => {
     it(`Deve retornar o ícone ${item} quando passar name igual ${item}`, () => {

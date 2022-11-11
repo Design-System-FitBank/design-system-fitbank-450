@@ -1,11 +1,11 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 type ButtonProps = {
   size?: string
 }
 
 export const Container = styled.button<ButtonProps>`
-  width: ${({ size, theme }) => (size === 'small' ? theme.sizes['142px'] : theme.sizes['210px'])};
+  width: ${({ size, theme }) => (size === 'auto' ? '100%' : size === 'small' ? theme.sizes['142px'] : theme.sizes['210px'])};
   height: ${({ size, theme }) => (size === 'small' ? theme.sizes['32px'] : theme.sizes['48px'])};
   padding-top: ${({ size, theme }) => (size === 'small' ? theme.sizes['4px'] : theme.sizes['8px'])};
   padding-bottom: ${({ size, theme }) => (size === 'small' ? theme.sizes['4px'] : theme.sizes['8px'])};
@@ -89,21 +89,4 @@ export const Tertiary = styled(Container)<ButtonProps>`
   :disabled {
     color: ${({ theme }) => theme.colors.disabled};
   }
-`
-
-export const Icon = styled.div<ButtonProps>`
-  width: ${({ size, theme }) => (size === 'small' ? theme.sizes['20px'] : theme.sizes['32px'])};
-  height: ${({ size, theme }) => (size === 'small' ? theme.sizes['20px'] : theme.sizes['32px'])};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
-export const BoxLabel = styled.div<ButtonProps>`
-  width: ${({ size, theme }) => (size === 'small' ? theme.sizes['62px'] : theme.sizes['82px'])};
-  height: ${({ size, theme }) => (size === 'small' ? theme.sizes['14px'] : theme.sizes['19px'])};
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `

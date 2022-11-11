@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 type RadioProps = {
   checked?: boolean
-  direction?: string
+  isRow?: boolean
 }
 
 export const Container = styled.div<RadioProps>`
@@ -12,5 +12,5 @@ export const Container = styled.div<RadioProps>`
 
 export const ContainerDirection = styled.div<RadioProps>`
   display: flex;
-  flex-direction: ${({ direction }) => (direction === 'row' ? 'row' : 'column')};
+  flex-direction: ${({ isRow }) => (isRow ? 'row' : 'column')};
 `
