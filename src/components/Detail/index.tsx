@@ -19,7 +19,7 @@ export interface DetailProps {
    * dados do cliente: BU, nome da conta, cpf ou cnpj.
    * dados do banco: nome do banco, número da conta, identificador.
    */
-  dataUser: AccountData
+  accountData: AccountData
 
   /*
    * Função que recebe o dados da conta após o click no botão copiar.
@@ -27,11 +27,11 @@ export interface DetailProps {
   copyAccountData: (data: AccountData) => void
 }
 
-export const Detail: React.FC<DetailProps> = ({ dataUser, collapsed = false, copyAccountData }) => {
+export const Detail: React.FC<DetailProps> = ({ accountData, collapsed = false, copyAccountData }) => {
   const [isActive, setIsActive] = useState(false)
 
   const handleCopy = () => {
-    const datas = dataUser
+    const datas = accountData
     copyAccountData(datas)
   }
 
@@ -41,7 +41,7 @@ export const Detail: React.FC<DetailProps> = ({ dataUser, collapsed = false, cop
         <Styled.Avatar data-testid='avatar'>
           <Avatar type='PJ' />
         </Styled.Avatar>
-        <DataAccount.User data-testid='data' dataBank={dataUser} />
+        <DataAccount.User data-testid='data' accountData={accountData} />
         <Styled.ButtonData data-testid='buttonData' onClick={() => setIsActive(!isActive)}>
           <Styled.Arrow data-testid='arrow'>
             <Icon name={!isActive ? 'arrowDown' : 'arrowUp'} width={20} height={20} />
@@ -50,7 +50,7 @@ export const Detail: React.FC<DetailProps> = ({ dataUser, collapsed = false, cop
             <Typography variant='bodySmall'>{!isActive ? 'Ver dados da conta' : 'Esconder dados da conta'}</Typography>
           </Styled.LabelAccordion>
         </Styled.ButtonData>
-        <DataAccount.Bank data-testid='dataBank' dataBank={dataUser} />
+        <DataAccount.Bank data-testid='dataBank' accountData={accountData} />
       </Styled.Accordion>
       <Styled.CopyData data-testid='copyData' isOpen={isActive}>
         <Styled.Collapsed data-testid='buttonCopy'>

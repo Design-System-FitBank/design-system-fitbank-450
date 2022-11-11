@@ -13,7 +13,7 @@ const Template: ComponentStory<typeof Detail> = args => <Detail {...args} />
 export const Default = Template.bind({})
 export const Collapsed = Template.bind({})
 Default.args = {
-  dataUser: {
+  accountData: {
     businessUnit: 'ACME bank',
     accountName: 'kimbap asian food litda',
     userId: '12345678-910',
@@ -27,7 +27,7 @@ Default.args = {
 
 Collapsed.args = {
   collapsed: true,
-  dataUser: {
+  accountData: {
     businessUnit: 'ACME bank',
     accountName: 'kimbap asian food litda',
     userId: '12345678-910',
