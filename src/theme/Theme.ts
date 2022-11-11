@@ -9,7 +9,7 @@ export const Theme = {
     greyLight: '#E8E8E8',
     info: '#3c78b8',
     textGrey: '#a7a7a7',
-    textDisabled: '#c4c4c4',
+    textDisabled: '#F9F9F9',
     light: '#ffffff',
     dark: '#010716',
     disabled: '#c4c4c4',

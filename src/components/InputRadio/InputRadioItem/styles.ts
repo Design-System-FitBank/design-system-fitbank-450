@@ -12,10 +12,10 @@ export const Container = styled.div<RadioProps>`
   gap: ${({ theme }) => theme.sizes['26px']};
   cursor: pointer;
 
-  margin: ${({ theme }) => theme.sizes['16.5px']};
+  margin: ${({ theme }) => theme.sizes['16px']};
 
   :nth-last-child(1) {
-    margin-bottom: ${({ direction }) => (direction === 'row' ? '0px' : '16.5px')};
+    margin-bottom: ${({ direction }) => (direction === 'row' ? '0px' : '16px')};
   }
 `
 

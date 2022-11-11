@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Select } from '.'
+import { Select } from './'
 
 export default {
   title: 'Select',
