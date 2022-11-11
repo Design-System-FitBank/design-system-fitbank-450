@@ -29,9 +29,11 @@ interface SidebarProps {
    * Função que recebe a rota do botão de signOut
    */
   onSignOut?: () => void
+
+  isDetail?: boolean
 }
 
-export const Sidebar = ({ navButtonList, onSignOut }: SidebarProps) => {
+export const Sidebar = ({ navButtonList, onSignOut, isDetail = false }: SidebarProps) => {
   const [isOpen, setIsOpen] = useState(true)
   const [isExpandedUserDetail, setIsExpandedUserDetail] = useState(false)
   const arrowIconTransition = isOpen ? 'arrowLeft' : 'arrowRight'
@@ -52,17 +54,18 @@ export const Sidebar = ({ navButtonList, onSignOut }: SidebarProps) => {
         {isOpen && <Typography variant='caption'>Reduzir</Typography>}
       </Styled.CloseNavBar>
 
-      <Styled.AccountDetail
-        data-testid='user-detail'
-        isClosed={!isOpen}
-        onClick={() => handleExpandUserDetail()}
-        isAccordeon={isExpandedUserDetail}
-      >
-        <Icon name='user' width={24} height={24} />
-        {isOpen && 'User Detail component'}
-        {isExpandedUserDetail && <Typography variant='subtitle'>CPF/CNPJ ...</Typography>}
-      </Styled.AccountDetail>
-
+      {isDetail && (
+        <Styled.AccountDetail
+          data-testid='user-detail'
+          isClosed={!isOpen}
+          onClick={() => handleExpandUserDetail()}
+          isAccordeon={isExpandedUserDetail}
+        >
+          <Icon name='user' width={24} height={24} />
+          {isOpen && 'User Detail component'}
+          {isExpandedUserDetail && <Typography variant='subtitle'>CPF/CNPJ ...</Typography>}
+        </Styled.AccountDetail>
+      )}
       <Styled.ButtonsGrid data-testid='nav-button-grid' isClosed={!isOpen}>
         {navButtonList.map(({ label, icon, onClick }: NavButtonListProps) =>
           isOpen ? (
