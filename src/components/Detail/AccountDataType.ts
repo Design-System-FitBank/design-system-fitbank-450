@@ -1,12 +1,9 @@
-export interface User {
-  businessUnit: string
-  accountName: string
-  userId: string
-}
-
-export interface DataBank {
+export interface AccountData {
   bank: string
-  bankBranch: string
-  bankAccount: string
+  userId: string
   accountId: string
+  bankBranch: string
+  accountName: string
+  bankAccount: string
+  businessUnit: string
 }

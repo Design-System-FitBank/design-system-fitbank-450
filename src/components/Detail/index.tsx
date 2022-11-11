@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import * as Styled from './styles'
 import { Icon } from '../Icon'
-import { DataUser } from './DataUser'
 import { Typography } from '../Typography'
 import { Button } from '../Button'
-import { User, DataBank } from './AccountDataType'
+import { AccountData } from './AccountDataType'
 import { DataAccount } from './DataAccount'
 import { Avatar } from '../Avatar'
 
@@ -16,27 +15,23 @@ export interface DetailProps {
    */
   collapsed?: boolean
   /*
-   * Objeto referente aos dados do usuário, para esse objeto deve ser passado:
-   * BU, nome da conta, cpf ou cnpj.
+   * Objeto referente aos dados do usuário e da conta bancária, para esse objeto deve ser passado:
+   * dados do cliente: BU, nome da conta, cpf ou cnpj.
+   * dados do banco: nome do banco, número da conta, identificador.
    */
-  dataUser: User
-  /*
-   * Objeto referente aos dados da conta, nesse objeto deve ser passado:
-   * nome do banco, número da agência, número da conta e o indentificador da conta.
-   */
-  dataBank: DataBank
+  dataUser: AccountData
 
   /*
    * Função que recebe o dados da conta após o click no botão copiar.
    */
-  copyAccountData: (data: DataBank) => void
+  copyAccountData: (data: AccountData) => void
 }
 
-export const Detail: React.FC<DetailProps> = ({ dataUser, dataBank, collapsed = false, copyAccountData }) => {
+export const Detail: React.FC<DetailProps> = ({ dataUser, collapsed = false, copyAccountData }) => {
   const [isActive, setIsActive] = useState(false)
 
   const handleCopy = () => {
-    const datas = dataBank
+    const datas = dataUser
     copyAccountData(datas)
   }
 
@@ -46,7 +41,7 @@ export const Detail: React.FC<DetailProps> = ({ dataUser, dataBank, collapsed = 
         <Styled.Avatar data-testid='avatar'>
           <Avatar type='PJ' />
         </Styled.Avatar>
-        <DataUser data-testid='data' dataUser={dataUser} />
+        <DataAccount.User data-testid='data' dataBank={dataUser} />
         <Styled.ButtonData data-testid='buttonData' onClick={() => setIsActive(!isActive)}>
           <Styled.Arrow data-testid='arrow'>
             <Icon name={!isActive ? 'arrowDown' : 'arrowUp'} width={20} height={20} />
@@ -55,7 +50,7 @@ export const Detail: React.FC<DetailProps> = ({ dataUser, dataBank, collapsed = 
             <Typography variant='bodySmall'>{!isActive ? 'Ver dados da conta' : 'Esconder dados da conta'}</Typography>
           </Styled.LabelAccordion>
         </Styled.ButtonData>
-        <DataAccount data-testid='dataBank' dataBank={dataBank} />
+        <DataAccount.Bank data-testid='dataBank' dataBank={dataUser} />
       </Styled.Accordion>
       <Styled.CopyData data-testid='copyData' isOpen={isActive}>
         <Styled.Collapsed data-testid='buttonCopy'>

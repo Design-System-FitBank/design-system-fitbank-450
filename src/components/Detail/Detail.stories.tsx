@@ -16,9 +16,8 @@ Default.args = {
   dataUser: {
     businessUnit: 'ACME bank',
     accountName: 'kimbap asian food litda',
-    userId: '12345678-910'
-  },
-  dataBank: {
+    userId: '12345678-910',
+
     bank: '450 - FitBank Pagamentos SA',
     bankBranch: '0000001',
     bankAccount: '02021-5',
@@ -31,9 +30,8 @@ Collapsed.args = {
   dataUser: {
     businessUnit: 'ACME bank',
     accountName: 'kimbap asian food litda',
-    userId: '12345678-910'
-  },
-  dataBank: {
+    userId: '12345678-910',
+
     bank: '450 - FitBank Pagamentos SA',
     bankBranch: '0000001',
     bankAccount: '02021-5',

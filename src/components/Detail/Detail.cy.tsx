@@ -4,12 +4,10 @@ import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
 import { Detail } from '.'
 
 describe('Detail component', () => {
-  const dataUser = {
+  const dataAccount = {
     businessUnit: 'ACME Bank',
     accountName: 'KIMBAP ASIAN FOOD LTDA',
-    userId: '12345678-910'
-  }
-  const dataBank = {
+    userId: '12345678-910',
     bank: '450 - FitBank Pagamentos SA',
     bankBranch: '0000001',
     bankAccount: '02021-5',
@@ -20,12 +18,7 @@ describe('Detail component', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Detail
-          dataUser={dataUser}
-          dataBank={dataBank}
-          collapsed={false}
-          copyAccountData={cy.stub().as('copyAccountData')}
-        />
+        <Detail dataUser={dataAccount} collapsed={false} copyAccountData={cy.stub().as('copyAccountData')} />
       </ThemeDSProvider>
     )
   })
@@ -35,12 +28,12 @@ describe('Detail component', () => {
     cy.get('[data-testid="arrow"]').get('[data-testid="arrowDown"]').should('exist')
     cy.get('[data-testid="arrow"]').get('[data-testid="arrowUp"]').should('not.exist')
     cy.get('[data-testid="businessUnit"]')
-      .should('have.text', dataUser.businessUnit)
+      .should('have.text', dataAccount.businessUnit)
       .and('have.css', 'text-align', 'center')
       .and('have.css', 'color', 'rgb(50, 55, 81)')
       .and('have.css', 'margin-top', '20px')
     cy.get('[data-testid="account"]')
-      .should('have.text', dataUser.accountName)
+      .should('have.text', dataAccount.accountName)
       .and('have.css', 'text-transform', 'uppercase')
       .and('have.css', 'text-align', 'center')
       .and('have.css', 'color', 'rgb(50, 55, 81)')
@@ -49,7 +42,7 @@ describe('Detail component', () => {
       .should('have.text', 'CPF/CNPJ:')
       .and('have.css', 'color', 'rgb(50, 55, 81)')
     cy.get('[data-testid="userId"]')
-      .should('have.text', dataUser.userId)
+      .should('have.text', dataAccount.userId)
       .and('have.css', 'color', 'rgb(50, 55, 81)')
       .and('have.css', 'padding-left', '8px')
     cy.get('[data-testid="wrap"]').should('have.css', 'margin-top', '4px')
@@ -72,16 +65,16 @@ describe('Detail component', () => {
     cy.get('[data-testid="avatar"]').get('[data-testid="arrowUp"]').should('exist')
     cy.get('[data-testid="avatar"]').get('[data-testid="arrowDown"]').should('not.exist')
     cy.get('[data-testid="labelNameBank"]').should('have.text', 'Banco:').and('have.css', 'color', 'rgb(50, 55, 81)')
-    cy.get('[data-testid="bank"]').should('have.text', dataBank.bank).and('have.css', 'color', 'rgb(50, 55, 81)')
+    cy.get('[data-testid="bank"]').should('have.text', dataAccount.bank).and('have.css', 'color', 'rgb(50, 55, 81)')
     cy.get('[data-testid="labelBranch"]').should('have.text', 'Ag:').and('have.css', 'color', 'rgb(50, 55, 81)')
     cy.get('[data-testid="branch"]')
-      .should('have.text', dataBank.bankBranch)
+      .should('have.text', dataAccount.bankBranch)
       .and('have.css', 'color', 'rgb(50, 55, 81)')
     cy.get('[data-testid="labelBanckAccount"]')
       .should('have.text', 'Conta:')
       .and('have.css', 'color', 'rgb(50, 55, 81)')
     cy.get('[data-testid="bankAccount"]')
-      .should('have.text', dataBank.bankAccount)
+      .should('have.text', dataAccount.bankAccount)
       .and('have.css', 'color', 'rgb(50, 55, 81)')
   })
 
@@ -100,12 +93,7 @@ describe('Detail component', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Detail
-          dataUser={dataUser}
-          dataBank={dataBank}
-          collapsed={true}
-          copyAccountData={cy.stub().as('copyAccountData')}
-        />
+        <Detail dataUser={dataAccount} collapsed={true} copyAccountData={cy.stub().as('copyAccountData')} />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="avatar"]').get('[data-testid="enterprise"]').should('exist')
