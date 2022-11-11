@@ -21,7 +21,7 @@ describe('Sidebar', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Sidebar navButtonList={navButtonList} />
+        <Sidebar navButtonList={navButtonList} isDetail={true}/>
       </ThemeDSProvider>
     )
     cy.wait(100)
@@ -116,5 +116,16 @@ describe('Sidebar', () => {
     cy.get('[data-testid = "close-button-container"]').click().wait(1000)
     cy.get('[data-testid = "user-detail"]')
     .should('have.css', 'height', '64px')
+  })
+
+  it('Deve conter o componente Sidebar sem o componente Detail', () => {
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Sidebar navButtonList={navButtonList} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid = "sidebar-container"]')
+      .should('have.css', 'height', '100vh')
   })
 })
