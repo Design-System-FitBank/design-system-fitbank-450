@@ -104,7 +104,7 @@ describe('PinToken', () => {
     faker.datatype.number({min: 0, max: 9}),
   ]
 
-  it.only('Deve a chamar a função onPinChange', () => {
+  it('Deve a chamar a função onPinChange', () => {
     pinValues.forEach((pin, index) => {
       cy.get(`[data-testid="pinToken-${index}"]`).type(pin.toString())
     })
