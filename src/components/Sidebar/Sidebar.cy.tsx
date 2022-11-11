@@ -9,19 +9,44 @@ import { Sidebar, NavButtonListProps } from './'
 
 describe('Sidebar', () => {
   const navButtonList: NavButtonListProps[] = [
+      { label: 'Pix', icon: 'pix', onClick: () => { cy.stub().as('') }},
+      { label: 'Recarga', icon: 'topup', onClick: () => { cy.stub().as('') }},
+      { label: 'Cartões', icon: 'cardMulti', onClick: () => { cy.stub().as('') }},
+      { label: 'Pagamento', icon: 'payment', onClick: () => { cy.stub().as('') }},
+      { label: 'Agendamento', icon: 'calendar', onClick: () => { cy.stub().as('') }},
+      { label: 'Transferencia', icon: 'moneyTransfer', onClick: () => { cy.stub().as('') }}
+  ]
+
+  const navButtonListInOverFlow: NavButtonListProps[] = [
     { label: 'Pix', icon: 'pix', onClick: () => { cy.stub().as('') }},
     { label: 'Recarga', icon: 'topup', onClick: () => { cy.stub().as('') }},
     { label: 'Cartões', icon: 'cardMulti', onClick: () => { cy.stub().as('') }},
     { label: 'Pagamento', icon: 'payment', onClick: () => { cy.stub().as('') }},
     { label: 'Agendamento', icon: 'calendar', onClick: () => { cy.stub().as('') }},
-    { label: 'Transferencia', icon: 'moneyTransfer', onClick: () => { cy.stub().as('') }}
+    { label: 'Transferencia', icon: 'moneyTransfer', onClick: () => { cy.stub().as('') }},
+    { label: 'Transferencia', icon: 'moneyTransfer', onClick: () => { cy.stub().as('') }},
+    { label: 'Transferencia', icon: 'moneyTransfer', onClick: () => { cy.stub().as('') }},
+    { label: 'Transferencia', icon: 'moneyTransfer', onClick: () => { cy.stub().as('') }},
   ]
 
+  const details = {
+    accountData: {
+      businessUnit: 'ACME Bank',
+      accountName: 'KIMBAP ASIAN FOOD LTDA',
+      userId: '12345678-910',
+      bank: '450 - FitBank Pagamentos SA',
+      bankBranch: '0000001',
+      bankAccount: '02021-5',
+      accountId: '020202.02020.202.0'
+    }, 
+    copyAccountData: () => {}
+  }
+  
   beforeEach(() => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Sidebar navButtonList={navButtonList} isDetail={true}/>
+        <Sidebar navButtonList={navButtonListInOverFlow} detailProps={details} />
       </ThemeDSProvider>
     )
     cy.wait(100)
@@ -31,7 +56,7 @@ describe('Sidebar', () => {
     cy.wait(100)
   })
 
-  it('Deve conter o componente Sidebar', () => {
+  it.only('Deve conter o componente Sidebar', () => {
     cy.get('[data-testid = "sidebar-container"]')
       .should('have.css', 'background-color', 'rgb(249, 249, 249)')
       .and('have.css', 'height', '500px')
@@ -53,7 +78,6 @@ describe('Sidebar', () => {
       .and('have.css', 'flex-direction', 'column')
       .and('have.css', 'justify-content', 'center')
       .and('have.css', 'align-items', 'center')
-      .and('have.css', 'height', '200px')
       .and('have.css', 'text-align', 'center')
     cy.get('[data-testid = "nav-button-grid"]')
       .should('have.css', 'display', 'grid')
@@ -99,7 +123,7 @@ describe('Sidebar', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Sidebar navButtonList={navButtonList} onSignOut={cy.stub().as('onSignOut')}/>
+        <Sidebar navButtonList={navButtonList} onSignOut={cy.stub().as('onSignOut')} />
       </ThemeDSProvider>
     )
     cy.get('[data-testid = "sign-out-button"]').click()
@@ -128,4 +152,17 @@ describe('Sidebar', () => {
     cy.get('[data-testid = "sidebar-container"]')
       .should('have.css', 'height', '100vh')
   })
+
+  it('Deve conter o componente Sidebar com overflow', () => {
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Sidebar navButtonList={navButtonListInOverFlow} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid = "sidebar-container"]')
+      .should('have.css', 'height', '100vh')
+  })
+
+  
 })
