@@ -53,13 +53,12 @@ export const ButtonsGrid = styled.div<{ isClosed: boolean }>`
   justify-items: center;
   column-gap: ${({ theme }) => theme.sizes['10px']};
   row-gap: ${({ theme }) => theme.sizes['15px']};
-
-  // height: ${({ theme }) => theme.sizes['255px']};
+  
   flex-direction: ${({ isClosed }) => isClosed && 'column'};
   justify-content: ${({ isClosed }) => isClosed && 'center'};
   align-items: ${({ isClosed }) => isClosed && 'center'};
 
-  // overflow-y: ${({ isClosed }) => isClosed ? 'scroll' : 'auto'};
+  overflow-y: hidden  ${({ isClosed }) => isClosed ? 'scroll' : 'auto'};
   transition: 1s;
 
   &::-webkit-scrollbar {

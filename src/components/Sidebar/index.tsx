@@ -31,9 +31,10 @@ interface SidebarProps {
    * Função que recebe a rota do botão de signOut
    */
   onSignOut?: () => void
-
   /**
-   * 
+   * Variavel que é responsavel por passar as informaões para o componente Detail que é o detalhamento de conta,
+   * se necessário. Dentro dele tempos o accountData para os dados da conta e a função copyAccountData, função
+   * que recebe os dados do botão de copiar.
    */
   detailProps?: {
     accountData: AccountData
