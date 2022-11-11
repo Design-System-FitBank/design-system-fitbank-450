@@ -1,11 +1,13 @@
-import React, { Children, useState } from 'react'
+import React, { useState } from 'react'
 
 import * as Styled from './styles'
 
 import { Logo } from '../Logo'
+import { Detail } from '../Detail'
 import { NavButton } from '../NavButton'
 import { Typography } from '../Typography'
 import { Icon, IconsProps } from '../Icon'
+import { AccountData } from '../Detail/AccountDataType'
 
 export interface NavButtonListProps {
   label: string
@@ -30,18 +32,19 @@ interface SidebarProps {
    */
   onSignOut?: () => void
 
-  isDetail?: boolean
+  /**
+   * 
+   */
+  detailProps?: {
+    accountData: AccountData
+    copyAccountData: (data: AccountData) => void
+  }
 }
 
-export const Sidebar = ({ navButtonList, onSignOut, isDetail = false }: SidebarProps) => {
+export const Sidebar = ({ navButtonList, onSignOut, detailProps }: SidebarProps) => {
   const [isOpen, setIsOpen] = useState(true)
-  const [isExpandedUserDetail, setIsExpandedUserDetail] = useState(false)
   const arrowIconTransition = isOpen ? 'arrowLeft' : 'arrowRight'
   const mainLogoTransition = isOpen ? 'default' : 'smallPrimary'
-
-  const handleExpandUserDetail = () => {
-    setIsExpandedUserDetail(!isExpandedUserDetail)
-  }
 
   return (
     <Styled.Container isClosed={!isOpen} data-testid='sidebar-container'>
@@ -54,18 +57,12 @@ export const Sidebar = ({ navButtonList, onSignOut, isDetail = false }: SidebarP
         {isOpen && <Typography variant='caption'>Reduzir</Typography>}
       </Styled.CloseNavBar>
 
-      {isDetail && (
-        <Styled.AccountDetail
-          data-testid='user-detail'
-          isClosed={!isOpen}
-          onClick={() => handleExpandUserDetail()}
-          isAccordeon={isExpandedUserDetail}
-        >
-          <Icon name='user' width={24} height={24} />
-          {isOpen && 'User Detail component'}
-          {isExpandedUserDetail && <Typography variant='subtitle'>CPF/CNPJ ...</Typography>}
+      {detailProps && (
+        <Styled.AccountDetail data-testid='user-detail'>
+          <Detail accountData={detailProps.accountData} copyAccountData={detailProps.copyAccountData!} collapsed={!isOpen} />
         </Styled.AccountDetail>
       )}
+
       <Styled.ButtonsGrid data-testid='nav-button-grid' isClosed={!isOpen}>
         {navButtonList.map(({ label, icon, onClick }: NavButtonListProps) =>
           isOpen ? (

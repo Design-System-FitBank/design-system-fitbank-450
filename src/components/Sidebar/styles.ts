@@ -32,13 +32,12 @@ export const CloseNavBar = styled.div<{ isClosed: boolean }>`
   transition: 1s;
 `
 
-export const AccountDetail = styled.div<{ isClosed: boolean, isAccordeon: boolean }>`
+export const AccountDetail = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  height: ${({ isClosed, isAccordeon }) => isClosed ? '64px' : isAccordeon ? '400px' : '200px'};
   text-align: center;
   transition: 1s;
 `
@@ -55,10 +54,25 @@ export const ButtonsGrid = styled.div<{ isClosed: boolean }>`
   column-gap: ${({ theme }) => theme.sizes['10px']};
   row-gap: ${({ theme }) => theme.sizes['15px']};
 
+  // height: ${({ theme }) => theme.sizes['255px']};
   flex-direction: ${({ isClosed }) => isClosed && 'column'};
   justify-content: ${({ isClosed }) => isClosed && 'center'};
   align-items: ${({ isClosed }) => isClosed && 'center'};
 
-  overflow-x: hidden;
+  // overflow-y: ${({ isClosed }) => isClosed ? 'scroll' : 'auto'};
   transition: 1s;
+
+  &::-webkit-scrollbar {
+    width: ${({ theme }) => theme.sizes['6px']};
+  }
+
+  &::-webkit-scrollbar-track {
+    background: ${({ theme }) => theme.colors.disabled};
+    border-radius: ${({ theme }) => theme.sizes['20px']};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.colors.textGrey};
+    border-radius: ${({ theme }) => theme.sizes['20px']};
+  }
 `
