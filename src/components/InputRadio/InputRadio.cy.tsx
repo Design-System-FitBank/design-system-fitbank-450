@@ -7,6 +7,7 @@ describe('InputRadio', () => {
   const title = faker.lorem.words()
   const list = [faker.lorem.word(), faker.lorem.word(), faker.lorem.word(), faker.lorem.word()]
 
+
   it('Deve ser o label InputRadio Default', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
@@ -49,6 +50,5 @@ describe('InputRadio', () => {
       )
       cy.contains(text).should('exist').and('have.text', text)
     })
-
   })
 })
