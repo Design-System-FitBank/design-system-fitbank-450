@@ -28,25 +28,12 @@ describe('Sidebar', () => {
     { label: 'Transferencia', icon: 'moneyTransfer', onClick: () => { cy.stub().as('') }},
     { label: 'Transferencia', icon: 'moneyTransfer', onClick: () => { cy.stub().as('') }},
   ]
-
-  const details = {
-    accountData: {
-      businessUnit: 'ACME Bank',
-      accountName: 'KIMBAP ASIAN FOOD LTDA',
-      userId: '12345678-910',
-      bank: '450 - FitBank Pagamentos SA',
-      bankBranch: '0000001',
-      bankAccount: '02021-5',
-      accountId: '020202.02020.202.0'
-    }, 
-    copyAccountData: () => {}
-  }
   
   beforeEach(() => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Sidebar navButtonList={navButtonList} detailProps={details} />
+        <Sidebar navButtonList={navButtonList} />
       </ThemeDSProvider>
     )
     cy.wait(100)
@@ -59,7 +46,7 @@ describe('Sidebar', () => {
   it('Deve conter o componente Sidebar', () => {
     cy.get('[data-testid = "sidebar-container"]')
       .should('have.css', 'background-color', 'rgb(249, 249, 249)')
-      .and('have.css', 'height', '500px')
+      .and('have.css', 'height', '478px')
       .and('have.css', 'width', '320px')
     cy.get('[data-testid = "logo-container"]')
       .should('have.css', 'width', '142px')
@@ -107,7 +94,7 @@ describe('Sidebar', () => {
     cy.get('[data-testid = "close-button-container"]')
       .should('have.css', 'justify-content', 'center')
     cy.get('[data-testid = "user-detail"]')
-      .should('have.css', 'height', '172px')
+      .should('have.css', 'height', '50px')
     cy.get('[data-testid = "nav-button-grid"]')
       .should('have.css', 'flex-direction', 'column')
       .and('have.css', 'justify-content', 'center')
@@ -129,40 +116,5 @@ describe('Sidebar', () => {
     cy.get('[data-testid = "sign-out-button"]').click()
     cy.get('@onSignOut').should('have.been.called')
   })
-
-  it('Deve conter o componente Detail com suas variações de altura ao ser clicado e collapsado', () => {
-    cy.get('[data-testid = "user-detail"]')
-      .should('have.css', 'height', '312px')
-    cy.get('[data-testid = "user-detail"]').click().wait(1000)
-      .should('have.css', 'height', '312px')
-    cy.get('[data-testid = "user-detail"]').click().wait(1000)
-      .should('have.css', 'height', '312px')
-    cy.get('[data-testid = "close-button-container"]').click().wait(1000)
-    cy.get('[data-testid = "user-detail"]')
-    .should('have.css', 'height', '172px')
-  })
-
-  it('Deve conter o componente Sidebar sem o componente Detail', () => {
-    mount(
-      <ThemeDSProvider theme={Theme}>
-        <GlobalStyles />
-        <Sidebar navButtonList={navButtonList} />
-      </ThemeDSProvider>
-    )
-    cy.get('[data-testid = "sidebar-container"]')
-      .should('have.css', 'height', '500px')
-  })
-
-  it('Deve conter o componente Sidebar com overflow', () => {
-    mount(
-      <ThemeDSProvider theme={Theme}>
-        <GlobalStyles />
-        <Sidebar navButtonList={navButtonListInOverFlow} detailProps={details} />
-      </ThemeDSProvider>
-    )
-    cy.get('[data-testid = "close-button-container"]').click()
-      .should('have.css', 'overflow-y', 'visible')
-  })
-
   
 })
