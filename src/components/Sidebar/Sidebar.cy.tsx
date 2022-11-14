@@ -16,18 +16,6 @@ describe('Sidebar', () => {
       { label: 'Agendamento', icon: 'calendar', onClick: () => { cy.stub().as('') }},
       { label: 'Transferencia', icon: 'moneyTransfer', onClick: () => { cy.stub().as('') }}
   ]
-
-  const navButtonListInOverFlow: NavButtonListProps[] = [
-    { label: 'Pix', icon: 'pix', onClick: () => { cy.stub().as('') }},
-    { label: 'Recarga', icon: 'topup', onClick: () => { cy.stub().as('') }},
-    { label: 'Cartões', icon: 'cardMulti', onClick: () => { cy.stub().as('') }},
-    { label: 'Pagamento', icon: 'payment', onClick: () => { cy.stub().as('') }},
-    { label: 'Agendamento', icon: 'calendar', onClick: () => { cy.stub().as('') }},
-    { label: 'Transferencia', icon: 'moneyTransfer', onClick: () => { cy.stub().as('') }},
-    { label: 'Transferencia', icon: 'moneyTransfer', onClick: () => { cy.stub().as('') }},
-    { label: 'Transferencia', icon: 'moneyTransfer', onClick: () => { cy.stub().as('') }},
-    { label: 'Transferencia', icon: 'moneyTransfer', onClick: () => { cy.stub().as('') }},
-  ]
   
   beforeEach(() => {
     mount(
