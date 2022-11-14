@@ -3,18 +3,10 @@ import React, { ReactNode, useState } from 'react'
 import * as Styled from './styles'
 
 import { Logo } from '../Logo'
-<<<<<<< Updated upstream
 import { Avatar } from '../Avatar'
 import { NavButton } from '../NavButton'
 import { Typography } from '../Typography'
 import { Icon, IconsProps } from '../Icon'
-=======
-import { Detail } from '../Accordion'
-import { NavButton } from '../NavButton'
-import { Typography } from '../Typography'
-import { Icon, IconsProps } from '../Icon'
-import { AccountData } from '../Accordion/AccountDataType'
->>>>>>> Stashed changes
 
 export interface NavButtonListProps {
   label: string
@@ -64,23 +56,11 @@ export const Sidebar = ({ navButtonList, onSignOut, avatarType = 'PF', children 
         {isOpen && <Typography variant='caption'>Reduzir</Typography>}
       </Styled.CloseNavBar>
 
-<<<<<<< Updated upstream
       <Styled.AccountDetail data-testid='user-detail'>
         <Avatar type={avatarType} />
       </Styled.AccountDetail>
 
-      { children }
-=======
-      {detailProps && (
-        <Styled.AccountDetail data-testid='user-detail'>
-          <Detail
-            accountData={detailProps.accountData}
-            copyAccountData={detailProps.copyAccountData!}
-            collapsed={!isOpen}
-          />
-        </Styled.AccountDetail>
-      )}
->>>>>>> Stashed changes
+      {children}
 
       <Styled.ButtonsGrid data-testid='nav-button-grid' isClosed={!isOpen}>
         {navButtonList.map(({ label, icon, onClick }: NavButtonListProps) =>
