@@ -17,7 +17,7 @@ export const PinBox = styled.input<{ isDisabled: boolean, isError: any }>`
 
   outline: none;
 
-  border: 1px solid ${({ isError, theme }) => isError ? theme.colors.error : theme.colors.textDisabled};
+  border: 1px solid ${({ isError, theme }) => isError ? theme.colors.error : theme.colors.disabled};
   border-radius: ${({ theme }) => theme.sizes['6px']};
 
   text-align: center;

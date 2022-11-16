@@ -24,7 +24,7 @@ export const Loader = styled.div`
   width: ${({ theme }) => theme.sizes['50px']};
   height: ${({ theme }) => theme.sizes['50px']};
 
-  border: ${({ theme }) => theme.sizes['3px']} solid ${({ theme }) => theme.colors.greyLight};
+  border: ${({ theme }) => theme.sizes['3px']} solid ${({ theme }) => theme.colors.disabled};
   border-top-color: ${({ theme }) => theme.colors.primary};
   border-right-color: ${({ theme }) => theme.colors.primary};
   border-radius: 50%;

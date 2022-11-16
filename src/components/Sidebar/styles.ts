@@ -5,7 +5,7 @@ export const Container = styled.div<{ isClosed: boolean }>`
 
   height: 100vh;
   width: ${({ isClosed, theme }) => isClosed ? theme.sizes['62px'] : theme.sizes['320px']};
-  
+
   transition: 1s;
 `
 
@@ -14,7 +14,7 @@ export const LogoContainer = styled.div<{ isClosed: boolean }>`
   height: ${({ theme }) => theme.sizes['38px']};
 
   margin: ${({ isClosed }) => isClosed ? '20px 4px' : '20px 0px'};
-  
+
   transition: 1s;
 `
 
@@ -28,7 +28,7 @@ export const CloseNavBar = styled.div<{ isClosed: boolean }>`
 
   font-weight: ${({ theme }) => theme.font.weight.regular};
   cursor: pointer;
-  
+
   transition: 1s;
 `
 
@@ -53,7 +53,7 @@ export const ButtonsGrid = styled.div<{ isClosed: boolean }>`
   justify-items: center;
   column-gap: ${({ theme }) => theme.sizes['10px']};
   row-gap: ${({ theme }) => theme.sizes['15px']};
-  
+
   flex-direction: ${({ isClosed }) => isClosed && 'column'};
   justify-content: ${({ isClosed }) => isClosed && 'center'};
   align-items: ${({ isClosed }) => isClosed && 'center'};
