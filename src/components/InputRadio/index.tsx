@@ -1,4 +1,5 @@
 import { Typography } from '../Typography'
+
 import { InputRadioItem } from './InputRadioItem'
 import React, { useState } from 'react'
 import * as Styled from './styles'
@@ -13,7 +14,7 @@ interface RadioProps {
    */
   optionsList: string[]
   /**
-   * ITroca a direção de coluna para linha
+   * Troca a direção de coluna para linha
    */
   isRow?: boolean
 }
