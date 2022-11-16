@@ -16,7 +16,7 @@ describe('Sidebar', () => {
       { label: 'Agendamento', icon: 'calendar', onClick: () => { cy.stub().as('') }},
       { label: 'Transferencia', icon: 'moneyTransfer', onClick: () => { cy.stub().as('') }}
   ]
-  
+
   beforeEach(() => {
     mount(
       <ThemeDSProvider theme={Theme}>
@@ -71,6 +71,22 @@ describe('Sidebar', () => {
       .and('have.css', 'font-weight', '500')
       .and('have.css', 'cursor', 'pointer')
   })
+  it('Deve conter o componente Sidebar com children', () => {
+    const list = Array(10).fill('dados')
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <Sidebar navButtonList={navButtonList}>
+          <div data-testid='children' style={{ height: 320 }}>
+        {list.map((item: string) => <div>item</div>)}
+          </div>
+        </Sidebar>
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid = "sidebar-container"]')
+      .should('have.css', 'background-color', 'rgb(249, 249, 249)')
+    cy.get('[data-testid="children"]').should('exist')
+  })
 
   it('Deve conter o componente Sidebar como fechado', () => {
     cy.get('[data-testid = "close-button-container"]').click()
@@ -104,5 +120,5 @@ describe('Sidebar', () => {
     cy.get('[data-testid = "sign-out-button"]').click()
     cy.get('@onSignOut').should('have.been.called')
   })
-  
+
 })
