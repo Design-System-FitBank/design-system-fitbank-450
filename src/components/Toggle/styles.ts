@@ -13,7 +13,7 @@ export const ToggleContainer = styled.div<{ isToggled: boolean }>`
   height: ${({ theme }) => theme.sizes['16px']};
   border-radius: ${({ theme }) => theme.sizes['8px']};
   border: 1px solid ${({ theme }) => theme.colors.primary};
-  background-color: ${({ isToggled, theme }) => (isToggled ? theme.colors.primary : theme.colors.greyLight)};
+  background-color: ${({ isToggled, theme }) => (isToggled ? theme.colors.primary : theme.colors.disabled)};
   display: flex;
   align-items: center;
   transition: 1s ease-in-out;

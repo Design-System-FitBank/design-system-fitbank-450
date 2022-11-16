@@ -64,6 +64,7 @@ import { QrCodeOut } from './icons/QrCodeOut'
 import { EyeClose } from './icons/EyeClose'
 import { EyeOpen } from './icons/EyeOpen'
 import { Checked } from './icons/Checked'
+import { Search } from './icons/Search'
 
 export interface IconsProps {
   /**
@@ -145,6 +146,7 @@ export interface IconsProps {
     | 'withdrawMoney'
     | 'xlsx'
     | 'eyeOpen'
+    |'search'
 }
 
 export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) => {
@@ -343,6 +345,9 @@ export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) =>
 
     case 'eyeOpen':
       return <EyeOpen data-testid='eyeOpen' width={width} height={height} />
+
+      case 'search':
+        return <Search data-testid='search' width={width} height={height} />
 
     default:
       return <div></div>
