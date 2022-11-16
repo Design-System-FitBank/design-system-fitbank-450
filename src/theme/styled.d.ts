@@ -42,7 +42,6 @@ declare module 'styled-components' {
       '14px': string
       '15px': string
       '16px': string
-      '16.5px': string
       '18px': string
       '19px': string
       '20px': string
@@ -55,8 +54,12 @@ declare module 'styled-components' {
       '34px': string
       '38px': string
       '40px': string
+      '42px': string
       '46px': string
       '48px': string
+      '50px': string
+      '52px': string
+      '52px': string
       '52px': string
       '54px': string
       '56px': string
@@ -67,7 +70,10 @@ declare module 'styled-components' {
       '86px': string
       '90px': string
       '96px': string
+      '100px': string
       '108px': string
+      '120px': string
+      '140px': string
       '142px': string
       '144px': string
       '160px': string
@@ -75,9 +81,10 @@ declare module 'styled-components' {
       '210px': string
       '235px': string
       '255px': string
-      '255px': string
+      '260px': string
       '287px': string
       '320px': string
+      '410px': string
     }
   }
 }

@@ -75,7 +75,8 @@ describe('Icon component', () => {
     'userGroup',
     'userSearch',
     'withdrawMoney',
-    'xlsx'
+    'xlsx',
+    'search'
   ]
   names.forEach(item => {
     it(`Deve retornar o ícone ${item} quando passar name igual ${item}`, () => {
