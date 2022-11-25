@@ -85,6 +85,8 @@ declare module 'styled-components' {
       '287px': string
       '320px': string
       '410px': string
+      '424px': string
+      '617px': string
     }
   }
 }
