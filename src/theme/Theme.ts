@@ -13,7 +13,9 @@ export const Theme = {
     light: '#ffffff',
     dark: '#010716',
     disabled: '#c4c4c4',
-    shadow: '#0000001A'
+    shadow: '#0000001A',
+    neutralLight: '#F4F4F4',
+    neutralGrey: '#B8B8B8'
   },
   font: {
     weight: {

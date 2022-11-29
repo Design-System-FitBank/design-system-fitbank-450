@@ -22,6 +22,8 @@ declare module 'styled-components' {
       radioChecked: string
       transparent: string
       checkbox: string
+      neutralLight: string
+      neutralGrey: string
     }
     font: {
       weight: {
