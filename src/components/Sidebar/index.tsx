@@ -60,7 +60,7 @@ export const Sidebar = ({ navButtonList, onSignOut, avatarType = 'PF', children 
         <Avatar type={avatarType} />
       </Styled.AccountDetail>
 
-      {children}
+      <Styled.ChildContent isClosed={!isOpen}>{children}</Styled.ChildContent>
 
       <Styled.ButtonsGrid data-testid='nav-button-grid' isClosed={!isOpen}>
         {navButtonList.map(({ label, icon, onClick }: NavButtonListProps) =>
@@ -74,10 +74,10 @@ export const Sidebar = ({ navButtonList, onSignOut, avatarType = 'PF', children 
         )}
       </Styled.ButtonsGrid>
 
-      <Styled.CloseNavBar data-testid='sign-out-button' isClosed={!isOpen} onClick={onSignOut}>
+      <Styled.SignOutButton data-testid='sign-out-button' isClosed={!isOpen} onClick={onSignOut}>
         <Icon name='cancel' width={24} height={24} />
         {isOpen && <Typography variant='caption'>Sair</Typography>}
-      </Styled.CloseNavBar>
+      </Styled.SignOutButton>
     </Styled.Container>
   )
 }
