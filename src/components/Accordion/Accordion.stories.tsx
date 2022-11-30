@@ -13,7 +13,8 @@ const Template: ComponentStory<typeof Accordion> = args => <Accordion {...args} 
 export const Default = Template.bind({})
 Default.args = {
   maxHeight: 750,
-  label: 'Ver dados da conta',
+  labelStateClose: 'accordion close',
+  labelStateOpen: 'accordion open',
   children: (
     <div style={{ height: 320 }}>
       dados

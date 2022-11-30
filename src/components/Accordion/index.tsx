@@ -15,12 +15,18 @@ export interface AccordionProps {
    */
   maxHeight?: number
   /**
-   * Variável referente ao nome do botão do accordion.
+   * Variável opcional referente ao nome do botão do accordion quando o mesmo estiver em estado open.
+   * Observar caso não seja passado nenhum valor a essa variável o accordion em estado open terá o
+   * mesmo valor do label em estado close.
    */
-  label: string
+  labelStateOpen?: string
+  /**
+   * Variável referente ao nome do botão do accordion quando o mesmo estiver em estado close.
+   */
+  labelStateClose: string
 }
 
-export const Accordion: React.FC<AccordionProps> = ({ children, maxHeight = 320, label }) => {
+export const Accordion: React.FC<AccordionProps> = ({ children, maxHeight = 320, labelStateOpen, labelStateClose }) => {
   const [isActive, setIsActive] = useState(false)
 
   return (
@@ -31,7 +37,7 @@ export const Accordion: React.FC<AccordionProps> = ({ children, maxHeight = 320,
             <Icon name={!isActive ? 'arrowDown' : 'arrowUp'} width={20} height={20} />
           </Styled.Arrow>
           <Styled.LabelAccordion data-testid='labelAccordion'>
-            <Typography variant='bodySmall'>{label}</Typography>
+            <Typography variant='bodySmall'>{isActive ? labelStateOpen : labelStateClose}</Typography>
           </Styled.LabelAccordion>
         </Styled.Button>
         {children}
