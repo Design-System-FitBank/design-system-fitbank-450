@@ -2,6 +2,8 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: ${({ theme }) => theme.sizes['260px']};
 `
 
