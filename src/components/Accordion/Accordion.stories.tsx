@@ -12,8 +12,59 @@ const Template: ComponentStory<typeof Accordion> = args => <Accordion {...args} 
 
 export const Default = Template.bind({})
 Default.args = {
+  maxHeight: 150,
+  labelStateClose: 'accordion close',
+  labelStateOpen: 'accordion open',
+  children: (
+    <div style={{ height: 320 }}>
+      dados
+      <br />
+      dados
+      <br />
+      dados
+      <br />
+      dados
+      <br />
+      dados
+      <br />
+      dados
+      <br />
+      dados
+      <br />
+      dados
+      <br />{' '}
+    </div>
+  )
+}
+export const LabelFixed = Template.bind({})
+LabelFixed.args = {
+  maxHeight: 150,
+  labelStateClose: 'accordion close',
+  children: (
+    <div style={{ height: 320 }}>
+      dados
+      <br />
+      dados
+      <br />
+      dados
+      <br />
+      dados
+      <br />
+      dados
+      <br />
+      dados
+      <br />
+      dados
+      <br />
+      dados
+      <br />{' '}
+    </div>
+  )
+}
+export const LabelWithout = Template.bind({})
+LabelWithout.args = {
   maxHeight: 750,
-  label: 'Ver dados da conta',
+  openAccordion: false,
   children: (
     <div style={{ height: 320 }}>
       dados
