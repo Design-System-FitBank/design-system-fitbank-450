@@ -4,23 +4,25 @@ export const Container = styled.div<{ isClosed: boolean }>`
   background-color: ${({ theme }) => theme.colors.textDisabled};
 
   height: 100%;
-  width: ${({ isClosed, theme }) => isClosed ? theme.sizes['62px'] : theme.sizes['320px']};
+  width: ${({ isClosed, theme }) => (isClosed ? theme.sizes['62px'] : theme.sizes['320px'])};
+  padding: ${({ isClosed }) => (isClosed ? '20px 0px' : '20px 10px')};
 
   transition: 1s;
+  position: relative;
 `
 
 export const LogoContainer = styled.div<{ isClosed: boolean }>`
-  width: ${({ isClosed, theme }) => isClosed ? theme.sizes['56px'] : theme.sizes['142px']};
+  width: ${({ isClosed, theme }) => (isClosed ? theme.sizes['56px'] : theme.sizes['142px'])};
   height: ${({ theme }) => theme.sizes['38px']};
 
-  margin: ${({ isClosed }) => isClosed ? '20px 4px' : '20px 0px'};
+  margin: ${({ isClosed }) => (isClosed ? '0px 4px' : '0px 20px')};
 
   transition: 1s;
 `
 
 export const CloseNavBar = styled.div<{ isClosed: boolean }>`
   display: flex;
-  justify-content: ${({ isClosed }) => isClosed ? 'center' : 'flex-end'};
+  justify-content: ${({ isClosed }) => (isClosed ? 'center' : 'flex-end')};
   align-items: center;
 
   margin: ${({ theme }) => theme.sizes['12px']};
@@ -42,8 +44,17 @@ export const AccountDetail = styled.div`
   transition: 1s;
 `
 
+export const ChildContent = styled.div<{ isClosed: boolean }>`
+  width: 100%;
+  display: ${({ isClosed }) => (isClosed ? 'none' : 'flex')};
+  align-items: ${({ isClosed }) => (isClosed ? 'none' : 'center')};
+  justify-content: ${({ isClosed }) => (isClosed ? 'none' : 'center')};
+
+  overflow: hidden;
+`
+
 export const ButtonsGrid = styled.div<{ isClosed: boolean }>`
-  display: ${({ isClosed }) => isClosed ? 'flex' : 'grid'};
+  display: ${({ isClosed }) => (isClosed ? 'flex' : 'grid')};
 
   margin: 50px 0px;
 
@@ -59,5 +70,20 @@ export const ButtonsGrid = styled.div<{ isClosed: boolean }>`
   align-items: ${({ isClosed }) => isClosed && 'center'};
 
   overflow: hidden;
+  height: 100%;
+  transition: 1s;
+`
+
+export const SignOutButton = styled.div<{ isClosed: boolean }>`
+  display: flex;
+  justify-content: ${({ isClosed }) => (isClosed ? 'center' : 'flex-end')};
+  align-items: ${({ isClosed }) => (isClosed ? 'center' : 'flex-end')};
+
+  margin: ${({ theme }) => theme.sizes['12px']};
+  gap: ${({ theme }) => theme.sizes['12px']};
+
+  font-weight: ${({ theme }) => theme.font.weight.regular};
+  cursor: pointer;
+
   transition: 1s;
 `

@@ -34,12 +34,12 @@ describe('Sidebar', () => {
   it('Deve conter o componente Sidebar', () => {
     cy.get('[data-testid = "sidebar-container"]')
       .should('have.css', 'background-color', 'rgb(249, 249, 249)')
-      .and('have.css', 'height', '478px')
+      .and('have.css', 'height', '522px')
       .and('have.css', 'width', '320px')
     cy.get('[data-testid = "logo-container"]')
       .should('have.css', 'width', '142px')
       .and('have.css', 'height', '38px')
-      .and('have.css', 'margin', '20px 0px')
+      .and('have.css', 'margin', '0px 20px')
     cy.get('[data-testid = "close-button-container"]')
       .should('have.css', 'display', 'flex')
       .and('have.css', 'justify-content', 'flex-end')
@@ -57,7 +57,7 @@ describe('Sidebar', () => {
     cy.get('[data-testid = "nav-button-grid"]')
       .should('have.css', 'display', 'grid')
       .and('have.css', 'margin', '50px 0px')
-      .and('have.css', 'grid-template-columns', '100px 100px 100px')
+      .and('have.css', 'grid-template-columns', '93.3295px 93.3295px 93.3409px')
       .and('have.css', 'grid-template-rows', '90px 90px 0px')
       .and('have.css', 'justify-items', 'center')
       .and('have.css', 'column-gap', '10px')
@@ -65,12 +65,13 @@ describe('Sidebar', () => {
     cy.get('[data-testid = "sign-out-button"]')
       .should('have.css', 'display', 'flex')
       .and('have.css', 'justify-content', 'flex-end')
-      .and('have.css', 'align-items', 'center')
+      .and('have.css', 'align-items', 'flex-end')
       .and('have.css', 'margin', '12px')
       .and('have.css', 'gap', '12px')
       .and('have.css', 'font-weight', '500')
       .and('have.css', 'cursor', 'pointer')
   })
+
   it('Deve conter o componente Sidebar com children', () => {
     const list = Array(10).fill('dados')
     mount(
@@ -94,7 +95,7 @@ describe('Sidebar', () => {
       .should('have.css', 'width', '62px')
     cy.get('[data-testid = "logo-container"]')
       .should('have.css', 'width', '56px')
-      .and('have.css', 'margin', '20px 4px')
+      .and('have.css', 'margin', '0px 4px')
     cy.get('[data-testid = "close-button-container"]')
       .should('have.css', 'justify-content', 'center')
     cy.get('[data-testid = "user-detail"]')
@@ -120,5 +121,4 @@ describe('Sidebar', () => {
     cy.get('[data-testid = "sign-out-button"]').click()
     cy.get('@onSignOut').should('have.been.called')
   })
-
 })
