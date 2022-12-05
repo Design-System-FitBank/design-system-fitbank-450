@@ -1,10 +1,19 @@
-import React, { useState } from 'react'
-import { Typography } from '../Typography'
+import React from 'react'
 import * as Styled from './styles'
-import { Icon } from '../Icon'
-import { Validator } from '../../_utils/validator'
-import { Mask } from '../../_utils/mask'
+import { ContainerTab } from './components/ContainerTab'
+import { IconsProps } from '../Icon'
+
 interface TabProps {
+  /**
+   * Define o texto principal a ser mostrado na Tab.
+   */
+  children: string
+
+  /**
+   * Define o ícone a ser mostrado na Tab.
+   */
+  icon?: IconsProps['name']
+
   /**
    * Define se a tab está desabilitada ou não.
    */
@@ -16,14 +25,11 @@ interface TabProps {
   onClick: () => void
 }
 
-export const Tab: React.FC<TabProps> = ({ disabled = false, onClick }) => {
-  const returnElement = () => {
-    return (
-      <Styled.Primary data-testeid='tab' onClick={onClick} disabled={disabled}>
-        <ContainerTab icon={icon}>{children}</ContainerTab>
-      </Styled.Primary>
-    )
-  }
-
-  return returnElement
+export const Tab: React.FC<TabProps> = ({ children, icon, disabled = false, onClick }) => {
+  return (
+    <Styled.Primary data-testeid='tab' onClick={onClick} disabled={disabled}>
+      <ContainerTab icon={icon}></ContainerTab>
+      {children}
+    </Styled.Primary>
+  )
 }
