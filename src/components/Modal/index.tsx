@@ -2,54 +2,66 @@ import React from 'react'
 
 import * as Styled from './styles'
 
-import { Button } from '../Button'
-import { Typography } from '../Typography'
+import { HeaderModal } from './components/HeaderModal'
+import { FooterModal } from './components/FooterModal'
 
-interface ModalProps {
+export interface ModalProps {
   /**
    * Título mostrado no cabeçalho do modal.
-  */
+   */
   title: string
   /**
    * Título mostrado no botão do rodapé do modal.
-  */
+   */
   buttonTitle: string
   /**
-   * Flag que indica o status de desabilitado do botão do rodapé do modal.
-  */
+   * Variável que indica o status do botão do rodapé do modal.
+   */
   isDisable: boolean
   /**
+   * Valor em pixel da largura do modal
+   */
+  width?: number
+  /**
    * Função executada pelo botão do rodapé do modal
-  */
+   */
   onClick: () => void
   /**
    * Variável que recebe uma string ou qualquer outro componente React
-  */
-  children: JSX.Element[]
+   */
+  children: JSX.Element
 }
 
-export const Modal = ({ title, buttonTitle, children, isDisable, onClick }: ModalProps) => {
+export const Modal: React.FC<ModalProps> = ({ title, buttonTitle, isDisable = false, width, onClick, children }) => {
   const [isOpen, setIsOpen] = React.useState(true)
+  const [opacity, setOpacity] = React.useState(0)
+
+  const convertToRem = pxValue => pxValue / 16
+
+  const handleClose = () => {
+    setOpacity(0)
+    const timer = setTimeout(() => {
+      setIsOpen(false)
+    }, 300)
+    return () => clearTimeout(timer)
+  }
+
+  React.useEffect(() => {
+    setOpacity(1)
+  }, [isOpen])
 
   return (
-    <Styled.Container isClosed={!isOpen} data-testid='box-container'>
-      <Styled.ModalBackdrop isClosed={!isOpen} data-testid='modal-overlay' />
-      <Styled.ModalContainer isClosed={!isOpen} data-testid='modal-container'>
-        <Styled.ModalHeader>
-          <Styled.TitleContainer>
-            <Typography variant='h5'>{title}</Typography>
-          </Styled.TitleContainer>
-          <Button size='small' type='secondary' onClick={() => setIsOpen(!isOpen)}>
-            Cancelar
-          </Button>
-        </Styled.ModalHeader>
-        <Styled.ModalBody>{children}</Styled.ModalBody>
-        <Styled.ModalFooter>
-          <Button disabled={isDisable} size='large' type='primary' onClick={onClick}>
-            {buttonTitle}
-          </Button>
-        </Styled.ModalFooter>
-      </Styled.ModalContainer>
-    </Styled.Container>
+    <>
+      {isOpen && (
+        <Styled.Container opacity={opacity} data-testid='box-container'>
+          <Styled.BackdropModal data-testid='backdrop-modal' />
+          <Styled.ContainerModal width={convertToRem(width)} data-testid='container-modal'>
+            <HeaderModal title={title} closeFunction={handleClose} />
+            <Styled.BodyModal>{children}</Styled.BodyModal>
+            <FooterModal buttonTitle={buttonTitle} isDisable={isDisable} onClick={onClick}/>
+          </Styled.ContainerModal>
+        </Styled.Container>
+      )}
+    </>
   )
 }

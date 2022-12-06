@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.div<{ isClosed: boolean }>`
+export const Container = styled.div<{ opacity: number }>`
   display: flex;
   position: absolute;
   align-items: center;
@@ -10,14 +10,13 @@ export const Container = styled.div<{ isClosed: boolean }>`
   height: 100%;
   width: 100%;
   transition: all 0.3s ease-in-out;
-  opacity: ${({ isClosed }) => (isClosed ? 0 : 1)};
+  opacity: ${({ opacity }) => opacity};
   transition: all 0.3s ease-in-out;
 `
 
-export const ModalBackdrop = styled.div<{ isClosed: boolean }>`
+export const BackdropModal = styled.div`
   position: absolute;
   background-color: ${({ theme }) => theme.colors.dark};
-  opacity: ${({ isClosed }) => (isClosed ? 0 : 1)};
   height: 100%;
   width: 100%;
   z-index: 400;
@@ -25,7 +24,7 @@ export const ModalBackdrop = styled.div<{ isClosed: boolean }>`
   opacity: 0.2;
 `
 
-export const ModalContainer = styled.div<{ isClosed: boolean }>`
+export const ContainerModal = styled.div<{ width: number }>`
   display: flex;
   position: relative;
   justify-content: space-between;
@@ -33,29 +32,10 @@ export const ModalContainer = styled.div<{ isClosed: boolean }>`
   flex-direction: column;
   border-radius: ${({ theme }) => theme.sizes['16px']};
   z-index: 500;
-  width: 656px;
+  width: ${({ theme, width }) => width ? `${width}rem` : theme.sizes['656px']};
 `
 
-export const ModalHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: ${({ theme }) => theme.sizes['16px']} ${({ theme }) => theme.sizes['26px']};
-`
-
-export const TitleContainer = styled.div`
-  color: ${({ theme }) => theme.colors.primary};
-
-  &::after {
-    content: '';
-    position: absolute;
-    margin-top: ${({ theme }) => theme.sizes['7px']};
-    height: ${({ theme }) => theme.sizes['3px']};
-    width: ${({ theme }) => theme.sizes['50px']};
-    background-color: ${({ theme }) => theme.colors.tertiary};
-  }
-`
-
-export const ModalBody = styled.div`
+export const BodyModal = styled.div`
   font-size: ${({ theme }) => theme.sizes['16px']};
   display: block;
   height: auto;
@@ -66,11 +46,3 @@ export const ModalBody = styled.div`
   overflow-y: auto;
 `
 
-export const ModalFooter = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${({ theme }) => theme.colors.greyLight};
-  height: ${({ theme }) => theme.sizes['78px']};
-  border-radius: 0 0 ${({ theme }) => theme.sizes['16px']} ${({ theme }) => theme.sizes['16px']};
-`

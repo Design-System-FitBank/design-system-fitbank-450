@@ -14,30 +14,14 @@ export const Default = Template.bind({})
 
 Default.args = {
   title: 'Título do Modal',
-  buttonTitle: 'Aprovar',
-  children: [
+  buttonTitle: 'Ativar',
+  children:
     <div>
       <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione sed neque nam blanditiis illo, porro,
-        aspernatur impedit, quod voluptate culpa dolorum praesentium! Architecto ratione pariatur eius provident
-        sapiente, ut obcaecati. Vitae veniam dolor repellat, officiis accusamus sit consequuntur quae nostrum soluta
+        O corpo do modal <code>body</code> é um elemento <code>JSX.Element</code> recebido pelo children, ou seja, você pode passar uma <code>div</code> ou qualquer outro elemento ou componente no corpo e ele será exibido. Além disso, você pode definir uma largura do modal pela propriedade <code>width</code> do componente.
+        Caso o conteúdo do modal seja muito extenso, ele cria um scroll para que o componente fique mais responsivo e não ultrapasse os limites da tela.
       </p>
-      <br />
     </div>,
-    <div>
-      <fieldset>
-        <legend>Choose your monster's features:</legend>
-        <div>
-          <input type='checkbox' />
-          <label>Scales</label>
-        </div>
-        <div>
-          <input type='checkbox' id='horns' name='horns' />
-          <label>Horns</label>
-        </div>
-      </fieldset>
-    </div>
-  ],
   isDisable: false,
   onClick: () => {}
 }

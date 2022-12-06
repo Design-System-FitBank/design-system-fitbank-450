@@ -66,7 +66,7 @@ declare module 'styled-components' {
       '62px': string
       '64px': string
       '68px': string
-      '78px': string
+      '76px': string
       '82px': string
       '86px': string
       '90px': string
