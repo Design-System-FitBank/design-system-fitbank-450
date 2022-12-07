@@ -6,5 +6,8 @@ export default defineConfig({
       framework: "react",
       bundler: "webpack",
     },
+    excludeSpecPattern: [
+      '**/dist/**/*',
+    ],
   },
 });
