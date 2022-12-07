@@ -11,4 +11,3 @@ export default {
 const Template: ComponentStory<typeof TransactionList> = args => <TransactionList {...args} />
 
 export const DefaultTransactionList = Template.bind({})
-export const TransactionDay = Template.bind({})

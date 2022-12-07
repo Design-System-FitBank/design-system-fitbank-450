@@ -12,8 +12,8 @@ interface TransactionProps {
 }
 
 export interface TransactionListProps extends Transaction {
-  date: string
-  dayTransactions: Transaction
+  date: string[]
+  dayTransactions: Transaction[]
 }
 
 type Transaction = {
@@ -25,43 +25,80 @@ type Transaction = {
 }
 
 export const TransactionList: React.FC<TransactionProps> = ({ transactionList }) => {
-  const formattedValue = maskMoney('20')
-  const isCredit = (transactionList?.values ?? 0) >= 0
-  const showDetailsAndReceiptButtons =
-    (transactionList?.operationType === OperationType.moneyTransfer ||
-      transactionList?.operationType === OperationType.internalTransfer ||
-      transactionList?.operationType === OperationType.boletoPayment ||
-      transactionList?.operationType === OperationType.garePayment ||
-      transactionList?.operationType === OperationType.fgtsPayment ||
-      transactionList?.operationType === OperationType.purchaseTopUp ||
-      transactionList?.operationType === OperationType.pixOut ||
-      transactionList?.operationType === OperationType.pixIn) &&
-    transactionList?.externalIdentifier
+  const opt = (operation: number) => {
+    switch (operation) {
+      case 2:
+        return 'Pagamento de boleto'
+
+      case 3:
+        return 'Transferência'
+
+      case 6:
+        return 'Transferência Interna'
+
+      case 8:
+        return 'GARE'
+
+      case 11:
+        return 'FGTS'
+
+      case 12:
+        return 'DARJ'
+
+      case 13:
+        return 'Transferência SMS'
+
+      case 23:
+        return 'Saque Digital'
+
+      case 37:
+        return 'Recarga'
+
+      case 40:
+        return 'PIX Enviado'
+
+      case 41:
+        return 'PIX Recebido'
+
+      case 42:
+        return 'Devolução PIX'
+
+      case 44:
+        return 'QRCode'
+    }
+  }
 
   return (
     <Styled.Container data-testid='container'>
-      <Styled.TransactionDay>
-        <Typography variant='body'>11 nov</Typography>
-        <div className='transactions-itens' data-test-id='transactions-itens'>
-          {transactionList?.map((transaction, i) => (
-            <TransactionList key={i} transactionList={transaction} />
+      {transactionList?.date?.map((date, i) => (
+        <>
+          <Styled.TransactionDay>
+            <Typography variant='body'>{date}</Typography>
+          </Styled.TransactionDay>
+          {transactionList?.dayTransactions?.map((transactionRegister, i) => (
+            <>
+              <Styled.IconMoney data-testid='iconMoney' isCredit={(transactionRegister.values ?? 0) >= 0}>
+                <Icon name={(transactionRegister.values ?? 0) >= 0 ? 'moneyln' : 'moneyOut'} width={36} height={36} />
+              </Styled.IconMoney>
+              <Styled.Title data-testid='title'>
+                <Typography variant='bodySmall'>{transactionRegister.title}</Typography>
+                {!transactionRegister?.establishment && (
+                  <Typography variant='bodyLarge'>{transactionRegister.establishment}</Typography>
+                )}
+                {!transactionRegister.operationType && (
+                  <Typography variant='bodySmall'>{opt(transactionRegister.operationType)}</Typography>
+                )}
+              </Styled.Title>
+              <Styled.Button data-testid='button'>
+                <Typography variant='bodyLarge'>{maskMoney(transactionRegister.values.toString())}</Typography>
+                <Button icon='details' onClick={() => {}} size='small' type='tertiary'>
+                  Ver
+                </Button>
+              </Styled.Button>
+            </>
           ))}
-        </div>
-      </Styled.TransactionDay>
-      <Styled.IconMoney data-testid='iconMoney' isCredit={isCredit}>
-        <Icon name={isCredit ? 'moneyln' : 'moneyOut'} width={36} height={36} />
-      </Styled.IconMoney>
-      <Styled.Title data-testid='title'>
-        <Typography variant='bodySmall'>taitou</Typography>
-        {!transactionList?.establishment && <Typography variant='bodyLarge'>Mercado</Typography>}
-        {!showDetailsAndReceiptButtons && <Typography variant='bodySmall'>Via PIX</Typography>}
-      </Styled.Title>
-      <Styled.Button data-testid='button'>
-        <Typography variant='bodyLarge'>{formattedValue}</Typography>
-        <Button icon='details' onClick={() => {}} size='small' type='tertiary'>
-          Ver
-        </Button>
-      </Styled.Button>
+        </>
+      ))}
     </Styled.Container>
   )
 }
