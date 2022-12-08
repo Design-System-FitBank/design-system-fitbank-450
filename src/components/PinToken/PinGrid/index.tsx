@@ -1,12 +1,14 @@
+import { Password } from 'components/Input/Input.stories'
 import React, { useRef, useState } from 'react'
 import { Container, PinBox } from '../styles'
 
 interface PinTokenProps {
   onPinChange: (pinEntry: number[]) => void
   isDisabled?: boolean
+  isPassword?: boolean
 }
 
-export const PinGrid: React.FC<PinTokenProps> = ({ isDisabled = false, onPinChange }) => {
+export const PinGrid: React.FC<PinTokenProps> = ({ isDisabled = false, isPassword = false, onPinChange }) => {
   const [pinValue, setPinValue] = useState<number[]>()
   const [error, setError] = useState<string>()
   const inputRefs = useRef<HTMLInputElement[]>([])
@@ -60,9 +62,13 @@ export const PinGrid: React.FC<PinTokenProps> = ({ isDisabled = false, onPinChan
     }
 
     setPinValue([...pinValue!, pinNumber])
-
     if (index === 5) {
       onBlur(5)
+      return
+    }
+
+    if (index === 3 && isPassword) {
+      onBlur(3)
       return
     }
 
@@ -85,6 +91,9 @@ export const PinGrid: React.FC<PinTokenProps> = ({ isDisabled = false, onPinChan
     if (pinValue?.length === 6) {
       changePinTokenFocus(5)
       return
+    } else if (pinValue?.length === 4) {
+      changePinTokenFocus(3)
+      return
     }
 
     if (pinValue?.length === 0) {
@@ -97,16 +106,25 @@ export const PinGrid: React.FC<PinTokenProps> = ({ isDisabled = false, onPinChan
 
   if (pinValue?.length === 6) {
     onPinChange(pinValue!)
+  } else if (pinValue?.length === 4) {
+    onPinChange(pinValue!)
   }
+
+  document.addEventListener("keydown", function (event) {
+    if (event.ctrlKey) {
+        event.preventDefault();
+    }   
+  })
 
   return (
     <Container data-testid='container'>
-      {Array.from({ length: 6 }, (_, index) => (
+      {Array.from({ length: isPassword? 4 : 6 }, (_, index) => (
         <PinBox
           data-testid={`pinToken-${index}`}
           disabled={isDisabled}
           isDisabled={isDisabled}
           key={index}
+          type={isPassword ? 'password' : 'text'}
           value={pinValue ? pinValue![index] : ''}
           ref={item => {
             if (item) {
@@ -118,6 +136,7 @@ export const PinGrid: React.FC<PinTokenProps> = ({ isDisabled = false, onPinChan
           onKeyDown={event => onKeyDown(event, index)}
           onChange={event => onChange(event, index)}
           onClick={() => onClick()}
+
         />
       ))}
     </Container>
