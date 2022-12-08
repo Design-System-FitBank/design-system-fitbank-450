@@ -11,7 +11,6 @@ export const Container = styled.div<{ opacity: number }>`
   width: 100%;
   transition: all 0.3s ease-in-out;
   opacity: ${({ opacity }) => opacity};
-  transition: all 0.3s ease-in-out;
 `
 
 export const BackdropModal = styled.div`
@@ -20,24 +19,24 @@ export const BackdropModal = styled.div`
   height: 100%;
   width: 100%;
   z-index: 400;
-  transition: all 0.3s ease-in-out;
   opacity: 0.2;
 `
 
-export const ContainerModal = styled.div<{ width: number }>`
+export const ContainerModal = styled.div<{ width: number; height: number; type: any }>`
   display: flex;
   position: relative;
-  justify-content: space-between;
+  justify-content: ${({ type }) => (type === 'primary' ? 'space-between' : 'center')};
   background-color: ${({ theme }) => theme.colors.light};
   flex-direction: column;
   border-radius: ${({ theme }) => theme.sizes['16px']};
   z-index: 500;
-  width: ${({ theme, width }) => width ? `${width}rem` : theme.sizes['656px']};
+  width: ${({ theme, width }) => (width ? `${width}rem` : theme.sizes['656px'])};
+  height: ${({ height }) => (height ? `${height}rem` : 'auto')};
 `
 
 export const BodyModal = styled.div`
   font-size: ${({ theme }) => theme.sizes['16px']};
-  display: block;
+  display: flex;
   height: auto;
   word-wrap: break-word;
   margin: ${({ theme }) => theme.sizes['26px']};
@@ -45,4 +44,3 @@ export const BodyModal = styled.div`
   overflow-x: hidden;
   overflow-y: auto;
 `
-

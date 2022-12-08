@@ -6,7 +6,7 @@ import { Button } from '../../../Button'
 import { Typography } from '../../../Typography'
 
 interface HeaderProps {
-  title: string
+  title?: string
   closeFunction: () => void
 }
 
