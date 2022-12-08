@@ -15,7 +15,7 @@ describe('Card Default', () => {
       </ThemeDSProvider>
     )
   })
-  it('É setado o tamanho e a cor do componente', () => {
+  it('Deve setar o tamanho e a cor do componente', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
