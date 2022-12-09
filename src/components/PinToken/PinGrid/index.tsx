@@ -1,4 +1,3 @@
-import { Password } from 'components/Input/Input.stories'
 import React, { useRef, useState } from 'react'
 import { Container, PinBox } from '../styles'
 
@@ -110,12 +109,6 @@ export const PinGrid: React.FC<PinTokenProps> = ({ isDisabled = false, isPasswor
     onPinChange(pinValue!)
   }
 
-  document.addEventListener("keydown", function (event) {
-    if (event.ctrlKey) {
-        event.preventDefault();
-    }   
-  })
-
   return (
     <Container data-testid='container'>
       {Array.from({ length: isPassword? 4 : 6 }, (_, index) => (
@@ -136,7 +129,6 @@ export const PinGrid: React.FC<PinTokenProps> = ({ isDisabled = false, isPasswor
           onKeyDown={event => onKeyDown(event, index)}
           onChange={event => onChange(event, index)}
           onClick={() => onClick()}
-
         />
       ))}
     </Container>
