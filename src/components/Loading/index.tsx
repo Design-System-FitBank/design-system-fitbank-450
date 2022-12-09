@@ -12,6 +12,6 @@ export const Loading: React.FC<LoadingProps> = ({ text }) => {
     <Styled.Container data-testid='container'>
       <Styled.Loader data-testid='loader-container' />
       {text && <Typography variant='h6'>{text}</Typography>}
-    </Styled.Container>
+    </Styled.Container> 
   )
 }

@@ -80,6 +80,7 @@ export interface IconsProps {
   /**
    * Variavel de nomes de cada ícone.
    */
+  color?: string
   name:
     | 'adress'
     | 'arrowDown'
@@ -149,7 +150,7 @@ export interface IconsProps {
     | 'search'
 }
 
-export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) => {
+export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 , color = 'currentcolor'}) => {
   switch (name) {
     case 'home':
       return <Home data-testid='home' width={width} height={height} />
@@ -176,7 +177,7 @@ export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) =>
       return <Calendar data-testid='calendar' width={width} height={height} />
 
     case 'cancel':
-      return <Cancel data-testid='cancel' width={width} height={height} />
+      return <Cancel data-testid='cancel' width={width} height={height} color={color}/>
 
     case 'card':
       return <Card data-testid='card' width={width} height={height} />
@@ -203,7 +204,7 @@ export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) =>
       return <Device data-testId='device' width={width} height={height} />
 
     case 'done':
-      return <Done data-testid='done' width={width} height={height} />
+      return <Done data-testid='done' width={width} height={height} color={color}/>
 
     case 'download':
       return <Download data-testid='download' width={width} height={height} />
