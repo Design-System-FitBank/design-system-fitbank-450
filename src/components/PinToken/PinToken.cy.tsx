@@ -110,4 +110,18 @@ describe('PinToken', () => {
     })
     cy.get('@onPinChange').should('have.been.calledWithExactly', pinValues)
   })
+
+  it('Deve conter o estado password', () => {
+    mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <PinToken onChange={cy.stub().as('onChange')} password />
+      </ThemeDSProvider>
+    )
+
+    cy.get('[data-testid = "pinToken-0"]').type(validPin.toString()).wait(100).should('not.have.focus')
+    cy.get('[data-testid = "pinToken-1"]').type(validPin.toString()).wait(100).should('not.have.focus')
+    cy.get('[data-testid = "pinToken-2"]').type(validPin.toString()).wait(100).should('not.have.focus')
+    cy.get('[data-testid = "pinToken-3"]').type(validPin.toString()).wait(100).should('not.have.focus')
+  })
 })
