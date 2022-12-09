@@ -38,7 +38,7 @@ export interface ModalProps {
   /**
    * Função executada pelo botão do rodapé do modal
    */
-  onClick: () => void
+  onClick?: () => void
   /**
    * Função executada após o modal ser fechado
    */
