@@ -1,16 +1,5 @@
 import styled from 'styled-components'
 
-// export const PopUpContainer = styled.div`
-//   display: flex;
-//   align-items: center;
-//   width: 656px;
-//   height: 308px;
-//   justify-content: center;
-//   background-color: ${({ theme }) => theme.colors.light};
-//   border-radius: ${({ theme }) => theme.sizes['16px']};
-//   z-index: 500;
-// `
-
 export const BoxLoading = styled.div`
   display: flex;
   align-items: center;
@@ -38,8 +27,12 @@ export const ErrorContainer = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  
+  > svg{
+    color: ${({ theme }) => theme.colors.error};
+  }
+  }
 `
 export const TextAllign = styled.div`
-  padding-top: 31px;
-  padding-bottom: 24px;
+  padding: 24px 0px 24px 0px;
 `
