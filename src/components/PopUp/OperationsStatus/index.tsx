@@ -1,10 +1,9 @@
 import React from 'react'
 import * as Styled from './styles'
-import { Theme } from '../../theme'
-import { Loading } from '../Loading'
-import { Icon } from '../Icon'
-import { Typography } from '../Typography'
-import { Modal } from '../Modal'
+import { Loading } from '../../Loading'
+import { Icon } from '../../Icon'
+import { Typography } from '../../Typography'
+import { Modal } from '../../Modal'
 
 interface PopUpProps {
   /**
@@ -22,7 +21,7 @@ interface PopUpProps {
 }
 
 export const PopUp = ({ loading, success, message }: PopUpProps) => {
-  const [isOpen, setIsOpen] = React.useState(true)
+  const [isOpen] = React.useState(true)
 
   return (
     <>
@@ -33,7 +32,7 @@ export const PopUp = ({ loading, success, message }: PopUpProps) => {
           </Styled.BoxLoading>
         ) : success ? (
           <Styled.SuccessContainer data-testid='success-Container'>
-            <Icon name='done' height={70} width={70} color={Theme.colors.success} />
+            <Icon name='done' height={56} width={56} />
             <Styled.TextAllign>
               <Typography variant='h6'> Concluído </Typography>
             </Styled.TextAllign>
@@ -41,7 +40,7 @@ export const PopUp = ({ loading, success, message }: PopUpProps) => {
           </Styled.SuccessContainer>
         ) : (
           <Styled.ErrorContainer data-testid='error-container'>
-            <Icon name='cancel' height={80} width={80} color={Theme.colors.error} />
+            <Icon name='cancel' height={56} width={56} />
             <Styled.TextAllign>
               <Typography variant='h6'> Operação mal sucedida </Typography>
             </Styled.TextAllign>

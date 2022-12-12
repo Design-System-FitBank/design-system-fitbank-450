@@ -1,6 +1,5 @@
 import { Typography } from '../Typography'
 import React from 'react'
-
 import * as Styled from './styles'
 
 export interface LoadingProps {
