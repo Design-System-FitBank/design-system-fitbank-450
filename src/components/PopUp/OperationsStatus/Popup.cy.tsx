@@ -1,42 +1,73 @@
 import React from 'react'
+import { faker } from '@faker-js/faker'
 import 'cypress-real-events/support'
+import { GlobalStyles, Theme, ThemeDSProvider } from '../../../theme'
+import { PopUp } from '.'
 
-import { mount } from 'cypress/react18'
-import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
 
-import { PopUp } from './'
+const message = faker.lorem.words()
 
 describe('PopUp', () => {
   beforeEach(() => {
-    mount(
+    cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <PopUp 
-          message='Teste'
-          loading={true}
-          success={false}
-        />
+        <PopUp loading={true} success={false} message={message} />
       </ThemeDSProvider>
     )
-    cy.wait(100)
+    cy.wait(2000)
+  })
+  afterEach(() => cy.wait(500))
+
+  it('Deve ficar carregando', () => {
+    cy.viewport(1280, 768)
+    cy.get('[data-testid="loading"]').should('exist')
   })
 
-  afterEach(() => {
-    cy.wait(100)
+  it('Deve ser sucesso', () => {
+    cy.viewport(1280, 768)
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <PopUp loading={false} success={true} message={message} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="success-Container"]').should('exist')
+
+    cy.get('[data-testid="success-Container"]').contains(message)
   })
 
-  it('Deve conter o componente PopUp/OperationsStatus', () => {
-    cy.get('[data-testid = "container"]')
-      .should('have.css', 'width', '500px')
-      .and('have.css', 'height', '500px')
-      .and('have.css', 'display', 'flex')
-      .and('have.css', 'flex-direction', 'column')
-      .and('have.css', 'justify-content', 'center')
-      .and('have.css', 'gap', '16px')
-    cy.get('[data-testid = "loader-container"]')
-      .should('have.css', 'animation', '0.8s ease 0s infinite normal none running kSzaaH')
-      .and('have.css', 'border-right-color', 'rgb(50, 55, 81)')
-      .and('have.css', 'border-right-color', 'rgb(50, 55, 81)')
-      .and('have.css', 'border-radius', '50%')
+  it('Deve ser erro', () => {
+    cy.viewport(1280, 768)
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <PopUp loading={false} success={false} message={message} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="error-Container"]').should('exist')
+    cy.get('[data-testid="error-Container"]').contains(message)
+  })
+
+  it('Deve ser sucesso (sem a mensagem)', () => {
+    cy.viewport(1280, 768)
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <PopUp loading={false} success={true} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="success-Container"]').should('exist')
+  })
+
+  it('Deve ser erro (sem a mensagem)', () => {
+    cy.viewport(1280, 768)
+    cy.mount(
+      <ThemeDSProvider theme={Theme}>
+        <GlobalStyles />
+        <PopUp loading={false} success={false} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="error-Container"]').should('exist')
   })
 })

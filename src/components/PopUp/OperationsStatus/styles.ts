@@ -33,6 +33,8 @@ export const ErrorContainer = styled.div`
   }
   }
 `
+/*Dá a margem entre o icon e o subtitle*/
 export const TextAllign = styled.div`
   padding: 24px 0px 24px 0px;
+  
 `

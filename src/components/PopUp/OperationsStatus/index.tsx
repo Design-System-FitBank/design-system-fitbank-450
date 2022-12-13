@@ -8,16 +8,16 @@ import { Modal } from '../../Modal'
 interface PopUpProps {
   /**
    * Tela de carregamento que precede as mensagens de sucesso ou erro
-   **/
+   */
   loading: boolean
   /**
    * Decisão da mensagem de sucesso ou erro
-   **/
+   */
   success: boolean
   /**
    * Recebe uma mensagem de sucesso caso success = true e uma mensagem de erro caso success = false
-   **/
-  message: string
+   */
+  message?: string
 }
 
 export const PopUp = ({ loading, success, message }: PopUpProps) => {
@@ -27,8 +27,8 @@ export const PopUp = ({ loading, success, message }: PopUpProps) => {
     <>
       <Modal type='secondary' width={656} height={308} isEnabled={isOpen}>
         {loading ? (
-          <Styled.BoxLoading>
-            <Loading text='Aguarde' data-testid='loading' />
+          <Styled.BoxLoading data-testid='loading' >
+            <Loading text='Aguarde'  />
           </Styled.BoxLoading>
         ) : success ? (
           <Styled.SuccessContainer data-testid='success-Container'>
@@ -36,10 +36,10 @@ export const PopUp = ({ loading, success, message }: PopUpProps) => {
             <Styled.TextAllign>
               <Typography variant='h6'> Concluído </Typography>
             </Styled.TextAllign>
-            <Typography variant='subtitle'>{message}</Typography>
+            <Typography variant='subtitle' data-testid='message-success'>{message}</Typography>
           </Styled.SuccessContainer>
         ) : (
-          <Styled.ErrorContainer data-testid='error-container'>
+          <Styled.ErrorContainer data-testid='error-Container'>
             <Icon name='cancel' height={56} width={56} />
             <Styled.TextAllign>
               <Typography variant='h6'> Operação mal sucedida </Typography>
