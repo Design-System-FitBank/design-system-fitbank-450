@@ -21,7 +21,7 @@ export const Breadline: React.FC<InputBreadlineProps> = ({ path }) => {
             (index === path.length - 1 && path.length != 1 )
             ? true : false
           }
-
+          onClick={labelPathBlock.onClick}
         />
       ))}
     </Styled.Container>

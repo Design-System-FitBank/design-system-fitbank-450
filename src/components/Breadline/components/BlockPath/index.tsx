@@ -9,14 +9,10 @@ type BlockPathProps = {
   onClick?: () => void
 }
 
-export const BlockPath: React.FC<BlockPathProps> = ({ label, first, last }) => {
-
-  const clickOnPath = () => { 
-    alert("Clicou no " + label)
-  }
+export const BlockPath: React.FC<BlockPathProps> = ({ label, first, last, onClick}) => {
   return (
     <Styled.Container
-      onClick={clickOnPath}
+      onClick={onClick}
     >
       {!first && (
         <Styled.ContainerBar>
@@ -35,7 +31,7 @@ export const BlockPath: React.FC<BlockPathProps> = ({ label, first, last }) => {
         >
           <Typography variant='bodyBold'>{label}</Typography>
         </Styled.ContainerLabel>
-      } {/* ainda vou add o css */}
+      }
     </Styled.Container>
   )
 }
