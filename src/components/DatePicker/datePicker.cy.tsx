@@ -17,9 +17,5 @@ describe('Date Picker Component', () => {
 
   it('Deve conter o componente Date Picker Default', () => {
     cy.get('[data-testid="container"]')
-      .should('have.css', 'background-color', 'rgb(50, 55, 81)')
-      .and('have.css', 'color', 'rgb(255, 255, 255)')
-      .and('have.css', 'width', '100px')
-      .and('have.css', 'height', '100px')
   })
 })
