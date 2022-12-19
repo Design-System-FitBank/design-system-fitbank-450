@@ -1,7 +1,7 @@
 import React from 'react'
 import { faker } from '@faker-js/faker'
 import 'cypress-real-events/support'
-import { GlobalStyles, Theme, ThemeDSProvider } from '../../../theme'
+import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
 import { PopUp } from '.'
 
 const message = faker.lorem.words()
