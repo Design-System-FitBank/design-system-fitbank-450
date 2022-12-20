@@ -13,15 +13,15 @@ const Template: ComponentStory<typeof Tab> = args => <Tab {...args} />
 export const Default = Template.bind({})
 Default.args = {
   title: 'Chave PIX',
-  description: 'TabDescription',
+  description: 'Cole o CPF, CNPJ, e-mail, celular ou chave aleatória.',
   icon: 'keys',
   onClick: () => {}
 }
 
 export const Disabled = Template.bind({})
 Disabled.args = {
-  title: 'Tab',
-  description: 'TabDescription',
+  title: 'Chave PIX',
+  description: 'Cole o CPF, CNPJ, e-mail, celular ou chave aleatória.',
   icon: 'keys',
   onClick: () => {},
   disabled: true

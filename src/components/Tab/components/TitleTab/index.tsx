@@ -2,10 +2,10 @@ import React from 'react'
 
 import * as Styled from './styles'
 
-type LabelProps = {
+type TitleProps = {
   children: string
 }
 
-export const LabelTab: React.FC<LabelProps> = ({ children }) => {
+export const TitleTab: React.FC<TitleProps> = ({ children }) => {
   return <Styled.Container>{children}</Styled.Container>
 }
