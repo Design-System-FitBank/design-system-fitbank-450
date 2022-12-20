@@ -1,58 +1,31 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 35.688rem;
-  height: 5rem;
+  width: ${({ theme }) => theme.sizes['526px']};
+  height: ${({ theme }) => theme.sizes['80px']};
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px ${({ theme }) => theme.colors.greyLight};
 `
-
 export const IconMoney = styled.div<{ isCredit: boolean }>`
-  width: 1.5rem;
-  height: 1.594rem;
+  width: ${({ theme }) => theme.sizes['36px']};
+  height: ${({ theme }) => theme.sizes['36px']};
   cursor: pointer;
-  margin-right: 1.5rem;
+  margin-right: ${({ theme }) => theme.sizes['24px']};
   color: ${({ theme, isCredit }) => (isCredit ? theme.colors.success : theme.colors.error)};
 `
+export const Details = styled.div`
+  width: ${({ theme }) => theme.sizes['250px']};
+  height: ${({ theme }) => theme.sizes['64px']};
+  align-items: center;
+`
 export const Button = styled.div`
-  width: 17rem;
-  margin-top: 1rem;
+  width: ${({ theme }) => theme.sizes['272px']};
+  margin-top: ${({ theme }) => theme.sizes['16px']};
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-top: -0.5rem;
-`
-
-export const Title = styled.div`
-  width: 15.625rem;
-  height: 4rem;
-  margin: 3 1rem 1rem 3rem;
-  align-items: center;
-  margin-right: 3rem;
-`
-
-export const Subtitle = styled.p`
-  font-weight: 400;
-  font-size: 20px;
-  margin-top: -0.25rem;
-`
-export const TransactionDay = styled.div`
-  width: 2.813rem;
-  height: 5.069rem;
-  border-top: 1px solid #c4c4c4;
-  border-left: 1px solid #c4c4c4;
-  border-bottom: 2px solid #c4c4c4;
-  border-radius: 2px;
-  margin-right: 1rem;
-  padding-left: 0.25rem;
-  display: 'flex';
-  flex-direction: 'column';
-
-  justify-content: space-between;
-`
-export const Item = styled.div`
-  width: '100%';
 `

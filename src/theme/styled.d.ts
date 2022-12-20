@@ -68,11 +68,13 @@ declare module 'styled-components' {
       '68px': string
       '82px': string
       '86px': string
+      '89px': string
       '90px': string
       '96px': string
       '100px': string
       '108px': string
       '120px': string
+      '123px': string
       '140px': string
       '142px': string
       '144px': string
@@ -80,11 +82,13 @@ declare module 'styled-components' {
       '174px': string
       '210px': string
       '235px': string
+      '250px': string
       '255px': string
       '260px': string
       '287px': string
       '320px': string
       '410px': string
+      '526px': string
     }
   }
 }

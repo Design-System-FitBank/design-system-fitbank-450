@@ -43,6 +43,7 @@ export const Theme = {
     '30px': '1.875rem',
     '32px': '2rem',
     '34px': '2.125rem',
+    '36px': '2.25',
     '38px': '2.375rem',
     '40px': '2.5rem',
     '42px': '2.625rem',
@@ -55,6 +56,7 @@ export const Theme = {
     '62px': '3.875rem',
     '64px': '4rem',
     '68px': '4.25rem',
+    '80px': '5rem',
     '82px': '5.125rem',
     '86px': '5.375rem',
     '90px': '5.625rem',
@@ -69,10 +71,13 @@ export const Theme = {
     '174px': '10.875rem',
     '210px': '13.125rem',
     '235px': '14.6875rem',
+    '250px': '15.625rem',
     '255px': '15.9375rem',
     '260px': '16.25rem',
+    '272px': '17rem',
     '287px': '17.9375rem',
     '320px': '20rem',
-    '410px': '25.625rem'
+    '410px': '25.625rem',
+    '526px': '32.875rem'
   }
 }
