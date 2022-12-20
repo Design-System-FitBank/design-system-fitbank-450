@@ -12,9 +12,11 @@ import { Card } from './icons/Card'
 import { CardMulti } from './icons/CardMulti'
 import { ChangeAccount } from './icons/ChangeAccount'
 import { Cnh } from './icons/Cnh'
+import { CopyAndPaste } from './icons/CopyAndPaste'
 import { Detail } from './icons/Detail'
 import { Device } from './icons/Device'
 import { Done } from './icons/Done'
+import { Doc } from './icons/Doc'
 import { Download } from './icons/Download'
 import { Edit } from './icons/Edit'
 import { Email } from './icons/Email'
@@ -95,10 +97,12 @@ export interface IconsProps {
     | 'checked'
     | 'code'
     | 'cnh'
+    | 'copyAndPaste'
     | 'details'
     | 'device'
     | 'done'
     | 'download'
+    | 'doc'
     | 'edit'
     | 'email'
     | 'enterprise'
@@ -146,7 +150,7 @@ export interface IconsProps {
     | 'withdrawMoney'
     | 'xlsx'
     | 'eyeOpen'
-    |'search'
+    | 'search'
 }
 
 export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) => {
@@ -196,6 +200,9 @@ export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) =>
     case 'cnh':
       return <Cnh data-testid='cnh' width={width} height={height} />
 
+    case 'copyAndPaste':
+      return <CopyAndPaste data-testid='copyAndPaste' width={width} height={height} />
+
     case 'details':
       return <Detail data-testid='details' width={width} height={height} />
 
@@ -207,6 +214,9 @@ export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) =>
 
     case 'download':
       return <Download data-testid='download' width={width} height={height} />
+
+    case 'doc':
+      return <Doc data-testid='doc' width={width} height={height} />
 
     case 'edit':
       return <Edit data-testid='edit' width={width} height={height} />
@@ -346,8 +356,8 @@ export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) =>
     case 'eyeOpen':
       return <EyeOpen data-testid='eyeOpen' width={width} height={height} />
 
-      case 'search':
-        return <Search data-testid='search' width={width} height={height} />
+    case 'search':
+      return <Search data-testid='search' width={width} height={height} />
 
     default:
       return <div></div>
