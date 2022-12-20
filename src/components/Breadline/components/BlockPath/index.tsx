@@ -5,33 +5,28 @@ import * as Styled from './styles'
 type BlockPathProps = {
   label: string
   first?: boolean
-  last?: boolean
   onClick?: () => void
 }
 
-export const BlockPath: React.FC<BlockPathProps> = ({ label, first, last, onClick}) => {
+export const BlockPath: React.FC<BlockPathProps> = ({ label, first, onClick }) => {
   return (
-    <Styled.Container
-      onClick={onClick}
-    >
-      {!first && (
-        <Styled.ContainerBar>
-          <Typography variant='h5'>/</Typography>
-        </Styled.ContainerBar>
+    <Styled.Container onClick={onClick}>
+      {first && (
+        <Styled.ContainerLabel>
+          <Typography variant='h5'>{label}</Typography>
+        </Styled.ContainerLabel>
       )}
 
-      {!last && (
-        <Styled.ContainerLabel>
-          <Typography variant='bodyBold'>{label}</Typography>
-        </Styled.ContainerLabel>
+      {!first && (
+        <Styled.Container>
+          <Styled.ContainerLabel>
+            <Typography variant='h4'>/</Typography>
+          </Styled.ContainerLabel>
+          <Styled.ContainerLabel>
+            <Typography variant='h5'>{label}</Typography>
+          </Styled.ContainerLabel>
+        </Styled.Container>
       )}
-      {last && 
-        <Styled.ContainerLabel
-          last={last}
-        >
-          <Typography variant='bodyBold'>{label}</Typography>
-        </Styled.ContainerLabel>
-      }
     </Styled.Container>
   )
 }

@@ -10,11 +10,18 @@ export default {
 
 const Template: ComponentStory<typeof Breadline> = args => <Breadline {...args} />
 
+export const Default = Template.bind({})
+Default.args = {
+  path: [
+    {label: "Inicio", onClick: () => {}}
+  ]
+}
+
 export const BreadLine = Template.bind({})
 BreadLine.args = {
   path: [
     {label: "Inicio", onClick: () => {}},
     {label: "Área PIX", onClick: () => {}},
-    {label: "Pagamentos", onClick: () => {}},
+    {label: "Pagamentos"},
   ]
 }
