@@ -12,9 +12,8 @@ const Template: ComponentStory<typeof PixButton> = args => <PixButton {...args} 
 
 export const Default = Template.bind({})
 Default.args = {
-  icon: 'moneyNote',
-  size: 'small',
+  icon: 'userBank',
+  title: 'titulo',
+  subtitle: 'subtitulo',
   onClick: () => {}
 }
-  
-

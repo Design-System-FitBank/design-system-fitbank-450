@@ -2,67 +2,61 @@ import styled from 'styled-components'
 
 export const Container = styled.button`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
+
+  width: 442px;
+  height: 81px;
+  padding: ${({ theme }) => theme.sizes['16px']} ${({ theme }) => theme.sizes['4px']};
+  gap: ${({ theme }) => theme.sizes['16px']};
 
   border: 1px solid transparent;
   border-radius: ${({ theme }) => theme.sizes['16px']};
-  box-shadow: 2px 2px 4px ${({ theme }) => theme.colors.shadow};
+  box-shadow: 2px 4px 6px ${({ theme }) => theme.colors.shadow};
 
   background-color: ${({ theme }) => theme.colors.light};
   color: ${({ theme }) => theme.colors.primary};
   overflow: hidden;
 
-  font-weight: 600;
-  font-size: 18px;
-
   cursor: pointer;
-  :disabled {
-    cursor: default;
-  }
-`
-
-export const Primary = styled(Container)<PixButtonProps>`
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.light};
-  border: 1px solid ${({ theme }) => theme.colors.primary};
 
   :hover {
-    color: ${({ theme }) => theme.colors.tertiary};
+    border: 1px solid ${({ theme }) => theme.colors.disabled};
   }
 
   :active {
-    background-color: ${({ theme }) => theme.colors.light};
-    color: ${({ theme }) => theme.colors.primary};
-    border: 1px solid ${({ theme }) => theme.colors.tertiary};
-    box-shadow: 2px 4px 6px ${({ theme }) => theme.colors.shadow};
+    border: 1px solid ${({ theme }) => theme.colors.primary};
   }
 
   :disabled {
-    background-color: ${({ theme }) => theme.colors.light};
     border: 1px solid ${({ theme }) => theme.colors.disabled};
-    color: ${({ theme }) => theme.colors.disabled};
     box-shadow: none;
+    color: ${({ theme }) => theme.colors.disabled};
+    cursor: auto;
   }
 `
 
-export const Small = styled(Container)`
-flex-direction: row;
-justify-content: flex-start;
-width: 442px;
-height: 80px;
-font-size: 26px;
-`
-export const Text = styled.div`
-display: flex;
-flex-direction: column;
-padding: 4px;
+export const ButtonAlign = styled(Container)`
+  display: flex;
+  flex-direction: row;
 `
 
 export const Icon = styled.div`
   width: ${({ theme }) => theme.sizes['38px']};
   height: ${({ theme }) => theme.sizes['38px']};
 `
+export const TextAlign = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`
+export const Title = styled.h6`
+  font-size: ${({ theme }) => theme.sizes['20px']};
+  font-weight: ${({ theme }) => theme.font.weight.regular};
+`
 
-
+export const Subtitle = styled.sub`
+  font-size: ${({ theme }) => theme.sizes['14px']};
+  font-weight: ${({ theme }) => theme.font.weight.regular};
+`
