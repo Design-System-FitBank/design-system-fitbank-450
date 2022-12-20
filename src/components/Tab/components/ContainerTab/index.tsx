@@ -11,12 +11,11 @@ type ContainerProps = {
   description: string
 }
 
-export const ContainerTab: React.FC<ContainerProps> = ({ icon, title, description }) => {
+export const ContainerTab: React.FC<ContainerProps> = ({ icon, title }) => {
   return (
     <Styled.Container data-testeid='container'>
       <IconTab data-testeid='tab' icon={icon} />
-      <LabelTab isSmall={false}>{title}</LabelTab>
-      <LabelTab isSmall={true}>{description}</LabelTab>
+      <LabelTab>{title}</LabelTab>
     </Styled.Container>
   )
 }

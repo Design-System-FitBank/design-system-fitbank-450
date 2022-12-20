@@ -3,12 +3,13 @@ import styled from 'styled-components'
 type TabProps = {}
 
 export const Container = styled.button<TabProps>`
-  height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 81px;
   width: 523px;
-  left: 20px;
-  top: 20px;
-  border-radius: 0px;
   padding: 16px;
+  gap: 16px;
 `
 
 export const Primary = styled(Container)<TabProps>`

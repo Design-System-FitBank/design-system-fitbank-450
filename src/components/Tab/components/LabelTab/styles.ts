@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 
-export const Container = styled.div<{ isSmall: boolean }>`
-  width: ${({ isSmall, theme }) => (isSmall ? theme.sizes['435px'] : theme.sizes['212px'])};
-  height: ${({ isSmall, theme }) => (isSmall ? theme.sizes['18px'] : theme.sizes['28px'])};
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+export const Container = styled.div<{}>`
+  width: ${({ theme }) => theme.sizes['210px']};
+  height: ${({ theme }) => theme.sizes['28px']};
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
 `

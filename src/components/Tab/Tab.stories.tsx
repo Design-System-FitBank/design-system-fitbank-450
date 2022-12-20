@@ -12,14 +12,16 @@ const Template: ComponentStory<typeof Tab> = args => <Tab {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  children: 'Tab',
+  title: 'Chave PIX',
+  description: 'TabDescription',
   icon: 'keys',
   onClick: () => {}
 }
 
 export const Disabled = Template.bind({})
 Disabled.args = {
-  children: 'Tab',
+  title: 'Tab',
+  description: 'TabDescription',
   icon: 'keys',
   onClick: () => {},
   disabled: true

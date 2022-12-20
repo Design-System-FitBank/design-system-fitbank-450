@@ -33,7 +33,10 @@ interface TabProps {
 export const Tab: React.FC<TabProps> = ({ title, description, icon, disabled = false, onClick }) => {
   return (
     <Styled.Primary data-testeid='tab' onClick={onClick} disabled={disabled}>
-      <ContainerTab icon={icon} title={title} description={description}></ContainerTab>
+      <ContainerTab icon={icon} title={title} description={description}>
+        {title}
+        {description}
+      </ContainerTab>
     </Styled.Primary>
   )
 }
