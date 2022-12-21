@@ -8,7 +8,7 @@ export const Container = styled.button`
 
   width: 442px;
   height: 81px;
-  padding: ${({ theme }) => theme.sizes['16px']} ${({ theme }) => theme.sizes['4px']};
+  padding: ${({ theme }) => theme.sizes['16px']} ${({ theme }) => theme.sizes['16px']};
   gap: ${({ theme }) => theme.sizes['16px']};
 
   border: 1px solid transparent;
