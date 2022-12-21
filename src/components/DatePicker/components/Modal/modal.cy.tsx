@@ -4,15 +4,15 @@ import { mount } from 'cypress/react18'
 import { faker } from '@faker-js/faker'
 
 import { GlobalStyles, Theme, ThemeDSProvider } from '../../../../theme'
-import { DateInput } from './'
+import { Modal } from './'
 
-describe('DateInput', () => {
+describe('Modal', () => {
   beforeEach(() => {
     cy.wait(100)
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <DateInput onchange={() => {}} />
+        <Modal />
       </ThemeDSProvider>
     )
   })
@@ -21,9 +21,7 @@ describe('DateInput', () => {
     cy.wait(100)
   })
 
-  it('Deve conter o input de data default', () => {
-    cy.get('[data-testid = "date-input"]')
-      .should('have.css', 'height', '48px')
-      .and('have.css', 'width', '500.3636474609375px')
+  it('Deve conter o modal default', () => {
+    cy.get('[data-testid = "modal-schedule"]')
   })
 })
