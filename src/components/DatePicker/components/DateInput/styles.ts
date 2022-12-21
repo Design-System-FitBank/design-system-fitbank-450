@@ -77,26 +77,17 @@ export const Icon = styled.div`
   height: 100%;
 
   color: ${({ theme }) => theme.colors.primary};
-  background-color: ${({ theme }) => theme.colors.textDisabled};
+  background-color: ${({ theme }) => theme.colors.transparent};
   border: 1px solid ${({ theme }) => theme.colors.disabled};
   border-left: none;
   border-top-right-radius: ${({ theme }) => theme.sizes['6px']};
   border-bottom-right-radius: ${({ theme }) => theme.sizes['6px']};
-  
-  :focus {
-    border: 1px solid ${({ theme }) => theme.colors.primary};
-    box-shadow: ${({ theme }) => theme.sizes['2px']} ${({ theme }) => theme.sizes['2px']}
-      ${({ theme }) => theme.sizes['4px']} ${({ theme }) => theme.colors.shadow};
-    color: ${({ theme }) => theme.colors.primary};
-  }
 
-  :disabled {
-    border: 1px solid ${({ theme }) => theme.colors.disabled};
-    background-color: ${({ theme }) => theme.colors.disabled};
-    box-shadow: none;
+  transition: 0.5s;
+  cursor: pointer;
 
-    ::placeholder {
-      color: ${({ theme }) => theme.colors.textGrey};
-    }
+  :hover {
+    color: ${({ theme }) => theme.colors.light};
+    background-color: ${({ theme }) => theme.colors.primary};
   }
 `

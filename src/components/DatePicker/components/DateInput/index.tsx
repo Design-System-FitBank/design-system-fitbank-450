@@ -6,17 +6,8 @@ import { Typography } from '../../../Typography'
 import * as Styled from './styles'
 
 export interface ButtonProps {
-  /**
-   * Referente ao Label do input.
-   */
   title?: string
-  /**
-   * Campo para desabilitar o input .
-   */
   disabled?: boolean
-  /**
-   * Função que capta os valores digitados no campo de entrada de texto
-   */
   onchange: (text: string) => void
 }
 
@@ -42,7 +33,6 @@ export const DateInput = ({ title, disabled = false, onchange }: ButtonProps) =>
           placeholder={placeholder}
           disabled={disabled}
           onChange={event => handleChange(event)}
-          readOnly
         />
 
         <Styled.Icon data-testid='icon'>
