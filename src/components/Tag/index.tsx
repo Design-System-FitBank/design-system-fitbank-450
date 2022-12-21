@@ -4,6 +4,8 @@ import * as Styled from './styles'
 
 import { Typography } from '../Typography'
 import { Icon, IconsProps } from '../Icon'
+import { Button } from '../../components/Button'
+import { Input } from '../../components/Input'
 
 export interface TagButtonListProps {
   label: string
@@ -17,22 +19,28 @@ interface TagProps {
 
 export const Tag = ({ tagButtonList }: TagProps) => {
   const [textValue, setTextValue] = useState<string>()
-  const [tagName, setTagName] = useState<string>()
   const [tagsList, setTagsList] = useState(tagButtonList)
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: string) => {
+    //const textEntry: string = event.target.value
+    //console.log(event)
+    setTextValue(event)
+  }
+
+  const handleChanges = (event: any) => {
     const textEntry: string = event.target.value
+    //console.log(event)
     setTextValue(textEntry)
   }
 
   const addTag = () => {
-    setTagName(textValue)
+    //setTagName(textValue)
     setTextValue('')
     if (textValue) tagsList.push({ label: textValue! })
   }
 
-  const removeTag = key => {
-    setTagsList(tagsList.filter(x => !x.label.includes(key)))
+  const removeTag = tag => {
+    setTagsList(tagsList.filter(item => !item.label.includes(tag)))
   }
 
   return (
@@ -42,28 +50,51 @@ export const Tag = ({ tagButtonList }: TagProps) => {
         Insira marcações para identificar seus gastos. Use nossa sugestão ou personalise as tags.
       </Typography>
 
-      <Styled.Wrap data-testid='wrap'>
-        <Styled.Input
+      {/* <Styled.TagInput>
+        <Icon name={'user'} width={24} height={24} />
+
+        <Styled.Iinput
           data-testid='input'
           value={textValue}
-          onChange={event => handleChange(event)}
+          //onChange={event => handleChanges(event)}
           placeholder='Digite uma tag'
         />
-        <Styled.Button data-testid='button' onClick={addTag} disabled={false}>
-          <Typography variant='caption'>Adicionar</Typography>
-        </Styled.Button>
-      </Styled.Wrap>
+        <Icon name={'calendar'} width={24} height={24} />
+      </Styled.TagInput> */}
 
-      <Styled.Wrap data-testid='wrap'>
+      {/* <Styled.InputContainer */}
+
+      {/* <Styled.Iinput data-testid='input' onChange={event => handleChange(event)} placeholder='Digite uma tag' /> */}
+      <Styled.ContentContainer>
+        <Styled.TagInput>
+          <Input
+            data-testid='input'
+            placeholder={'Digite uma tag'}
+            type={'text'}
+            disabled={false}
+            onchange={handleChange}
+            title={''}
+          />
+        </Styled.TagInput>
+        <Button data-testid='button' onClick={addTag} disabled={false} size={'small'} type={'secondary'}>
+          Adicionar
+        </Button>
+      </Styled.ContentContainer>
+
+      <Styled.ContentContainer>
         {tagsList.map(tagList => (
-          <Styled.ButtonTag data-testid='tag-button' onClick={() => {}} disabled={false}>
-            <Styled.Typography>{tagList.label}</Styled.Typography>
-            <Styled.Icon onClick={() => removeTag(tagList.label)}>
-              <Icon name={'trash'} width={24} height={24} />
-            </Styled.Icon>
-          </Styled.ButtonTag>
+          <Button
+            onClick={() => removeTag(tagList.label)}
+            disabled={false}
+            size={'small'}
+            type={'secondary'}
+            icon={'trash'}
+            iconRight={true}
+          >
+            {tagList.label}
+          </Button>
         ))}
-      </Styled.Wrap>
+      </Styled.ContentContainer>
     </Styled.Container>
   )
 }
