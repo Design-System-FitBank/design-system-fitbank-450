@@ -2,16 +2,17 @@ import React from 'react'
 import { Icon, IconsProps } from '../Icon'
 import * as Styled from './styles'
 
-interface PixButtonProps {
+interface ButtonTitleAndSubtitleProps {
   icon: IconsProps['name']
   title: string
   subtitle: string
   onClick: () => void
+  disabled?: boolean
 }
 
-export const PixButton = ({ icon, title, subtitle, onClick }: PixButtonProps) => {
+export const ButtonTitleAndSubtitle = ({ icon, title, subtitle, onClick, disabled = false }: ButtonTitleAndSubtitleProps) => {
   return (
-    <Styled.ButtonAlign data-testid='button' onClick={onClick}>
+    <Styled.ButtonAlign data-testid='button' onClick={onClick} disabled={disabled}>
       <Styled.Icon data-testid='button-icon'>
         <Icon name={icon} />
       </Styled.Icon>
