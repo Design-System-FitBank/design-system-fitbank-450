@@ -38,7 +38,9 @@ export const PopUp = ({ loading, success, message }: PopUpProps) => {
         </Styled.SuccessContainer>
       ) : (
         <Styled.ErrorContainer data-testid='error-Container'>
+          <Styled.Icon data-testid='icon-cancel'>
           <Icon name='cancel' height={56} width={56} />
+          </Styled.Icon >
           <Typography variant='h6'> Operação malsucedida </Typography>
           <Typography variant='subtitle'>{message}</Typography>
         </Styled.ErrorContainer>
