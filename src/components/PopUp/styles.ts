@@ -11,7 +11,7 @@ export const BoxLoading = styled.div`
   }
 `
 
-export const SuccessContainer = styled.div`
+export const MessageContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -21,15 +21,6 @@ export const SuccessContainer = styled.div`
   gap: 1.5rem;
 `
 
-export const ErrorContainer = styled.div`
-width: 100%;
-height: 100%;
-display: flex;
-align-items: center;
-flex-direction: column;
-justify-content: center;
-gap: 1.5rem;
-`
 export const Icon = styled.div`
 color: ${({ theme }) => theme.colors.error};
 `
