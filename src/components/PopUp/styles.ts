@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const BoxLoading = styled.div`
   display: flex;
   align-items: center;
-  justifycontent: center;
+  justify-content: center;
   width: 100%;
   > div{
     width: 100%;
@@ -29,8 +29,7 @@ align-items: center;
 flex-direction: column;
 justify-content: center;
 gap: 1.5rem;
-
-> svg {
-  color: ${({ theme }) => theme.colors.error};
-}
+`
+export const Icon = styled.div`
+color: ${({ theme }) => theme.colors.error};
 `
