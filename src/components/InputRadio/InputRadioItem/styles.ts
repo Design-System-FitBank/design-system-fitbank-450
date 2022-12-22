@@ -9,7 +9,7 @@ export const Container = styled.div<RadioProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: ${({ theme }) => theme.sizes['26px']};
+  gap: ${({ theme }) => theme.sizes['24px']};
   cursor: pointer;
 
   margin: ${({ theme }) => theme.sizes['16px']};
@@ -23,8 +23,8 @@ export const Radio = styled.div<RadioProps>`
   width: ${({ theme }) => theme.sizes['16px']};
   height: ${({ theme }) => theme.sizes['16px']};
 
-  background-color: ${({ checked, theme }) => (checked ? theme.colors.transparent : theme.colors.light)};
-  border: 1px solid ${({ checked, theme }) => (checked ? theme.colors.primary : theme.colors.textGrey)};
+  background-color: ${({ checked, theme }) => (checked ? 'transparent' : theme.colors.high.pure)};
+  border: 1px solid ${({ checked, theme }) => (checked ? theme.colors.primary.pure : theme.colors.high.darkest)};
   border-radius: ${({ theme }) => theme.sizes['20px']};
   box-shadow: 2px 4px 6px ${({ checked, theme }) => (checked ? 'none' : theme.colors.shadow)};
   display: flex;
@@ -35,6 +35,6 @@ export const RadioChild = styled.div<RadioProps>`
   width: ${({ theme }) => theme.sizes['12px']};
   height: ${({ theme }) => theme.sizes['12px']};
 
-  background-color: ${({ checked, theme }) => (checked ? theme.colors.primary : theme.colors.light)};
+  background-color: ${({ checked, theme }) => (checked ? theme.colors.primary.pure : theme.colors.high.pure)};
   border-radius: ${({ theme }) => theme.sizes['20px']};
 `

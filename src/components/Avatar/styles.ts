@@ -2,18 +2,17 @@ import styled from 'styled-components'
 
 export const Container = styled.div<{secondary: boolean, small: boolean}>`
   display: flex;
-  position: relative;
   align-items: center;
   justify-content: center;
-  
-  width: ${({ small, theme }) => small ? theme.sizes['34px'] : theme.sizes['50px']};
-  height: ${({ small, theme }) => small ? theme.sizes['34px'] : theme.sizes['50px']};
-  border-radius: ${({ theme }) => theme.sizes['50px']};
-  background-color: ${({ secondary, theme }) => secondary ? theme.colors.light : theme.colors.primary};
-  color: ${({ secondary, theme }) => secondary ? theme.colors.primary : theme.colors.light};
+
+  width: ${({ small, theme }) => small ? theme.sizes['36px'] : theme.sizes['52px']};
+  height: ${({ small, theme }) => small ? theme.sizes['36px'] : theme.sizes['52px']};
+  border-radius: ${({ theme }) => theme.sizes['52px']};
+  background-color: ${({ secondary, theme }) => secondary ? theme.colors.high.pure : theme.colors.primary.pure};
+  color: ${({ secondary, theme }) => secondary ? theme.colors.primary.pure : theme.colors.high.pure};
 `
 
 export const Icon = styled.div<{ secondary: boolean, small: boolean }>`
-  width: ${({ small, theme }) => small ? theme.sizes['10px'] : theme.sizes['18px']};
-  height: ${({ small, theme }) => small ? theme.sizes['20px'] : theme.sizes['20px']};
+  width: ${({ small, theme }) => small ? theme.sizes['20px'] : theme.sizes['28px']};
+  height: ${({ small, theme }) => small ? theme.sizes['20px'] : theme.sizes['28px']};
 `

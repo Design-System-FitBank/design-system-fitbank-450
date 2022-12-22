@@ -6,8 +6,8 @@ export const Container = styled.button`
   align-items: center;
   flex-direction: column;
 
-  width: ${({ theme }) => theme.sizes['90px']};
-  height: ${({ theme }) => theme.sizes['90px']};
+  width: ${({ theme }) => theme.sizes['92px']};
+  height: ${({ theme }) => theme.sizes['92px']};
   padding: ${({ theme }) => theme.sizes['8px']} ${({ theme }) => theme.sizes['4px']};
   gap: ${({ theme }) => theme.sizes['4px']};
 
@@ -15,8 +15,8 @@ export const Container = styled.button`
   border-radius: ${({ theme }) => theme.sizes['16px']};
   box-shadow: 2px 2px 4px ${({ theme }) => theme.colors.shadow};
 
-  background-color: ${({ theme }) => theme.colors.light};
-  color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.high.pure};
+  color: ${({ theme }) => theme.colors.primary.pure};
   overflow: hidden;
 
   font-weight: 700;
@@ -25,7 +25,7 @@ export const Container = styled.button`
   cursor: pointer;
 
   :hover {
-    border: 1px solid ${({ theme }) => theme.colors.disabled};
+    border: 1px solid ${({ theme }) => theme.colors.shadow};
   }
 
   :active {
@@ -33,16 +33,16 @@ export const Container = styled.button`
   }
 
   :disabled {
-    border: 1px solid ${({ theme }) => theme.colors.disabled};
+    border: 1px solid ${({ theme }) => theme.colors.high.darkest};
     box-shadow: none;
-    color: ${({ theme }) => theme.colors.disabled};
+    color: ${({ theme }) => theme.colors.high.darkest};
     cursor: auto;
   }
 `
 
 export const Small = styled(Container)`
-  width: ${({ theme }) => theme.sizes['54px']};
-  height: ${({ theme }) => theme.sizes['54px']};
+  width: ${({ theme }) => theme.sizes['56px']};
+  height: ${({ theme }) => theme.sizes['56px']};
 `
 export const Large = styled(Container)`
   flex-direction: row;
@@ -59,18 +59,20 @@ export const Icon = styled.div`
   height: ${({ theme }) => theme.sizes['38px']};
 `
 export const Label = styled.div`
-  width: ${({ theme }) => theme.sizes['78px']};
-  height: ${({ theme }) => theme.sizes['30px']};
+  width: auto;
+  height: ${({ theme }) => theme.sizes['28px']};
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   overflow: hidden;
 `
-export const LabelLarge = styled.div`
+export const LabelLarge = styled.span`
   width: ${({ theme }) => theme.sizes['96px']};
   height: ${({ theme }) => theme.sizes['32px']};
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  overflow: hidden;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  /* overflow: hidden; */
 `

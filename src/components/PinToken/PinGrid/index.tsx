@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Container, PinBox } from '../styles'
 
-interface PinTokenProps {
+export interface PinTokenProps {
   onPinChange: (pinEntry: number[]) => void
   isDisabled?: boolean
   isPassword?: boolean
@@ -111,7 +111,7 @@ export const PinGrid: React.FC<PinTokenProps> = ({ isDisabled = false, isPasswor
 
   return (
     <Container data-testid='container'>
-      {Array.from({ length: isPassword? 4 : 6 }, (_, index) => (
+      {Array.from({ length: isPassword ? 4 : 6 }, (_, index) => (
         <PinBox
           data-testid={`pinToken-${index}`}
           disabled={isDisabled}

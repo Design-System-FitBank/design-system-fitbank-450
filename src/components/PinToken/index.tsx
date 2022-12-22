@@ -2,17 +2,17 @@ import { isPlainObject } from 'cypress/types/lodash'
 import React from 'react'
 import { PinGrid } from './PinGrid'
 
-interface PinProps {
+export interface PinProps {
   /**
-   * Função sem retorno que será chamada ao digitar o pin 
+   * Função sem retorno que será chamada ao digitar o pin
    */
   onChange: (pinToken: number[]) => void
   /**
-   * Propriedades booleana que transforma o token em Disable
+   * Propriedades boolean que transforma o token em Disable
    */
   disabled?: boolean
   /**
-   * Propriedades booleana que alterna de token para password
+   * Propriedades boolean que alterna de token para password
    */
   password?: boolean
 }

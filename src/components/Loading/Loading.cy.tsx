@@ -10,7 +10,7 @@ import { Loading } from './'
 describe('Loading', () => {
   beforeEach(() => {
     mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
         <Loading text='Loading...' />
       </ThemeDSProvider>
@@ -32,8 +32,8 @@ describe('Loading', () => {
       .and('have.css', 'gap', '16px')
     cy.get('[data-testid = "loader-container"]')
       .should('have.css', 'animation', '0.8s ease 0s infinite normal none running kSzaaH')
-      .and('have.css', 'border-right-color', 'rgb(50, 55, 81)')
-      .and('have.css', 'border-right-color', 'rgb(50, 55, 81)')
+      .and('have.css', 'border-right-color', 'rgb(50, 56, 79)')
+      .and('have.css', 'border-right-color', 'rgb(50, 56, 79)')
       .and('have.css', 'border-radius', '50%')
   })
 })

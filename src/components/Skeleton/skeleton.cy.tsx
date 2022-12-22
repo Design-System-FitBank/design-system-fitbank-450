@@ -12,11 +12,25 @@ describe('Skeleton', () => {
   const radius = faker.datatype.number({min: 0, max: 100})
   beforeEach(() => {
     mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
         <Skeleton height={altura} width={largura} radius={radius} />
       </ThemeDSProvider>
     )
+  })
+  it('Dever conter largura auto quando não definida pelo dev', () => {
+    mount(
+      <ThemeDSProvider>
+        <GlobalStyles />
+        <Skeleton height={altura} radius={radius} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid = "skeleton"]')
+      .should('have.css', 'width', `500px`)
+      .and('have.css', 'height', `${altura}px`)
+      .and('have.css', 'background-color', 'rgb(126, 126, 126)')
+      .and('have.css', 'border-radius', `${radius}px`)
+      .and('have.css', 'position', 'relative')
   })
   it('Dever conter altura e largura definida pelo dev', () => {
     cy.get('[data-testid = "skeleton"]')

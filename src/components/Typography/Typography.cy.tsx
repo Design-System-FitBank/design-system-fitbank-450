@@ -3,7 +3,7 @@ import React from 'react'
 import { faker } from '@faker-js/faker'
 
 import { mount } from 'cypress/react18'
-import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
+import { GlobalStyles, ThemeDSProvider } from '../../theme'
 import { Typography } from '.'
 
 describe('Typography', () => {
@@ -14,9 +14,9 @@ describe('Typography', () => {
     const txt = faker.lorem.sentences(3)
 
     mount(
-      <ThemeDSProvider theme={Theme}>
-        <GlobalStyles />
-        <Typography variant='h1'>{txt}</Typography>
+      <ThemeDSProvider>
+          <GlobalStyles />
+          <Typography variant='h1'>{txt}</Typography>
       </ThemeDSProvider>
     )
     cy.get('[data-testid = "typography"]')
@@ -96,13 +96,13 @@ describe('Typography', () => {
         }
       case 'bodySmall':
         return {
-          fontSize: '14px',
+          fontSize: '12px',
           lineHeight: '20px',
           fontWeight: '400'
         }
       case 'bodyLarge':
         return {
-          fontSize: '18px',
+          fontSize: '20px',
           lineHeight: '28px',
           fontWeight: '400'
         }
@@ -132,7 +132,7 @@ describe('Typography', () => {
       const txt = faker.lorem.sentences(3)
 
       mount(
-        <ThemeDSProvider theme={Theme}>
+        <ThemeDSProvider>
           <GlobalStyles />
           <Typography variant={item as any}>{txt}</Typography>
         </ThemeDSProvider>

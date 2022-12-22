@@ -25,11 +25,11 @@ export const Button = styled.span`
 
 export const Arrow = styled.div`
   padding-top: ${({ theme }) => theme.sizes['4px']};
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.primary.pure};
 `
 
 export const LabelAccordion = styled.div`
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.primary.pure};
   padding-left: ${({ theme }) => theme.sizes['12px']};
   padding-top: ${({ theme }) => theme.sizes['4px']};
 `

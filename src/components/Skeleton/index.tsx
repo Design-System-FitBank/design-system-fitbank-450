@@ -6,11 +6,11 @@ interface SkeletonProps {
   /**
    * altura obrigatória do componente
    */
-  height: number
+  height?: number
   /**
    * largura obrigatória do componente
    */
-  width: number
+  width?: number
   /**
    * radio da curvatura das pontas do componente
    */
@@ -18,8 +18,8 @@ interface SkeletonProps {
 }
 
 export const Skeleton: React.FC<SkeletonProps> = ({
-  height,
-  width,
+  height = 0,
+  width = 0,
   radius,
 }) => {
   return <Styled.Container

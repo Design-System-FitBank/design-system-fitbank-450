@@ -10,42 +10,33 @@ describe('InputRadio', () => {
 
   it('Deve ser o label InputRadio Default', () => {
     cy.mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
         <Radio title={title} optionsList={list} />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="radio-container"]')
-      .should('have.css', 'text-transform', 'capitalize')
-      .and('have.css', 'color', 'rgb(50, 55, 81)')
+      .should('have.css', 'flex-direction', 'row')
+      .and('have.css', 'text-transform', 'capitalize')
+      .and('have.css', 'color', 'rgb(50, 56, 79)')
   })
 
-  it('Deve ser o InputRadio quando a direction informada for column', () => {
+  it('Deve ser o InputRadio quando a isColumn for informado', () => {
     cy.mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
-        <InputRadio title={title} optionsList={list} direction={'column'} />
+        <Radio title={title} optionsList={list} isColumn/>
       </ThemeDSProvider>
     )
     cy.get('[data-testid="radio-container"]').should('have.css', 'flex-direction', 'column')
   })
 
-  it('Deve ser o InputRadio quando a direction informada for row', () => {
-    cy.mount(
-      <ThemeDSProvider theme={Theme}>
-        <GlobalStyles />
-        <InputRadio title={title} optionsList={list} direction={'row'} />
-      </ThemeDSProvider>
-    )
-    cy.get('[data-testid="radio-container"]').should('have.css', 'flex-direction', 'row')
-  })
-
   list.forEach((text: string) => {
     it(`Deve ser o texto ${text} da lista de InputRadio`, () => {
       cy.mount(
-        <ThemeDSProvider theme={Theme}>
+        <ThemeDSProvider>
           <GlobalStyles />
-          <InputRadio title={title} optionsList={list} />
+          <Radio title={title} optionsList={list} />
         </ThemeDSProvider>
       )
       cy.contains(text).should('exist').and('have.text', text)
