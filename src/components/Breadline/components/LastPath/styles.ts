@@ -11,9 +11,5 @@ export const ContainerLabel = styled.div`
   padding: ${({ theme }) => theme.sizes['12px']} ${({ theme }) => theme.sizes['64px']};
   color: ${({ theme }) => `${theme.colors.primary}`};
   background-color: ${({ theme }) => `${theme.colors.light}`};
-`
-
-export const ContainerBar = styled.div`
-  color: ${({ theme }) => `${theme.colors.primary}`};
-  padding-right: ${({ theme }) => theme.sizes['24px']};
+  margin-left: ${({ theme }) => theme.sizes['8px']};
 `
