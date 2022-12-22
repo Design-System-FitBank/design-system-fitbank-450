@@ -29,21 +29,21 @@ export const PopUp = ({ loading, success, message }: PopUpProps) => {
           <Loading text='Aguarde' />
         </Styled.BoxLoading>
       ) : success ? (
-        <Styled.SuccessContainer data-testid='success-Container'>
+        <Styled.MessageContainer data-testid='message-container'>
           <Icon name='done' height={56} width={56} />
           <Typography variant='h6'> Concluído </Typography>
           <Typography variant='subtitle' data-testid='message-success'>
             {message}
           </Typography>
-        </Styled.SuccessContainer>
+        </Styled.MessageContainer>
       ) : (
-        <Styled.ErrorContainer data-testid='error-Container'>
+        <Styled.MessageContainer data-testid='message-container'>
           <Styled.Icon data-testid='icon-cancel'>
           <Icon name='cancel' height={56} width={56} />
           </Styled.Icon >
           <Typography variant='h6'> Operação malsucedida </Typography>
           <Typography variant='subtitle'>{message}</Typography>
-        </Styled.ErrorContainer>
+        </Styled.MessageContainer>
       )}
     </Modal>
   )
