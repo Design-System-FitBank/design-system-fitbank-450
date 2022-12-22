@@ -4,7 +4,7 @@ import * as Styled from './styles'
 
 import { Button } from '../../../Button'
 
-interface FooterProps {
+export interface FooterProps {
   buttonTitle?: string
   isDisable: boolean
   onClick?: () => void

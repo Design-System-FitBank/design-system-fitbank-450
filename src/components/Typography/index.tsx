@@ -79,7 +79,7 @@ export const Typography = ({ variant = 'h1', children }: TypographyProps) => {
 
       case 'captionBold':
         return <Styled.CaptionBold data-testid='caption'>{children}</Styled.CaptionBold>
-      
+
       case 'buttonSmall':
         return <Styled.ButtonSmall data-testid='buttonSmall'>{children}</Styled.ButtonSmall>
 

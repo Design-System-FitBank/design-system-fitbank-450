@@ -4,7 +4,6 @@ import { IconsProps } from '../Icon'
 import * as Styled from './styles'
 
 export interface ButtonProps {
-
   children: string
   disabled?: boolean
   icon?: IconsProps['name']

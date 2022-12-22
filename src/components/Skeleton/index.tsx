@@ -2,7 +2,7 @@ import React from 'react';
 
 import * as Styled from './styles';
 
-interface SkeletonProps {
+export interface SkeletonProps {
   /**
    * altura obrigatória do componente
    */
