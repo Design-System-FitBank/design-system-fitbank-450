@@ -115,6 +115,7 @@ declare module 'styled-components' {
       "288px": string,
       "320px": string,
       "408px": string,
+      "656px": string,
     },
   }
 }

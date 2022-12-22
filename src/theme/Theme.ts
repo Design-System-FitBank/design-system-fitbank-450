@@ -112,5 +112,6 @@ export const Theme = {
     "288px": "18rem",
     "320px": "20rem",
     "408px": "25.5rem",
+    "656px": "41rem",
   },
 };

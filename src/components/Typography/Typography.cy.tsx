@@ -92,19 +92,19 @@ describe('Typography', () => {
         return {
           fontSize: '16px',
           lineHeight: '24px',
-          fontWeight: '400'
+          fontWeight: '500'
         }
       case 'bodySmall':
         return {
           fontSize: '12px',
           lineHeight: '20px',
-          fontWeight: '400'
+          fontWeight: '500'
         }
       case 'bodyLarge':
         return {
           fontSize: '20px',
           lineHeight: '28px',
-          fontWeight: '400'
+          fontWeight: '500'
         }
       case 'bodyBold':
         return {
@@ -116,7 +116,7 @@ describe('Typography', () => {
         return {
           fontSize: '12px',
           lineHeight: '16px',
-          fontWeight: '400',
+          fontWeight: '500',
           label: 'Caption'
         }
       default:

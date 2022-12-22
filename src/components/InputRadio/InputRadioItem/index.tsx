@@ -14,7 +14,7 @@ export const InputRadioItem = ({ option, checked, onclick }: RadioProps) => {
       <Styled.Radio data-testid='radio' checked={checked}>
         <Styled.RadioChild data-testid='radio-child' checked={checked} />
       </Styled.Radio>
-      <Typography data-testid='radio-text' variant='body'>
+      <Typography variant='body'>
         {option}
       </Typography>
     </Styled.Container>

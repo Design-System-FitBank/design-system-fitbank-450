@@ -16,7 +16,7 @@ export const HeaderModal: React.FC<HeaderProps> = ({ title, closeFunction }) => 
       <Styled.TitleContainer>
         <Typography variant='h5'>{title}</Typography>
       </Styled.TitleContainer>
-      <Button size='small' type='secondary' onClick={closeFunction}>
+      <Button data-testid='button' size='small' type='secondary' onClick={() => closeFunction()}>
         Cancelar
       </Button>
     </Styled.HeaderModal>
