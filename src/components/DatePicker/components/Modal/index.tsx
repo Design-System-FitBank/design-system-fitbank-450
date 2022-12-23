@@ -4,8 +4,12 @@ import React, { useState } from 'react'
 import * as Styled from './styles'
 import { Typography } from '../../../Typography'
 
-export const Modal = () => {
-  const [isOpen, setIsOpen] = useState(false)
+export interface ModalProps {
+ show?: boolean
+}
+
+export const Modal = ({ show = false }: ModalProps) => {
+  const [isOpen, setIsOpen] = useState(show)
   const [isMonth, setIsMonth] = useState(false)
 
   const openModal = () => {
@@ -13,7 +17,7 @@ export const Modal = () => {
   }
 
   const closeModal = () => {
-    setIsOpen(false)
+    setIsOpen(!show)
   }
 
   const handleMonthButtonClicked = () => {
@@ -21,7 +25,7 @@ export const Modal = () => {
   }
 
   return (
-    <Styled.Container data-testid='modal-schedule'>
+    <Styled.Container data-testid='modal-schedule' showModal={show}>
       <Styled.Header data-testid='modal-header'>
         <Styled.MonthButton data-testid='mounth'>
           <Button

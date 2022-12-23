@@ -8,16 +8,21 @@ import * as Styled from './styles'
 export interface ButtonProps {
   title?: string
   disabled?: boolean
-  onchange: (text: string) => void
+  onChange: (text: string) => void
+  onClick: (value: boolean) => void
 }
 
-export const DateInput = ({ title, disabled = false, onchange }: ButtonProps) => {
+export const DateInput = ({ title, disabled = false, onChange, onClick }: ButtonProps) => {
   const [text, setText] = useState<string>()
   const [placeholder, setPlaceholder] = useState<string>('dd/mm/aaaa')
 
   const handleChange = (event: any) => {
     let textEntry: string = event.target.value
-    onchange(textEntry)
+    onChange(textEntry)
+  }
+
+  const handleClick = () => {
+    onClick(true)
   }
 
   return (
@@ -35,7 +40,7 @@ export const DateInput = ({ title, disabled = false, onchange }: ButtonProps) =>
           onChange={event => handleChange(event)}
         />
 
-        <Styled.Icon data-testid='icon'>
+        <Styled.Icon data-testid='icon' onClick={handleClick}>
           <Icon name={'calendar'} />
         </Styled.Icon>
       </Styled.Wrap>

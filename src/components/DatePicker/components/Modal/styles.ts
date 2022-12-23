@@ -1,10 +1,14 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.div<{showModal?: boolean}>`
+  display: ${({showModal}) => showModal ? 'block' : 'none'};
+
   width: 100%;
   max-width: 323px;
   height: 100%;
   max-height: 400px;
+
+  margin-top: ${({ theme }) => theme.sizes['24x']};
 
   background-color: ${({ theme }) => theme.colors.textDisabled};
   border-radius: ${({ theme }) => theme.sizes['20px']};
