@@ -1,6 +1,8 @@
 import React from 'react'
-import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
+
 import { faker } from '@faker-js/faker'
+
+import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
 import { DatePicker } from './'
 
 describe('Date Picker Component', () => {
