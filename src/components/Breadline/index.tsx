@@ -10,16 +10,16 @@ interface InputBreadlineProps {
    * junto de uma função onClick opcional
    */
   path: string[]
-  onClick?: (rota: string) => void
+  onClick?: (route: string) => void
 }
 
 export const Breadline: React.FC<InputBreadlineProps> = ({ path, onClick }) => {
   return (
-    <Styled.Container>
-      <Styled.Home onClick={() => onClick!('Inicio')}>
+    <Styled.Container data-testid='container'>
+      <Styled.Home data-testid='home' onClick={() => onClick!('Inicio')}>
         <Typography variant='h5'>Inicio</Typography>
       </Styled.Home>
-      <Styled.Bloc>
+      <Styled.Bloc data-testid='bloc'>
         {path.map((labelPathBlock, index) => (
           <>
             {index === 0 && path.length === 1 ? (

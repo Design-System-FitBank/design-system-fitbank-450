@@ -15,5 +15,5 @@ BreadLine.args = {
   path: [
     "Área PIX", "Pagamentos"
   ],
-  onClick(rota) {
+  onClick(route) {
   },}
