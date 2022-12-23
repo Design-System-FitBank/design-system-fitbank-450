@@ -29,7 +29,7 @@ export const ButtonTitleAndSubtitle = ({icon, title, subtitle, onClick, disabled
   return (
     <Styled.ButtonAlign data-testid='button' onClick={onClick} disabled={disabled}>
       <Styled.Icon data-testid='button-icon'>
-        <Icon name={icon} />
+        <Icon name={icon} data-testid='icon' width={38} height={38}/>
       </Styled.Icon>
       <Styled.TextAlign data-testid='button-aligntext'>
         <Styled.Title data-testid='button-title'>{title}</Styled.Title>

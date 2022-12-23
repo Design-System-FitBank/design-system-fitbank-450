@@ -10,7 +10,7 @@ describe('Button Default', () => {
   const icon = 'userBank'
   const textFaker = faker.lorem.word()
   beforeEach(() => {
-    cy.wait(1000)
+    cy.wait(100)
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
@@ -25,9 +25,9 @@ describe('Button Default', () => {
     )
   })
   afterEach(() => {
-    cy.wait(1000)
+    cy.wait(100)
   }) //Testando o css do botão
-  it('Deve renderizar o botão', () => {
+  it('Deve renderizar o botão com todos os styles', () => {
     cy.get('[data-testid="button"]')
       .should('have.css', 'display', 'flex')
       .and('have.css', 'justify-content', 'flex-start')
@@ -50,28 +50,20 @@ describe('Button Default', () => {
     cy.get('[data-testid="button"]').should('have.css', 'cursor', 'pointer')
   }),
   it('Deve renderizar o botão com o icone', () => {
-    cy.get('[data-testid="button"]')
-      .get('[data-testid="icon"]')
-      .should('have.css', 'width', '32px')
-      .and('have.css', 'height', '32px')
+    cy.get('[data-testid="button-icon"]')
+      .should('have.css', 'width', '38px')
+      .and('have.css', 'height', '38px')
   }),
   it('Deve renderizar o botão com o titulo', () => {
     cy.get('[data-testid="button"]')
       .get('[data-testid="button-title"]')
-      .should('have.css', 'font-size', '16px')
-      .and('have.css', 'font-weight', '700')
-      .and('have.css', 'line-height', '24px')
-      .and('have.css', 'letter-spacing', '0.5px')
-      .and('have.css', 'text-align', 'left')
+      .should('have.css', 'font-size', '20px')
+      .and('have.css', 'font-weight', '500')
   }),
   it('Deve renderizar o botão com o subtitulo', () => {
     cy.get('[data-testid="button"]')
       .get('[data-testid="button-subtitle"]')
-      .should('have.css', 'font-size', '12px')
-      .and('have.css', 'font-weight', '400')
-      .and('have.css', 'line-height', '18px')
-      .and('have.css', 'letter-spacing', '0.5px')
-      .and('have.css', 'text-align', 'left')
-  }
-
-}) ,
+      .should('have.css', 'font-size', '14px')
+      .and('have.css', 'font-weight', '500')
+  })
+})
