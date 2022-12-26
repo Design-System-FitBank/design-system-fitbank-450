@@ -1,20 +1,9 @@
-import { Transaction, TransactionList } from 'components/TransactionList'
+import { TransactionList } from './components/TransactionList'
 import { Typography } from 'components/Typography'
 import React from 'react'
 import * as Styled from './style'
 
-export interface TransactionListProps {
-  transactionsList?: TransactionDay
-  date: string[]
-}
-
-export interface TransactionDay {
-  date: {
-    transactions?: Transaction[]
-  }
-}
-
-export const TransactionDay: React.FC<TransactionListProps> = ({ transactionsList, date }) => {
+export const TransactionDay = ({ transactionsList, date }) => {
   return (
     <Styled.TransactionDay>
       <Typography variant='body'>{date.toString()}</Typography>

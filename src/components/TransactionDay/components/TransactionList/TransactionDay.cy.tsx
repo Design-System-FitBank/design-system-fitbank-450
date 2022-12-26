@@ -1,6 +1,5 @@
 import React from 'react'
 import { faker } from '@faker-js/faker'
-import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
 
 describe('TransactionList Component', () => {
   const titleFake = 'Titulo'
@@ -8,7 +7,7 @@ describe('TransactionList Component', () => {
   const operationFake = 'Operação'
   const valueFake = faker.finance.amount(5, 50)
 
-  it('Deve mostrar o componente default', () => {
+  it('Deve mostrar o componente TransactionList', () => {
     cy.get('[data-testid="details"]')
       .should('have.text', titleFake)
       .and('have.text', establishmentFake)
