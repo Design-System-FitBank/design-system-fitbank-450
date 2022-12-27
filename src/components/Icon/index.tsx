@@ -146,7 +146,7 @@ export interface IconsProps {
     | 'withdrawMoney'
     | 'xlsx'
     | 'eyeOpen'
-    |'search'
+    | 'search'
 }
 
 export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) => {

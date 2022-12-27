@@ -11,9 +11,9 @@ export const ContainerInput = styled.div<{ isOpen: boolean }>`
   padding-left: ${({ theme }) => theme.sizes['16px']};
   gap: ${({ theme }) => theme.sizes['8px']};
 
-  background: ${({ theme }) => theme.colors.light};
+  background: ${({ theme }) => theme.colors.high.pure};
 
-  border: 1px solid ${({ theme }) => theme.colors.disabled};
+  border: 1px solid ${({ theme }) => theme.colors.high.darkest};
   border-radius: ${({ theme }) => theme.sizes['6px']};
 
   max-width: ${({ theme }) => theme.sizes['320px']};
@@ -25,7 +25,7 @@ export const ContainerInput = styled.div<{ isOpen: boolean }>`
     box-shadow: 2px 2px 4px ${({ isOpen, theme }) => (isOpen ? 'transparent' : theme.colors.shadow)};
   }
 
-  border-color: ${({ isOpen, theme }) => (isOpen ? theme.colors.primary : theme.colors.disabled)};
+  border-color: ${({ isOpen, theme }) => (isOpen ? theme.colors.primary.pure : theme.colors.high.darkest)};
 `
 
 export const InputContent = styled.input`
@@ -41,7 +41,7 @@ export const InputContent = styled.input`
   &::placeholder {
     font-size: ${({ theme }) => theme.sizes['18px']};
     line-height: ${({ theme }) => theme.sizes['24px']};
-    color: ${({ theme }) => theme.colors.disabled};
+    color: ${({ theme }) => theme.colors.high.darkest};
   }
 `
 

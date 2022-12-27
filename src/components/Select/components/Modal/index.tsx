@@ -3,7 +3,7 @@ import React from 'react'
 import { Typography } from '../../../Typography'
 import { ModalContent, Item } from './styles'
 
-interface ModalContentProps {
+export interface ModalContentProps {
   openModal: boolean
   options: string[]
   onClick: (value: string) => void

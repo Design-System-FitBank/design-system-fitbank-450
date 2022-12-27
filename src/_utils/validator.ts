@@ -5,7 +5,7 @@ export class Validator {
     const array = Array.from(cpfParcial)
     let regressivo = array.length + 1
     const total = array.reduce((counter: number, value: string): number => {
-      counter += (regressivo * Number(value))
+      counter += regressivo * Number(value)
       regressivo--
       return counter
     }, 0)
@@ -18,12 +18,12 @@ export class Validator {
     let progressivoFinal = 2
     let progressivoInicail = 10 - cnpjInicial.length
     const totalFinal = array.reduce((counter: number, value: string): number => {
-      counter += (progressivoFinal * Number(value))
+      counter += progressivoFinal * Number(value)
       progressivoFinal++
       return counter
     }, 0)
     const totalInicial = array.reduce((counter: number, value: string): number => {
-      counter += (progressivoInicail * Number(value))
+      counter += progressivoInicail * Number(value)
       progressivoInicail++
       return counter
     }, 0)
@@ -32,53 +32,51 @@ export class Validator {
     return digito > 9 ? '0' : String(digito)
   }
 
-  private static required(value: string): string{
-    if (!value) return "Campo Obrigatório"
-    return ""
+  private static required(value: string): string {
+    if (!value) return 'Campo Obrigatório'
+    return ''
   }
-  private static email(value: string): string{
-    const error = "Não é um email válido"
-    if (!value.includes("@")) return error
-    if ( !value.includes('.com')) return error
-    return ""
+  private static email(value: string): string {
+    const error = 'Não é um email válido'
+    if (!value.includes('@')) return error
+    if (!value.includes('.com')) return error
+    return ''
   }
-  private static numero(value: string): string{
-    if (isNaN(Number(value))) return "Campo só aceita números"
-    return ""
+  private static numero(value: string): string {
+    if (isNaN(Number(value))) return 'Campo só aceita números'
+    return ''
   }
-  private static telefone(value: string): string{
-
+  private static telefone(value: string): string {
     const telLimpo = value.replace(/\D+/g, '')
     const arrayTel = Array.from(telLimpo)
 
     if (telLimpo.length <= 2) {
       const ddd = arrayTel[0] + arrayTel[1]
-      if (!DDD.includes(Number(ddd))) return "o DDD não é válido"
-
+      if (!DDD.includes(Number(ddd))) return 'o DDD não é válido'
     }
-    if (telLimpo.length < 10 || telLimpo.length > 11) return "Telefone invalido"
+    if (telLimpo.length < 10 || telLimpo.length > 11) return 'Telefone invalido'
 
     return ''
   }
-  private static cpf(value: string): string{
+  private static cpf(value: string): string {
     const cpfLimpo = value.replace(/\D+/g, '')
-    if (!cpfLimpo) return "Campo só aceita números"
+    if (!cpfLimpo) return 'Campo só aceita números'
     const sequence = cpfLimpo[0].repeat(cpfLimpo.length)
-    if (sequence === cpfLimpo) return "Cpf inválido"
-    if (cpfLimpo.length !== 11) return "Cpf inválido"
+    if (sequence === cpfLimpo) return 'Cpf inválido'
+    if (cpfLimpo.length !== 11) return 'Cpf inválido'
     const cpfParcial = cpfLimpo.slice(0, -2)
     const digito1 = this.criarDigitoCpf(cpfParcial)
     const digito2 = this.criarDigitoCpf(cpfParcial + digito1)
     const novoCpf = cpfParcial + digito1 + digito2
-    if (novoCpf !== cpfLimpo) return "Cpf inválido"
-    return ""
+    if (novoCpf !== cpfLimpo) return 'Cpf inválido'
+    return ''
   }
-  private static cnpj(value: string): string{
+  private static cnpj(value: string): string {
     const cnpjLimpo = value.replace(/\D+/g, '')
     const sequence = cnpjLimpo[0].repeat(cnpjLimpo.length)
-    if (!cnpjLimpo) return "Campo só aceita números"
-    if (cnpjLimpo.length !== 14) return "CNPJ inválido"
-    if (sequence === cnpjLimpo) return "CNPJ inválido"
+    if (!cnpjLimpo) return 'Campo só aceita números'
+    if (cnpjLimpo.length !== 14) return 'CNPJ inválido'
+    if (sequence === cnpjLimpo) return 'CNPJ inválido'
     let cnpjParcial = cnpjLimpo.slice(0, -2)
     let cnpjInicial = cnpjParcial.slice(0, -8)
     let cnpjFinal = cnpjParcial.slice(cnpjInicial.length)
@@ -88,28 +86,23 @@ export class Validator {
     cnpjFinal = cnpjParcial.slice(cnpjInicial.length)
     const digito2 = this.criarDigitoCnpj(cnpjFinal, cnpjInicial)
     const novoCnpj = cnpjParcial + digito2
-    if (novoCnpj !== cnpjLimpo) return "CNPJ inválido"
-    return ""
+    if (novoCnpj !== cnpjLimpo) return 'CNPJ inválido'
+    return ''
   }
   public static validation(variant: string, validated: string): string {
-
-    // if (required) {
-    //   return this.required(validated)
-    // }
     switch (variant) {
-      case "email":
+      case 'email':
         return this.email(validated)
-      case "numero":
+      case 'numero':
         return this.numero(validated)
-      case "cpf":
+      case 'cpf':
         return this.cpf(validated)
-      case "cnpj":
+      case 'cnpj':
         return this.cnpj(validated)
-      case "telefone":
+      case 'telefone':
         return this.telefone(validated)
       default:
-        return ""
+        return ''
     }
-}
-
+  }
 }

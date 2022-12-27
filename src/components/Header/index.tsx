@@ -6,11 +6,17 @@ import { Typography } from '../Typography'
 
 import * as Styled from './styles'
 
-interface HeaderProps {
+export interface HeaderProps {
   /**
-   * Função que capta os valores digitados no campo de entrada de texto
+   * Função que capta os valores digitados no campo de entrada de texto.
+   * Caso não passada não mostrará input de pesquisa
    */
-  onSearch: (text: string) => void
+  search?: (text: string) => void
+
+  /**
+   * Texto de placeholder do input pesquisa se houver.
+   */
+  searchPlaceholder?: string
 
   /**
    * Função que ira retornar a opção de menu
@@ -23,26 +29,31 @@ interface HeaderProps {
   accountName?: string
 }
 
-export const Header = ({ onSearch, accountName = 'User', onClickOptions }: HeaderProps) => {
+export const Header = ({
+  search,
+  accountName = 'User',
+  searchPlaceholder,
+  onClickOptions
+}: HeaderProps) => {
   const [textValue, setTextValue] = useState<string>()
   const userName = accountName[0].toUpperCase() + accountName.substring(1).toLowerCase()
 
-  const handleChange = (event: any) => {
-    let textEntry: string = event.target.value
-    setTextValue(textEntry)
+  const handleChange = (value: string) => {
+    setTextValue(value)
   }
-
   return (
     <Styled.Container data-testid='container'>
       <Styled.Wrap data-testid='wrap'>
-        <Styled.Input
-          data-testid='input'
-          value={textValue}
-          onChange={event => handleChange(event)}
-          placeholder='Pesquise'
-        />
-        <Styled.Search data-testid='lupa' onClick={() => onSearch(textValue!)}>
-          <Icon name='search' width={24} height={24} />
+        {search && (
+          <Styled.Input
+            data-testid='input'
+            value={textValue}
+            onChange={event => handleChange(event.target.value)}
+            placeholder={searchPlaceholder}
+          />
+        )}
+        <Styled.Search data-testid='lupa' onClick={() => search!(textValue!)}>
+          {search && <Icon name='search' width={24} height={24} />}
         </Styled.Search>
       </Styled.Wrap>
       <Styled.Span data-testid='avatar'>

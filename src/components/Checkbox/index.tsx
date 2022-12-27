@@ -1,54 +1,33 @@
-import { Typography } from '../Typography'
-import React, { useState } from 'react'
-import { InputCheckboxItem } from './InputCheckboxItem'
+import { Icon } from '../Icon'
+import React, { useEffect, useState } from 'react'
 import * as Styled from './styles'
+import { Typography } from '../Typography'
 
-interface InputCheckboxProps {
-  title: string
+export interface CheckboxProps {
   /**
-   * Lista com as opções
+   * função obrigatória para receber o resultado se esta checado ou não!
    */
-  optionsList: string[]
+  onCheck: (checked: boolean) => void
+
   /**
-   * Opção para deixar alinhado na direção linha por default é falso
+   * Variável opcional para passar um estado inicial do check!
    */
-  isRow?: boolean
-  /**
-   * função para receber os itens selecionados que recebe um array como parâmetro
-   */
-  onSelect: (values: string[]) => void
+  checked?: boolean
 }
 
-export const Checkbox = ({ title, optionsList, isRow = false, onSelect}: InputCheckboxProps) => {
-  const [selected, setSelected] = useState<string[]>([])
-
-  const onclick = (value: string) => {
-    if (selected.includes(value)) {
-
-      setSelected(selected.filter(el => el !== value))
-    }
-    else {
-      setSelected([...selected, value])
-    }
+export const Checkbox: React.FC<CheckboxProps> = ({ checked = false, onCheck }) => {
+  const [check, setCheck] = useState<boolean>(checked)
+  const Onclick = () => {
+    setCheck(!check)
   }
-  onSelect(selected)
+
+  useEffect(() => {
+    onCheck(check)
+  }, [check])
+
   return (
-    <>
-      <Styled.Container data-testid='input-checkbox-title'>
-        <Typography data-testid='input-checkbox-title' variant='body'>
-          {title}
-        </Typography>
-      </Styled.Container>
-      <Styled.ContainerChild data-testid='input-checkbox' isRow={isRow}>
-        {optionsList.map((option, key) => (
-          <InputCheckboxItem
-            key={key}
-            checked={selected.includes(option)}
-            option={option}
-            onClick={() => onclick(option)}
-          />
-        ))}
-      </Styled.ContainerChild>
-    </>
+    <Styled.Checkbox data-testid='checkbox' checked={check} onClick={() => Onclick()}>
+      {check && <Icon name='checked' width={8} height={8} />}
+    </Styled.Checkbox>
   )
 }

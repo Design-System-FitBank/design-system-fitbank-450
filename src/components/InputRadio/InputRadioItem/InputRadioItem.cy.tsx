@@ -6,7 +6,7 @@ import { InputRadioItem } from '.'
 describe('InputRadioItem', () => {
   beforeEach(() => {
     cy.mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
         <InputRadioItem option={option} onclick={cy.stub().as('onclick')} />
       </ThemeDSProvider>
@@ -19,7 +19,7 @@ describe('InputRadioItem', () => {
       .should('have.css', 'width', '16px')
       .and('have.css', 'height', '16px')
       .and('have.css', 'background-color', 'rgb(255, 255, 255)')
-      .and('have.css', 'border', '1px solid rgb(167, 167, 167)')
+      .and('have.css', 'border', '1px solid rgb(174, 174, 174)')
       .and('have.css', 'border-radius', '20px')
       .and('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 4px 6px 0px')
       .and('have.css', 'display', 'flex')
@@ -30,18 +30,18 @@ describe('InputRadioItem', () => {
 
   it('Deve ser o componente InputRadioItem checkado', () => {
     cy.mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
         <InputRadioItem option={option} checked={true} onclick={cy.stub().as('onclick')} />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="radio"]')
       .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .and('have.css', 'border', '1px solid rgb(50, 55, 81)')
+      .and('have.css', 'border', '1px solid rgb(50, 56, 79)')
   })
 
   it('Deve ser o InputRadioItem com label', () => {
-    cy.get('[data-testid="radio-container"]').and('have.css', 'gap', '26px')
+    cy.get('[data-testid="radio-container"]').and('have.css', 'gap', '24px')
     cy.get('[data-testid="body"]').should('exist').and('have.text', option)
   })
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import * as Styled from './styles'
 import { Icon } from '../Icon'
 import { Typography } from '../Typography'
@@ -15,25 +15,42 @@ export interface AccordionProps {
    */
   maxHeight?: number
   /**
-   * Variável referente ao nome do botão do accordion.
+   * Variável opcional referente ao nome do botão do accordion quando o mesmo estiver em estado open.
+   * Observar caso não seja passado nenhum valor a essa variável o accordion em estado open terá o
+   * mesmo valor do label em estado close.
    */
-  label: string
+  labelStateOpen?: string
+  /**
+   * Variável referente ao nome do botão do accordion quando o mesmo estiver em estado close.
+   */
+  labelStateClose?: string
+
+  openAccordion?: boolean
 }
 
-export const Accordion: React.FC<AccordionProps> = ({ children, maxHeight = 320, label }) => {
+export const Accordion: React.FC<AccordionProps> = ({ children, maxHeight = 320, labelStateOpen, labelStateClose, openAccordion = false }) => {
   const [isActive, setIsActive] = useState(false)
-
+  const label = !isActive ? labelStateClose : !labelStateOpen ? labelStateClose : labelStateOpen
+  const hasLabel = Boolean(labelStateClose)
+  useEffect(() => {
+  setIsActive(openAccordion)
+}, [openAccordion])
   return (
     <Styled.Container data-testid='container'>
-      <Styled.Accordion data-testid='accordion' isOpen={isActive} height={maxHeight}>
-        <Styled.Button data-testid='button' onClick={() => setIsActive(!isActive)}>
+      <Styled.Accordion
+        data-testid='accordion'
+        isOpen={isActive}
+        height={maxHeight}
+        hasLabel={hasLabel}
+      >
+        {labelStateClose && <Styled.Button data-testid='button' onClick={() => setIsActive(!isActive)}>
           <Styled.Arrow data-testid='arrow'>
             <Icon name={!isActive ? 'arrowDown' : 'arrowUp'} width={20} height={20} />
           </Styled.Arrow>
           <Styled.LabelAccordion data-testid='labelAccordion'>
             <Typography variant='bodySmall'>{label}</Typography>
           </Styled.LabelAccordion>
-        </Styled.Button>
+        </Styled.Button>}
         {children}
       </Styled.Accordion>
     </Styled.Container>

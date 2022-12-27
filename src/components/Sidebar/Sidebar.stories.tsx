@@ -3,6 +3,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { Sidebar } from './'
 import { Typography } from '../Typography'
+import { Button } from '../Button'
+import { Accordion } from '../Accordion'
 
 export default {
   title: 'Sidebar',
@@ -40,6 +42,10 @@ Infos.args = {
       <Typography variant='h1'>Title</Typography>
       <Typography variant='caption'>Name</Typography>
       <Typography variant='subtitle'>Data</Typography>
+      <Accordion labelStateClose='Ver dados da conta' labelStateOpen='Esconder dados da conta'>
+        <div>Number</div>
+      </Accordion>
+      <Button icon='share' children={'Copiar'} onClick={() => {}} />
     </div>
   )
 }

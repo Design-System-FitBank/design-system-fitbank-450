@@ -10,18 +10,18 @@ export const Container = styled.div`
 `
 
 export const PinBox = styled.input<{ isDisabled: boolean, isError: any }>`
-  width: ${({ theme }) => theme.sizes['42px']};
-  height: ${({ theme }) => theme.sizes['42px']};
+  width: ${({ theme }) => theme.sizes['44px']};
+  height: ${({ theme }) => theme.sizes['44px']};
 
-  background-color: ${({ isDisabled, theme }) => (isDisabled ? theme.colors.disabled : theme.colors.light)};
+  background-color: ${({ isDisabled, theme }) => (isDisabled ? theme.colors.high.medium : theme.colors.high.pure)};
 
   outline: none;
 
-  border: 1px solid ${({ isError, theme }) => isError ? theme.colors.error : theme.colors.disabled};
+  border: 1px solid ${({ isError, theme }) => isError ? theme.colors.error.pure : theme.colors.high.darkest};
   border-radius: ${({ theme }) => theme.sizes['6px']};
 
   text-align: center;
-  font-size: ${({ theme }) => theme.sizes['18px']};
+  font-size: ${({ theme }) => theme.sizes['16px']};
   line-height: ${({ theme }) => theme.sizes['24px']};
 
   &:hover {
@@ -30,6 +30,6 @@ export const PinBox = styled.input<{ isDisabled: boolean, isError: any }>`
   }
 
   &:focus {
-    border: 1px solid ${({ isError, theme }) => (isError ? theme.colors.error : theme.colors.dark)};
+    border: 1px solid ${({ isError, theme }) => (isError ? theme.colors.error.pure : theme.colors.primary.pure)};
   }
 `
