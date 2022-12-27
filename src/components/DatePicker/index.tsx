@@ -7,7 +7,7 @@ import * as Styled from './styles'
 
 interface DatePickerProps {
   /**
-   * Variavel responsavel pelo children do componente
+   * Variável responsável pelo children do componente
    */
   children?: String
 }
