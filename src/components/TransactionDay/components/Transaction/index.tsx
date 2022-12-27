@@ -1,27 +1,25 @@
 import React from 'react'
-import { Typography } from 'components/Typography'
-import { Icon } from 'components/Icon'
-import { Button } from 'components/Button'
+import { Typography } from 'design-system-fitbank/dist/src/components/Typography'
+import { Icon } from 'design-system-fitbank/dist/src/components/Icon'
+import { Button } from 'design-system-fitbank/dist/src/components/Button'
 import { OperationType } from 'components/TransactionDay/OperationType'
-import { maskMoney } from '_utils/number'
+/* import { maskMoney } from '_utils/number' */
 
 import * as Styled from './style'
-import { TransactionDay } from 'components/TransactionDay'
 
-export interface TransactionListProps {
-  transactionsDay?: Transaction
+export interface TransactionProps {
+  transactions?: Transaction
 }
 
 type Transaction = {
   title: string
-  date: Date
   value: number
   type: string
   establishment: string
   operationType: OperationType
 }
 
-export const TransactionList: React.FC<TransactionListProps> = ({ transactionsDay }) => {
+export const Transaction: React.FC<TransactionProps> = ({ transactions }) => {
   const operationType = (operationType?: OperationType) => {
     switch (operationType) {
       case 2:
@@ -67,22 +65,18 @@ export const TransactionList: React.FC<TransactionListProps> = ({ transactionsDa
 
   return (
     <Styled.Container data-testid='container'>
-      <Styled.IconMoney data-testid='iconMoney' isCredit={(transactionsDay?.value ?? 0) >= 0}>
-        <Icon name={transactionsDay?.type === 'received' ? 'moneyln' : 'moneyOut'} width={36} height={36} />
+      <Styled.IconMoney data-testid='iconMoney' isCredit={(transactions?.value ?? 0) >= 0}>
+        <Icon name={transactions?.type === 'received' ? 'moneyln' : 'moneyOut'} width={36} height={36} />
       </Styled.IconMoney>
       <Styled.Details data-testid='details'>
-        <Typography variant='bodySmall'>{transactionsDay?.title}</Typography>
-        {!transactionsDay?.establishment && (
-          <Typography variant='bodyLarge'>{transactionsDay?.establishment}</Typography>
-        )}
-        {!transactionsDay?.operationType && (
-          <Typography variant='bodySmall'>{operationType(transactionsDay?.operationType)}</Typography>
-        )}
+        <Typography variant='bodySmall'>{transactions?.title}</Typography>
+        {!transactions?.establishment && <Typography variant='bodyLarge'>{transactions?.establishment}</Typography>}
+        {/*         {!operationType && <Typography variant='bodySmall'>{operationType(operationType)}</Typography>} */}
       </Styled.Details>
       <Styled.Button data-testid='button'>
-        {transactionsDay?.value && (
-          <Typography variant='bodyLarge'>{maskMoney(transactionsDay?.value.toString()!)}</Typography>
-        )}
+        {/*  {transactions?.value && (
+          <Typography variant='bodyLarge'>{maskMoney(transactions?.value.toString()!)}</Typography>
+        )} */}
         <Button icon='details' onClick={() => {}} size='small' type='tertiary'>
           Ver
         </Button>
