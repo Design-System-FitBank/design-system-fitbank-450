@@ -2,7 +2,7 @@ import React from 'react'
 import { Typography } from '../../../Typography'
 import { LabelContent } from './styles'
 
-interface LabelProps {
+export interface LabelProps {
   children: string
 }
 

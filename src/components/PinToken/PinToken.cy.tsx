@@ -4,13 +4,13 @@ import { mount } from 'cypress/react18'
 import { faker } from '@faker-js/faker'
 import 'cypress-real-events/support'
 
-import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
+import { GlobalStyles, ThemeDSProvider } from '../../theme'
 import { PinToken } from '.'
 
 describe('PinToken', () => {
   beforeEach(() => {
     mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
         <PinToken onChange={cy.stub().as('onPinChange')} />
       </ThemeDSProvider>
@@ -40,14 +40,14 @@ describe('PinToken', () => {
   })
 
   it('Deve conter o PinToken default', () => {
-    cy.get('[data-testid = "pinToken-1"]')
-      .should('have.css', 'width', '42px')
-      .and('have.css', 'height', '42px')
+    cy.get('[data-testid = "pinToken-0"]')
+      .should('have.css', 'width', '44px')
+      .and('have.css', 'height', '44px')
       .and('have.css', 'background-color', 'rgb(255, 255, 255)')
-      .and('have.css', 'border', '1px solid rgb(196, 196, 196)')
+      // .and('have.css', 'border', '1px solid rgb(174, 174, 174)')
       .and('have.css', 'border-radius', '6px')
       .and('have.css', 'text-align', 'center')
-      .and('have.css', 'font-size', '18px')
+      .and('have.css', 'font-size', '16px')
       .and('have.css', 'line-height', '24px')
   })
 
@@ -58,7 +58,7 @@ describe('PinToken', () => {
 
   it('Deve conter o estado Focused quando o pinToken for clicado', () => {
     cy.get('[data-testid="pinToken-0"]')
-    cy.get('[data-testid="pinToken-0"]').should('have.css', 'border', '1px solid rgb(1, 7, 22)')
+    cy.get('[data-testid="pinToken-0"]').should('have.css', 'border', '1px solid rgb(50, 56, 79)')
   })
 
   it('Deve conter o estado Error quando o pinToken clicado for digitado um caractere for diferente de um numero', () => {
@@ -67,41 +67,41 @@ describe('PinToken', () => {
     cy.get('[data-testid="pinToken-0"]').type(isNaNChar).should('have.css', 'border', '1px solid rgb(234, 62, 62)')
   })
 
-  const validPin = faker.datatype.number({min: 0, max: 9})
+  const validPin = faker.datatype.number({ min: 0, max: 9 })
 
   it('Deve conter o estado Filed quando o pinToken clicado for digitado um numero', () => {
     cy.get('[data-testid="pinToken-0"]')
       .type(validPin.toString())
-      .should('have.css', 'border', '1px solid rgb(196, 196, 196)')
+      .should('have.css', 'border', '1px solid rgb(174, 174, 174)')
       .and('have.css', 'text-align', 'center')
-      .and('have.css', 'font-size', '18px')
+      .and('have.css', 'font-size', '16px')
       .and('have.css', 'line-height', '24px')
   })
 
   it('Deve conter o estado Disabled', () => {
     mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
         <PinToken onChange={cy.stub().as('onChange')} disabled />
       </ThemeDSProvider>
     )
     cy.get('[data-testid = "pinToken-0"]')
-      .and('have.css', 'border', '1px solid rgb(196, 196, 196)')
-      .and('have.css', 'background-color', 'rgb(196, 196, 196)')
+      .and('have.css', 'border', '1px solid rgb(174, 174, 174)')
+      .and('have.css', 'background-color', 'rgb(232, 232, 232)')
   })
 
   it('Dado o primeiro elemento já preenchido, então o elemento seguinte ficará focado e pronto para preencher', () => {
     cy.get('[data-testid = "pinToken-0"]').type(validPin.toString()).wait(100).should('not.have.focus')
-    cy.get('[data-testid = "pinToken-1"]').should('have.focus').and('have.css', 'border', '1px solid rgb(1, 7, 22)')
+    cy.get('[data-testid = "pinToken-1"]').should('have.focus').and('have.css', 'border', '1px solid rgb(50, 56, 79)')
   })
 
   const pinValues = [
-    faker.datatype.number({min: 0, max: 9}),
-    faker.datatype.number({min: 0, max: 9}),
-    faker.datatype.number({min: 0, max: 9}),
-    faker.datatype.number({min: 0, max: 9}),
-    faker.datatype.number({min: 0, max: 9}),
-    faker.datatype.number({min: 0, max: 9}),
+    faker.datatype.number({ min: 0, max: 9 }),
+    faker.datatype.number({ min: 0, max: 9 }),
+    faker.datatype.number({ min: 0, max: 9 }),
+    faker.datatype.number({ min: 0, max: 9 }),
+    faker.datatype.number({ min: 0, max: 9 }),
+    faker.datatype.number({ min: 0, max: 9 })
   ]
 
   it('Deve a chamar a função onPinChange', () => {
@@ -109,5 +109,23 @@ describe('PinToken', () => {
       cy.get(`[data-testid="pinToken-${index}"]`).type(pin.toString())
     })
     cy.get('@onPinChange').should('have.been.calledWithExactly', pinValues)
+  })
+
+  it('Deve conter o estado password', () => {
+    mount(
+      <ThemeDSProvider>
+        <GlobalStyles />
+        <PinToken onChange={cy.stub().as('onChange')} password />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid = "container"]')
+      .should('have.css', 'display', 'flex')
+      .and('have.css', 'flex-direction', 'row')
+      .children()
+      .should('have.length', 4)
+    cy.get('[data-testid = "pinToken-0"]').type(validPin.toString()).wait(100).should('not.have.focus')
+    cy.get('[data-testid = "pinToken-1"]').type(validPin.toString()).wait(100).should('not.have.focus')
+    cy.get('[data-testid = "pinToken-2"]').type(validPin.toString()).wait(100).should('not.have.focus')
+    cy.get('[data-testid = "pinToken-3"]').type(validPin.toString()).wait(100).should('not.have.focus')
   })
 })

@@ -15,7 +15,7 @@ describe('Select', () => {
 
   beforeEach(() => {
     mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
         <Select title={title} placeholder={placeholder} options={optionsList} onSelected={cy.stub().as('onSelected')} />
       </ThemeDSProvider>
@@ -30,7 +30,7 @@ describe('Select', () => {
   it('Deve conter titulo, placeholder e uma lista de opções', () => {
     cy.get('[data-testid = "label"]')
       .should('have.text', title)
-      .and('have.css', 'color', 'rgb(50, 55, 81)')
+      .and('have.css', 'color', 'rgb(41, 41, 41)')
       .and('have.css', 'max-width', '320px')
       .and('have.css', 'max-height', '20px')
     cy.get('[data-testid = "inputContent"]').should('have.attr', 'placeholder', placeholder)
@@ -50,7 +50,7 @@ describe('Select', () => {
       .and('have.css', 'padding-bottom', '12px')
       .and('have.css', 'padding-left', '16px')
       .and('have.css', 'gap', '8px')
-      .and('have.css', 'border', '1px solid rgb(196, 196, 196)')
+      .and('have.css', 'border', '1px solid rgb(174, 174, 174)')
       .and('have.css', 'background-color', 'rgb(255, 255, 255)')
       .and('have.css', 'flex-direction', 'row')
       .and('have.css', 'align-items', 'center')
@@ -82,7 +82,7 @@ describe('Select', () => {
   it('Deve conter o background light no modal. Junto com a barra de scroll quando tiver mais de 3 itens de opção', () => {
     const optionsList = [faker.lorem.word(), faker.lorem.word(), faker.lorem.word(), faker.lorem.word()]
     mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
         <Select title={title} placeholder={placeholder} options={optionsList} onSelected={cy.stub().as('onSelected')} />
       </ThemeDSProvider>

@@ -2,15 +2,15 @@ import styled from 'styled-components'
 
 type RadioProps = {
   checked?: boolean
-  isRow?: boolean
+  isColumn?: boolean
 }
 
 export const Container = styled.div<RadioProps>`
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.primary.pure};
   text-transform: capitalize;
 `
 
 export const ContainerDirection = styled.div<RadioProps>`
   display: flex;
-  flex-direction: ${({ isRow }) => (isRow ? 'row' : 'column')};
+  flex-direction: ${({ isColumn }) => isColumn ? 'column' : 'row'};
 `

@@ -12,7 +12,7 @@ describe('NavButton Default', () => {
   beforeEach(() => {
     cy.wait(100)
     cy.mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
         <NavButton icon={icon} onClick={cy.stub().as('onclick')}>
           {label}
@@ -25,37 +25,35 @@ describe('NavButton Default', () => {
   })
   it('Deve ser o componente Default', () => {
       cy.get('[data-testid="nav-button"]')
-      .should('have.css', 'width', '90px')
-      .and('have.css', 'height', '90px')
-      .and('have.css', 'padding', '8px 4px')
-      .and('have.css', 'gap', '4px')
-      .and('have.css', 'border', '1px solid rgba(0, 0, 0, 0)')
-      .and('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 2px 4px 0px')
-      .and('have.css', 'background-color', 'rgb(255, 255, 255)')
-      .and('have.css', 'color', 'rgb(50, 55, 81)')
-      .and('have.css', 'justify-content', 'center')
-      .and('have.css', 'align-items', 'center')
-      .and('have.css', 'flex-direction', 'column')
-      .and('have.css', 'border-radius', '16px')
-      .and('have.css', 'overflow', 'hidden')
-      .and('have.text', label)
+        .should('have.css', 'width', '92px')
+        .and('have.css', 'height', '92px')
+        .and('have.css', 'padding', '8px 4px')
+        .and('have.css', 'gap', '4px')
+        .and('have.css', 'border', '1px solid rgba(0, 0, 0, 0)')
+        .and('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 2px 4px 0px')
+        .and('have.css', 'background-color', 'rgb(255, 255, 255)')
+        .and('have.css', 'color', 'rgb(50, 56, 79)')
+        .and('have.css', 'justify-content', 'center')
+        .and('have.css', 'align-items', 'center')
+        .and('have.css', 'flex-direction', 'column')
+        .and('have.css', 'border-radius', '16px')
+        .and('have.css', 'overflow', 'hidden')
+        .and('have.text', label.substring(0, 10))
 
     cy.get('[data-testid="nav-button"]').click()
     cy.get('@onclick').should('have.been.calledOnce')
   })
   it('Deve ter um label para duas linhas', () => {
     cy.mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
         <NavButton icon={icon} onClick={cy.stub().as('onclick')}>
           {faker.lorem.sentence(5)}
         </NavButton>
       </ThemeDSProvider>
     )
-      cy.get('[data-testid="nav-button"]')
-        .get('[data-testid="nav-label"]')
-        .should('have.css', 'width', '80px')
-        .and('have.css', 'height', '30px')
+      cy.get('[data-testid="nav-label"]')
+        .and('have.css', 'height', '28px')
   })
 
   it('Deve ser a div que contém o ícone', () => {
@@ -67,17 +65,17 @@ describe('NavButton Default', () => {
 
   it('Deve ser o componente Default no estado Hover', () => {
     cy.get('[data-testid="nav-button"]').realHover()
-    cy.get('[data-testid="nav-button"]').should('have.css', 'border', '1px solid rgb(196, 196, 196)')
+    cy.get('[data-testid="nav-button"]').should('have.css', 'border', '1px solid rgba(0, 0, 0, 0.1)')
   })
 
   it('Deve ser o componente Default no estado Active', () => {
     cy.get('[data-testid="nav-button"]').realMouseDown()
-    cy.get('[data-testid="nav-button"]').should('have.css', 'border', '1px solid rgb(50, 55, 81)')
+    cy.get('[data-testid="nav-button"]').should('have.css', 'border', '1px solid rgba(0, 0, 0, 0.1)')
   })
 
   it('Deve ser o componente Default no estado Disabled', () => {
     cy.mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
         <NavButton
           icon={icon}
@@ -89,8 +87,8 @@ describe('NavButton Default', () => {
       </ThemeDSProvider>
     )
     cy.get('[data-testid="nav-button"]')
-      .should('have.css', 'border', '1px solid rgb(196, 196, 196)')
-      .and('have.css', 'color', 'rgb(196, 196, 196)')
+      .should('have.css', 'border', '1px solid rgb(174, 174, 174)')
+      .and('have.css', 'color', 'rgb(174, 174, 174)')
       .and('have.css', 'box-shadow', 'none')
       .and('have.css', 'cursor', 'auto')
   })
@@ -101,7 +99,7 @@ describe('NavButton Small', () => {
   beforeEach(() => {
     cy.wait(100)
     cy.mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
         <NavButton
           icon={icon}
@@ -116,8 +114,8 @@ describe('NavButton Small', () => {
   })
   it('Deve ser o componente Small quando passar o size small', () => {
     cy.get('[data-testid="nav-button"]')
-      .should('have.css', 'width', '54px')
-      .and('have.css', 'height', '54px')
+      .should('have.css', 'width', '56px')
+      .and('have.css', 'height', '56px')
 
     cy.get('[data-testid="caption"]').should('not.exist')
   })
@@ -129,7 +127,7 @@ describe('NavButton Large', () => {
   beforeEach(() => {
     cy.wait(100)
     cy.mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
         <NavButton icon={icon} onClick={cy.stub().as('onclick')} size={'large'}>
           {label}
@@ -150,11 +148,11 @@ describe('NavButton Large', () => {
         .get('[data-testid="nav-labelLarge"]')
         .should('have.css', 'width', '96px')
         .and('have.css', 'height', '32px')
-        .and('have.css', 'justify-content', 'flex-start')
+        .and('have.css', 'justify-content', 'center')
   })
   it('Deve ter label com duas linhas', () => {
     cy.mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
         <NavButton icon={icon} onClick={cy.stub().as('onclick')} size={'large'}>
           {faker.lorem.sentence(5)}
@@ -165,6 +163,6 @@ describe('NavButton Large', () => {
         .get('[data-testid="nav-labelLarge"]')
         .should('have.css', 'width', '96px')
         .and('have.css', 'height', '32px')
-        .and('have.css', 'justify-content', 'flex-start')
+        .and('have.css', 'justify-content', 'center')
   })
 })

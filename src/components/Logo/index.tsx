@@ -4,7 +4,7 @@ import { LogoSecundary } from './Logos/LogoSecundary'
 import { LogoSmallPrimary } from './Logos/LogoSmallPrimary'
 import { LogoSmallSecundary } from './Logos/LogoSmallSecundary'
 
-interface LogoProps {
+export interface LogoProps {
   /**
    * Variáveis referente aos tipos de logos
    */

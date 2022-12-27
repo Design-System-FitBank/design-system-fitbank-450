@@ -12,8 +12,8 @@ export const ToggleContainer = styled.div<{ isToggled: boolean }>`
   width: ${({ theme }) => theme.sizes['32px']};
   height: ${({ theme }) => theme.sizes['16px']};
   border-radius: ${({ theme }) => theme.sizes['8px']};
-  border: 1px solid ${({ theme }) => theme.colors.primary};
-  background-color: ${({ isToggled, theme }) => (isToggled ? theme.colors.primary : theme.colors.disabled)};
+  border: 1px solid ${({ theme }) => theme.colors.primary.pure};
+  background-color: ${({ isToggled, theme }) => (isToggled ? theme.colors.primary.pure : theme.colors.high.dark)};
   display: flex;
   align-items: center;
   transition: 1s ease-in-out;
@@ -25,5 +25,5 @@ export const Switcher = styled.div<{ isToggled: boolean }>`
   width: ${({ theme }) => theme.sizes['12px']};
   height: ${({ theme }) => theme.sizes['12px']};
   border-radius: 50%;
-  background-color: ${({ isToggled, theme }) => (isToggled ? theme.colors.light : theme.colors.primary)};
+  background-color: ${({ isToggled, theme }) => (isToggled ? theme.colors.high.pure : theme.colors.primary.pure)};
 `
