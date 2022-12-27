@@ -10,7 +10,7 @@ describe('Toggle', () => {
   beforeEach(() => {
     cy.wait(100)
     mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
         <Toggle isActive={cy.stub().as('isActive')} />
       </ThemeDSProvider>
@@ -23,11 +23,11 @@ describe('Toggle', () => {
 
   it('Deve conter o toggle default', () => {
     cy.get('[data-testid = "toggle"]')
-      .should('have.css', 'border', '1px solid rgb(50, 55, 81)')
+      .should('have.css', 'border', '1px solid rgb(50, 56, 79)')
       .and('have.css', 'width', '32px')
       .and('have.css', 'height', '16px')
       .and('have.css', 'border-radius', '8px')
-      .and('have.css', 'background-color', 'rgb(232, 232, 232)')
+      .and('have.css', 'background-color', 'rgb(205, 205, 205)')
       .and('have.css', 'display', 'flex')
       .and('have.css', 'align-items', 'center')
       .and('have.css', 'transition', 'all 1s ease-in-out 0s')
@@ -39,14 +39,14 @@ describe('Toggle', () => {
       .should('have.css', 'width', '12px')
       .and('have.css', 'height', '12px')
       .and('have.css', 'border-radius', '50%')
-      .and('have.css', 'background-color', 'rgb(50, 55, 81)')
+      .and('have.css', 'background-color', 'rgb(50, 56, 79)')
   })
 
   const labelTxt = faker.lorem.word()
 
   it('Deve conter um toggle com um titulo', () => {
     mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
         <Toggle isActive={cy.stub().as('isActive')} title={labelTxt} />
       </ThemeDSProvider>
@@ -61,24 +61,24 @@ describe('Toggle', () => {
 
   it('Deve mudar a cor de fundo ao clicar no toggle e a animação do toggle', () => {
     cy.get('[data-testid = "toggle"]')
-      .should('have.css', 'background-color', 'rgb(232, 232, 232)')
+      .should('have.css', 'background-color', 'rgb(205, 205, 205)')
       .and('have.css', 'justify-content', 'flex-start')
     cy.get('[data-testid = "toggle"]').click()
     cy.get('[data-testid = "toggle"]')
-      .should('have.css', 'background-color', 'rgb(50, 55, 81)')
+      .should('have.css', 'background-color', 'rgb(50, 56, 79)')
       .and('have.css', 'justify-content', 'flex-end')
     cy.get('[data-testid = "toggle"]').click()
     cy.get('[data-testid = "toggle"]')
-      .should('have.css', 'background-color', 'rgb(232, 232, 232)')
+      .should('have.css', 'background-color', 'rgb(205, 205, 205)')
       .and('have.css', 'justify-content', 'flex-start')
   })
 
   it('Deve conter uma animação do switcher ao clicar no toggle', () => {
-    cy.get('[data-testid = "switcher"]').should('have.css', 'background-color', 'rgb(50, 55, 81)')
+    cy.get('[data-testid = "switcher"]').should('have.css', 'background-color', 'rgb(50, 56, 79)')
     cy.get('[data-testid = "toggle"]').click()
     cy.get('[data-testid = "switcher"]').should('have.css', 'background-color', 'rgb(255, 255, 255)')
     cy.get('[data-testid = "toggle"]').click()
-    cy.get('[data-testid = "switcher"]').should('have.css', 'background-color', 'rgb(50, 55, 81)')
+    cy.get('[data-testid = "switcher"]').should('have.css', 'background-color', 'rgb(50, 56, 79)')
   })
 
   it('Deve a chamar a função isActive', () => {

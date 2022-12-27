@@ -45,13 +45,7 @@ export const Subtitle = styled.sub`
 export const Body = styled.body`
   font-size: ${({ theme }) => theme.sizes['16px']};
   line-height: ${({ theme }) => theme.sizes['24px']};
-  font-weight: ${({ theme }) => theme.font.weight.tiny};
-`
-
-export const BodySmall = styled.body`
-  font-size: ${({ theme }) => theme.sizes['14px']};
-  line-height: ${({ theme }) => theme.sizes['20px']};
-  font-weight: ${({ theme }) => theme.font.weight.tiny};
+  font-weight: ${({ theme }) => theme.font.weight.regular};
 `
 
 export const BodyBold = styled.body`
@@ -60,14 +54,68 @@ export const BodyBold = styled.body`
   font-weight: ${({ theme }) => theme.font.weight.bold};
 `
 
+export const BodySmall = styled.body`
+  font-size: ${({ theme }) => theme.sizes['12px']};
+  line-height: ${({ theme }) => theme.sizes['20px']};
+  font-weight: ${({ theme }) => theme.font.weight.regular};
+`
+
+export const BodySmallBold = styled.body`
+  font-size: ${({ theme }) => theme.sizes['12px']};
+  line-height: ${({ theme }) => theme.sizes['20px']};
+  font-weight: ${({ theme }) => theme.font.weight.bold};
+`
+
+export const BodyMedium = styled.body`
+  font-size: ${({ theme }) => theme.sizes['16px']};
+  line-height: ${({ theme }) => theme.sizes['24px']};
+  font-weight: ${({ theme }) => theme.font.weight.regular};
+`
+
+export const BodyMediumBold = styled.body`
+  font-size: ${({ theme }) => theme.sizes['16px']};
+  line-height: ${({ theme }) => theme.sizes['24px']};
+  font-weight: ${({ theme }) => theme.font.weight.bold};
+`
+
 export const BodyLarge = styled.body`
-  font-size: ${({ theme }) => theme.sizes['18px']};
+  font-size: ${({ theme }) => theme.sizes['20px']};
   line-height: ${({ theme }) => theme.sizes['28px']};
-  font-weight: ${({ theme }) => theme.font.weight.tiny};
+  font-weight: ${({ theme }) => theme.font.weight.regular};
+`
+
+export const BodyLargeBold = styled.body`
+  font-size: ${({ theme }) => theme.sizes['20px']};
+  line-height: ${({ theme }) => theme.sizes['28px']};
+  font-weight: ${({ theme }) => theme.font.weight.bold};
 `
 
 export const Caption = styled.caption`
   font-size: ${({ theme }) => theme.sizes['12px']};
   line-height: ${({ theme }) => theme.sizes['16px']};
-  font-weight: ${({ theme }) => theme.font.weight.tiny};
+  font-weight: ${({ theme }) => theme.font.weight.regular};
+`
+
+export const CaptionBold = styled.caption`
+  font-size: ${({ theme }) => theme.sizes['12px']};
+  line-height: ${({ theme }) => theme.sizes['16px']};
+  font-weight: ${({ theme }) => theme.font.weight.bold};
+`
+
+export const Button = styled.label`
+  font-size: ${({ theme }) => theme.sizes['16px']};
+  line-height: ${({ theme }) => theme.sizes['20px']};
+  font-weight: ${({ theme }) => theme.font.weight.bold};
+`
+
+export const ButtonSmall = styled.label`
+  font-size: ${({ theme }) => theme.sizes['12px']};
+  line-height: ${({ theme }) => theme.sizes['16px']};
+  font-weight: ${({ theme }) => theme.font.weight.bold};
+`
+
+export const ButtonLarge = styled.label`
+  font-size: ${({ theme }) => theme.sizes['20px']};
+  line-height: ${({ theme }) => theme.sizes['24px']};
+  font-weight: ${({ theme }) => theme.font.weight.bold};
 `

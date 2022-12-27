@@ -1,25 +1,24 @@
 import React from 'react'
 import { mount } from 'cypress/react18'
 import {faker} from '@faker-js/faker'
-import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
+import { GlobalStyles, ThemeDSProvider } from '../../theme'
 import { Accordion } from '.'
 
 describe('Accordion component', () => {
-  const label = faker.lorem.sentence(2)
   const children = () => {
-    const list = Array(10).fill('dados')
+    const list = faker.datatype.array()
     return (
       <div style={{ height: 320 }}>
-        {list.map((item: string) => <div>item</div>)}
+        {list.map((item: any) => <div>{item}</div>)}
       </div>
     )
   }
 
   beforeEach(() => {
     mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
-        <Accordion children={children()} label={label} />
+        <Accordion children={children()} labelStateClose='accordion close' labelStateOpen='accordion open' />
       </ThemeDSProvider>
     )
   })
@@ -28,10 +27,10 @@ describe('Accordion component', () => {
     cy.get('[data-testid="arrow"]').get('[data-testid="arrowDown"]').should('exist')
     cy.get('[data-testid="arrow"]').get('[data-testid="arrowUp"]').should('not.exist')
     cy.get('[data-testid="accordion"]').should('have.css', 'cursor', 'pointer').and('have.css', 'height', '40px')
-    cy.get('[data-testid="arrow"]').should('have.css', 'padding-top', '4px').and('have.css', 'color', 'rgb(50, 55, 81)')
+    cy.get('[data-testid="arrow"]').should('have.css', 'padding-top', '4px').and('have.css', 'color', 'rgb(50, 56, 79)')
     cy.get('[data-testid="labelAccordion"]')
-      .should('have.text', label)
-      .and('have.css', 'color', 'rgb(50, 55, 81)')
+      .should('have.text', 'accordion close')
+      .and('have.css', 'color', 'rgb(50, 56, 79)')
       .and('have.css', 'padding-left', '12px')
   })
 
@@ -40,6 +39,7 @@ describe('Accordion component', () => {
     cy.get('[data-testid="arrow"]').get('[data-testid="arrowUp"]').should('exist')
     cy.get('[data-testid="arrow"]').get('[data-testid="arrowDown"]').should('not.exist')
     cy.get('[data-testid="accordion"]').should('have.css', 'height', '320px').and('have.attr', { children })
+    cy.get('[data-testid="labelAccordion"]').should('have.text', 'accordion open')
   })
 
   it('deve mostrar accordion em estado close após receber um click no estado open', () => {
@@ -50,6 +50,6 @@ describe('Accordion component', () => {
     cy.get('[ data-testid="button"]').click()
     cy.get('[data-testid="arrow"]').get('[data-testid="arrowUp"]').should('not.exist')
     cy.get('[data-testid="arrow"]').get('[data-testid="arrowDown"]').should('exist')
-    cy.get('[data-testid="labelAccordion"]').should('have.text', label)
+    cy.get('[data-testid="labelAccordion"]').should('have.text', 'accordion close')
   })
 })

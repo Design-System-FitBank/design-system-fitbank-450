@@ -4,7 +4,7 @@ import { InputRadioItem } from './InputRadioItem'
 import React, { useState } from 'react'
 import * as Styled from './styles'
 
-interface RadioProps {
+export interface RadioProps {
   /**
    * Deve ser o título do inputRadio
    */
@@ -16,10 +16,10 @@ interface RadioProps {
   /**
    * Troca a direção de coluna para linha
    */
-  isRow?: boolean
+  isColumn?: boolean
 }
 
-export const Radio = ({ title, optionsList, isRow = false }: RadioProps) => {
+export const Radio = ({ title, optionsList, isColumn = false }: RadioProps) => {
   const [checked, setChecked] = useState('')
   const onclick = (value: string) => {
     setChecked(value)
@@ -27,7 +27,7 @@ export const Radio = ({ title, optionsList, isRow = false }: RadioProps) => {
   return (
     <Styled.Container>
       <Typography variant='bodyBold'>{title}</Typography>
-      <Styled.ContainerDirection data-testid='container' isRow={isRow}>
+      <Styled.ContainerDirection data-testid='radio-container' isColumn={isColumn}>
         {optionsList.map((option, key) => (
           <InputRadioItem key={key} option={option} onclick={onclick} checked={checked === option} />
         ))}

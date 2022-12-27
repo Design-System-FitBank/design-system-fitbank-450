@@ -29,7 +29,7 @@ Ou se preferir usando o Yarn:
 yarn add design-system-fitbank
 ```
 ## Modo de uso
-Importe o provedor de tema padrão e envolva o componente raiz do seu projeto
+O atributo tema é opcional caso não seja passado assumira o padrão do FitBank e envolva o componente raiz do seu projeto. Caso passe um tema personalizado deve seguir essa tipificação [Styled.d.ts](https://github.com/Fitbank-Pagamentos-Eletronicos/Design-System/blob/main/src/theme/styled.d.ts)
 ```js
 
 import { ThemeDSProvider } from 'design-system-fitbank'
@@ -37,7 +37,21 @@ import { ThemeDSProvider } from 'design-system-fitbank'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ThemeDSProvider theme={tema}>
+    <ThemeDSProvider>
+      <App />
+    </ThemeDSProvider>
+  </React.StrictMode>
+);
+```
+ou essa alternativa com tema personalizado
+```js
+
+import { ThemeDSProvider } from 'design-system-fitbank'
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <ThemeDSProvider theme={temaPersonalizado}>
       <App />
     </ThemeDSProvider>
   </React.StrictMode>

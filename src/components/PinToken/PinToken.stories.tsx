@@ -19,3 +19,8 @@ export const DisabledPinToken = Template.bind({})
 DisabledPinToken.args = {
   disabled: true,
 }
+
+export const PinPasswordDefault = Template.bind({})
+PinPasswordDefault.args = {
+  password: true,
+}

@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { Typography } from '../Typography'
-import * as Styled from './styles'
 import { Icon } from '../Icon'
-import { Validator } from '../../_utils/validator'
+import * as Styled from './styles'
 import { Mask } from '../../_utils/mask'
-interface InputProps {
+import { Typography } from '../Typography'
+import { Validator } from '../../_utils/validator'
+export interface InputProps {
   /**
    * Referente ao Label do input.
    */
@@ -16,7 +16,7 @@ interface InputProps {
   /**
    * Campo para desabilitar o input .
    */
-  disabled: boolean
+  disabled?: boolean
 
   /**
    * Referente aos tipos do input.
@@ -48,29 +48,22 @@ export const Input: React.FC<InputProps> = ({
 
   const handleChange = (e: any) => {
     let textEntry: string = e.target.value
-    // case "cpf/cnpj":
-    //     setTimeout(() => {
-    //       if (validated.length <= 11) return this.cpf(validated)
-    //       return this.cnpj(validated)
-    //     }, 800)
 
     if (validator) {
       if (validator === 'cpf/cnpj') {
-      const textCpfCnpj = textEntry
+        const textCpfCnpj = textEntry
 
-      setTimeout(() => {
-        if (textEntry.length <= 11) {
-          setErrorMessage(Validator.validation('cpf', textCpfCnpj.replace(/\D+/g, '')))
-          return
-        } else {
-          setErrorMessage(Validator.validation('cnpj', textCpfCnpj.replace(/\D+/g, '')))
-        }
-      }, 800)
-
-    } else {
-      setErrorMessage(Validator.validation(validator, textEntry))
-    }
-
+        setTimeout(() => {
+          if (textEntry.length <= 11) {
+            setErrorMessage(Validator.validation('cpf', textCpfCnpj.replace(/\D+/g, '')))
+            return
+          } else {
+            setErrorMessage(Validator.validation('cnpj', textCpfCnpj.replace(/\D+/g, '')))
+          }
+        }, 800)
+      } else {
+        setErrorMessage(Validator.validation(validator, textEntry))
+      }
     }
     onchange(textEntry)
     if (validator === 'cpf/cnpj') {
@@ -84,12 +77,10 @@ export const Input: React.FC<InputProps> = ({
           setText(Mask.masked('cnpj', textCpfCnpj))
         }
       }, 800)
-
     } else {
       setText(Mask.masked(validator!, textEntry))
     }
   }
-
 
   const toggleIcon = hideIcon ? 'eyeClose' : 'eyeOpen'
 

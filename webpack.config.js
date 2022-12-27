@@ -6,18 +6,18 @@ module.exports = {
   },
   module: {
     rules: [
-    {
-        test: /\.js(x)?$/,
-        loader: require.resolve('babel-loader'),
-        exclude: /node_modules/,
-        options: {
-          presets: [
-            "@babel/preset-react",
-            "@babel/preset-typescript",
-            "@babel/preset-env"
-          ]
-        }
-      },
+    // {
+    //     test: /\.js(x)?$/,
+    //     loader: require.resolve('babel-loader'),
+    //     exclude: /node_modules/,
+    //     options: {
+    //       presets: [
+    //         "@babel/preset-react",
+    //         "@babel/preset-typescript",
+    //         "@babel/preset-env"
+    //       ]
+    //     }
+    //   },
       {
         test: /\.ts(x?)$/,
         loader: 'ts-loader',
