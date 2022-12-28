@@ -4,7 +4,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.textDisabled};
 
   width: 100%;
-  weigth: ${({ theme }) => theme.sizes['62px']};
+  weight: ${({ theme }) => theme.sizes['62px']};
   padding: '24px 24px';
 
   transition: 1s;
@@ -19,7 +19,6 @@ export const ContentContainer = styled.div`
 
 export const TagContainer = styled.div`
   display: flex;
-
 `
 
 export const TagInput = styled.div`
@@ -28,7 +27,7 @@ export const TagInput = styled.div`
   width: ${({ theme }) => theme.sizes['287px']};
   height: ${({ theme }) => theme.sizes['48px']};
 
-  border: none;//1px solid ${({ theme }) => theme.colors.disabled};
+  border: none; //1px solid ${({ theme }) => theme.colors.disabled};
   //border-radius: ${({ theme }) => theme.sizes['6px']};
   //border-color: ${({ theme }) => theme.colors.primary};
   //padding: ${({ theme }) => theme.sizes['0px']} ${({ theme }) => theme.sizes['16px']};
@@ -41,7 +40,6 @@ export const TagInput = styled.div`
 
   background-color: rgba(255, 255, 255, 0.1);
   color: ${({ theme }) => theme.colors.dark};
-
 
   ::placeholder {
     color: ${({ theme }) => theme.colors.disabled};
@@ -57,7 +55,6 @@ export const Iinput = styled.input`
   padding-right: ${({ theme }) => theme.sizes['16px']}; */
   padding: ${({ theme }) => theme.sizes['0px']} ${({ theme }) => theme.sizes['8px']};
   margin-right: ${({ theme }) => theme.sizes['24px']};
-  
 
   font-size: ${({ theme }) => theme.sizes['12px']};
   line-height: ${({ theme }) => theme.sizes['14px']};
@@ -67,7 +64,6 @@ export const Iinput = styled.input`
   //border-color: ${({ theme }) => theme.colors.disabled};
   //background-color: rgba(255, 255, 255, 0.1);
   color: ${({ theme }) => theme.colors.dark};
-
 
   /* ::placeholder {
     color: ${({ theme }) => theme.colors.disabled};

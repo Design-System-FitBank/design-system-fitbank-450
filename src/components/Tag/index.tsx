@@ -1,9 +1,8 @@
-import React, { ReactNode, useState } from 'react'
+import React, { useState } from 'react'
 
 import * as Styled from './styles'
 
 import { Typography } from '../Typography'
-import { Icon, IconsProps } from '../Icon'
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
 
@@ -13,7 +12,6 @@ export interface TagButtonListProps {
 
 interface TagProps {
   onClick?: () => any
-
   tagButtonList: TagButtonListProps[]
 }
 
@@ -44,7 +42,7 @@ export const Tag = ({ tagButtonList }: TagProps) => {
   }
 
   return (
-    <Styled.Container>
+    <Styled.Container data-testid='tag-container'>
       <Typography variant='body'>Tags</Typography>
       <Typography variant='bodySmall'>
         Insira marcações para identificar seus gastos. Use nossa sugestão ou personalise as tags.
@@ -66,7 +64,7 @@ export const Tag = ({ tagButtonList }: TagProps) => {
 
       {/* <Styled.Iinput data-testid='input' onChange={event => handleChange(event)} placeholder='Digite uma tag' /> */}
       <Styled.ContentContainer>
-        <Styled.TagInput>
+        <Styled.TagInput data-testid='taginput'>
           <Input
             data-testid='input'
             placeholder={'Digite uma tag'}
@@ -76,13 +74,19 @@ export const Tag = ({ tagButtonList }: TagProps) => {
             title={''}
           />
         </Styled.TagInput>
-        <Button data-testid='button' onClick={addTag} disabled={false} size={'small'} type={'secondary'}>
+        <Button onClick={addTag} disabled={false} size={'small'} type={'secondary'}>
           Adicionar
         </Button>
       </Styled.ContentContainer>
 
       <Styled.ContentContainer>
         {tagsList.map(tagList => (
+          // <Styled.ButtonTag data-testid='tag-button' onClick={() => {}} disabled={false}>
+          //   <Styled.Typography>{tagList.label}</Styled.Typography>
+          //   <Styled.Icon onClick={() => removeTag(tagList.label)}>
+          //     <Icon name={'trash'} width={24} height={24} />
+          //   </Styled.Icon>
+          // </Styled.ButtonTag>
           <Button
             onClick={() => removeTag(tagList.label)}
             disabled={false}
