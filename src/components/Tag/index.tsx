@@ -11,7 +11,18 @@ export interface TagButtonListProps {
 }
 
 interface TagProps {
+  /**
+   * Função sem retorno que será chamada ao acionar o click
+   */
   onClick?: () => any
+  /**
+   * Lista de tags que será do tipo
+   * TagButtonListProps[] {
+   *  label: string;
+   * }
+   * no qual é preciso passar
+   * dentro do objeto o Label
+   */
   tagButtonList: TagButtonListProps[]
 }
 
@@ -20,19 +31,10 @@ export const Tag = ({ tagButtonList }: TagProps) => {
   const [tagsList, setTagsList] = useState(tagButtonList)
 
   const handleChange = (event: string) => {
-    //const textEntry: string = event.target.value
-    //console.log(event)
     setTextValue(event)
   }
 
-  const handleChanges = (event: any) => {
-    const textEntry: string = event.target.value
-    //console.log(event)
-    setTextValue(textEntry)
-  }
-
   const addTag = () => {
-    //setTagName(textValue)
     setTextValue('')
     if (textValue) tagsList.push({ label: textValue! })
   }
@@ -48,31 +50,9 @@ export const Tag = ({ tagButtonList }: TagProps) => {
         Insira marcações para identificar seus gastos. Use nossa sugestão ou personalise as tags.
       </Typography>
 
-      {/* <Styled.TagInput>
-        <Icon name={'user'} width={24} height={24} />
-
-        <Styled.Iinput
-          data-testid='input'
-          value={textValue}
-          //onChange={event => handleChanges(event)}
-          placeholder='Digite uma tag'
-        />
-        <Icon name={'calendar'} width={24} height={24} />
-      </Styled.TagInput> */}
-
-      {/* <Styled.InputContainer */}
-
-      {/* <Styled.Iinput data-testid='input' onChange={event => handleChange(event)} placeholder='Digite uma tag' /> */}
       <Styled.ContentContainer>
         <Styled.TagInput data-testid='taginput'>
-          <Input
-            data-testid='input'
-            placeholder={'Digite uma tag'}
-            type={'text'}
-            disabled={false}
-            onchange={handleChange}
-            title={''}
-          />
+          <Input title={''} placeholder={'Digite uma tag'} type={'text'} disabled={false} onchange={handleChange} />
         </Styled.TagInput>
         <Button onClick={addTag} disabled={false} size={'small'} type={'secondary'}>
           Adicionar
@@ -81,12 +61,6 @@ export const Tag = ({ tagButtonList }: TagProps) => {
 
       <Styled.ContentContainer>
         {tagsList.map(tagList => (
-          // <Styled.ButtonTag data-testid='tag-button' onClick={() => {}} disabled={false}>
-          //   <Styled.Typography>{tagList.label}</Styled.Typography>
-          //   <Styled.Icon onClick={() => removeTag(tagList.label)}>
-          //     <Icon name={'trash'} width={24} height={24} />
-          //   </Styled.Icon>
-          // </Styled.ButtonTag>
           <Button
             onClick={() => removeTag(tagList.label)}
             disabled={false}
