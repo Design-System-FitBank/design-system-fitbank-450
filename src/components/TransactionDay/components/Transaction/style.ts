@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: ${({ theme }) => theme.sizes['526px']};
+  width: ${({ theme }) => theme.sizes['500px']};
   height: ${({ theme }) => theme.sizes['80px']};
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 1px ${({ theme }) => theme.colors.greyLight};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.high.medium};
 `
 export const IconMoney = styled.div<{ isCredit: boolean }>`
   width: ${({ theme }) => theme.sizes['36px']};

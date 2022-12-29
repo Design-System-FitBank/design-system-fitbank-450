@@ -2,7 +2,6 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { TransactionDay } from '.'
 import { valuesIn } from 'cypress/types/lodash'
-import { Transaction } from './components/Transaction'
 
 export default {
   title: 'TransactionDay',
@@ -20,7 +19,7 @@ Transaction.args = {
     {
       title: 'Transferência Recebida',
       value: 20,
-      type: 'Receveid',
+      isCredit: 20,
       establishment: 'Mercado',
       operationType: 40
     }

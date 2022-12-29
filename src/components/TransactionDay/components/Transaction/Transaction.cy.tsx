@@ -7,15 +7,15 @@ import { GlobalStyles } from 'design-system-fitbank/dist/src/theme'
 describe('Transaction', () => {
   const transactions: TransactionProps = {
     transactions: {
+      isCredit: '20',
       title: 'Transferência Recebida',
-      value: 20,
-      type: 'Receveid',
       establishment: 'Mercado',
+      value: 20,
       operationType: 40
     }
   }
 
-  it('Deve mostrar o componente TransactionList', () => {
+  it('Deve mostrar o componente Transaction', () => {
     mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
@@ -23,13 +23,13 @@ describe('Transaction', () => {
       </ThemeDSProvider>
     )
     cy.get('[data-testid = "container"]')
-      .should('have.css', 'border-bottom', '1px solid rgb(232, 232, 232)')
+      .should('have.css', 'width', '500px')
       .and('have.css', 'height', '80px')
-      .and('have.css', 'width', '526px')
       .and('have.css', 'display', 'flex')
       .and('have.css', 'align-items', 'center')
       .and('have.css', 'flex-direction', 'row')
       .and('have.css', 'justify-content', 'space-between')
+      .and('have.css', 'border-bottom', '1px solid rgb(232, 232, 232)')
     cy.get('[data-testid = "iconMoney"]')
       .should('have.css', 'color', 'rgb(12,194,96)')
       .and('have.css', 'height', '36px')
@@ -42,7 +42,7 @@ describe('Transaction', () => {
       .and('have.css', 'align-items', 'center')
     cy.get('[data-testid = "button"]')
       .should('have.css', 'width', '272px')
-      .and('have.css', 'margin-top', '16px')
+      .should('have.css', 'margin-top', '16px')
       .and('have.css', 'display', 'flex')
       .and('have.css', 'flex-direction', 'row')
       .and('have.css', 'align-items', 'center')
