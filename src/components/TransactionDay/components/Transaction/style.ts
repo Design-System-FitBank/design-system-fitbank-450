@@ -14,16 +14,23 @@ export const IconMoney = styled.div<{ isCredit: boolean }>`
   height: ${({ theme }) => theme.sizes['36px']};
   cursor: pointer;
   margin-right: ${({ theme }) => theme.sizes['24px']};
-  color: ${({ theme, isCredit }) => (isCredit ? theme.colors.success : theme.colors.error)};
+  color: ${({ theme, isCredit }) => (isCredit == true ? theme.colors.success.pure : theme.colors.error.pure)};
 `
 export const Details = styled.div`
-  width: ${({ theme }) => theme.sizes['250px']};
+  width: ${({ theme }) => theme.sizes['256px']};
   height: ${({ theme }) => theme.sizes['64px']};
   align-items: center;
 `
 export const Button = styled.div`
   width: ${({ theme }) => theme.sizes['272px']};
   margin-top: ${({ theme }) => theme.sizes['16px']};
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`
+
+export const OperationType = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;

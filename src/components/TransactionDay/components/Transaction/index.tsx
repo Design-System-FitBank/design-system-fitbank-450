@@ -6,77 +6,88 @@ import { OperationType } from 'components/TransactionDay/OperationType'
 
 import * as Styled from './style'
 import { maskMoney } from '_utils/number'
+import { TransactionDayProps } from 'components/TransactionDay'
 
 export interface TransactionProps {
   transactions?: Transaction
 }
 
-type Transaction = {
+export type Transaction = {
   title: string
-  isCredit: string
   value: number
   establishment: string
   operationType: OperationType
 }
 
 export const Transaction: React.FC<TransactionProps> = ({ transactions }) => {
-  const operationType = (operationType?: OperationType) => {
+  const isCredit = transactions?.value! > 0
+
+  const maskMoney = (value: string) => {
+    value = value.replace('.', '').replace(',', '').replace(/\D/g, '')
+    const options = { minimumFractionDigits: 2 }
+    const result = new Intl.NumberFormat('pt-BR', options).format(parseFloat(value) / 100)
+    return 'R$ ' + result
+  }
+
+  const operationType = (operationType?: number) => {
     switch (operationType) {
       case 2:
-        return 'Via Pagamento de boleto'
+        return 'Pagamento de boleto'
 
       case 3:
-        return 'Via Transferência'
+        return 'Transferência'
 
       case 6:
-        return 'Via Transferência Interna'
+        return 'Transferência Interna'
 
       case 8:
-        return 'Via GARE'
+        return 'GARE'
 
       case 11:
-        return 'Via FGTS'
+        return 'FGTS'
 
       case 12:
-        return 'Via DARJ'
+        return 'DARJ'
 
       case 13:
-        return 'Via Transferência SMS'
+        return 'Transferência SMS'
 
       case 23:
-        return 'Via Saque Digital'
+        return 'Saque Digital'
 
       case 37:
-        return 'Via Recarga'
+        return 'Recarga'
 
       case 40:
-        return 'Via PIX Enviado'
+        return 'PIX Enviado'
 
       case 41:
-        return 'Via PIX Recebido'
+        return 'PIX Recebido'
 
       case 42:
-        return 'Via Devolução PIX'
+        return 'Devolução PIX'
 
       case 44:
-        return 'Via QRCode'
+        return 'QRCode'
     }
   }
 
   return (
     <Styled.Container data-testid='container'>
-      <Styled.IconMoney data-testid='iconMoney' isCredit={(transactions?.value ?? 0) >= 0}>
-        <Icon name={transactions?.isCredit ? 'moneyln' : 'moneyOut'} width={36} height={36} />
+      <Styled.IconMoney data-testid='iconMoney' isCredit={isCredit}>
+        <Icon name={isCredit ? 'moneyln' : 'moneyOut'} width={36} height={36} />
       </Styled.IconMoney>
       <Styled.Details data-testid='details'>
         <Typography variant='bodySmall'>{transactions?.title}</Typography>
-        {!transactions?.establishment && <Typography variant='bodyLarge'>{transactions?.establishment}</Typography>}
-        {/*   {!operationType && <Typography variant='bodySmall'>{operationType(operationType)}</Typography>} */}
+        {transactions?.establishment && <Typography variant='bodyLarge'>{transactions?.establishment}</Typography>}
+        {transactions?.operationType && (
+          <Styled.OperationType>
+            <Typography variant='bodySmall'>{`Via ${operationType(transactions?.operationType)}`}</Typography>
+          </Styled.OperationType>
+        )}
       </Styled.Details>
       <Styled.Button data-testid='button'>
-        {transactions?.value && (
-          <Typography variant='bodyLarge'>{maskMoney(transactions?.value.toString()!)}</Typography>
-        )}
+        <Typography variant='bodyLarge'>{maskMoney(transactions?.value.toString()!)}</Typography>
         <Button icon='details' onClick={() => {}} size='small' type='tertiary'>
           Ver
         </Button>

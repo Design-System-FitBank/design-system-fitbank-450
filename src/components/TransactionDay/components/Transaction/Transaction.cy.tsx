@@ -7,7 +7,6 @@ import { GlobalStyles } from 'design-system-fitbank/dist/src/theme'
 describe('Transaction', () => {
   const transactions: TransactionProps = {
     transactions: {
-      isCredit: '20',
       title: 'Transferência Recebida',
       establishment: 'Mercado',
       value: 20,
@@ -48,3 +47,8 @@ describe('Transaction', () => {
       .and('have.css', 'align-items', 'center')
   })
 })
+
+// Valor moneyout
+// valor moneyIn
+// Botao ver
+// Respon

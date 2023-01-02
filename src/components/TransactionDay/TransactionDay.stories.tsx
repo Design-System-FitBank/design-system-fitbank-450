@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+
 import { TransactionDay } from '.'
-import { valuesIn } from 'cypress/types/lodash'
 
 export default {
   title: 'TransactionDay',
@@ -12,16 +12,20 @@ export default {
 const Template: ComponentStory<typeof TransactionDay> = args => <TransactionDay {...args} />
 
 export const DefaultTransactionDay = Template.bind({})
-
-export const Transaction = Template.bind({})
-Transaction.args = {
-  transactions: [
+DefaultTransactionDay.args = {
+  dayTransactions: [
     {
-      title: 'Transferência Recebida',
-      value: 20,
-      isCredit: 20,
-      establishment: 'Mercado',
-      operationType: 40
+      month: 'dez',
+      day: 10,
+      transactions: [
+        { title: 'Transferência Recebida', value: 20, establishment: 'Mercado', operationType: 40 },
+        { title: 'Transferência Recebida', value: 20, establishment: 'Hugo', operationType: 3 }
+      ]
+    },
+    {
+      month: 'nov',
+      day: 10,
+      transactions: [{ title: 'Transferência Recebida', value: -200000, establishment: 'Mercado', operationType: 44 }]
     }
   ]
 }
