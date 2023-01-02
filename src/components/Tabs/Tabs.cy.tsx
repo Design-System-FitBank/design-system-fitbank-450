@@ -1,5 +1,5 @@
 import { Faker } from "@faker-js/faker";
-import { Tab, TabProps } from "components/Tab";
+import { Tab, TabProps } from "../Tab";
 import "cypress-real-events/support";
 import React from "react";
 import { ThemeProvider } from "styled-components";
@@ -34,8 +34,21 @@ describe("Tabs Default",() => {
   afterEach(() => {
     cy.wait(100)
   })
-  it("Deve ser o componente Default", () => {
-    cy.get('[data-testid="tabs-container]"')
-    .should("contain.html",Tab)
+  it("Deve haver conteúdo no container", () => {
+    cy.get('[data-testid=container]')
+    .should("not.be.empty")
+  })
+  
+  it("Dever haver um elemento para cada TabPros",() => {
+    cy.get("[data-testid=tab")
+    .should("have.length", tabInfo.length)
+  })
+
+  it("Devem estar corretos os valores de cada elemento", () => {
+    cy.get("[data-testid=data-container]")
+      .each((item, index) => {
+        expect(Cypress.$(item).text() == (`${tabInfo[index].title}${tabInfo[index].description}`))
+
+    })
   })
 })

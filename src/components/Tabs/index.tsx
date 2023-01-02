@@ -8,7 +8,7 @@ export interface TabsProps{
 
 export const Tabs: React.FC<TabsProps> = ({tabsInfo}) => {
   return (
-    <Styled.Container>
+    <Styled.Container data-testid="container">
       {tabsInfo.map((tab, key) => {
         return <Tab 
                   key={key}
