@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-
 import * as Styled from './styles'
-
 import { Typography } from '../Typography'
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'

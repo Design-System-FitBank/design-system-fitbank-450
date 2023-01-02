@@ -1,20 +1,18 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  background-color: ${({ theme }) => theme.colors.textDisabled};
-
   width: 100%;
-  weight: ${({ theme }) => theme.sizes['62px']};
-  padding: '24px 24px';
+  padding: ${({ theme }) => theme.sizes['24px']};
 
-  transition: 1s;
-  position: relative;
+  & body {
+    margin-bottom: ${({ theme }) => theme.sizes['8px']};
+  }
 `
 
 export const ContentContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-top: ${({ theme }) => theme.sizes['24px']};
+  margin-top: ${({ theme }) => theme.sizes['16px']};
 `
 
 export const TagInput = styled.div`
@@ -30,7 +28,6 @@ export const TagInput = styled.div`
   line-height: ${({ theme }) => theme.sizes['14px']};
   font-weight: ${({ theme }) => theme.font.weight.tiny};
 
-  background-color: rgba(255, 255, 255, 0.1);
   color: ${({ theme }) => theme.colors.dark};
 
   ::placeholder {
