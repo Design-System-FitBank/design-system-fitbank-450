@@ -14,7 +14,7 @@ type ContainerProps = {
 
 export const ContainerTab: React.FC<ContainerProps> = ({ icon, title, description }) => {
   return (
-    <Styled.Container data-testeid='container'>
+    <Styled.Container data-testid='data-container'>
       <IconTab data-testeid='tab' icon={icon} />
       <div>
         <TitleTab>{title}</TitleTab>

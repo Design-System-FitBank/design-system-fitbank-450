@@ -3,7 +3,7 @@ import * as Styled from './styles'
 import { ContainerTab } from './components/ContainerTab'
 import { IconsProps } from '../Icon'
 
-interface TabProps {
+export interface TabProps {
   /**
    * Define o texto principal a ser mostrado na aba.
    */
@@ -32,7 +32,7 @@ interface TabProps {
 
 export const Tab: React.FC<TabProps> = ({ title, description, icon, disabled = false, onClick }) => {
   return (
-    <Styled.Primary data-testeid='tab' onClick={onClick} disabled={disabled}>
+    <Styled.Primary data-testid='tab' onClick={onClick} disabled={disabled}>
       <ContainerTab icon={icon} title={title} description={description}>
         {title}
         {description}

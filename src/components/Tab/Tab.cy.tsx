@@ -8,15 +8,14 @@ import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
 
 describe('Tab Default', () => {
   const icon = 'keys'
-  const label = faker.lorem.word()
+  const title = faker.lorem.word()
+  const description = faker.lorem.words(3)
   beforeEach(() => {
     cy.wait(100)
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Tab icon={icon} onClick={cy.stub().as('onclick')}>
-          {label}
-        </Tab>
+        <Tab icon={icon} title={title} description={description} onClick={cy.stub().as('onclick')} />
       </ThemeDSProvider>
     )
   })
@@ -24,49 +23,49 @@ describe('Tab Default', () => {
     cy.wait(100)
   })
   it('Deve ser o componente Default', () => {
-    cy.get('[data-testid="nav-button"]')
-      .should('have.css', 'width', '90px')
-      .and('have.css', 'height', '90px')
-      .and('have.css', 'padding', '8px 4px')
-      .and('have.css', 'gap', '4px')
-      .and('have.css', 'border', '1px solid rgba(0, 0, 0, 0)')
-      .and('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 2px 4px 0px')
+    cy.get('[data-testid=tab]')
+      .should('have.css', 'min-width', '60px')
+      .and('have.css', 'max-width', '523px')
+      .and('have.css', 'min-height', '90px')
+      .and('have.css', 'padding', '14px')
+      .and('have.css', 'gap', '16px')
+      .and('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 6px 20px 0px')
       .and('have.css', 'background-color', 'rgb(255, 255, 255)')
-      .and('have.css', 'color', 'rgb(50, 55, 81)')
-      .and('have.css', 'justify-content', 'center')
-      .and('have.css', 'align-items', 'center')
+      .and('have.css', 'color', 'rgb(50, 56, 79)')
+      .and('have.css', 'display', 'flex')
+      .and('have.css', 'align-items', 'flex-start')
       .and('have.css', 'flex-direction', 'column')
-      .and('have.css', 'border-radius', '16px')
-      .and('have.css', 'overflow', 'hidden')
-      .and('have.text', label)
 
-    cy.get('[data-testid="nav-button"]').click()
+    cy.get('[data-testid=tab]').click()
     cy.get('@onclick').should('have.been.calledOnce')
   })
 
   it('Deve ser o componente Default no estado Hover', () => {
-    cy.get('[data-testid="nav-button"]').realHover()
-    cy.get('[data-testid="nav-button"]').should('have.css', 'border', '1px solid rgb(196, 196, 196)')
+    cy.get('[data-testid=tab]').realHover()
+    cy.get('[data-testid=tab]')
+      .should('have.css', 'border-bottom', '4px solid rgb(50, 56, 79)')
   })
 
   it('Deve ser o componente Default no estado Active', () => {
-    cy.get('[data-testid="nav-button"]').realMouseDown()
-    cy.get('[data-testid="nav-button"]').should('have.css', 'border', '1px solid rgb(50, 55, 81)')
+    cy.get('[data-testid=tab]').realMouseDown()
+    cy.get('[data-testid=tab]')
+      .should('have.css', 'border-bottom', '4px solid rgb(252, 214, 105)')
+      .and('have.css', 'color', 'rgb(255, 255, 255)')
+      .and('have.css', 'background-color', 'rgb(50, 56, 79)')
+      .and('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 4px 6px 0px')
   })
 
   it('Deve ser o componente Default no estado Disabled', () => {
     cy.mount(
       <ThemeDSProvider theme={Theme}>
         <GlobalStyles />
-        <Tab icon={icon} onClick={cy.stub().as('onclick')} disabled>
-          {label}
-        </Tab>
+        <Tab icon={icon} title={title} description={description} onClick={cy.stub().as('onclick')} disabled />
       </ThemeDSProvider>
     )
-    cy.get('[data-testid="nav-button"]')
-      .should('have.css', 'border', '1px solid rgb(196, 196, 196)')
-      .and('have.css', 'color', 'rgb(196, 196, 196)')
+    cy.get('[data-testid=tab]')
+      .and('have.css', 'color', 'rgb(205, 205, 205)')
+      .and('have.css', 'background-color', 'rgb(232, 232, 232)')
       .and('have.css', 'box-shadow', 'none')
-      .and('have.css', 'cursor', 'auto')
+      .and('have.css', 'border-bottom', '2px solid rgb(205, 205, 205)')
   })
 })
