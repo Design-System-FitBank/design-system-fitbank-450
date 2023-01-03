@@ -4,7 +4,7 @@ import 'cypress-real-events/support'
 
 import { mount } from 'cypress/react18'
 import { faker } from '@faker-js/faker'
-import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
+import { GlobalStyles, ThemeDSProvider } from '../../theme'
 
 import { Footer } from './'
 
@@ -16,7 +16,7 @@ describe('Footer', () => {
 
   beforeEach(() => {
     mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
         <Footer message={message} phoneNumber={phoneNumber} email={email} />
       </ThemeDSProvider>
@@ -26,22 +26,22 @@ describe('Footer', () => {
 
   it('Deve conter o componente Footer', () => {
     cy.get('[data-testid = "container"]')
-      .should('have.css', 'width', '500.3636474609375px')
+      .should('have.css', 'width', '500px')
       .and('have.css', 'height', '108px')
       .and('have.css', 'display', 'flex')
       .and('have.css', 'flex-direction', 'column')
       .and('have.css', 'justify-content', 'center')
       .and('have.css', 'align-items', 'flex-start')
       .and('have.css', 'color', 'rgb(255, 255, 255)')
-      .and('have.css', 'background-color', 'rgb(50, 55, 81)')
-      .and('have.css', 'padding', '10px 48px')
+      .and('have.css', 'background-color', 'rgb(50, 56, 79)')
+      .and('have.css', 'padding', '12px 48px')
   })
 
   it('Deve receber as informações passadas nas props', () => {
     mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
-        <Footer 
+        <Footer
           message={message}
           phoneNumber={phoneNumber}
           secondaryPhoneNumber={secondaryPhoneNumber}
