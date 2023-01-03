@@ -5,7 +5,7 @@ import * as Styled from './styles'
 import { Button } from '../../../Button'
 import { Typography } from '../../../Typography'
 
-interface HeaderProps {
+export interface HeaderProps {
   title?: string
   closeFunction: () => void
 }
