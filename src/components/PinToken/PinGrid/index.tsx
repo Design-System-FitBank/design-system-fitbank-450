@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Container, PinBox } from '../styles'
 
-interface PinTokenProps {
+export interface PinTokenProps {
   onPinChange: (pinEntry: number[]) => void
   isDisabled?: boolean
 }

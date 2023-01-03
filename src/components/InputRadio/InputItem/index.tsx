@@ -2,7 +2,7 @@ import { Typography } from '../../Typography'
 import React, { useState } from 'react'
 import * as Styled from './styles'
 
-interface RadioProps {
+export interface RadioProps {
   option: string
   checked?: boolean
   onclick: (value: string) => void

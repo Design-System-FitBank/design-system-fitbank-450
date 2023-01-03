@@ -2,7 +2,7 @@ import React from 'react'
 import * as Styled from './styles'
 import { Typography } from '../../../Typography'
 
-interface LastPathProps {
+export interface LastPathProps {
   label: string
 }
 

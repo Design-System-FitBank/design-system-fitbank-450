@@ -14,7 +14,7 @@ export interface NavButtonListProps {
   onClick: () => void
 }
 
-interface SidebarProps {
+export interface SidebarProps {
   /**
    * Lista de butões de navegação que será do tipo
    * NavButtonProps[] {

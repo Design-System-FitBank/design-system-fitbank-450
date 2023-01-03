@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { InputCheckboxItem } from './InputCheckboxItem'
 import * as Styled from './styles'
 
-interface InputCheckboxProps {
+export interface InputCheckboxProps {
   title: string
   /**
    * Lista com as opções

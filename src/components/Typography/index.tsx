@@ -1,7 +1,7 @@
 import React from 'react'
 
 import * as Styled from './styles'
-interface TypographyProps {
+export interface TypographyProps {
   variant:
     | 'h1'
     | 'h2'

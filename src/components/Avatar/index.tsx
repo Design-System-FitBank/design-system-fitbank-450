@@ -2,7 +2,7 @@ import React from 'react'
 import * as Styled from './styles'
 import { Icon } from '../Icon'
 
-interface AvatarProps {
+export interface AvatarProps {
   /**
    * Variável referente ao tipo de avatar.
    * PF referente à pessoa física.

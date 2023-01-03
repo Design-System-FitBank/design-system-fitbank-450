@@ -5,8 +5,7 @@ import { ContainerButton } from './components/ContainerButton'
 import { IconsProps } from '../Icon'
 import * as Styled from './styles'
 
-interface ButtonProps {
-
+export interface ButtonProps {
   children: string
   disabled?: boolean
   icon?: IconsProps['name']

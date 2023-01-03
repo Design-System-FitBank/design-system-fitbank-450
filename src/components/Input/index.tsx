@@ -4,7 +4,7 @@ import * as Styled from './styles'
 import { Icon } from '../Icon'
 import { Validator } from '../../_utils/validator'
 import { Mask } from '../../_utils/mask'
-interface InputProps {
+export interface InputProps {
   /**
    * Referente ao Label do input.
    */

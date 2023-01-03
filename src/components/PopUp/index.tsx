@@ -5,7 +5,7 @@ import { Icon } from '../Icon'
 import { Typography } from '../Typography'
 import { Modal } from '../Modal'
 
-interface PopUpProps {
+export interface PopUpProps {
   /**
    * Tela de carregamento que precede as mensagens de sucesso ou erro
    */

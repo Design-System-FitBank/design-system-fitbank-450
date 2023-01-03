@@ -4,7 +4,7 @@ import { InputRadioItem } from './InputRadioItem'
 import React, { useState } from 'react'
 import * as Styled from './styles'
 
-interface RadioProps {
+export interface RadioProps {
   /**
    * Deve ser o título do inputRadio
    */

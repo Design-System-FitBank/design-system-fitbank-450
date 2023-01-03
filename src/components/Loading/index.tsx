@@ -3,7 +3,7 @@ import React from 'react'
 
 import * as Styled from './styles'
 
-interface LoadingProps {
+export interface LoadingProps {
   text?: string
 }
 

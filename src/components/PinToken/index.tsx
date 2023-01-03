@@ -1,9 +1,9 @@
 import React from 'react'
 import { PinGrid } from './PinGrid'
 
-interface PinProps {
+export interface PinProps {
   /**
-   * Função sem retorno que será chamada ao digitar o pin 
+   * Função sem retorno que será chamada ao digitar o pin
    */
   onChange: (pinToken: number[]) => void
   /**

@@ -2,7 +2,7 @@ import React from 'react'
 import { Icon, IconsProps } from '../Icon'
 import * as Styled from './styles'
 
-interface NavButtonProps {
+export interface NavButtonProps {
   icon: IconsProps['name']
   children?: string
   disabled?: boolean

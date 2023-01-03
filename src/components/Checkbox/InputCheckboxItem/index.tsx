@@ -3,7 +3,7 @@ import React, { HtmlHTMLAttributes, ReactHTML, ReactHTMLElement } from 'react'
 import * as Styled from './styles'
 import { Typography } from '../../Typography'
 
-interface CheckboxProps extends HtmlHTMLAttributes<HTMLDivElement>{
+export interface CheckboxProps extends HtmlHTMLAttributes<HTMLDivElement> {
   option: string
   checked?: boolean
 }

@@ -4,7 +4,7 @@ import { BlockPath } from './components/BlockPath'
 import { LastPath } from './components/LastPath'
 import { Typography } from '../Typography'
 
-interface InputBreadlineProps {
+export interface InputBreadlineProps {
   /*
    * Recebe um array de objetos que contém uma string com o nome do caminho
    * junto de uma função onClick opcional

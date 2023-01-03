@@ -6,7 +6,7 @@ import { Typography } from '../Typography'
 
 import * as Styled from './styles'
 
-interface HeaderProps {
+export interface HeaderProps {
   /**
    * Função que capta os valores digitados no campo de entrada de texto
    */

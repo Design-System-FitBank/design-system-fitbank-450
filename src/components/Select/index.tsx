@@ -6,7 +6,7 @@ import { Modal } from './components/Modal'
 
 import { Container } from './styles'
 
-interface SelectProps {
+export interface SelectProps {
   /**
    * Titulo do Select.
    */
