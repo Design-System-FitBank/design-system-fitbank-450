@@ -8,5 +8,5 @@ type IconProps = {
 }
 
 export const IconTab: React.FC<IconProps> = ({ icon }) => {
-  return <Styled.Container>{icon && <Icon name={icon}></Icon>}</Styled.Container>
+  return <Styled.Container><Icon name={icon}></Icon></Styled.Container>
 }

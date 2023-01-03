@@ -1,10 +1,8 @@
 import React from 'react'
 
-import { IconTab } from '../IconTab'
-import { TitleTab } from '../TitleTab'
-import { DescriptionTab } from '../DescriptionTab'
-
 import * as Styled from './styles'
+import { Typography } from '../../../Typography'
+import { IconTab } from '../IconTab'
 
 type ContainerProps = {
   icon: any
@@ -15,10 +13,10 @@ type ContainerProps = {
 export const ContainerTab: React.FC<ContainerProps> = ({ icon, title, description }) => {
   return (
     <Styled.Container data-testid='data-container'>
-      <IconTab data-testeid='tab' icon={icon} />
+    <IconTab icon={ icon }/>
       <div>
-        <TitleTab>{title}</TitleTab>
-        <DescriptionTab>{description}</DescriptionTab>
+        <Typography variant='bodyLargeBold'>{title}</Typography>
+        <Typography variant='subtitle'>{description}</Typography>
       </div>
     </Styled.Container>
   )
