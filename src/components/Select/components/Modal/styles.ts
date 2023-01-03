@@ -45,12 +45,12 @@ export const ModalContent = styled.div<{ isOpen: boolean }>`
   }
 
   &::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.colors.disabled};
+    background: ${({ theme }) => theme.colors.high.darkest};
     border-radius: ${({ theme }) => theme.sizes['20px']};
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.colors.textGrey};
+    background-color: ${({ theme }) => theme.colors.high.darkest};
     border-radius: ${({ theme }) => theme.sizes['20px']};
   }
 `

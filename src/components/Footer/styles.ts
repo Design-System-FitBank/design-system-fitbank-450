@@ -8,9 +8,9 @@ export const Container = styled.footer`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  
-  color: ${({ theme }) => theme.colors.light};
-  background-color: ${({ theme }) => theme.colors.primary};
 
-  padding: ${({ theme }) => theme.sizes['10px']}   ${({ theme }) => theme.sizes['48px']};
+  color: ${({ theme }) => theme.colors.high.pure};
+  background-color: ${({ theme }) => theme.colors.primary.pure};
+
+  padding: ${({ theme }) => theme.sizes['12px']}   ${({ theme }) => theme.sizes['48px']};
 `

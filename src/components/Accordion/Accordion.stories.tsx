@@ -64,7 +64,7 @@ LabelFixed.args = {
 export const LabelWithout = Template.bind({})
 LabelWithout.args = {
   maxHeight: 750,
-  openAccordion: false,
+  openAccordion: true,
   children: (
     <div style={{ height: 320 }}>
       dados

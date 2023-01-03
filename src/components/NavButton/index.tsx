@@ -1,3 +1,4 @@
+import { Typography } from '../Typography'
 import React from 'react'
 import { Icon, IconsProps } from '../Icon'
 import * as Styled from './styles'
@@ -12,6 +13,7 @@ export interface NavButtonProps {
 
 export const NavButton = ({ icon, children, disabled = false, size = 'medium', onClick }: NavButtonProps) => {
   const returnElement = (value: string) => {
+    const words = !children ? [''] : children?.split(' ')
     switch (value) {
       case 'small':
         return (
@@ -28,7 +30,14 @@ export const NavButton = ({ icon, children, disabled = false, size = 'medium', o
               <Icon name={icon as any} />
             </Styled.Icon>
             <Styled.LabelLarge data-testid='nav-labelLarge'>
-              {children}
+              {words.length > 1 && (
+                <Typography variant='buttonSmall'>
+                  {`${words[0].substring(0, 10)} ${words[1].substring(0, 10)}`}
+                </Typography>
+              )}
+              {words.length === 1 && (
+                <Typography variant='buttonSmall'>{words[0].substring(0, 10)}</Typography>
+              )}
             </Styled.LabelLarge>
           </Styled.Large>
         )
@@ -39,7 +48,14 @@ export const NavButton = ({ icon, children, disabled = false, size = 'medium', o
               <Icon name={icon as any} width={38} height={38} />
             </Styled.Icon>
             <Styled.Label data-testid='nav-label'>
-              {children}
+              {words.length > 1 && (
+                <Typography variant='caption'>
+                  {`${words[0].substring(0, 10)} ${words[1].substring(0, 10)}`}
+                </Typography>
+              )}
+              {words.length === 1 && (
+                <Typography variant='caption'>{words[0].substring(0, 10)}</Typography>
+              )}
             </Styled.Label>
           </Styled.Container>
         )

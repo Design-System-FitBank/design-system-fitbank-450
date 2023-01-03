@@ -1,7 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { NavButton } from '.'
-import { Icon } from '../Icon'
 
 export default {
   title: 'NavButton',
@@ -13,20 +12,15 @@ const Template: ComponentStory<typeof NavButton> = args => <NavButton {...args} 
 
 export const Default = Template.bind({})
 Default.args = {
-  children: 'NavButton',
+  children: 'Nav Button',
   icon: 'moneyNote',
-  onClick: () => {}
-}
-export const TwoLine = Template.bind({})
-TwoLine.args = {
-  children: 'Um texto com duas linhas',
-  icon: 'moneyNote',
-  onClick: () => {}
+  onClick: () => { }
+
 }
 
 export const Small = Template.bind({})
 Small.args = {
-  children: 'small',
+  children: 'Small',
   icon: 'moneyNote',
   size: 'small',
   onClick: () => {}
@@ -35,14 +29,6 @@ Small.args = {
 export const Large = Template.bind({})
 Large.args = {
   children: 'Nav large',
-  icon: 'moneyNote',
-  size: 'large',
-  onClick: () => {}
-}
-
-export const TwoLineLarge = Template.bind({})
-TwoLineLarge.args = {
-  children: 'Um texto com duas linhas',
   icon: 'moneyNote',
   size: 'large',
   onClick: () => {}

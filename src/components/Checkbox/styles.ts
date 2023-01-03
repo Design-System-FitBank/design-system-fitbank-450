@@ -1,16 +1,35 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
-  text-transform: capitalize;
-  color: ${({ theme }) => theme.colors.primary};
-`
-export const ContainerChild = styled(Container)<{isRow?: boolean}>`
-  display: flex;
-  flex-direction: ${({ isRow }) => (isRow ? 'row' : 'column')};
-  gap: ${({ theme, isRow }) => (isRow ? theme.sizes['34px'] : theme.sizes['52px'])};
+type CheckboxProps = {
+  checked: boolean
+}
 
-  margin: ${({ theme }) => theme.sizes['16px']};
-  :nth-last-child(1) {
-    margin-bottom: ${({ isRow }) => (isRow ? '0px' : '16px')};
+export const Checkbox = styled.div<CheckboxProps>`
+  width: ${({ theme }) => theme.sizes['16px']};
+  height: ${({ theme }) => theme.sizes['16px']};
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: ${({ theme }) => theme.sizes['4px']};
+  border: 1px solid ${({ theme }) => theme.colors.primary.pure};
+
+  background-color: ${({ checked, theme }) => (checked ? theme.colors.primary.pure : theme.colors.high.pure)};
+  color: ${({ theme }) => theme.colors.high.pure};
+
+  :hover {
+    box-shadow: 2px 2px 4px ${({ theme }) => theme.colors.shadow};
   }
+`
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: ${({ theme }) => theme.sizes['26px']};
+
+  cursor: pointer;
+
+  color: ${({ theme }) => theme.colors.primary};
 `

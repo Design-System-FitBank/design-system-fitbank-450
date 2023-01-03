@@ -10,11 +10,19 @@ export interface TypographyProps {
     | 'h5'
     | 'h6'
     | 'subtitle'
-    | 'body'
     | 'bodySmall'
+    | 'bodySmallBold'
+    | 'body'
     | 'bodyBold'
+    | 'bodyMedium'
+    | 'bodyMediumBold'
     | 'bodyLarge'
+    | 'bodyLargeBold'
+    | 'buttonSmall'
+    | 'button'
+    | 'buttonLarge'
     | 'caption'
+    | 'captionBold'
   children?: string
 }
 
@@ -42,20 +50,44 @@ export const Typography = ({ variant = 'h1', children }: TypographyProps) => {
       case 'subtitle':
         return <Styled.Subtitle data-testid='subtitle'>{children}</Styled.Subtitle>
 
-      case 'body':
-        return <Styled.Body data-testid='body'>{children}</Styled.Body>
-
       case 'bodySmall':
         return <Styled.BodySmall data-testid='bodySmall'>{children}</Styled.BodySmall>
+
+      case 'bodySmallBold':
+        return <Styled.BodySmallBold data-testid='bodySmallBold'>{children}</Styled.BodySmallBold>
+
+      case 'body':
+        return <Styled.Body data-testid='body'>{children}</Styled.Body>
 
       case 'bodyBold':
         return <Styled.BodyBold data-testid='bodyBold'>{children}</Styled.BodyBold>
 
+      case 'bodyMedium':
+        return <Styled.BodyMedium data-testid='bodyMedium'>{children}</Styled.BodyMedium>
+
+      case 'bodyMediumBold':
+        return <Styled.BodyMediumBold data-testid='bodyMediumBold'>{children}</Styled.BodyMediumBold>
+
       case 'bodyLarge':
         return <Styled.BodyLarge data-testid='bodyLarge'>{children}</Styled.BodyLarge>
 
+      case 'bodyLargeBold':
+        return <Styled.BodyLargeBold data-testid='bodyLargeBold'>{children}</Styled.BodyLargeBold>
+
       case 'caption':
         return <Styled.Caption data-testid='caption'>{children}</Styled.Caption>
+
+      case 'captionBold':
+        return <Styled.CaptionBold data-testid='caption'>{children}</Styled.CaptionBold>
+
+      case 'buttonSmall':
+        return <Styled.ButtonSmall data-testid='buttonSmall'>{children}</Styled.ButtonSmall>
+
+      case 'button':
+        return <Styled.Button data-testid='button'>{children}</Styled.Button>
+
+      case 'buttonLarge':
+        return <Styled.ButtonLarge data-testid='buttonLarge'>{children}</Styled.ButtonLarge>
 
       default:
         return <Styled.H1 data-testid='h1'>{children}</Styled.H1>

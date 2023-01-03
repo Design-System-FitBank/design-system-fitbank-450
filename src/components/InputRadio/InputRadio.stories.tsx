@@ -13,12 +13,12 @@ const Template: ComponentStory<typeof Radio> = args => <Radio {...args} />
 export const InputRadioColumn = Template.bind({})
 InputRadioColumn.args = {
   title: 'Escolha uma opção',
+  isColumn: true,
   optionsList: ['Norte', 'Sul', 'Leste', 'Oeste']
 }
 
 export const InputRadioRow = Template.bind({})
 InputRadioRow.args = {
   title: 'Escolha uma opção',
-  isRow: true,
   optionsList: ['Norte', 'Sul', 'Leste', 'Oeste']
 }

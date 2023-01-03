@@ -18,8 +18,8 @@ export interface AvatarProps {
 
 export const Avatar: React.FC<AvatarProps> = ({ type, secondary = false, small = false }) => {
   const name = type === 'PF' ? 'user' : 'enterprise'
-  const width = small ? 35 : 35
-  const height = small ? 35 : 35
+  const width = small ? 20 : 36
+  const height = small ? 20 : 36
 
   return (
     <Styled.Container data-testid='container' secondary={secondary} small={small}>

@@ -42,7 +42,7 @@ Infos.args = {
       <Typography variant='h1'>Title</Typography>
       <Typography variant='caption'>Name</Typography>
       <Typography variant='subtitle'>Data</Typography>
-      <Accordion label='Ver dados da conta'>
+      <Accordion labelStateClose='Ver dados da conta' labelStateOpen='Esconder dados da conta'>
         <div>Number</div>
       </Accordion>
       <Button icon='share' children={'Copiar'} onClick={() => {}} />

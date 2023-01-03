@@ -1,3 +1,4 @@
+import { isPlainObject } from 'cypress/types/lodash'
 import React from 'react'
 import { PinGrid } from './PinGrid'
 
@@ -7,17 +8,21 @@ export interface PinProps {
    */
   onChange: (pinToken: number[]) => void
   /**
-   * Propriedades booleana que transforma o token em Disable
+   * Propriedades boolean que transforma o token em Disable
    */
   disabled?: boolean
+  /**
+   * Propriedades boolean que alterna de token para password
+   */
+  password?: boolean
 }
 
-export const PinToken: React.FC<PinProps> = ({ onChange, disabled = false }) => {
+export const PinToken: React.FC<PinProps> = ({ onChange, disabled = false, password = false }) => {
   const onPinChanged = (pinEntry: number[]) => {
     onChange(pinEntry)
   }
 
   return (
-    <PinGrid onPinChange={onPinChanged} isDisabled={disabled} />
+    <PinGrid onPinChange={onPinChanged} isDisabled={disabled} isPassword={password}/>
   )
 }
