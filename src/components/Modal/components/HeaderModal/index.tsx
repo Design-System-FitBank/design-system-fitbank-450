@@ -5,7 +5,7 @@ import * as Styled from './styles'
 import { Button } from '../../../Button'
 import { Typography } from '../../../Typography'
 
-export interface HeaderProps {
+interface HeaderProps {
   title?: string
   closeFunction: () => void
 }
@@ -16,7 +16,7 @@ export const HeaderModal: React.FC<HeaderProps> = ({ title, closeFunction }) => 
       <Styled.TitleContainer>
         <Typography variant='h5'>{title}</Typography>
       </Styled.TitleContainer>
-      <Button data-testid='button' size='small' type='secondary' onClick={() => closeFunction()}>
+      <Button size='small' type='secondary' onClick={closeFunction}>
         Cancelar
       </Button>
     </Styled.HeaderModal>
