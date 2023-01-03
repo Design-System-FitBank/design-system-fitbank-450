@@ -1,34 +1,7 @@
 import React from 'react'
 import * as Styled from './styles'
 import { ContainerTab } from './components/ContainerTab'
-import { IconsProps } from '../Icon'
-
-export interface TabProps {
-  /**
-   * Define o texto principal a ser mostrado na aba.
-   */
-  title: string
-
-  /**
-   * Define o texto secundário a ser mostrado na aba.
-   */
-  description: string
-
-  /**
-   * Define o ícone a ser mostrado na aba.
-   */
-  icon?: IconsProps['name']
-
-  /**
-   * Define se a aba está desabilitada ou não.
-   */
-  disabled?: boolean
-
-  /**
-   * Função sem retorno que será chamada ao se clicar na aba.
-   */
-  onClick: () => void
-}
+import { TabProps } from '../Tabs'
 
 export const Tab: React.FC<TabProps> = ({ title, description, icon, disabled = false, onClick }) => {
   return (
