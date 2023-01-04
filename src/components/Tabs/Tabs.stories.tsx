@@ -18,7 +18,6 @@ Default.args = {
       description: "Realiza transferência via PIX",
       icon: 'keys',
       onClick: () => {},
-      selected: true
     },
     {
       title: "Transferência TED", 
@@ -27,7 +26,7 @@ Default.args = {
       onClick: () => {}
     },
     {
-      title: "Transferência Doc", 
+      title: "Transferência DOC", 
       description: "Realiza transferência utilizando dados bancários",
       icon: 'ticketPayment',
       onClick: () => {}
