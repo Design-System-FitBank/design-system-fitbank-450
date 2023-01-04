@@ -81,7 +81,7 @@ export const Transaction: React.FC<TransactionProps> = ({ transactions }) => {
         <Typography variant='bodySmall'>{transactions?.title}</Typography>
         {transactions?.establishment && <Typography variant='bodyLarge'>{transactions?.establishment}</Typography>}
         {transactions?.operationType && (
-          <Styled.OperationType>
+          <Styled.OperationType data-testid='operationType'>
             <Typography variant='bodySmall'>{`Via ${operationType(transactions?.operationType)}`}</Typography>
           </Styled.OperationType>
         )}

@@ -15,10 +15,10 @@ export interface TransactionDayProps {
 
 export const TransactionDay: React.FC<DayTransactionsProps> = ({ dayTransactions }) => {
   return (
-    <Styled.TransactionDay>
+    <Styled.TransactionDay data-testid='transactionDay'>
       {dayTransactions?.map((transactionDate, i) => (
-        <Styled.Transactions>
-          <Styled.DateTransaction>
+        <Styled.Transactions data-testid='transaction'>
+          <Styled.DateTransaction data-testid='transactionDate'>
             <Typography variant='body' key={i}>
               {transactionDate.day?.toString()}
             </Typography>
@@ -26,7 +26,7 @@ export const TransactionDay: React.FC<DayTransactionsProps> = ({ dayTransactions
               {transactionDate.month}
             </Typography>
           </Styled.DateTransaction>
-          <Styled.TransactionCard>
+          <Styled.TransactionCard data-testid='transactionCard'>
             {transactionDate.transactions?.map((transactionDay, i) => (
               <Transaction key={i} transactions={transactionDay!} />
             ))}
