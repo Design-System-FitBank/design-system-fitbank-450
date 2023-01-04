@@ -25,7 +25,7 @@ beforeEach(() => {
 afterEach(() => cy.wait(100))
 
 it('Deve mostrar o componente Transaction com Crédito', () => {
-  cy.viewport(620, 500)
+  cy.viewport(500, 500)
   mount(
     <ThemeDSProvider theme={Theme}>
       <GlobalStyles />
@@ -33,7 +33,7 @@ it('Deve mostrar o componente Transaction com Crédito', () => {
     </ThemeDSProvider>
   )
   cy.get('[data-testid = "container"]')
-    .should('have.css', 'width', '620px')
+    .should('have.css', 'width', '500px')
     .and('have.css', 'height', '84px')
     .and('have.css', 'display', 'flex')
     .and('have.css', 'align-items', 'center')
@@ -47,7 +47,7 @@ it('Deve mostrar o componente Transaction com Crédito', () => {
     .and('have.css', 'width', '36px')
     .and('have.css', 'cursor', 'pointer')
   cy.get('[data-testid = "details"]')
-    .should('have.css', 'width', '320px')
+    .should('have.css', 'width', '280px')
     .and('have.css', 'height', '64px')
     .and('have.css', 'align-items', 'center')
   cy.get('[data-testid = "button"]')

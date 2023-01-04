@@ -4,12 +4,24 @@ import * as Styled from './style'
 import { Transaction } from './components/Transaction'
 
 export interface DayTransactionsProps {
+  /**
+   * Retorna a lista de transações de alguma data e pode ser nula
+   */
   dayTransactions: TransactionDayProps[]
 }
 
 export interface TransactionDayProps {
+  /**
+   * Lista de transações que pode ser nula
+   */
   transactions?: Transaction[]
+  /**
+   * Mês em que ocorreu a transação
+   */
   month?: string
+  /**
+   * Dia em que ocorreu a transação
+   */
   day?: number
 }
 

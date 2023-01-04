@@ -35,7 +35,7 @@ describe('Button Default', () => {
   afterEach(() => cy.wait(100))
 
   it('Deve mostrar o componente TransactionDay', () => {
-    cy.viewport(760, 700)
+    cy.viewport(762, 700)
     cy.get('[data-testid = "transactionDay"]')
       .and('have.css', 'height', '84px')
       .and('have.css', 'border-top', '0px none rgb(174, 174, 174)')

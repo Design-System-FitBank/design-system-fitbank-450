@@ -25,7 +25,7 @@ DefaultTransactionDay.args = {
     {
       month: 'nov',
       day: 10,
-      transactions: [{ title: 'Transferência Recebida', value: -200000, establishment: 'Mercado', operationType: 44 }]
+      transactions: [{ title: 'Débito em conta', value: -20000, establishment: 'Mercado', operationType: 44 }]
     }
   ]
 }

@@ -9,13 +9,28 @@ import { maskMoney } from '_utils/number'
 import { TransactionDayProps } from 'components/TransactionDay'
 
 export interface TransactionProps {
+  /**
+   * Retorna as transações
+   */
   transactions?: Transaction
 }
 
 export type Transaction = {
+  /**
+   * Título da transação
+   */
   title: string
+  /**
+   * Valor da transação
+   */
   value: number
+  /**
+   * Local onde ocorreu a transação
+   */
   establishment: string
+  /**
+   * Tipo da transação
+   */
   operationType: OperationType
 }
 
@@ -62,7 +77,7 @@ export const Transaction: React.FC<TransactionProps> = ({ transactions }) => {
         return 'PIX Enviado'
 
       case 41:
-        return 'PIX Recebido'
+        return 'PIX'
 
       case 42:
         return 'Devolução PIX'
@@ -77,6 +92,7 @@ export const Transaction: React.FC<TransactionProps> = ({ transactions }) => {
       <Styled.IconMoney data-testid='iconMoney' isCredit={isCredit}>
         <Icon name={isCredit ? 'moneyln' : 'moneyOut'} width={36} height={36} />
       </Styled.IconMoney>
+
       <Styled.Details data-testid='details'>
         <Typography variant='bodySmall'>{transactions?.title}</Typography>
         {transactions?.establishment && <Typography variant='bodyLarge'>{transactions?.establishment}</Typography>}
@@ -86,6 +102,7 @@ export const Transaction: React.FC<TransactionProps> = ({ transactions }) => {
           </Styled.OperationType>
         )}
       </Styled.Details>
+
       <Styled.Button data-testid='button'>
         <Typography variant='bodyLarge'>{maskMoney(transactions?.value.toString()!)}</Typography>
         <Button icon='details' onClick={() => {}} size='small' type='tertiary'>
