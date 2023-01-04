@@ -23,8 +23,8 @@ export const Primary = styled(Container)<TabProps>`
   :hover {
     border-bottom: 4px solid ${({ theme }) => theme.colors.primary.pure};
   }
-
-  :active {
+  
+  &[data-selected=true], :active {
     background-color: ${({ theme }) => theme.colors.primary.pure};
     color: ${({ theme }) => theme.colors.high.pure};
     border-bottom: 4px solid ${({ theme }) => theme.colors.tertiary.pure};

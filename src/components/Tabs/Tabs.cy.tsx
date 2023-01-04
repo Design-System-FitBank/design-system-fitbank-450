@@ -42,7 +42,7 @@ describe("Tabs Default",() => {
       .should("have.length", tabInfo.length)
   })
   
-  it("Dever haver um elemento para cada TabPros",() => {
+  it("Deve haver um elemento para cada TabPros",() => {
     cy.get("[data-testid=tab")
     .should("have.length", tabInfo.length)
   })
@@ -53,10 +53,18 @@ describe("Tabs Default",() => {
     })
   })
 
-  it("Devem retornar o index ao clicar na Tab", () => {
+  it("Devem retornar o index e selecionar ao clicar na Tab", () => {
     cy.get("[data-testid=tab]").each((item, index) => {
       cy.wrap(item).click()
       expect(tabIndex == index)
+    })
+  })
+  it("Deve ser selecionada a Tab ao ser clicada", () => {
+    cy.get("[data-testid=tab]").each(item => {
+      cy.wrap(item).click().should('have.css', 'border-bottom', '4px solid rgb(252, 214, 105)')
+        .and('have.css', 'color', 'rgb(255, 255, 255)')
+        .and('have.css', 'background-color', 'rgb(50, 56, 79)')
+        .and('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 4px 6px 0px')
     })
   })
 })

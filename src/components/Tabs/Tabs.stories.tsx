@@ -14,45 +14,28 @@ export const Default = Template.bind({})
 Default.args = {
   tabsInfo: [
     {
-      title: "Transferencia PIX", 
-      description: "Realiza tranferência via PIX",
+      title: "Transferência PIX", 
+      description: "Realiza transferência via PIX",
       icon: 'keys',
-      onClick: () => {}
+      onClick: () => {},
+      selected: true
     },
     {
-      title: "Transferencia TED", 
-      description: "Realiza utilizando dados bancários",
+      title: "Transferência TED", 
+      description: "Realiza transferência utilizando dados bancários",
       icon: 'ticketPayment',
       onClick: () => {}
     },
     {
-      title: "Transferencia TED", 
-      description: "Realiza utilizando dados bancários",
+      title: "Transferência Doc", 
+      description: "Realiza transferência utilizando dados bancários",
       icon: 'ticketPayment',
       onClick: () => {}
     },
     {
-      title: "Transferencia TED", 
-      description: "Realiza utilizando dados bancários",
+      title: "Transferência Por CPF", 
+      description: "Realiza utilizando dados pessoais",
       icon: 'ticketPayment',
-      onClick: () => {}
-    }
-  ]
-}
-
-export const Disabled = Template.bind({})
-Disabled.args = {
-  tabsInfo: [
-    {
-      title: "Transferencia PIX", 
-      description: "Realiza tranferência via PIX",
-      icon: 'keys',
-      onClick: () => {}
-    },
-    {
-      title: "Transferencia TED", 
-      description: "Realiza utilizando dados bancários",
-      icon: "ticketPayment",
       onClick: () => {}
     }
   ]

@@ -33,6 +33,11 @@ export interface TabProps {
    * Define se a aba está desabilitada ou não.
    */
   disabled?: boolean
+  
+  /**
+   * Define se a Tab está selecionada ou n
+   */
+  selected?: boolean
 
   /**
    * Função sem retorno que será chamada ao se clicar na aba.
@@ -41,7 +46,10 @@ export interface TabProps {
 }
 
 export const Tabs: React.FC<TabsProps> = ({tabsInfo, onClickTab}) => {
+  const [selectedTab, setSelectedTab] = React.useState<number | null>(null)
+
   const _onClickTab = React.useCallback((index) => {
+    setSelectedTab(index)
     onClickTab(index)
   }, [])
 
@@ -54,7 +62,9 @@ export const Tabs: React.FC<TabsProps> = ({tabsInfo, onClickTab}) => {
                   description={tab.description} 
                   icon={tab.icon} 
                   disabled={tab.disabled} 
-                  onClick={() => _onClickTab(key)} />
+                  onClick={() => _onClickTab(key)} 
+                  selected={selectedTab == key ? true: false}
+                  />
       })}
     </Styled.Container>
   )
