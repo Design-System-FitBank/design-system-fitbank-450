@@ -34,7 +34,7 @@ describe('Button Default', () => {
       .and('have.css', 'align-items', 'center')
       .and('have.css', 'flex-direction', 'row')
       .and('have.css', 'width', '442px')
-      .and('have.css', 'height', '81px')
+      .and('have.css', 'height', '80px')
       .and('have.css', 'padding', '16px')
       .and('have.css', 'gap', '16px')
       .and('have.css', 'border', '1px solid rgba(0, 0, 0, 0)')
@@ -49,21 +49,28 @@ describe('Button Default', () => {
     cy.get('@onclick').should('have.been.calledOnce')
     cy.get('[data-testid="button"]').should('have.css', 'cursor', 'pointer')
   }),
-  it('Deve renderizar o botão com o icone', () => {
-    cy.get('[data-testid="button-icon"]')
-      .should('have.css', 'width', '38px')
-      .and('have.css', 'height', '38px')
-  }),
-  it('Deve renderizar o botão com o titulo', () => {
-    cy.get('[data-testid="button"]')
-      .get('[data-testid="button-title"]')
-      .should('have.css', 'font-size', '20px')
-      .and('have.css', 'font-weight', '500')
-  }),
-  it('Deve renderizar o botão com o subtitulo', () => {
-    cy.get('[data-testid="button"]')
-      .get('[data-testid="button-subtitle"]')
-      .should('have.css', 'font-size', '14px')
-      .and('have.css', 'font-weight', '500')
-  })
+    it('Deve renderizar o botão com o icone', () => {
+      cy.get(`[data-testid=${icon}]`)
+        .should('be.visible')
+        .and('have.css', 'width', '48px')
+        .and('have.css', 'height', '48px')
+    }),
+    it('Deve renderizar o titulo e o subtitulo', () => {
+      const title = faker.lorem.word()
+      const subtitle = faker.lorem.word()
+      cy.mount(
+        <ThemeDSProvider theme={Theme}>
+          <GlobalStyles />
+          <ButtonTitleAndSubtitle
+            title={title}
+            subtitle={subtitle}
+            icon={icon}
+            onClick={cy.stub().as('onclick')}
+            disabled={false}
+          />
+        </ThemeDSProvider>
+      )
+      cy.get('[data-testid="button-title"]').should('have.text', title)
+      cy.get('[data-testid="button-subtitle"]').should('have.text', subtitle)
+    })
 })

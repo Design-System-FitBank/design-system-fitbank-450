@@ -7,7 +7,7 @@ export const Container = styled.button`
   flex-direction: row;
 
   width: 442px;
-  height: 81px;
+  height: 80px;
   padding: ${({ theme }) => theme.sizes['16px']} ${({ theme }) => theme.sizes['16px']};
   gap: ${({ theme }) => theme.sizes['16px']};
 
@@ -51,12 +51,6 @@ export const TextAlign = styled.div`
   flex-direction: column;
   align-items: flex-start;
 `
-export const Title = styled.h6`
-  font-size: ${({ theme }) => theme.sizes['20px']};
-  font-weight: ${({ theme }) => theme.font.weight.regular};
-`
+export const Title = styled.body``
 
-export const Subtitle = styled.sub`
-  font-size: ${({ theme }) => theme.sizes['14px']};
-  font-weight: ${({ theme }) => theme.font.weight.regular};
-`
+export const Subtitle = styled.body``

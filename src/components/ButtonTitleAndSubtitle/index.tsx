@@ -1,3 +1,4 @@
+import { Typography } from '../Typography'
 import React from 'react'
 import { Icon, IconsProps } from '../Icon'
 import * as Styled from './styles'
@@ -25,15 +26,25 @@ interface ButtonTitleAndSubtitleProps {
   disabled?: boolean
 }
 
-export const ButtonTitleAndSubtitle = ({icon, title, subtitle, onClick, disabled = false }: ButtonTitleAndSubtitleProps) => {
+export const ButtonTitleAndSubtitle = ({
+  icon,
+  title,
+  subtitle,
+  onClick,
+  disabled = false
+}: ButtonTitleAndSubtitleProps) => {
   return (
     <Styled.ButtonAlign data-testid='button' onClick={onClick} disabled={disabled}>
       <Styled.Icon data-testid='button-icon'>
-        <Icon name={icon} data-testid='icon' width={38} height={38}/>
+        <Icon name={icon} data-testid='icon' width={48} height={48} />
       </Styled.Icon>
       <Styled.TextAlign data-testid='button-aligntext'>
-        <Styled.Title data-testid='button-title'>{title}</Styled.Title>
-        <Styled.Subtitle data-testid='button-subtitle'>{subtitle}</Styled.Subtitle>
+        <Styled.Title data-testid='button-title'>
+          <Typography variant='bodyLarge'>{title}</Typography>
+        </Styled.Title>
+        <Styled.Subtitle data-testid='button-subtitle'>
+          <Typography variant='bodySmall'>{subtitle}</Typography>
+        </Styled.Subtitle>
       </Styled.TextAlign>
     </Styled.ButtonAlign>
   )
