@@ -43,34 +43,39 @@ export const Tag = ({ tagButtonList }: TagProps) => {
 
   return (
     <Styled.Container data-testid='tag-container'>
-      <Typography variant='body'>Tags</Typography>
-      <Typography variant='bodySmall'>
+      <Typography variant='bodyLarge' data-testid='tag-title'>
+        Tags
+      </Typography>
+      <Typography variant='body' data-testid='tag-subtitle'>
         Insira marcações para identificar seus gastos. Use nossa sugestão ou personalise as tags.
       </Typography>
 
-      <Styled.ContentContainer>
-        <Styled.TagInput data-testid='taginput'>
+      <Styled.TagContent data-testid='tag-content'>
+        <Styled.TagInput data-testid='tag-input'>
           <Input title={''} placeholder={'Digite uma tag'} type={'text'} disabled={false} onchange={handleChange} />
         </Styled.TagInput>
-        <Button onClick={addTag} disabled={false} size={'small'} type={'secondary'}>
+        <Button onClick={addTag} disabled={false} size={'small'} type={'secondary'} data-testid='tag-buttonAdd'>
           Adicionar
         </Button>
-      </Styled.ContentContainer>
+      </Styled.TagContent>
 
-      <Styled.ContentContainer>
-        {tagsList.map(tagList => (
-          <Button
-            onClick={() => removeTag(tagList.label)}
-            disabled={false}
-            size={'small'}
-            type={'secondary'}
-            icon={'trash'}
-            iconRight={true}
-          >
-            {tagList.label}
-          </Button>
-        ))}
-      </Styled.ContentContainer>
+      <Styled.TagContent data-testid='tag-component'>
+        <Styled.Wrap data-testid='wrap'>
+          {tagsList.map(tagList => (
+            <Button
+              onClick={() => removeTag(tagList.label)}
+              disabled={false}
+              size={'small'}
+              type={'secondary'}
+              icon={'trash'}
+              iconRight={true}
+              data-testid='tag-trash'
+            >
+              {tagList.label}
+            </Button>
+          ))}
+        </Styled.Wrap>
+      </Styled.TagContent>
     </Styled.Container>
   )
 }

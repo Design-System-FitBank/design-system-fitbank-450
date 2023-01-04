@@ -8,8 +8,14 @@ export const Container = styled.div`
     margin-bottom: ${({ theme }) => theme.sizes['8px']};
   }
 `
+export const Wrap = styled.div`
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex-wrap: wrap;
+`
 
-export const ContentContainer = styled.div`
+export const TagContent = styled.div`
   display: flex;
   align-items: center;
   margin-top: ${({ theme }) => theme.sizes['16px']};
@@ -23,10 +29,6 @@ export const TagInput = styled.div`
 
   border: none;
   margin-right: ${({ theme }) => theme.sizes['24px']};
-
-  font-size: ${({ theme }) => theme.sizes['12px']};
-  line-height: ${({ theme }) => theme.sizes['14px']};
-  font-weight: ${({ theme }) => theme.font.weight.tiny};
 
   color: ${({ theme }) => theme.colors.dark};
 
