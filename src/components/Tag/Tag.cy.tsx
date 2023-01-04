@@ -23,24 +23,50 @@ describe('Tag', () => {
   })
 
   it('Deve verificar se os textos estão informados corretamente', () => {
-    cy.get('[data-testid="body"]').should('have.text', title)
-    cy.get('[data-testid="bodySmall"]').should('have.text', subtitle)
+    cy.get('[data-testid="bodyLarge"]').should('have.text', title)
+    cy.get('[data-testid="body"]').should('have.text', subtitle)
     cy.get('[data-testid="input"]').should('have.attr', 'placeholder', placeholder)
   })
 
+  it('Deve verificar o input', () => {
+    cy.get('[data-testid="tag-input"]')
+      .should('exist')
+      .and('have.css', 'display', 'flex')
+      .and('have.css', 'height', '48px')
+      .and('have.css', 'align-items', 'center')
+  })
+
+  it('Deve verificar o tag content', () => {
+    cy.get('[data-testid="tag-content"]')
+      .should('exist')
+      .and('have.css', 'display', 'flex')
+      .and('have.css', 'height', '48px')
+      .and('have.css', 'margin-top', '16px')
+  })
+
+  it('Deve verificar o wrap', () => {
+    cy.get('[data-testid="wrap"]')
+      .should('exist')
+      .and('have.css', 'display', 'flex')
+      .and('have.css', 'position', 'relative')
+      .and('have.css', 'width', '452px')
+      .and('have.css', 'flex-wrap', 'wrap')
+  })
+
   it('Deve verificar se o botão adicionar insere tag caso o input esteja vazio', () => {
-    cy.get('.sc-fnGiBr').click()
-    cy.get('[data-testid="tag-container"] > :nth-child(4)').should('not.be.visible')
+    cy.get('[data-testid="tag-content"] > .sc-fEXmlR').click()
+    cy.get('[data-testid="tag-component"]').should('not.be.visible')
   })
 
   it('Deve preencher o campo input e verificar se o click no botão adicionar está inserindo a tag', () => {
     cy.get('[data-testid="input"]').type(textFaker)
-    cy.get('.sc-fnGiBr').click()
-    cy.get('[data-testid="tag-container"] > :nth-child(4)').should('be.visible')
+    cy.get('[data-testid="tag-content"] > .sc-fEXmlR').click()
+    cy.get('[data-testid="tag-component"]').should('be.visible')
+    cy.get('[data-testid="wrap"] > .sc-fEXmlR').contains(textFaker)
   })
 
   it('Deve verificar a funcionalidade do onClick para excluir dentro da tag', () => {
-    cy.get(':nth-child(1) > .sc-hBxehG > :nth-child(3) > [data-testid="trash"]').click()
-    cy.get('[data-testid="tag-container"] > :nth-child(4)').should('not.be.visible')
+    cy.get('[data-testid="wrap"] > .sc-fEXmlR').click()
+    cy.get('[data-testid="tag-component"]').should('not.be.visible')
   })
 })
