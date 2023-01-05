@@ -8,7 +8,7 @@ export interface TagButtonListProps {
   label: string
 }
 
-interface TagProps {
+export interface TagProps {
   /**
    * Função sem retorno que será chamada ao acionar o click
    */
@@ -34,11 +34,14 @@ export const Tag = ({ tagButtonList }: TagProps) => {
 
   const addTag = () => {
     setTextValue('')
-    if (textValue) tagsList.push({ label: textValue! })
+
+    if (!tagsList.find(item => item.label === textValue) && textValue) {
+      tagsList.push({ label: textValue! })
+    }
   }
 
   const removeTag = tag => {
-    setTagsList(tagsList.filter(item => !item.label.includes(tag)))
+    setTagsList(tagsList.filter(item => item.label !== tag))
   }
 
   return (

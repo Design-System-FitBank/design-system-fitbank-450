@@ -12,7 +12,7 @@ export const Wrap = styled.div`
   display: grid;
   position: relative;
   grid-template-columns: repeat(3, 1fr);
-  gap: ${({ theme }) => theme.sizes['8px']};
+  gap: ${({ theme }) => theme.sizes['4px']};
 `
 
 export const TagContent = styled.div`
@@ -30,9 +30,9 @@ export const TagInput = styled.div`
   border: none;
   margin-right: ${({ theme }) => theme.sizes['24px']};
 
-  color: ${({ theme }) => theme.colors.dark};
+  color: ${({ theme }) => theme.colors.primary.dark};
 
   ::placeholder {
-    color: ${({ theme }) => theme.colors.disabled};
+    color: ${({ theme }) => theme.colors.primary.pure};
   }
 `

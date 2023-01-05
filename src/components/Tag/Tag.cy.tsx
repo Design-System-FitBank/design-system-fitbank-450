@@ -50,23 +50,23 @@ describe('Tag', () => {
       .and('have.css', 'display', 'grid')
       .and('have.css', 'position', 'relative')
       .and('have.css', 'grid-template-columns', '0px 0px 0px')
-      .and('have.css', 'gap', '8px')
+      .and('have.css', 'gap', '4px')
   })
 
   it('Deve verificar se o botão adicionar insere tag caso o input esteja vazio', () => {
-    cy.get('[data-testid="tag-content"] > .sc-fEXmlR').click()
+    cy.get('[data-testid="tag-content"] > .sc-bBABsx').click()
     cy.get('[data-testid="tag-component"]').should('not.be.visible')
   })
 
   it('Deve preencher o campo input e verificar se o click no botão adicionar está inserindo a tag', () => {
     cy.get('[data-testid="input"]').type(textFaker)
-    cy.get('[data-testid="tag-content"] > .sc-fEXmlR').click()
+    cy.get('[data-testid="tag-content"] > .sc-bBABsx').click()
     cy.get('[data-testid="tag-component"]').should('be.visible')
-    cy.get('[data-testid="wrap"] > .sc-fEXmlR').contains(textFaker)
+    cy.get('[data-testid="wrap"] > .sc-bBABsx').contains(textFaker)
   })
 
   it('Deve verificar a funcionalidade do onClick para excluir dentro da tag', () => {
-    cy.get('[data-testid="wrap"] > .sc-fEXmlR').click()
+    cy.get('[data-testid="wrap"] > .sc-bBABsx').click()
     cy.get('[data-testid="tag-component"]').should('not.be.visible')
   })
 })
