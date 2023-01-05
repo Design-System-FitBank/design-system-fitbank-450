@@ -47,10 +47,10 @@ describe('Tag', () => {
   it('Deve verificar o wrap', () => {
     cy.get('[data-testid="wrap"]')
       .should('exist')
-      .and('have.css', 'display', 'flex')
+      .and('have.css', 'display', 'grid')
       .and('have.css', 'position', 'relative')
-      .and('have.css', 'width', '452px')
-      .and('have.css', 'flex-wrap', 'wrap')
+      .and('have.css', 'grid-template-columns', '0px 0px 0px')
+      .and('have.css', 'gap', '8px')
   })
 
   it('Deve verificar se o botão adicionar insere tag caso o input esteja vazio', () => {
