@@ -11,7 +11,6 @@ export const Container = styled.div`
 export const Wrap = styled.div`
   display: grid;
   position: relative;
-  //width: 200px;
   grid-template-columns: repeat(3, 1fr);
   gap: ${({ theme }) => theme.sizes['8px']};
 `
