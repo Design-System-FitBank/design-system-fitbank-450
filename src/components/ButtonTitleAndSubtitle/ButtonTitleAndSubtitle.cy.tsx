@@ -26,7 +26,77 @@ describe('Button Default', () => {
   })
   afterEach(() => {
     cy.wait(100)
-  }) //Testando o css do botão
+  })
+  const names = [
+    'home',
+    'adress',
+    'arrowDown',
+    'arrowLeft',
+    'arrowRight',
+    'arrowUp',
+    'authorization',
+    'calendar',
+    'cancel',
+    'card',
+    'cardMulti',
+    'changeAccount',
+    'checked',
+    'cnh',
+    'copyAndPaste',
+    'details',
+    'device',
+    'done',
+    'download',
+    'doc',
+    'edit',
+    'email',
+    'enterprise',
+    'eyeClose',
+    'eyeOpen',
+    'favorite',
+    'favoriteAdd',
+    'favoriteRemove',
+    'filter',
+    'pin',
+    'code',
+    'link',
+    'money',
+    'moneyln',
+    'moneyNote',
+    'moneyOut',
+    'moneyTransfer',
+    'moneyTransferSMS',
+    'onboardingCard',
+    'onboardingSMS',
+    'options',
+    'payment',
+    'pix',
+    'plus',
+    'qrCode',
+    'qrCodeIn',
+    'receipt',
+    'refresh',
+    'rg',
+    'scheduled',
+    'selectAll',
+    'sendMoney',
+    'setup',
+    'share',
+    'ticketPayment',
+    'toggleOff',
+    'toggleOn',
+    'topup',
+    'trash',
+    'upload',
+    'user',
+    'userBank',
+    'userGroup',
+    'userSearch',
+    'withdrawMoney',
+    'xlsx',
+    'search'
+  ]
+  //Testando o css do botão
   it('Deve renderizar o botão com todos os styles', () => {
     cy.get('[data-testid="button"]')
       .should('have.css', 'display', 'flex')
@@ -44,17 +114,10 @@ describe('Button Default', () => {
       .and('have.css', 'color', 'rgb(50, 55, 81)')
       .and('have.css', 'overflow', 'hidden')
       .and('have.css', 'cursor', 'pointer')
-
     cy.get('[data-testid="button"]').click()
     cy.get('@onclick').should('have.been.calledOnce')
     cy.get('[data-testid="button"]').should('have.css', 'cursor', 'pointer')
   }),
-    it('Deve renderizar o botão com o icone', () => {
-      cy.get(`[data-testid=${icon}]`)
-        .should('be.visible')
-        .and('have.css', 'width', '48px')
-        .and('have.css', 'height', '48px')
-    }),
     it('Deve renderizar o titulo e o subtitulo', () => {
       const title = faker.lorem.word()
       const subtitle = faker.lorem.word()
@@ -72,5 +135,22 @@ describe('Button Default', () => {
       )
       cy.get('[data-testid="button-title"]').should('have.text', title)
       cy.get('[data-testid="button-subtitle"]').should('have.text', subtitle)
+    }),
+    names.forEach(item => {
+      it(`Deve renderizar o botão com o ícone ${item} quando passar name igual ${item}`, () => {
+        cy.mount(
+          <ThemeDSProvider theme={Theme}>
+            <GlobalStyles />
+            <ButtonTitleAndSubtitle
+              title={textFaker}
+              subtitle={textFaker}
+              icon={item}
+              onClick={cy.stub().as('onclick')}
+              disabled={false}
+            />
+          </ThemeDSProvider>
+        )
+        cy.get(`[data-testid=${item}]`).should('be.visible')
+      })
     })
 })
