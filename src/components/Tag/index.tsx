@@ -55,7 +55,15 @@ export const Tag = ({ tagButtonList }: TagProps) => {
 
       <Styled.TagContent data-testid='tag-content'>
         <Styled.TagInput data-testid='tag-input'>
-          <Input title={''} placeholder={'Digite uma tag'} type={'text'} disabled={false} onchange={handleChange} />
+          <Input
+            title={''}
+            validator={'tag'}
+            maxLength={20}
+            placeholder={'Digite uma tag'}
+            type={'text'}
+            disabled={false}
+            onchange={handleChange}
+          />
         </Styled.TagInput>
         <Button onClick={addTag} disabled={false} size={'small'} type={'secondary'} data-testid='tag-buttonAdd'>
           Adicionar
