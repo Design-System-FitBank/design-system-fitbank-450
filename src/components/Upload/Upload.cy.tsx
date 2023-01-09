@@ -7,7 +7,7 @@ describe('Upload component', () => {
     cy.mount(
       <ThemeDSProvider>
         <GlobalStyles />
-        <Upload />
+        <Upload onChangeFile={undefined} />
       </ThemeDSProvider>
     )
   })
@@ -60,7 +60,7 @@ describe('Upload component', () => {
       .and('have.css', 'background-color', 'rgb(249, 249, 249)')
       .and('have.css', 'border', '1px dashed rgb(50, 56, 79)')
   })
-  it('Deve conter o container do ícone', () => {
+  it('Deve conter o ícone', () => {
     cy.get('[data-testid = "upload"]')
       .should('be.visible')
       .and('have.css', 'width', '86px')
