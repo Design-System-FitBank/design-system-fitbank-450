@@ -42,5 +42,7 @@ export const input = styled.input`
 display: none;
 `
 export const IconContainer = styled.div`
+display: flex;
+justify-content: center;
 color: ${({ theme }) => theme.colors.primary.lightest}
 `
