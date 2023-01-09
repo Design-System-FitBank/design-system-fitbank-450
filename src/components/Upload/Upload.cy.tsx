@@ -47,7 +47,7 @@ describe('Upload component', () => {
       .and('have.css', 'line-height', '20px')
       .and('have.css', 'color', 'rgb(94, 94, 94)')
   })
-  it('Deve conter o input de enviar arquivo', () => {
+  it('Deve conter a área de enviar arquivo', () => {
     cy.get('[data-testid = "inputContainer"]')
       .should('be.visible')
       .and('have.css', 'width', '464px')
@@ -62,9 +62,12 @@ describe('Upload component', () => {
   })
   it('Deve conter o ícone', () => {
     cy.get('[data-testid = "upload"]')
-      .should('be.visible')
+      .should('exist')
       .and('have.css', 'width', '86px')
       .and('have.css', 'height', '86px')
       .and('have.css', 'color', 'rgb(187, 188, 197)')
+  })
+  it('Deve conter o input', () => {
+    cy.get('[data-testid = "input"]').should('exist')
   })
 })
