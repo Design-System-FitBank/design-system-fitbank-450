@@ -144,7 +144,7 @@ describe('Button Default', () => {
             <ButtonTitleAndSubtitle
               title={textFaker}
               subtitle={textFaker}
-              icon={item}
+              icon={item as any}
               onClick={cy.stub().as('onclick')}
               disabled={false}
             />
