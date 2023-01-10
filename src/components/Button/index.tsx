@@ -1,12 +1,9 @@
-
-import { Icon } from '../Icon'
 import React from 'react'
 import { ContainerButton } from './components/ContainerButton'
 import { IconsProps } from '../Icon'
 import * as Styled from './styles'
 
-interface ButtonProps {
-
+export interface ButtonProps {
   children: string
   disabled?: boolean
   icon?: IconsProps['name']
@@ -39,42 +36,46 @@ export const Button: React.FC<ButtonProps> = ({
   type = 'primary',
   onClick
 }) => {
+  const isSmall = size === 'small'
   const returnElement = () => {
     switch (type) {
       case 'tertiary':
         return (
           <Styled.Tertiary data-testeid='button' onClick={onClick} disabled={disabled} size={size}>
             <ContainerButton
-              icon={icon}
-              iconRight={iconRight}
-              isSmall={size === 'small'}
-            >
-              {children}
-            </ContainerButton>
+              props={{
+                icon,
+                iconRight,
+                isSmall,
+                children
+              }}
+            />
           </Styled.Tertiary>
         )
       case 'secondary':
         return (
           <Styled.Secondary data-testeid='button' onClick={onClick} disabled={disabled} size={size}>
             <ContainerButton
-              icon={icon}
-              iconRight={iconRight}
-              isSmall={size === 'small'}
-            >
-              {children}
-            </ContainerButton>
+              props={{
+                icon,
+                iconRight,
+                isSmall,
+                children
+              }}
+            />
           </Styled.Secondary>
         )
       default:
         return (
           <Styled.Primary data-testeid='button' onClick={onClick} disabled={disabled} size={size}>
             <ContainerButton
-              icon={icon}
-              iconRight={iconRight}
-              isSmall={size === 'small'}
-            >
-              {children}
-            </ContainerButton>
+              props={{
+                icon,
+                iconRight,
+                isSmall,
+                children
+              }}
+            />
           </Styled.Primary>
         )
     }

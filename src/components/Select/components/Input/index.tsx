@@ -4,7 +4,7 @@ import { ContainerInput, InputContent, IconContent } from './styles'
 
 import { Icon } from '../../../Icon'
 
-interface InputProps {
+export interface InputProps {
   optionsValue: string | undefined
   placeholder: string
   openModal: boolean

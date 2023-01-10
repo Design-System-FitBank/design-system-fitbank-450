@@ -1,7 +1,13 @@
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
+import { DefaultTheme, ThemeProvider } from 'styled-components'
+import { Theme } from './Theme'
 
-export const ThemeDSProvider = ({ children, theme }) => (
+type ProviderProps = {
+  theme?: DefaultTheme,
+  children: JSX.Element | JSX.Element[]
+}
+
+export const ThemeDSProvider: React.FC<ProviderProps> = ({ children, theme =  Theme}) => (
   <ThemeProvider theme={theme} >
     {children}
   </ThemeProvider>

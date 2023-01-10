@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Typography } from '../Typography'
 import { ToggleContainer, Switcher, Container } from './styles'
 
-interface ToggleProps {
+export interface ToggleProps {
   /**
    * Titulo opcional do toggle
    */

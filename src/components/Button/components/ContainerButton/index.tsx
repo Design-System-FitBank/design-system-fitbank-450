@@ -6,35 +6,21 @@ import { LabelButton } from '../LabelButton'
 import * as Styled from './styles'
 
 type ContainerProps = {
-  icon: any,
-  children: string,
-  iconRight: boolean,
-  isSmall: boolean
+  props: {
+    icon: any
+    children: string
+    iconRight: boolean
+    isSmall: boolean
+  }
 }
 
-export const ContainerButton: React.FC<ContainerProps> = (
-  {
-    icon,
-    children,
-    isSmall,
-    iconRight
-  }
-) => {
+export const ContainerButton: React.FC<ContainerProps> = ({ props }) => {
+  const { icon, isSmall, iconRight, children } = props
   return (
-    <Styled.Container data-testeid="container">
-      <IconButton
-        data-testeid="iconPrefix"
-        icon={icon}
-        isSmall={isSmall}
-        show={!iconRight}
-      />
+    <Styled.Container data-testeid='container'>
+      <IconButton icon={icon} isSmall={isSmall} show={!iconRight} />
       <LabelButton isSmall={isSmall}>{children}</LabelButton>
-      <IconButton
-        data-testeid="iconSuffix"
-        icon={icon}
-        isSmall={isSmall}
-        show={iconRight}
-      />
+      <IconButton icon={icon} isSmall={isSmall} show={iconRight} />
     </Styled.Container>
   )
 }

@@ -10,6 +10,13 @@ export default {
 } as ComponentMeta<typeof Header>
 
 const Template: ComponentStory<typeof Header> = args => <Header {...args} />
-
 export const Default = Template.bind({})
-Default.args = {}
+Default.args = {
+  onClickOptions: () => {},
+}
+
+export const WithSearch = Template.bind({})
+WithSearch.args = {
+  search: () => { },
+  searchPlaceholder: "Search ..."
+}
