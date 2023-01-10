@@ -8,7 +8,7 @@ export class Mask {
       case 'telefone':
         return value.replace(/(\d{2})(\d{4,5})(\d{4})/g, '($1) $2-$3')
       case 'tag':
-        return value.replace(/[^a-zA-Zà-úÀ-Ú]/g, '')
+        return value.replace(/[^a-zA-Zà-úÀ-Ú ]/g, '')
       default:
         break
     }

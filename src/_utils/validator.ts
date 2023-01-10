@@ -44,7 +44,7 @@ export class Validator {
   }
   private static tag(value: string): string {
     const error = 'Campo só aceita letras'
-    if (value.replace(/[!a-zA-Zà-úÀ-Ú]/g, '')) return error
+    if (value.replace(/[!a-zA-Zà-úÀ-Ú ]/g, '')) return error
     return ''
   }
   private static numero(value: string): string {
