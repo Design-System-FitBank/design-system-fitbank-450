@@ -5,8 +5,7 @@ import { Button } from 'design-system-fitbank/dist/src/components/Button'
 import { OperationType } from 'components/TransactionDay/OperationType'
 
 import * as Styled from './style'
-import { maskMoney } from '_utils/number'
-import { TransactionDayProps } from 'components/TransactionDay'
+import { Mask } from '../../../../_utils/mask'
 
 export interface TransactionProps {
   /**
@@ -104,7 +103,7 @@ export const Transaction: React.FC<TransactionProps> = ({ transactions }) => {
       </Styled.Details>
 
       <Styled.Button data-testid='button'>
-        <Typography variant='bodyLarge'>{maskMoney(transactions?.value.toString()!)}</Typography>
+        <Typography variant='bodyLarge'>{Mask.masked('dinheiro', transactions?.value.toString()!)}</Typography>
         <Button icon='details' onClick={() => {}} size='small' type='tertiary'>
           Ver
         </Button>
