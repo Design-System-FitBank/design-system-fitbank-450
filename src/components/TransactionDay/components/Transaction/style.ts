@@ -17,12 +17,11 @@ export const IconMoney = styled.div<{ isCredit: boolean }>`
   color: ${({ theme, isCredit }) => (isCredit == true ? theme.colors.success.pure : theme.colors.error.pure)};
 `
 export const Details = styled.div`
-  width: ${({ theme }) => theme.sizes['320px']};
   height: ${({ theme }) => theme.sizes['64px']};
   align-items: center;
 `
 export const Button = styled.div`
-  width: ${({ theme }) => theme.sizes['320px']};
+  min-width: ${({ theme }) => theme.sizes['320px']};
   margin-top: ${({ theme }) => theme.sizes['16px']};
   display: flex;
   flex-direction: row;
