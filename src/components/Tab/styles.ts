@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
-type TabProps = {}
-
-export const Container = styled.button<TabProps>`
+export const Container = styled.button`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -15,7 +13,7 @@ export const Container = styled.button<TabProps>`
   border: none;
 `
 
-export const Primary = styled(Container)<TabProps>`
+export const Primary = styled(Container)`
   background-color: ${({ theme }) => theme.colors.high.pure};
   color: ${({ theme }) => theme.colors.primary.pure};
   box-shadow: 2px 6px 20px rgba(0, 0, 0, 0.1);
@@ -23,8 +21,9 @@ export const Primary = styled(Container)<TabProps>`
   :hover {
     border-bottom: 4px solid ${({ theme }) => theme.colors.primary.pure};
   }
-  
-  &[data-selected=true], :active {
+
+  &[data-selected='true'],
+  :active {
     background-color: ${({ theme }) => theme.colors.primary.pure};
     color: ${({ theme }) => theme.colors.high.pure};
     border-bottom: 4px solid ${({ theme }) => theme.colors.tertiary.pure};

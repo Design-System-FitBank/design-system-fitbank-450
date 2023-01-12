@@ -1,13 +1,13 @@
-import { Tab } from "../Tab"
-import React from "react"
-import * as Styled from "./styles"
-import { IconsProps } from "../Icon"
+import { Tab } from '../Tab'
+import React from 'react'
+import * as Styled from './styles'
+import { IconsProps } from '../Icon'
 
-export interface TabsProps{
+export interface TabsProps {
   /**
    * Define os dados que serão utilizados para a renderização das Tabs
    */
-  tabsInfo: TabProps[],
+  tabsInfo: TabProps[]
   /**
    * Função de callback que acessa o index da Tab quando clicada
    */
@@ -33,7 +33,7 @@ export interface TabProps {
    * Define se a aba está desabilitada ou não.
    */
   disabled?: boolean
-  
+
   /**
    * Define se a Tab está selecionada ou n
    */
@@ -45,26 +45,28 @@ export interface TabProps {
   onClick: () => void
 }
 
-export const Tabs: React.FC<TabsProps> = ({tabsInfo, onClickTab}) => {
+export const Tabs: React.FC<TabsProps> = ({ tabsInfo, onClickTab }) => {
   const [selectedTab, setSelectedTab] = React.useState<number | null>(null)
 
-  const _onClickTab = React.useCallback((index) => {
+  const _onClickTab = React.useCallback(index => {
     setSelectedTab(index)
     onClickTab(index)
   }, [])
 
   return (
-    <Styled.Container data-testid="container">
+    <Styled.Container data-testid='container'>
       {tabsInfo.map((tab, key) => {
-        return <Tab 
-                  key={key}
-                  title={tab.title} 
-                  description={tab.description} 
-                  icon={tab.icon} 
-                  disabled={tab.disabled} 
-                  onClick={() => _onClickTab(key)} 
-                  selected={selectedTab == key ? true: false}
-                  />
+        return (
+          <Tab
+            key={key}
+            title={tab.title}
+            description={tab.description}
+            icon={tab.icon}
+            disabled={tab.disabled}
+            onClick={() => _onClickTab(key)}
+            selected={selectedTab == key ? true : false}
+          />
+        )
       })}
     </Styled.Container>
   )
