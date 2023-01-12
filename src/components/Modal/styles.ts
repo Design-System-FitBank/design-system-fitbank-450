@@ -15,7 +15,7 @@ export const Container = styled.div<{ opacity: number }>`
 
 export const BackdropModal = styled.div`
   position: absolute;
-  background-color: ${({ theme }) => theme.colors.high.dark};
+  background-color: ${({ theme }) => theme.colors.dark};
   height: 100%;
   width: 100%;
   z-index: 400;
@@ -26,7 +26,7 @@ export const ContainerModal = styled.div<{ width: number; height: number; type: 
   display: flex;
   position: relative;
   justify-content: ${({ type }) => (type === 'primary' ? 'space-between' : 'center')};
-  background-color: ${({ theme }) => theme.colors.high.pure};
+  background-color: ${({ theme }) => theme.colors.light};
   flex-direction: column;
   border-radius: ${({ theme }) => theme.sizes['16px']};
   z-index: 500;
