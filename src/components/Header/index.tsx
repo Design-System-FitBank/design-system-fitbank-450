@@ -31,12 +31,12 @@ export interface HeaderProps {
 
 export const Header = ({
   search,
-  accountName = 'User',
+  accountName,
   searchPlaceholder,
   onClickOptions
 }: HeaderProps) => {
   const [textValue, setTextValue] = useState<string>()
-  const userName = accountName[0].toUpperCase() + accountName.substring(1).toLowerCase()
+  const userName = accountName ? accountName[0].toUpperCase() + accountName.substring(1).toLowerCase() : 'User'
 
   const handleChange = (value: string) => {
     setTextValue(value)
