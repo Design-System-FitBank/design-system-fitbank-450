@@ -17,7 +17,7 @@ export interface InputProps {
    * Campo para desabilitar o input .
    */
   disabled?: boolean
-
+  maxLength?: number
   /**
    * Referente aos tipos do input.
    */
@@ -26,7 +26,7 @@ export interface InputProps {
   /**
    * Atributo define qual validador será usado
    */
-  validator?: 'email' | 'numero' | 'cpf' | 'cnpj' | 'telefone' | 'cpf/cnpj'
+  validator?: 'email' | 'numero' | 'cpf' | 'cnpj' | 'telefone' | 'cpf/cnpj' | 'tag'
   /**
    * Função que capta os valores digitados no campo de entrada de texto
    */
@@ -39,7 +39,8 @@ export const Input: React.FC<InputProps> = ({
   placeholder,
   disabled = false,
   validator,
-  onchange
+  onchange,
+  maxLength
 }) => {
   const [text, setText] = useState<string>()
   const [errorMessage, setErrorMessage] = useState<string>()
@@ -93,6 +94,7 @@ export const Input: React.FC<InputProps> = ({
       <Styled.Wrap>
         <Styled.InputContainer
           data-testid='input'
+          maxLength={maxLength}
           value={text}
           placeholder={type === 'text' ? placeholder : '••••••••'}
           type={type === 'text' ? 'text' : hideIcon ? 'text' : 'password'}

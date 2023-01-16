@@ -6,7 +6,6 @@ export class Mask {
       const result = new Intl.NumberFormat('pt-BR', options).format(parseFloat(value) / 100)
       return 'R$ ' + result
     }
-
     switch (variant) {
       case 'cpf':
         return value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, '$1.$2.$3-$4')

@@ -42,6 +42,11 @@ export class Validator {
     if (!value.includes('.com')) return error
     return ''
   }
+  private static tag(value: string): string {
+    const error = 'Campo só aceita letras'
+    if (value.replace(/[!a-zA-Zà-úÀ-Ú ]/g, '')) return error
+    return ''
+  }
   private static numero(value: string): string {
     if (isNaN(Number(value))) return 'Campo só aceita números'
     return ''
@@ -101,6 +106,8 @@ export class Validator {
         return this.cnpj(validated)
       case 'telefone':
         return this.telefone(validated)
+      case 'tag':
+        return this.tag(validated)
       default:
         return ''
     }
