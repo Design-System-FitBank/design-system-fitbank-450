@@ -6,29 +6,20 @@ height: ${({ theme }) => theme.sizes['272px']};
 display: flex;
 flex-direction: column;
 align-items: flex-start;
-padding: 8px 0px;
+padding: ${({ theme }) => theme.sizes['8px']};
 gap: ${({ theme }) => theme.sizes['24px']};
 `
 export const Title = styled.div`
-width: ${({ theme }) => theme.sizes['144px']};
-height: ${({ theme }) => theme.sizes['24px']};
-font-weight: ${({ theme }) => theme.font.weight.regular};
-font-size: ${({ theme }) => theme.sizes['20px']};
-line-height: ${({ theme }) => theme.sizes['24px']};
+top: ${({ theme }) => theme.sizes['8px']};
 text-align: center;
 color: ${({ theme }) => theme.colors.low.medium};
 `
 export const BodyText = styled.div`
-width: ${({ theme }) => theme.sizes['464px']};
-height: ${({ theme }) => theme.sizes['20px']};
-font-weight: ${({ theme }) => theme.font.weight.tiny};
-font-size: ${({ theme }) => theme.sizes['14px']};
-line-height: ${({ theme }) => theme.sizes['20px']};
 color: ${({ theme }) => theme.colors.low.medium};
 `
 export const InputContainer = styled.label`
-width: ${({ theme }) => theme.sizes['464px']};
-height: ${({ theme }) => theme.sizes['164px']};
+width: 100%;
+height: 100%;
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -39,7 +30,7 @@ background-color: ${({ theme }) => theme.colors.high.light};
 border: 1px dashed ${({ theme }) => theme.colors.primary.pure};
 `
 export const input = styled.input`
-display: none;
+
 `
 export const IconContainer = styled.div`
 display: flex;

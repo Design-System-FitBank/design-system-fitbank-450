@@ -7,7 +7,7 @@ describe('Upload component', () => {
     cy.mount(
       <ThemeDSProvider>
         <GlobalStyles />
-        <Upload onChangeFile={undefined} />
+        <Upload onChangeFile={cy.stub().as('onChangeFile')} />
       </ThemeDSProvider>
     )
   })
@@ -19,39 +19,22 @@ describe('Upload component', () => {
       .and('have.css', 'display', 'flex')
       .and('have.css', 'flex-direction', 'column')
       .and('have.css', 'align-items', 'flex-start')
-      .and('have.css', 'padding', '8px 0px')
+      .and('have.css', 'padding', '8px')
       .and('have.css', 'gap', '24px')
   })
   it('Deve conter o título do componente', () => {
     cy.get('[data-testid = "title"]')
       .should('be.visible')
-      .and('have.css', 'width', '144px')
-      .and('have.css', 'height', '24px')
-      .and('have.css', 'font-family', 'Roboto')
-      .and('have.css', 'font-style', 'normal')
-      .and('have.css', 'font-weight', '500')
-      .and('have.css', 'font-size', '20px')
-      .and('have.css', 'line-height', '24px')
+      .and('have.css', 'top', '8px')
       .and('have.css', 'text-align', 'center')
       .and('have.css', 'color', 'rgb(94, 94, 94)')
   })
   it('Deve conter o texto do corpo do componente', () => {
-    cy.get('[data-testid = "bodyText"]')
-      .should('be.visible')
-      .and('have.css', 'width', '464px')
-      .and('have.css', 'height', '20px')
-      .and('have.css', 'font-family', 'Roboto')
-      .and('have.css', 'font-style', 'normal')
-      .and('have.css', 'font-weight', '400')
-      .and('have.css', 'font-size', '14px')
-      .and('have.css', 'line-height', '20px')
-      .and('have.css', 'color', 'rgb(94, 94, 94)')
+    cy.get('[data-testid = "bodyText"]').should('be.visible').and('have.css', 'color', 'rgb(94, 94, 94)')
   })
   it('Deve conter a área de enviar arquivo', () => {
     cy.get('[data-testid = "inputContainer"]')
       .should('be.visible')
-      .and('have.css', 'width', '464px')
-      .and('have.css', 'height', '164px')
       .and('have.css', 'display', 'flex')
       .and('have.css', 'flex-direction', 'column')
       .and('have.css', 'align-items', 'center')
@@ -69,5 +52,9 @@ describe('Upload component', () => {
   })
   it('Deve conter o input', () => {
     cy.get('[data-testid = "input"]').should('exist')
+  })
+  it('Deve Chamar a função _onChangeFile', () => {
+    cy.get('[data-testid = "input').click()
+    cy.get('@onChangeFile').should('have.been.called')
   })
 })
