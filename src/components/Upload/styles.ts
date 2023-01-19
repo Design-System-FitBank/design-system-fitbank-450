@@ -30,7 +30,7 @@ background-color: ${({ theme }) => theme.colors.high.light};
 border: 1px dashed ${({ theme }) => theme.colors.primary.pure};
 `
 export const input = styled.input`
-
+display: none;
 `
 export const IconContainer = styled.div`
 display: flex;
