@@ -1,5 +1,4 @@
 import React from 'react'
-import { mount } from 'cypress/react18'
 import { ThemeDSProvider, Theme } from 'design-system-fitbank'
 import { GlobalStyles } from 'design-system-fitbank/dist/src/theme'
 import { DayTransactionsProps, TransactionDay } from '.'
@@ -25,7 +24,7 @@ const transactionDay: DayTransactionsProps = {
 describe('Button Default', () => {
   beforeEach(() => {
     cy.mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
         <TransactionDay dayTransactions={transactionDay.dayTransactions} />
       </ThemeDSProvider>

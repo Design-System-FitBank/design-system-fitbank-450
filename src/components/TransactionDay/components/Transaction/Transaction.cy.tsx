@@ -24,7 +24,7 @@ const transactionsBigValue: TransactionProps = {
 
 const transactionsDebit: TransactionProps = {
   transactions: {
-    title: 'Transferência Recebida',
+    title: 'Débito em conta',
     establishment: 'Lucas Felipe',
     value: -200,
     operationType: 41
@@ -33,7 +33,7 @@ const transactionsDebit: TransactionProps = {
 
 beforeEach(() => {
   cy.mount(
-    <ThemeDSProvider theme={Theme}>
+    <ThemeDSProvider>
       <GlobalStyles />
       <Transaction transactions={transactions.transactions} />
     </ThemeDSProvider>
@@ -43,16 +43,15 @@ beforeEach(() => {
 afterEach(() => cy.wait(100))
 
 it('Deve mostrar o componente Transaction com Crédito', () => {
-  cy.viewport(500, 500)
+  cy.viewport(700, 700)
   mount(
-    <ThemeDSProvider theme={Theme}>
+    <ThemeDSProvider>
       <GlobalStyles />
       <Transaction transactions={transactions.transactions} />
     </ThemeDSProvider>
   )
   cy.get('[data-testid = "container"]')
-    .should('have.css', 'width', '500px')
-    .and('have.css', 'height', '84px')
+    .should('have.css', 'height', '84px')
     .and('have.css', 'display', 'flex')
     .and('have.css', 'align-items', 'center')
     .and('have.css', 'flex-direction', 'row')
@@ -64,7 +63,10 @@ it('Deve mostrar o componente Transaction com Crédito', () => {
     .and('have.css', 'height', '36px')
     .and('have.css', 'width', '36px')
     .and('have.css', 'cursor', 'pointer')
-  cy.get('[data-testid = "details"]').should('have.css', 'height', '64px').and('have.css', 'align-items', 'center')
+  cy.get('[data-testid = "details"]')
+    .should('have.css', 'min-width', '320px')
+    .and('have.css', 'height', '64px')
+    .and('have.css', 'align-items', 'center')
   cy.get('[data-testid = "button"]')
     .and('have.css', 'min-width', '320px')
     .and('have.css', 'margin-top', '16px')
@@ -74,16 +76,15 @@ it('Deve mostrar o componente Transaction com Crédito', () => {
 })
 
 it('Deve mostrar o componente Transaction com Crédito com valor gande', () => {
-  cy.viewport(500, 500)
+  cy.viewport(700, 700)
   mount(
-    <ThemeDSProvider theme={Theme}>
+    <ThemeDSProvider>
       <GlobalStyles />
       <Transaction transactions={transactionsBigValue.transactions} />
     </ThemeDSProvider>
   )
   cy.get('[data-testid = "container"]')
-    .should('have.css', 'width', '500px')
-    .and('have.css', 'height', '84px')
+    .should('have.css', 'height', '84px')
     .and('have.css', 'display', 'flex')
     .and('have.css', 'align-items', 'center')
     .and('have.css', 'flex-direction', 'row')
@@ -95,7 +96,10 @@ it('Deve mostrar o componente Transaction com Crédito com valor gande', () => {
     .and('have.css', 'height', '36px')
     .and('have.css', 'width', '36px')
     .and('have.css', 'cursor', 'pointer')
-  cy.get('[data-testid = "details"]').should('have.css', 'height', '64px').and('have.css', 'align-items', 'center')
+  cy.get('[data-testid = "details"]')
+    .should('have.css', 'min-width', '320px')
+    .and('have.css', 'height', '64px')
+    .and('have.css', 'align-items', 'center')
   cy.get('[data-testid = "button"]')
     .and('have.css', 'min-width', '320px')
     .and('have.css', 'margin-top', '16px')
@@ -105,16 +109,15 @@ it('Deve mostrar o componente Transaction com Crédito com valor gande', () => {
 })
 
 it('Deve mostrar o componente Transaction com Débito', () => {
-  cy.viewport(500, 500)
+  cy.viewport(700, 700)
   mount(
-    <ThemeDSProvider theme={Theme}>
+    <ThemeDSProvider>
       <GlobalStyles />
       <Transaction transactions={transactionsDebit.transactions} />
     </ThemeDSProvider>
   )
   cy.get('[data-testid = "container"]')
-    .should('have.css', 'width', '500px')
-    .and('have.css', 'height', '84px')
+    .should('have.css', 'height', '84px')
     .and('have.css', 'display', 'flex')
     .and('have.css', 'align-items', 'center')
     .and('have.css', 'flex-direction', 'row')
@@ -126,7 +129,10 @@ it('Deve mostrar o componente Transaction com Débito', () => {
     .and('have.css', 'height', '36px')
     .and('have.css', 'width', '36px')
     .and('have.css', 'cursor', 'pointer')
-  cy.get('[data-testid = "details"]').should('have.css', 'height', '64px').and('have.css', 'align-items', 'center')
+  cy.get('[data-testid = "details"]')
+    .should('have.css', 'min-width', '320px')
+    .and('have.css', 'height', '64px')
+    .and('have.css', 'align-items', 'center')
   cy.get('[data-testid = "button"]')
     .and('have.css', 'min-width', '320px')
     .and('have.css', 'margin-top', '16px')
