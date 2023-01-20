@@ -8,11 +8,11 @@ type CardProps = {
    */
   size?: 'pattern' | 'setSize'
   /**
-   * Seta a altura do componente
+   * Seta a altura do componente, caso o parâmetro 'size' estiver com o valor 'setSize'
    */
   height?: number
   /**
-   * Seta a largura do componente
+   * Seta a largura do componente, caso o parâmetro 'size' estiver com o valor 'setSize'
    */
   width?: number
   /**
