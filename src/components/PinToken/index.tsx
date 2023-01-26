@@ -1,6 +1,6 @@
-import { isPlainObject } from 'cypress/types/lodash'
-import React from 'react'
-import { PinGrid } from './PinGrid'
+import * as Styled from './styles'
+
+import React, { useRef, useState } from 'react'
 
 export interface PinProps {
   /**
@@ -14,15 +14,63 @@ export interface PinProps {
   /**
    * Propriedades boolean que alterna de token para password
    */
-  password?: boolean
+  isPassword?: boolean
 }
 
-export const PinToken: React.FC<PinProps> = ({ onChange, disabled = false, password = false }) => {
-  const onPinChanged = (pinEntry: number[]) => {
-    onChange(pinEntry)
+export const PinToken: React.FC<PinProps> = ({ onChange, disabled = false, isPassword = false }) => {
+  const inputRefs = useRef<HTMLInputElement[]>([])
+  const [error, setError] = useState(false)
+
+  console.log(inputRefs.current)
+
+  const changePinTokenFocus = (pinIndex: number) => {
+    if (pinIndex === undefined) {
+      inputRefs.current[0].focus()
+    }
+    inputRefs.current[pinIndex].focus()
+  }
+
+  const handleChangePinToken = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
+    const value = event.target.value
+    const pinNumber = Number(value.trim())
+
+    if (isNaN(pinNumber)) {
+      setError(true)
+      return
+    }
+    setError(false)
+    changePinTokenFocus(index + 1)
+  }
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>, index: number) => {
+    const key = event.nativeEvent.code
+
+    if (key !== 'Backspace') {
+      return
+    }
+
+    changePinTokenFocus(index - 1)
   }
 
   return (
-    <PinGrid onPinChange={onPinChanged} isDisabled={disabled} isPassword={password}/>
+    <Styled.Container data-testid='container'>
+      {Array.from({ length: isPassword ? 4 : 6 }, (_, index) => (
+        <Styled.PinBox
+          maxLength={1}
+          key={index}
+          type={isPassword ? 'password' : 'text'}
+          ref={item => {
+            if (item) {
+              inputRefs.current[index] = item
+            }
+          }}
+          isError={error}
+          onChange={value => {
+            handleChangePinToken(value, index)
+          }}
+          //onKeyDown={value => handleChangePinToken(value, index)}
+        />
+      ))}
+    </Styled.Container>
   )
 }

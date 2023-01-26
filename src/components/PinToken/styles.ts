@@ -9,7 +9,7 @@ export const Container = styled.div`
   gap: ${({ theme }) => theme.sizes['16px']};
 `
 
-export const PinBox = styled.input<{ isDisabled: boolean, isError: any }>`
+export const PinBox = styled.input<{ isDisabled?: boolean, isError?: any }>`
   width: ${({ theme }) => theme.sizes['44px']};
   height: ${({ theme }) => theme.sizes['44px']};
 
