@@ -3,6 +3,7 @@ import * as Styled from './styles'
 import { Typography } from '../Typography'
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
+import { Validator } from '../../_utils/validator'
 
 export interface TagButtonListProps {
   label: string
@@ -25,19 +26,21 @@ export interface TagProps {
 }
 
 export const Tag = ({ tagButtonList }: TagProps) => {
+  const [disable, setDisable] = useState(true)
   const [textValue, setTextValue] = useState<string>()
   const [tagsList, setTagsList] = useState(tagButtonList)
 
   const handleChange = (event: string) => {
     setTextValue(event)
+    {
+      event !== '' && !Validator.validation('tag', event) ? setDisable(false) : setDisable(true)
+    }
   }
 
   const addTag = () => {
     setTextValue('')
 
-    if (!tagsList.find(item => item.label === textValue) && textValue) {
-      tagsList.push({ label: textValue! })
-    }
+    if (!tagsList.find(item => item.label === textValue) && textValue) tagsList.push({ label: textValue })
   }
 
   const removeTag = tag => {
@@ -65,7 +68,7 @@ export const Tag = ({ tagButtonList }: TagProps) => {
             onchange={handleChange}
           />
         </Styled.TagInput>
-        <Button onClick={addTag} disabled={false} size={'small'} type={'secondary'} data-testid='tag-buttonAdd'>
+        <Button onClick={addTag} disabled={disable} size={'small'} type={'secondary'} data-testid='tag-buttonAdd'>
           Adicionar
         </Button>
       </Styled.TagContent>

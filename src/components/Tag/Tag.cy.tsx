@@ -11,11 +11,12 @@ describe('Tag', () => {
   const subtitle = 'Insira marcações para identificar seus gastos. Use nossa sugestão ou personalise as tags.'
   const placeholder = 'Digite uma tag'
   const textFaker = faker.lorem.word()
+  const numberFaker = faker.datatype.number()
 
   beforeEach(() => {
     cy.wait(500)
     mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
         <Tag tagButtonList={tagButtonList} />
       </ThemeDSProvider>
@@ -53,8 +54,8 @@ describe('Tag', () => {
       .and('have.css', 'gap', '4px')
   })
 
-  it('Deve verificar se o botão adicionar insere tag caso o input esteja vazio', () => {
-    cy.get('[data-testid="tag-content"] > .sc-bBABsx').click()
+  it('Deve bloquear o botão caso o usuários digite números ou simbolos', () => {
+    cy.get('[data-testid="input"]').type(numberFaker.toString())
     cy.get('[data-testid="tag-component"]').should('not.be.visible')
   })
 
