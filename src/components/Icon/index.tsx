@@ -67,6 +67,7 @@ import { EyeClose } from './icons/EyeClose'
 import { EyeOpen } from './icons/EyeOpen'
 import { Checked } from './icons/Checked'
 import { Search } from './icons/Search'
+import { Keys } from './icons/Keys'
 
 export interface IconsProps {
   /**
@@ -112,6 +113,7 @@ export interface IconsProps {
     | 'favoriteRemove'
     | 'filter'
     | 'home'
+    | 'keys'
     | 'link'
     | 'money'
     | 'moneyln'
@@ -358,6 +360,9 @@ export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) =>
 
     case 'search':
       return <Search data-testid='search' width={width} height={height} />
+
+    case 'keys':
+      return <Keys data-testid='keys' width={width} height={height} />
 
     default:
       return <div></div>
