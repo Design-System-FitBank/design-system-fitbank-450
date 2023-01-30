@@ -6,8 +6,8 @@ export const Container = styled.button`
   align-items: center;
   flex-direction: row;
 
-  width: 442px;
-  height: 80px;
+  width: ${({ theme }) => theme.sizes['408px']};
+  height: ${({ theme }) => theme.sizes['80px']};
   padding: ${({ theme }) => theme.sizes['16px']} ${({ theme }) => theme.sizes['16px']};
   gap: ${({ theme }) => theme.sizes['16px']};
 
@@ -15,14 +15,14 @@ export const Container = styled.button`
   border-radius: ${({ theme }) => theme.sizes['16px']};
   box-shadow: 2px 4px 6px ${({ theme }) => theme.colors.shadow};
 
-  background-color: ${({ theme }) => theme.colors.light};
+  background-color: ${({ theme }) => theme.colors.high.pure};
   color: ${({ theme }) => theme.colors.primary};
   overflow: hidden;
 
   cursor: pointer;
 
   :hover {
-    border: 1px solid ${({ theme }) => theme.colors.disabled};
+    border: 1px solid ${({ theme }) => theme.colors.high.darkest};
   }
 
   :active {
@@ -30,9 +30,9 @@ export const Container = styled.button`
   }
 
   :disabled {
-    border: 1px solid ${({ theme }) => theme.colors.disabled};
+    border: 1px solid ${({ theme }) => theme.colors.high.darkest};
     box-shadow: none;
-    color: ${({ theme }) => theme.colors.disabled};
+    color: ${({ theme }) => theme.colors.high.darkest};
     cursor: auto;
   }
 `

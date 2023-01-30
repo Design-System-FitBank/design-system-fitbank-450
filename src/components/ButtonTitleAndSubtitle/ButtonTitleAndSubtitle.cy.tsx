@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker'
 import 'cypress-real-events/support'
 
 import { ButtonTitleAndSubtitle } from '.'
-import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
+import { GlobalStyles, ThemeDSProvider } from '../../theme'
 
 describe('Button Default', () => {
   const icon = 'userBank'
@@ -12,7 +12,7 @@ describe('Button Default', () => {
   beforeEach(() => {
     cy.wait(100)
     cy.mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
         <ButtonTitleAndSubtitle
           title={textFaker}
@@ -103,7 +103,7 @@ describe('Button Default', () => {
       .and('have.css', 'justify-content', 'flex-start')
       .and('have.css', 'align-items', 'center')
       .and('have.css', 'flex-direction', 'row')
-      .and('have.css', 'width', '442px')
+      .and('have.css', 'width', '408px')
       .and('have.css', 'height', '80px')
       .and('have.css', 'padding', '16px')
       .and('have.css', 'gap', '16px')
@@ -111,7 +111,7 @@ describe('Button Default', () => {
       .and('have.css', 'border-radius', '16px')
       .and('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 4px 6px 0px')
       .and('have.css', 'background-color', 'rgb(255, 255, 255)')
-      .and('have.css', 'color', 'rgb(50, 55, 81)')
+      .and('have.css', 'color', 'rgb(0, 0, 0)')
       .and('have.css', 'overflow', 'hidden')
       .and('have.css', 'cursor', 'pointer')
     cy.get('[data-testid="button"]').click()
@@ -122,7 +122,7 @@ describe('Button Default', () => {
       const title = faker.lorem.word()
       const subtitle = faker.lorem.word()
       cy.mount(
-        <ThemeDSProvider theme={Theme}>
+        <ThemeDSProvider>
           <GlobalStyles />
           <ButtonTitleAndSubtitle
             title={title}
@@ -139,7 +139,7 @@ describe('Button Default', () => {
     names.forEach(item => {
       it(`Deve renderizar o botão com o ícone ${item} quando passar name igual ${item}`, () => {
         cy.mount(
-          <ThemeDSProvider theme={Theme}>
+          <ThemeDSProvider>
             <GlobalStyles />
             <ButtonTitleAndSubtitle
               title={textFaker}

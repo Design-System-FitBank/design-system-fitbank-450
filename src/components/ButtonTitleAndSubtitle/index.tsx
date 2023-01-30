@@ -3,7 +3,7 @@ import React from 'react'
 import { Icon, IconsProps } from '../Icon'
 import * as Styled from './styles'
 
-interface ButtonTitleAndSubtitleProps {
+export interface ButtonTitleAndSubtitleProps {
   /**
    * icone do botao
    */

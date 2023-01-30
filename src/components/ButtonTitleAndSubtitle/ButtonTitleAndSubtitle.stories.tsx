@@ -11,9 +11,35 @@ export default {
 const Template: ComponentStory<typeof ButtonTitleAndSubtitle> = args => <ButtonTitleAndSubtitle {...args} />
 
 export const Default = Template.bind({})
+
+export const ButtonDisabled = Template.bind({})
+
+export const OnlyTitle = Template.bind({})
+
+export const TitleAndSubtitleEmpty = Template.bind({})
+
 Default.args = {
   icon: 'userBank',
   title: 'titulo',
   subtitle: 'subtitulo',
+  onClick: () => {}
+}
+
+ButtonDisabled.args = {
+  icon: 'adress',
+  title: 'Desabilitado',
+  subtitle: 'subtitulo',
+  disabled: true,
+  onClick: () => {}
+}
+
+OnlyTitle.args = {
+  icon: 'adress',
+  title: 'Desabilitado',
+  onClick: () => {}
+}
+
+TitleAndSubtitleEmpty.args = {
+  icon: 'adress',
   onClick: () => {}
 }
