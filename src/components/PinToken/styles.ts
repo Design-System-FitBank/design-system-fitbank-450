@@ -1,5 +1,10 @@
 import styled from 'styled-components'
 
+interface PinBoxProps {
+  isDisabled?: boolean
+  isError?: any
+}
+
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -9,7 +14,7 @@ export const Container = styled.div`
   gap: ${({ theme }) => theme.sizes['16px']};
 `
 
-export const PinBox = styled.input<{ isDisabled?: boolean, isError?: any }>`
+export const PinBox = styled.input<PinBoxProps>`
   width: ${({ theme }) => theme.sizes['44px']};
   height: ${({ theme }) => theme.sizes['44px']};
 
@@ -17,7 +22,7 @@ export const PinBox = styled.input<{ isDisabled?: boolean, isError?: any }>`
 
   outline: none;
 
-  border: 1px solid ${({ isError, theme }) => isError ? theme.colors.error.pure : theme.colors.high.darkest};
+  border: 1px solid ${({ isError, theme }) => (isError ? theme.colors.error.pure : theme.colors.high.darkest)};
   border-radius: ${({ theme }) => theme.sizes['6px']};
 
   text-align: center;

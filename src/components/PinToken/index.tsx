@@ -6,7 +6,7 @@ export interface PinProps {
   /**
    * Função sem retorno que será chamada ao digitar o pin
    */
-  onPinChange: (pinToken: number[] | undefined, index: number) => void
+  onPinChange: (pinToken: number[]) => void
   /**
    * Propriedades boolean que transforma o token em Disable
    */
@@ -22,7 +22,7 @@ export const PinToken: React.FC<PinProps> = ({ onPinChange, disabled = false, is
   const [pin, setPin] = useState<number[]>([])
   const [error, setError] = useState(false)
 
-  // console.log(pin)
+  console.log('pin: ' + pin)
 
   const changePinTokenFocus = (pinIndex: number) => {
     const ref = inputRefs.current[pinIndex]
@@ -32,18 +32,22 @@ export const PinToken: React.FC<PinProps> = ({ onPinChange, disabled = false, is
     }
   }
 
-  const handleChangePinToken = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
+  const handleChangePinToken = (event: any, index: number) => {
     const value = event.target.value
     const pinNumber = Number(value.trim())
 
-    if (isNaN(pinNumber)) {
+    if (isNaN(pinNumber) || value === ' ') {
       setError(true)
       return
     }
 
+    setPin([...pin, pinNumber])
     setError(false)
     changePinTokenFocus(index + 1)
-    setPin([...pin!, pinNumber])
+
+    if (pin.length === 5) {
+      onPinChange(pin)
+    }
   }
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>, index: number) => {
@@ -53,10 +57,11 @@ export const PinToken: React.FC<PinProps> = ({ onPinChange, disabled = false, is
       return
     }
 
-    console.log(index)
-
-    setPin(pin?.filter((_, pinIndex) => pinIndex !== index))
-    //changePinTokenFocus(index - 1)
+    if (pin[index] === undefined) {
+      changePinTokenFocus(index - 1)
+    } else {
+      setPin(pin?.filter((_, pinIndex) => pinIndex !== index))
+    }
   }
 
   return (
@@ -76,6 +81,7 @@ export const PinToken: React.FC<PinProps> = ({ onPinChange, disabled = false, is
             handleChangePinToken(value, index)
           }}
           onKeyDown={value => handleKeyDown(value, index)}
+          disabled={disabled}
         />
       ))}
     </Styled.Container>
