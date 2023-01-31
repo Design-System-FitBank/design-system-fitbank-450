@@ -6,7 +6,7 @@ export interface PinProps {
   /**
    * Função sem retorno que será chamada ao digitar o pin
    */
-  onChange: (pinToken: number[]) => void
+  onPinChange: (pinToken: number[] | undefined, index: number) => void
   /**
    * Propriedades boolean que transforma o token em Disable
    */
@@ -17,17 +17,19 @@ export interface PinProps {
   isPassword?: boolean
 }
 
-export const PinToken: React.FC<PinProps> = ({ onChange, disabled = false, isPassword = false }) => {
+export const PinToken: React.FC<PinProps> = ({ onPinChange, disabled = false, isPassword = false }) => {
   const inputRefs = useRef<HTMLInputElement[]>([])
+  const [pin, setPin] = useState<number[]>([])
   const [error, setError] = useState(false)
 
-  console.log(inputRefs.current)
+  // console.log(pin)
 
   const changePinTokenFocus = (pinIndex: number) => {
-    if (pinIndex === undefined) {
-      inputRefs.current[0].focus()
+    const ref = inputRefs.current[pinIndex]
+
+    if (ref) {
+      ref.focus()
     }
-    inputRefs.current[pinIndex].focus()
   }
 
   const handleChangePinToken = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
@@ -38,8 +40,10 @@ export const PinToken: React.FC<PinProps> = ({ onChange, disabled = false, isPas
       setError(true)
       return
     }
+
     setError(false)
     changePinTokenFocus(index + 1)
+    setPin([...pin!, pinNumber])
   }
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>, index: number) => {
@@ -49,7 +53,10 @@ export const PinToken: React.FC<PinProps> = ({ onChange, disabled = false, isPas
       return
     }
 
-    changePinTokenFocus(index - 1)
+    console.log(index)
+
+    setPin(pin?.filter((_, pinIndex) => pinIndex !== index))
+    //changePinTokenFocus(index - 1)
   }
 
   return (
@@ -68,7 +75,7 @@ export const PinToken: React.FC<PinProps> = ({ onChange, disabled = false, isPas
           onChange={value => {
             handleChangePinToken(value, index)
           }}
-          //onKeyDown={value => handleChangePinToken(value, index)}
+          onKeyDown={value => handleKeyDown(value, index)}
         />
       ))}
     </Styled.Container>
