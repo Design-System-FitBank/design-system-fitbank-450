@@ -33,7 +33,7 @@ const transactionsDebit: TransactionProps = {
 
 beforeEach(() => {
   cy.mount(
-    <ThemeDSProvider theme={Theme}>
+    <ThemeDSProvider>
       <GlobalStyles />
       <Transaction transactions={transactions.transactions} />
     </ThemeDSProvider>
@@ -45,7 +45,7 @@ afterEach(() => cy.wait(100))
 it('Deve mostrar o componente Transaction com Crédito', () => {
   cy.viewport(700, 700)
   mount(
-    <ThemeDSProvider theme={Theme}>
+    <ThemeDSProvider>
       <GlobalStyles />
       <Transaction transactions={transactions.transactions} />
     </ThemeDSProvider>
@@ -78,7 +78,7 @@ it('Deve mostrar o componente Transaction com Crédito', () => {
 it('Deve mostrar o componente Transaction com Crédito com valor gande', () => {
   cy.viewport(700, 700)
   mount(
-    <ThemeDSProvider theme={Theme}>
+    <ThemeDSProvider>
       <GlobalStyles />
       <Transaction transactions={transactionsBigValue.transactions} />
     </ThemeDSProvider>
@@ -111,7 +111,7 @@ it('Deve mostrar o componente Transaction com Crédito com valor gande', () => {
 it('Deve mostrar o componente Transaction com Débito', () => {
   cy.viewport(700, 700)
   mount(
-    <ThemeDSProvider theme={Theme}>
+    <ThemeDSProvider>
       <GlobalStyles />
       <Transaction transactions={transactionsDebit.transactions} />
     </ThemeDSProvider>

@@ -24,7 +24,7 @@ const transactionDay: DayTransactionsProps = {
 describe('Button Default', () => {
   beforeEach(() => {
     cy.mount(
-      <ThemeDSProvider theme={Theme}>
+      <ThemeDSProvider>
         <GlobalStyles />
         <TransactionDay dayTransactions={transactionDay.dayTransactions} />
       </ThemeDSProvider>
