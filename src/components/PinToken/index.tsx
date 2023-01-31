@@ -45,7 +45,9 @@ export const PinToken: React.FC<PinProps> = ({ onPinChange, disabled = false, is
     setError(false)
     changePinTokenFocus(index + 1)
 
-    if (pin.length === 5) {
+    if (pin.length === 6) {
+      onPinChange(pin)
+    } else if (pin.length === 4) {
       onPinChange(pin)
     }
   }
