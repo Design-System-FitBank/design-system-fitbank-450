@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
-import { PinToken } from '.'
+import { PinToken } from './'
 import React from 'react'
 
 export default {
@@ -14,7 +14,6 @@ const Template: ComponentStory<typeof PinToken> = args => <PinToken {...args} />
 export const PinTokenDefault = Template.bind({})
 PinTokenDefault.args = {
   onPinChange: () => {},
-  disabled: false
 }
 
 export const DisabledPinToken = Template.bind({})

@@ -1,18 +1,18 @@
-import React from 'react'
-
-import { mount } from 'cypress/react18'
-import { faker } from '@faker-js/faker'
 import 'cypress-real-events/support'
 
 import { GlobalStyles, ThemeDSProvider } from '../../theme'
-import { PinToken } from '.'
+
+import { PinToken } from './'
+import React from 'react'
+import { faker } from '@faker-js/faker'
+import { mount } from 'cypress/react18'
 
 describe('PinToken', () => {
   beforeEach(() => {
     mount(
       <ThemeDSProvider>
         <GlobalStyles />
-        <PinToken onChange={cy.stub().as('onPinChange')} />
+        <PinToken onPinChange={cy.stub().as('onPinChange')} />
       </ThemeDSProvider>
     )
     cy.wait(500)
@@ -51,7 +51,7 @@ describe('PinToken', () => {
       .and('have.css', 'line-height', '24px')
   })
 
-  it('Deve conter o estado Hover com uma aparencia da elevação do componente', () => {
+  it('Deve conter o estado Hover com uma aparência da elevação do componente', () => {
     cy.get('[data-testid="pinToken-2"]').realHover()
     cy.get('[data-testid="pinToken-2"]').should('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 2px 4px 0px')
   })
@@ -82,7 +82,7 @@ describe('PinToken', () => {
     mount(
       <ThemeDSProvider>
         <GlobalStyles />
-        <PinToken onChange={cy.stub().as('onChange')} disabled />
+        <PinToken onPinChange={cy.stub().as('onChange')} disabled />
       </ThemeDSProvider>
     )
     cy.get('[data-testid = "pinToken-0"]')
@@ -95,14 +95,7 @@ describe('PinToken', () => {
     cy.get('[data-testid = "pinToken-1"]').should('have.focus').and('have.css', 'border', '1px solid rgb(50, 56, 79)')
   })
 
-  const pinValues = [
-    faker.datatype.number({ min: 0, max: 9 }),
-    faker.datatype.number({ min: 0, max: 9 }),
-    faker.datatype.number({ min: 0, max: 9 }),
-    faker.datatype.number({ min: 0, max: 9 }),
-    faker.datatype.number({ min: 0, max: 9 }),
-    faker.datatype.number({ min: 0, max: 9 })
-  ]
+  const pinValues = Array(6).fill(faker.datatype.number({ max: 9 }))
 
   it('Deve a chamar a função onPinChange', () => {
     pinValues.forEach((pin, index) => {
@@ -115,7 +108,7 @@ describe('PinToken', () => {
     mount(
       <ThemeDSProvider>
         <GlobalStyles />
-        <PinToken onChange={cy.stub().as('onChange')} password />
+        <PinToken onPinChange={cy.stub().as('onChange')} isPassword />
       </ThemeDSProvider>
     )
     cy.get('[data-testid = "container"]')

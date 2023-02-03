@@ -1,12 +1,14 @@
-import * as Styled from './styles'
+import * as Styled from './components/PinGrid/styles'
 
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
+
+import { PinGrid } from './components/PinGrid'
 
 export interface PinProps {
   /**
    * Função sem retorno que será chamada ao digitar o pin
    */
-  onPinChange: (pinToken: number[]) => void
+  onPinChange: (pinToken: (number | undefined)[]) => void
   /**
    * Propriedades boolean que transforma o token em Disable
    */
@@ -18,74 +20,19 @@ export interface PinProps {
 }
 
 export const PinToken: React.FC<PinProps> = ({ onPinChange, disabled = false, isPassword = false }) => {
-  const inputRefs = useRef<HTMLInputElement[]>([])
-  const [pin, setPin] = useState<number[]>([])
-  const [error, setError] = useState(false)
+  const [pin, setPin] = useState<(number | undefined)[]>([])
 
-  console.log('pin: ' + pin)
-
-  const changePinTokenFocus = (pinIndex: number) => {
-    const ref = inputRefs.current[pinIndex]
-
-    if (ref) {
-      ref.focus()
-    }
+  const onPinChanged = (pinEntry: number | undefined, index: number) => {
+    const newPin = [...pin]
+    newPin[index] = pinEntry
+    setPin(newPin)
   }
 
-  const handleChangePinToken = (event: any, index: number) => {
-    const value = event.target.value
-    const pinNumber = Number(value.trim())
-
-    if (isNaN(pinNumber) || value === ' ') {
-      setError(true)
-      return
-    }
-
-    setPin([...pin, pinNumber])
-    setError(false)
-    changePinTokenFocus(index + 1)
-
-    if (pin.length === 6) {
-      onPinChange(pin)
-    } else if (pin.length === 4) {
-      onPinChange(pin)
-    }
+  if (pin.length === 6) {
+    onPinChange(pin)
+  } else if (pin.length === 4) {
+    onPinChange(pin)
   }
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>, index: number) => {
-    const key = event.nativeEvent.code
-
-    if (key !== 'Backspace') {
-      return
-    }
-
-    if (pin[index] === undefined) {
-      changePinTokenFocus(index - 1)
-    } else {
-      setPin(pin?.filter((_, pinIndex) => pinIndex !== index))
-    }
-  }
-
-  return (
-    <Styled.Container data-testid='container'>
-      {Array.from({ length: isPassword ? 4 : 6 }, (_, index) => (
-        <Styled.PinBox
-          maxLength={1}
-          key={index}
-          type={isPassword ? 'password' : 'text'}
-          ref={item => {
-            if (item) {
-              inputRefs.current[index] = item
-            }
-          }}
-          isError={error}
-          onChange={value => {
-            handleChangePinToken(value, index)
-          }}
-          onKeyDown={value => handleKeyDown(value, index)}
-          disabled={disabled}
-        />
-      ))}
-    </Styled.Container>
-  )
+  return <PinGrid pin={pin} onPinChange={onPinChanged} isDisabled={disabled} isPassword={isPassword} />
 }
