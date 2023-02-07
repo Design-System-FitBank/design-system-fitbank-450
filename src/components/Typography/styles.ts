@@ -36,67 +36,67 @@ export const H6 = styled.h6`
   font-weight: ${({ theme }) => theme.font.weight.bold};
 `
 
-export const Subtitle = styled.sub`
+export const Subtitle = styled.span`
   font-size: ${({ theme }) => theme.sizes['16px']};
   line-height: auto;
   font-weight: ${({ theme }) => theme.font.weight.regular};
 `
 
-export const Body = styled.body`
+export const Body = styled.p`
   font-size: ${({ theme }) => theme.sizes['16px']};
   line-height: ${({ theme }) => theme.sizes['24px']};
   font-weight: ${({ theme }) => theme.font.weight.regular};
 `
 
-export const BodyBold = styled.body`
+export const BodyBold = styled.p`
   font-size: ${({ theme }) => theme.sizes['16px']};
   line-height: ${({ theme }) => theme.sizes['24px']};
   font-weight: ${({ theme }) => theme.font.weight.bold};
 `
 
-export const BodySmall = styled.body`
+export const BodySmall = styled.p`
   font-size: ${({ theme }) => theme.sizes['12px']};
   line-height: ${({ theme }) => theme.sizes['20px']};
   font-weight: ${({ theme }) => theme.font.weight.regular};
 `
 
-export const BodySmallBold = styled.body`
+export const BodySmallBold = styled.p`
   font-size: ${({ theme }) => theme.sizes['12px']};
   line-height: ${({ theme }) => theme.sizes['20px']};
   font-weight: ${({ theme }) => theme.font.weight.bold};
 `
 
-export const BodyMedium = styled.body`
+export const BodyMedium = styled.p`
   font-size: ${({ theme }) => theme.sizes['16px']};
   line-height: ${({ theme }) => theme.sizes['24px']};
   font-weight: ${({ theme }) => theme.font.weight.regular};
 `
 
-export const BodyMediumBold = styled.body`
+export const BodyMediumBold = styled.p`
   font-size: ${({ theme }) => theme.sizes['16px']};
   line-height: ${({ theme }) => theme.sizes['24px']};
   font-weight: ${({ theme }) => theme.font.weight.bold};
 `
 
-export const BodyLarge = styled.body`
+export const BodyLarge = styled.p`
   font-size: ${({ theme }) => theme.sizes['20px']};
   line-height: ${({ theme }) => theme.sizes['28px']};
   font-weight: ${({ theme }) => theme.font.weight.regular};
 `
 
-export const BodyLargeBold = styled.body`
+export const BodyLargeBold = styled.p`
   font-size: ${({ theme }) => theme.sizes['20px']};
   line-height: ${({ theme }) => theme.sizes['28px']};
   font-weight: ${({ theme }) => theme.font.weight.bold};
 `
 
-export const Caption = styled.caption`
+export const Caption = styled.span`
   font-size: ${({ theme }) => theme.sizes['12px']};
   line-height: ${({ theme }) => theme.sizes['16px']};
   font-weight: ${({ theme }) => theme.font.weight.regular};
 `
 
-export const CaptionBold = styled.caption`
+export const CaptionBold = styled.span`
   font-size: ${({ theme }) => theme.sizes['12px']};
   line-height: ${({ theme }) => theme.sizes['16px']};
   font-weight: ${({ theme }) => theme.font.weight.bold};

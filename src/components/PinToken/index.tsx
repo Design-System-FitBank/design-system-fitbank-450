@@ -1,12 +1,14 @@
-import { isPlainObject } from 'cypress/types/lodash'
-import React from 'react'
-import { PinGrid } from './PinGrid'
+import * as Styled from './components/PinGrid/styles'
+
+import React, { useState } from 'react'
+
+import { PinGrid } from './components/PinGrid'
 
 export interface PinProps {
   /**
    * Função sem retorno que será chamada ao digitar o pin
    */
-  onChange: (pinToken: number[]) => void
+  onPinChange: (pinToken: (number | undefined)[]) => void
   /**
    * Propriedades boolean que transforma o token em Disable
    */
@@ -14,15 +16,23 @@ export interface PinProps {
   /**
    * Propriedades boolean que alterna de token para password
    */
-  password?: boolean
+  isPassword?: boolean
 }
 
-export const PinToken: React.FC<PinProps> = ({ onChange, disabled = false, password = false }) => {
-  const onPinChanged = (pinEntry: number[]) => {
-    onChange(pinEntry)
+export const PinToken: React.FC<PinProps> = ({ onPinChange, disabled = false, isPassword = false }) => {
+  const [pin, setPin] = useState<(number | undefined)[]>([])
+
+  const onPinChanged = (pinEntry: number | undefined, index: number) => {
+    const newPin = [...pin]
+    newPin[index] = pinEntry
+    setPin(newPin)
   }
 
-  return (
-    <PinGrid onPinChange={onPinChanged} isDisabled={disabled} isPassword={password}/>
-  )
+  if (pin.length === 6) {
+    onPinChange(pin)
+  } else if (pin.length === 4) {
+    onPinChange(pin)
+  }
+
+  return <PinGrid pin={pin} onPinChange={onPinChanged} isDisabled={disabled} isPassword={isPassword} />
 }
