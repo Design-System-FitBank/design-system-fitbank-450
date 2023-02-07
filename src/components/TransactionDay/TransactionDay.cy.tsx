@@ -1,6 +1,5 @@
 import React from 'react'
-import { ThemeDSProvider, Theme } from 'design-system-fitbank'
-import { GlobalStyles } from 'design-system-fitbank/dist/src/theme'
+import { GlobalStyles, ThemeDSProvider } from '../../theme'
 import { DayTransactionsProps, TransactionDay } from '.'
 
 const transactionDay: DayTransactionsProps = {

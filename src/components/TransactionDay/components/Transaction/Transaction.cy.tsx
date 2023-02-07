@@ -1,8 +1,7 @@
 import React from 'react'
 import { Transaction, TransactionProps } from '.'
 import { mount } from 'cypress/react18'
-import { ThemeDSProvider, Theme } from 'design-system-fitbank'
-import { GlobalStyles } from 'design-system-fitbank/dist/src/theme'
+import { GlobalStyles, ThemeDSProvider } from '../../../../theme'
 
 const transactions: TransactionProps = {
   transactions: {
