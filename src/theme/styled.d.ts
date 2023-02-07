@@ -4,77 +4,77 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     colors: {
       primary: {
-        lightest: string,
-        light: string,
-        pure: string,
-        dark: string,
-        darkest: string,
-      },
+        lightest: string
+        light: string
+        pure: string
+        dark: string
+        darkest: string
+      }
       secondary: {
-        lightest: string,
-        light: string,
-        pure: string,
-        dark: string,
-        darkest: string,
-      },
+        lightest: string
+        light: string
+        pure: string
+        dark: string
+        darkest: string
+      }
       tertiary: {
-        lightest: string,
-        light: string,
-        pure: string,
-        dark: string,
-        darkest: string,
-      },
+        lightest: string
+        light: string
+        pure: string
+        dark: string
+        darkest: string
+      }
       success: {
-        lightest: string,
-        light: string,
-        pure: string,
-        dark: string,
-        darkest: string,
-      },
+        lightest: string
+        light: string
+        pure: string
+        dark: string
+        darkest: string
+      }
       error: {
-        lightest: string,
-        light: string,
-        pure: string,
-        dark: string,
-        darkest: string,
-      },
+        lightest: string
+        light: string
+        pure: string
+        dark: string
+        darkest: string
+      }
       alert: {
-        lightest: string,
-        light: string,
-        pure: string,
-        dark: string,
-        darkest: string,
-      },
+        lightest: string
+        light: string
+        pure: string
+        dark: string
+        darkest: string
+      }
       info: {
-        lightest: string,
-        light: string,
-        pure: string,
-        dark: string,
-        darkest: string,
-      },
+        lightest: string
+        light: string
+        pure: string
+        dark: string
+        darkest: string
+      }
       high: {
-        pure: string,
-        light: string,
-        medium: string,
-        dark: string,
-        darkest: string,
-      },
+        pure: string
+        light: string
+        medium: string
+        dark: string
+        darkest: string
+      }
       low: {
-        pure: string,
-        dark: string,
-        medium: string,
-        light: string,
-        lightest: string,
-      },
+        pure: string
+        dark: string
+        medium: string
+        light: string
+        lightest: string
+      }
       shadow: string
-    },
+    }
     font: {
       weight: {
-        tiny: number,
-        regular: number,
-        bold: number,
-      },
-    },
+        tiny: number
+        regular: number
+        bold: number
+      }
+    }
     sizes: {
       "2px": string,
       "4px": string,
@@ -123,5 +123,4 @@ declare module 'styled-components' {
       "464px": string,
       "656px": string,
     },
-  }
 }

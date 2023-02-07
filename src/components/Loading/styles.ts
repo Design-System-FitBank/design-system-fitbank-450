@@ -18,10 +18,10 @@ export const Container = styled.div`
 
 export const Loader = styled.div`
   animation: ${isRotating} 0.8s infinite;
-  width: ${({ theme }) => theme.sizes['50px']};
-  height: ${({ theme }) => theme.sizes['50px']};
-  border: ${({ theme }) => theme.sizes['3px']} solid ${({ theme }) => theme.colors.disabled};
-  border-top-color: ${({ theme }) => theme.colors.primary};
-  border-right-color: ${({ theme }) => theme.colors.primary};
+  width: ${({ theme }) => theme.sizes['52px']};
+  height: ${({ theme }) => theme.sizes['52px']};
+  border: ${({ theme }) => theme.sizes['4px']} solid ${({ theme }) => theme.colors.high.darkest};
+  border-top-color: ${({ theme }) => theme.colors.primary.pure};
+  border-right-color: ${({ theme }) => theme.colors.primary.pure};
   border-radius: 50%;
 `

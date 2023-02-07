@@ -1,67 +1,67 @@
 export const Theme = {
   colors: {
     primary: {
-      lightest: "#BBBCC5",
-      light: "#767A8B",
-      pure: "#32384F",
-      dark: "#212536",
-      darkest: "#11121B",
+      lightest: '#BBBCC5',
+      light: '#767A8B',
+      pure: '#32384F',
+      dark: '#212536',
+      darkest: '#11121B'
     },
     secondary: {
-      lightest: "#CAD5E1",
-      light: "#94ACC4",
-      pure: "#5E80A4",
-      dark: "#3F576F",
-      darkest: "#202B37",
+      lightest: '#CAD5E1',
+      light: '#94ACC4',
+      pure: '#5E80A4',
+      dark: '#3F576F',
+      darkest: '#202B37'
     },
     tertiary: {
-      lightest: "#FEF1CD",
-      light: "#FDE49B",
-      pure: "#FCD669",
-      dark: "#A88F46",
-      darkest: "#544723",
+      lightest: '#FEF1CD',
+      light: '#FDE49B',
+      pure: '#FCD669',
+      dark: '#A88F46',
+      darkest: '#544723'
     },
     success: {
-      lightest: "#AEEBCA",
-      light: "#5DD695",
-      pure: "#0CC260",
-      dark: "#088140",
-      darkest: "#044120",
+      lightest: '#AEEBCA',
+      light: '#5DD695',
+      pure: '#0CC260',
+      dark: '#088140',
+      darkest: '#044120'
     },
     error: {
-      lightest: "#F8BFBF",
-      light: "#F17E7E",
-      pure: "#EA3E3E",
-      dark: "#9C2929",
-      darkest: "#4E1515",
+      lightest: '#F8BFBF',
+      light: '#F17E7E',
+      pure: '#EA3E3E',
+      dark: '#9C2929',
+      darkest: '#4E1515'
     },
     alert: {
-      lightest: "#FFE3C2",
-      light: "#FFC684",
-      pure: "#FFAA47",
-      dark: "#AA712F",
-      darkest: "#553918",
+      lightest: '#FFE3C2',
+      light: '#FFC684',
+      pure: '#FFAA47',
+      dark: '#AA712F',
+      darkest: '#553918'
     },
     info: {
-      lightest: "#BED2E7",
-      light: "#7DA5D0",
-      pure: "#3C78B8",
-      dark: "#28507B",
-      darkest: "#14283D",
+      lightest: '#BED2E7',
+      light: '#7DA5D0',
+      pure: '#3C78B8',
+      dark: '#28507B',
+      darkest: '#14283D'
     },
     high: {
-      pure: "#FFFFFF",
-      light: "#F9F9F9",
-      medium: "#E8E8E8",
-      dark: "#CDCDCD",
-      darkest: "#AEAEAE",
+      pure: '#FFFFFF',
+      light: '#F9F9F9',
+      medium: '#E8E8E8',
+      dark: '#CDCDCD',
+      darkest: '#AEAEAE'
     },
     low: {
-      pure: "#151515",
-      dark: "#292929",
-      medium: "#5E5E5E",
-      light: "#BBBCC5",
-      lightest: "#7E7E7E",
+      pure: '#151515',
+      dark: '#292929',
+      medium: '#5E5E5E',
+      light: '#BBBCC5',
+      lightest: '#7E7E7E'
     },
     shadow: '#0000001A'
   },
@@ -69,8 +69,8 @@ export const Theme = {
     weight: {
       tiny: 400,
       regular: 500,
-      bold: 700,
-    },
+      bold: 700
+    }
   },
   sizes: {
     "2px": "0.125rem",
