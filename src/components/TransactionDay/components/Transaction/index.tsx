@@ -1,11 +1,11 @@
 import React from 'react'
-import { Typography } from 'design-system-fitbank/dist/src/components/Typography'
-import { Icon } from 'design-system-fitbank/dist/src/components/Icon'
-import { Button } from 'design-system-fitbank/dist/src/components/Button'
-import { OperationType } from 'components/TransactionDay/OperationType'
+import { OperationType } from '../../OperationType'
 
 import * as Styled from './style'
 import { Mask } from '../../../../_utils/mask'
+import { Icon } from '../../../Icon'
+import { Typography } from '../../../Typography'
+import { Button } from '../../..//Button'
 
 export interface TransactionProps {
   /**

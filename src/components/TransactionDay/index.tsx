@@ -1,6 +1,6 @@
-import { Typography } from 'design-system-fitbank/dist/src/components/Typography'
 import React from 'react'
 import * as Styled from './style'
+import { Typography } from '../Typography'
 import { Transaction } from './components/Transaction'
 
 export interface DayTransactionsProps {
