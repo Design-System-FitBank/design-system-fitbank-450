@@ -34,6 +34,7 @@ describe('Icon component', () => {
     'doc',
     'edit',
     'email',
+    'emptyList',
     'enterprise',
     'eyeClose',
     'eyeOpen',

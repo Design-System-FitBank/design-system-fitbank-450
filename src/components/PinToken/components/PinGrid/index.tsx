@@ -1,8 +1,9 @@
 import { Container, PinBox } from './styles'
 import React, { useRef, useState } from 'react'
+import { values } from 'cypress/types/lodash'
 
 export interface PinTokenProps {
-  onPinChange: (pinEntry: number | undefined, index: number) => void
+  onPinChange: Function
   isDisabled?: boolean
   isPassword?: boolean
   pin: Array<number | undefined>
@@ -14,28 +15,26 @@ export const PinGrid: React.FC<PinTokenProps> = ({ isDisabled = false, isPasswor
 
   const changePinTokenFocus = (index: number) => {
     const ref = inputRefs.current[index]
-
     if (ref) {
       ref.focus()
+      ref.select()
     }
   }
-
   const onChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
-    const value = event.target.value
-    const pinNumber = Number(value.trim())
+    const value = event.currentTarget.value.trim()
 
-    if (isNaN(pinNumber) || value === ' ') {
-      setError(true)
-      return
-    }
-
-    if (pinNumber >= 0 && pinNumber <= 9) {
-      onPinChange(pinNumber, index)
+    if (/^[0-9]$/.test(value)) {
+      onPinChange(Number(value), index)
       setError(false)
 
       if (index < 5) {
         changePinTokenFocus(index + 1)
       }
+    } else if (isNaN(Number(value))) {
+      event.currentTarget.value = ''
+      setError(true)
+    } else {
+      setError(false)
     }
   }
 
@@ -46,10 +45,10 @@ export const PinGrid: React.FC<PinTokenProps> = ({ isDisabled = false, isPasswor
       return
     }
 
-    if (!pin[index]) {
+    onPinChange('', index)
+
+    if ((index > 0 && !pin[index]) || pin[index]?.toString() === '') {
       changePinTokenFocus(index - 1)
-    } else {
-      onPinChange(undefined, index)
     }
   }
 
@@ -58,11 +57,10 @@ export const PinGrid: React.FC<PinTokenProps> = ({ isDisabled = false, isPasswor
       {Array.from({ length: isPassword ? 4 : 6 }, (_, index) => (
         <PinBox
           key={index}
-          maxLength={1}
           isError={error}
           disabled={isDisabled}
           isDisabled={isDisabled}
-          value={pin[index] || ''}
+          value={pin[index]}
           data-testid={`pinToken-${index}`}
           ref={item => {
             if (item) {

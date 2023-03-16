@@ -1,22 +1,22 @@
 import "cypress-real-events/support";
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import { TabProps, Tabs } from "./";
+import { TabProps, Tabs, TabsInfo } from "./";
 import { GlobalStyles, Theme } from "../../theme";
 
 describe("Tabs Default",() => {
-  const tabInfo: TabProps[] = [
+  const tabInfo: TabsInfo= [
     {
       title: "Transferencia PIX", 
       description: "Realiza tranferência via PIX",
       icon: 'keys',
-      onClick: () => { return 1 }
+      onClick: () => { }
     },
     {
       title: "Transferencia TED", 
-      description: "Realiza utilizando dados bancários",
+    description: "Realiza utilizando dados bancários",
       icon: 'ticketPayment',
-      onClick: () => { return 1 }
+      onClick: () => { }
     }
   ]
   const callback = (index: number) => {
@@ -28,7 +28,7 @@ describe("Tabs Default",() => {
   beforeEach(() => {
     cy.wait(100)
     cy.mount(
-      <ThemeProvider theme={Theme}>
+    <ThemeProvider theme={Theme}>
         <GlobalStyles />
         <Tabs tabsInfo={tabInfo} onClickTab={callback}/>
       </ThemeProvider>
@@ -49,13 +49,13 @@ describe("Tabs Default",() => {
 
   it("Devem estar corretos os valores de cada elemento", () => {
     cy.get("[data-testid=data-container]").each(( item, index ) => {
-      expect(item.text() == (`${tabInfo[index].title}${tabInfo[index].description}`))
+      expect(item.text() == (`${tabInfo[index]!.title}${tabInfo[index]!.description}`))
     })
   })
 
   it("Devem retornar o index e selecionar ao clicar na Tab", () => {
     cy.get("[data-testid=tab]").each((item, index) => {
-      cy.wrap(item).click()
+      cy.wrap(item).click().then(() => cy.log(`Tab ${ tabIndex } selecionada`))
       expect(tabIndex == index)
     })
   })

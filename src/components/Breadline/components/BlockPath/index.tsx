@@ -9,9 +9,9 @@ type BlockPathProps = {
 export const BlockPath: React.FC<BlockPathProps> = ({ label }) => {
   return (
     <Styled.Container>     
-      <Typography variant='h4'>/</Typography>
+      <Typography variant='bodyMediumBold'>/</Typography>
       <Styled.ContainerLabel>
-        <Typography variant='h5'>{label}</Typography>
+        <Typography variant='captionBold'>{label}</Typography>
       </Styled.ContainerLabel>
     </Styled.Container>
   )

@@ -12,12 +12,25 @@ const Template: ComponentStory<typeof Input> = args => <Input {...args} />
 
 export const Default = Template.bind({})
 export const Password = Template.bind({})
+export const Unlabeled = Template.bind({})
+export const WithMessage = Template.bind({})
 
 Default.args = {
   title: 'Input Label',
   placeholder: 'Placeholder',
+  type: 'text'
+}
+
+Unlabeled.args = {
+  placeholder: 'placeholder',
+  type: 'text'
+}
+
+WithMessage.args = {
+  title: 'Input Label',
+  placeholder: 'Placeholder',
   type: 'text',
-  disabled: false
+  message: 'custom message'
 }
 
 Password.args = {

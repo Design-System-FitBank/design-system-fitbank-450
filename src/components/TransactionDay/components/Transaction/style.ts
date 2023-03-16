@@ -7,6 +7,10 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   border-bottom: 1px solid ${({ theme }) => theme.colors.high.medium};
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.high.medium};
+    cursor: pointer;
+  }
 `
 export const IconMoney = styled.div<{ isCredit: boolean }>`
   width: ${({ theme }) => theme.sizes['36px']};

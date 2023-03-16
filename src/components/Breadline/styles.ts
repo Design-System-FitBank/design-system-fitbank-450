@@ -9,7 +9,7 @@ export const Container = styled.div`
 `
 export const Home = styled.div`
   cursor: pointer;
-  padding-right: ${({ theme }) => theme.sizes['52px']};
+  padding-right: ${({ theme }) => theme.sizes['20px']};
 `
 
 export const Bloc = styled.div`

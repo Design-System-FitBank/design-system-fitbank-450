@@ -11,6 +11,6 @@ export const ContainerLabel = styled.div`
   display: flex;
   align-items: center;
   color: ${({ theme }) => `${theme.colors.primary.pure}`};
-  padding-right: ${({ theme }) => theme.sizes['52px']};
-  padding-left: ${({ theme }) => theme.sizes['52px']};
+  padding-right: ${({ theme }) => theme.sizes['20px']};
+  padding-left: ${({ theme }) => theme.sizes['20px']};
 `

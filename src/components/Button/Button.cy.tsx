@@ -68,6 +68,7 @@ describe('Button Default', () => {
     )
     cy.get('[data-testeid="button"]')
       .realHover()
+      .wait(300)
       .should('have.css', 'color', 'rgb(252, 214, 105)')
   })
 
@@ -80,6 +81,7 @@ describe('Button Default', () => {
     )
     cy.get('[data-testeid="button"]')
       .realMouseDown()
+      .wait(300)
       .should('have.css', 'color', 'rgb(50, 56, 79)')
       .and('have.css', 'background-color', 'rgb(255, 255, 255)')
       .and('have.css', 'border', '1px solid rgb(252, 214, 105)')
@@ -95,7 +97,7 @@ describe('Button Default', () => {
         </Button>
       </ThemeDSProvider>
     )
-    cy.get('[data-testeid="button"]')
+    cy.get('[data-testeid="button"]').wait(300)
       .should('have.css', 'background-color', 'rgb(255, 255, 255)')
       .and('have.css', 'border', '1px solid rgb(174, 174, 174)')
       .and('have.css', 'color', 'rgb(174, 174, 174)')
@@ -120,6 +122,7 @@ describe('Button Primary', () => {
 
   it('Deve ser o componente Default quando for informado o type primary', () => {
     cy.get('[data-testeid="button"]')
+      .wait(300)
       .should('have.css', 'color', 'rgb(252, 214, 105)')
       .and('have.css', 'background-color', 'rgb(50, 56, 79)')
       .and('have.css', 'border', '1px solid rgb(50, 56, 79)')
@@ -128,11 +131,13 @@ describe('Button Primary', () => {
   it('Deve ser o componente Default quando for informado o type primary e o estado for hover', () => {
     cy.get('[data-testeid="button"]')
       .realHover()
+      .wait(300)
       .should('have.css', 'color', 'rgb(252, 214, 105)')
   })
 
   it('Deve ser o componente Default quando for informado o type primary e o estado for active', () => {
     cy.get('[data-testeid="button"]').realMouseDown()
+      .wait(300)
       .should('have.css', 'color', 'rgb(50, 56, 79)')
       .and('have.css', 'background-color', 'rgb(255, 255, 255)')
       .and('have.css', 'border', '1px solid rgb(252, 214, 105)')
@@ -174,6 +179,7 @@ describe('Button Secondary', () => {
 
   it('Deve ser o componente Secondary quando for informado o type secondary', () => {
     cy.get('[data-testeid="button"]')
+      .wait(300)
       .should('have.css', 'color', 'rgb(50, 56, 79)')
       .and('have.css', 'background-color', 'rgb(255, 255, 255)')
       // .and('have.css', 'border', '1px solid rgb(50, 55, 81)')
@@ -183,12 +189,14 @@ describe('Button Secondary', () => {
   it('Deve ser o componente Secondary quando o estado for hover', () => {
     cy.get('[data-testeid="button"]')
       .realHover()
+      .wait(300)
       .should('have.css', 'border', '1px solid rgba(0, 0, 0, 0)')
       .and('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 4px 6px 0px')
   })
 
   it('Deve ser o componente Secondary quando o estado for active', () => {
     cy.get('[data-testeid="button"]').realMouseDown()
+      .wait(300)
       .should('have.css', 'border', '1px solid rgb(252, 214, 105)')
       .and('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 4px 6px 0px')
   })
@@ -234,6 +242,7 @@ describe('Button Tertiary', () => {
   it('Deve ser o componente Tertiary quando o estado for hover', () => {
     cy.get('[data-testeid="button"]')
       .realHover()
+      .wait(300)
       .should('have.css', 'color', 'rgb(94, 128, 164)')
       .and('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
   })

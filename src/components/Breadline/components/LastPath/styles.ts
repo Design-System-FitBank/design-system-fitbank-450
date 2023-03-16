@@ -8,7 +8,7 @@ export const Container = styled.div`
 export const ContainerLabel = styled.div`
   border: ${({ theme }) => `2px solid ${theme.colors.tertiary.pure}`};
   border-radius: ${({ theme }) => theme.sizes['12px']};
-  padding: ${({ theme }) => theme.sizes['12px']} ${({ theme }) => theme.sizes['64px']};
+  padding: ${({ theme }) => theme.sizes['8px']} ${({ theme }) => theme.sizes['12px']};
   color: ${({ theme }) => `${theme.colors.primary.pure}`};
   background-color: ${({ theme }) => `${theme.colors.high.pure}`};
   margin-left: ${({ theme }) => theme.sizes['8px']};

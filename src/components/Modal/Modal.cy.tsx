@@ -47,13 +47,13 @@ describe('Modal', () => {
     cy.get('[data-testid="box-container"]').should('have.css', 'opacity', '1')
     cy.get('[data-testid="backdrop-modal"]')
       .should('have.css', 'position', 'absolute')
-      .and('have.css', 'background-color', 'rgb(1, 7, 22)')
+      .and('have.css', 'background-color', 'rgb(21, 21, 21)')
       .and('have.css', 'opacity', '0.2')
       .and('have.css', 'z-index', '400')
     cy.get('[data-testid="container-modal"]')
       .should('have.css', 'opacity', '1')
       .and('have.css', 'display', 'flex')
-      .and('have.css', 'position', 'relative')
+      .and('have.css', 'position', 'fixed')
       .and('have.css', 'justify-content', 'space-between')
       .and('have.css', 'background-color', 'rgb(255, 255, 255)')
       .and('have.css', 'border-radius', '16px')
@@ -69,7 +69,7 @@ describe('Modal', () => {
 
   it('Deve mudar a opacidade ao clicar no botão em cancelar', () => {
     cy.viewport(1280, 768)
-    cy.get('[data-testid="modal-header"] > .sc-pyfCe').click()
+    cy.get('[data-testid="modal-header"] > .sc-cyZbSi').click()
     cy.get('[data-testid="box-container"]').should('have.css', 'opacity', '0')
   })
 
@@ -83,7 +83,7 @@ describe('Modal', () => {
         </Modal>
       </ThemeDSProvider>
     )
-    cy.get('[data-testid="footer-modal"] > .sc-pyfCe').click()
+    cy.get('[data-testid="footer-modal"] > .sc-cyZbSi').click()
     cy.get('@onClick').should('have.been.called')
   })
 
@@ -103,7 +103,7 @@ describe('Modal', () => {
         </Modal>
       </ThemeDSProvider>
     )
-    cy.get('[data-testid="modal-header"] > .sc-pyfCe').click()
+    cy.get('[data-testid="modal-header"] > .sc-cyZbSi').click()
     cy.get('@onClose').should('have.been.called')
   })
 

@@ -1,13 +1,15 @@
-import { Tab } from '../Tab'
+import { Tab } from './components/Tab'
 import React from 'react'
 import * as Styled from './styles'
 import { IconsProps } from '../Icon'
 
+export type TabsInfo = [TabProps?, TabProps?, TabProps?, TabProps?, TabProps?]
 export interface TabsProps {
   /**
-   * Define os dados que serão utilizados para a renderização das Tabs
+   * Define os dados que serão utilizados para a renderização das Tabs, 
+   * Máximo de 5 items
    */
-  tabsInfo: TabProps[]
+  tabsInfo: TabsInfo
   /**
    * Função de callback que acessa o index da Tab quando clicada
    */
@@ -59,10 +61,10 @@ export const Tabs: React.FC<TabsProps> = ({ tabsInfo, onClickTab }) => {
         return (
           <Tab
             key={key}
-            title={tab.title}
-            description={tab.description}
-            icon={tab.icon}
-            disabled={tab.disabled}
+            title={tab!.title}
+            description={tab!.description}
+            icon={tab!.icon}
+            disabled={tab!.disabled}
             onClick={() => _onClickTab(key)}
             selected={selectedTab == key ? true : false}
           />

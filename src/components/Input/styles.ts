@@ -1,13 +1,19 @@
 import styled from 'styled-components'
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.sizes['4px']};
+  height: ${({ theme }) => theme.sizes['80px']};
+`
+
 export const Label = styled.label`
   text-transform: capitalize;
   color: ${({ theme }) => theme.colors.primary.pure};
   justify-content: flex-start;
-  margin-bottom: ${({ theme }) => theme.sizes['4px']};
 `
 
-export const InputContainer = styled.input<{ hasMessage?: boolean }>`
+export const InputContainer = styled.input<{ hasMessage?: boolean; background: string }>`
   width: 100%;
   height: ${({ theme }) => theme.sizes['48px']};
   border-radius: ${({ theme }) => theme.sizes['8px']};
@@ -18,6 +24,7 @@ export const InputContainer = styled.input<{ hasMessage?: boolean }>`
   line-height: ${({ theme }) => theme.sizes['24px']};
   justify-content: flex-start;
   padding: 0px ${({ theme }) => theme.sizes['16px']};
+  background-color: ${({ background }) => background};
   overflow-x: hidden;
 
   :hover {
@@ -39,10 +46,6 @@ export const InputContainer = styled.input<{ hasMessage?: boolean }>`
     ::placeholder {
       color: ${({ theme }) => theme.colors.high.darkest};
     }
-  }
-
-  ::placeholder {
-    color: ${({ theme }) => theme.colors.high.darkest};
   }
 `
 export const Wrap = styled.div`

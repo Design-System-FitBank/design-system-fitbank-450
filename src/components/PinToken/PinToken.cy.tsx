@@ -53,11 +53,12 @@ describe('PinToken', () => {
 
   it('Deve conter o estado Hover com uma aparência da elevação do componente', () => {
     cy.get('[data-testid="pinToken-2"]').realHover()
+    cy.wait(800)
     cy.get('[data-testid="pinToken-2"]').should('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 2px 4px 0px')
   })
 
   it('Deve conter o estado Focused quando o pinToken for clicado', () => {
-    cy.get('[data-testid="pinToken-0"]')
+    cy.get('[data-testid="pinToken-0"]').click()
     cy.get('[data-testid="pinToken-0"]').should('have.css', 'border', '1px solid rgb(50, 56, 79)')
   })
 
@@ -119,6 +120,6 @@ describe('PinToken', () => {
     cy.get('[data-testid = "pinToken-0"]').type(validPin.toString()).wait(100).should('not.have.focus')
     cy.get('[data-testid = "pinToken-1"]').type(validPin.toString()).wait(100).should('not.have.focus')
     cy.get('[data-testid = "pinToken-2"]').type(validPin.toString()).wait(100).should('not.have.focus')
-    cy.get('[data-testid = "pinToken-3"]').type(validPin.toString()).wait(100).should('not.have.focus')
+    cy.get('[data-testid = "pinToken-3"]').type(validPin.toString()).wait(100).should('have.focus')
   })
 })

@@ -62,24 +62,23 @@ export const Modal: React.FC<ModalProps> = ({
   children
 }) => {
   const [isOpen, setIsOpen] = React.useState(isEnabled)
-  const [opacity, setOpacity] = React.useState(0)
+  const [closeAnimation, setCloseAnimation] = React.useState(!isEnabled)
 
   const convertToRem = pxValue => pxValue / 16
 
-  const handleClose = () => {
-    setOpacity(0)
-    onClose()
-    const timer = setTimeout(() => {
-      setIsOpen(false)
-    }, 300)
-    return () => clearTimeout(timer)
+  const handleOpen = () => {
+    setCloseAnimation(false)
+    setIsOpen(true)
+    document.body.style.overflow = 'hidden'
   }
 
-  const handleOpen = () => {
-    setIsOpen(true)
+  const handleClose = () => {
+    setCloseAnimation(true)
+    onClose()
     setTimeout(() => {
-      setOpacity(1)
-    }, 1)
+      setIsOpen(false)
+    }, 300)
+    document.body.style.overflow = 'visible'
   }
 
   React.useEffect(() => {
@@ -89,9 +88,14 @@ export const Modal: React.FC<ModalProps> = ({
   return (
     <>
       {isOpen && (
-        <Styled.Container opacity={opacity} data-testid='box-container'>
+        <Styled.Container className={closeAnimation ? 'out' : ''} data-testid='box-container'>
           <Styled.BackdropModal data-testid='backdrop-modal' />
-          <Styled.ContainerModal width={convertToRem(width)} height={convertToRem(height)} type={type} data-testid='container-modal'>
+          <Styled.ContainerModal
+            width={convertToRem(width)}
+            height={convertToRem(height)}
+            type={type}
+            data-testid='container-modal'
+          >
             {type === 'primary' && <HeaderModal title={title} closeFunction={handleClose} />}
             <Styled.BodyModal data-testid='body-modal'>{children}</Styled.BodyModal>
             {type === 'primary' && (

@@ -30,7 +30,6 @@ export const PinBox = styled.input<PinBoxProps>`
   line-height: ${({ theme }) => theme.sizes['24px']};
 
   &:hover {
-    transition: 0.8s;
     box-shadow: 2px 2px 4px ${({ theme }) => theme.colors.shadow};
   }
 

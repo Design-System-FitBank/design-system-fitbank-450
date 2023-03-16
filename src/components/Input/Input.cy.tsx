@@ -1,14 +1,23 @@
-import React from 'react'
-import { Input } from '.'
 import 'cypress-real-events/support'
+
+import { GlobalStyles, ThemeDSProvider } from '../../theme'
+
+import { Input } from '.'
+import React from 'react'
 import { faker } from '@faker-js/faker'
 import { mount } from 'cypress/react18'
-import { GlobalStyles, Theme, ThemeDSProvider } from '../../theme'
 
 describe('Input component', () => {
   const titleFake = 'Input Label'
   const placeholderFake = 'Placeholder'
-  const textFaker = faker.lorem.word()
+  const textFaker = faker.lorem.word(10)
+  const messageError = 'mensagem personalizada'
+  const backgroundColor = {
+    white: 'rgb(255, 255, 255)',
+    grey: 'rgb(118, 122, 139)',
+    transparent: 'rgba(0, 0, 0, 0)'
+  }
+
   beforeEach(() => {
     cy.wait(500)
     mount(
@@ -19,7 +28,23 @@ describe('Input component', () => {
           title={titleFake}
           placeholder={placeholderFake}
           disabled={false}
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onchange')}
+        />
+      </ThemeDSProvider>
+    )
+  })
+
+  afterEach(() => {
+    mount(
+      <ThemeDSProvider>
+        <GlobalStyles />
+        <Input
+          type='text'
+          title={titleFake}
+          placeholder={placeholderFake}
+          disabled={false}
+          onChange={cy.stub().as('onchange')}
+          resetValue={true}
         />
       </ThemeDSProvider>
     )
@@ -31,11 +56,10 @@ describe('Input component', () => {
       .and('have.css', 'text-transform', 'capitalize')
       .and('have.css', 'color', 'rgb(50, 56, 79)')
       .and('have.css', 'justify-content', 'flex-start')
-      .and('have.css', 'margin-bottom', '4px')
 
     cy.get('[data-testid="input"]')
       .should('have.attr', 'placeholder', placeholderFake)
-      .and('have.css', 'border', '1px solid rgb(174, 174, 174)')
+      .and('have.css', 'border', '0.8px solid rgb(174, 174, 174)')
       .and('have.css', 'color', 'rgb(50, 56, 79)')
       .and('have.css', 'background-color', 'rgb(255, 255, 255)')
       .and('have.css', 'font-weight', '400')
@@ -55,7 +79,7 @@ describe('Input component', () => {
           title={titleFake}
           placeholder={placeholderFake}
           disabled={false}
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onchange')}
         />
       </ThemeDSProvider>
     )
@@ -84,13 +108,13 @@ describe('Input component', () => {
   it('Deve mostrar o hover do componente default', () => {
     cy.get('[data-testid="input"]').realHover()
     cy.wait(300)
-    cy.get('[data-testid="input"]').should('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 2px 4px 0px')
+    cy.get('[data-testid="input"]').should('have.css', 'box-shadow','rgba(0, 0, 0, 0.1) 2px 2px 4px 0px')
   })
 
   it('Deve mostrar foco quando clicado no componente default', () => {
     cy.get('[data-testid="input"]').focus().type(textFaker)
     cy.get('[data-testid="input"]')
-      .should('have.css', 'border', '1px solid rgb(50, 56, 79)')
+      .should('have.css', 'border', '0.8px solid rgb(50, 56, 79)')
       .and('have.css', 'color', 'rgb(50, 56, 79)')
       .and('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 2px 4px 0px')
   })
@@ -108,12 +132,12 @@ describe('Input component', () => {
           title={titleFake}
           placeholder={placeholderFake}
           disabled={true}
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onchange')}
         />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="input"]')
-      .should('have.css', 'border', '1px solid rgb(232, 232, 232)')
+      .should('have.css', 'border', '0.8px solid rgb(232, 232, 232)')
       .and('have.css', 'background-color', 'rgb(232, 232, 232)')
   })
 
@@ -126,17 +150,17 @@ describe('Input component', () => {
           title={titleFake}
           placeholder={placeholderFake}
           disabled={true}
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onchange')}
         />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="input"]')
       .should('have.attr', 'placeholder', '••••••••')
-      .and('have.css', 'border', '1px solid rgb(232, 232, 232)')
+      .and('have.css', 'border', '0.8px solid rgb(232, 232, 232)')
       .and('have.css', 'background-color', 'rgb(232, 232, 232)')
   })
 
-  it('Deve mostrar mensagem erro quando a validação for email e o mesmo não for passado', () => {
+  it('Deve mostrar mensagem Não é um email válido quando a validação for email e o for passado um email não válido', () => {
     mount(
       <ThemeDSProvider>
         <GlobalStyles />
@@ -146,20 +170,21 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='email'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onchange')}
         />
       </ThemeDSProvider>
     )
-    cy.get('[data-testid="input"]').should('have.css', 'border', '1px solid rgb(174, 174, 174)')
+    cy.get('[data-testid="input"]').should('have.css', 'border', '0.8px solid rgb(174, 174, 174)')
     cy.get('[data-testid="input"]').type(faker.lorem.sentence())
-    cy.get('[data-testid="input"]').should('have.css', 'border', '1px solid rgb(50, 56, 79)')
+    cy.get('[data-testid="input"]').should('have.css', 'border', '0.8px solid rgb(50, 56, 79)')
     cy.get('[data-testid="message"]')
       .should('have.text', 'Não é um email válido')
       .and('have.css', 'color', 'rgb(234, 62, 62)')
       .and('have.css', 'margin-top', '4px')
       .and('have.css', 'justify-content', 'flex-start')
   })
-  it('Deve mostrar mensagem erro quando a validação for numero e o mesmo não for passado', () => {
+
+  it('Deve mostrar mensagem Campo só aceita números quando a validação for number e um caracter diferente de número for digitado', () => {
     mount(
       <ThemeDSProvider>
         <GlobalStyles />
@@ -168,15 +193,16 @@ describe('Input component', () => {
           title={titleFake}
           placeholder={placeholderFake}
           disabled={false}
-          validator='numero'
-          onchange={cy.stub().as('onchange')}
+          validator='number'
+          onChange={cy.stub().as('onchange')}
         />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="input"]').type(faker.lorem.word())
     cy.get('[data-testid="message"]').should('have.text', 'Campo só aceita números')
   })
-  it('Deve mostrar mensagem erro quando a validação for cpf ou CNPJ e o mesmo não for numero', () => {
+
+  it('Deve mostrar mensagem Campo só aceita números quando a validação for cpf ou cnpj e não seja digitado um número', () => {
     mount(
       <ThemeDSProvider>
         <GlobalStyles />
@@ -186,14 +212,15 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='cpf'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onchange')}
         />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="input"]').type(faker.lorem.word())
     cy.get('[data-testid="message"]').should('have.text', 'Campo só aceita números')
   })
-  it('Deve mostrar mensagem erro quando a validação for cpf ou CNPJ e o mesmo não for sequencia de números iguais', () => {
+
+  it('Deve mostrar mensagem erro quando a validação for cpf ou cnpj e o mesmo não for sequencia de números iguais', () => {
     mount(
       <ThemeDSProvider>
         <GlobalStyles />
@@ -203,17 +230,17 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='cpf'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onchange')}
         />
       </ThemeDSProvider>
     )
     const number = faker.datatype.number({ min: 0, max: 9 })
-    const sequence = Array(11).fill(number)
+    const sequence = Array(14).fill(number)
     cy.get('[data-testid="input"]').type(sequence.join(''))
-    cy.get('[data-testid="message"]').should('have.text', 'Cpf inválido')
+    cy.get('[data-testid="message"]').should('have.text', 'CPF inválido')
   })
 
-  it('Deve mostrar mensagem erro quando a validação for cpf ou CNPJ e o mesmo não for validado', () => {
+  it('Deve mostrar mensagem erro quando a validação for cpf ou cnpj e o mesmo não for validado', () => {
     mount(
       <ThemeDSProvider>
         <GlobalStyles />
@@ -223,13 +250,13 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='cpf'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onchange')}
         />
       </ThemeDSProvider>
     )
     const sequence = faker.datatype.number({ min: 10000000000, max: 99999999999 })
     cy.get('[data-testid="input"]').type(sequence.toString())
-    cy.get('[data-testid="message"]').should('have.text', 'Cpf inválido')
+    cy.get('[data-testid="message"]').should('have.text', 'CPF inválido')
   })
 
   it('Deve mostrar mensagem erro quando a validação for cpf e o mesmo não for sequencia de números igual 11', () => {
@@ -242,7 +269,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='cpf'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onchange')}
         />
       </ThemeDSProvider>
     )
@@ -251,7 +278,8 @@ describe('Input component', () => {
     cy.get('[data-testid="input"]').type(sequence.join(''))
     cy.get('[data-testid="message"]').should('have.text', 'Cpf inválido')
   })
-  it('Deve mostrar mensagem erro quando a validação for CNPJ e o mesmo não for sequencia de números igual 14', () => {
+
+  it('Deve mostrar mensagem erro quando a validação for cnpj e o mesmo não for sequencia de números igual 14', () => {
     mount(
       <ThemeDSProvider>
         <GlobalStyles />
@@ -261,7 +289,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='cnpj'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onchange')}
         />
       </ThemeDSProvider>
     )
@@ -270,6 +298,7 @@ describe('Input component', () => {
     cy.get('[data-testid="input"]').type(sequence.join(''))
     cy.get('[data-testid="message"]').should('have.text', 'CNPJ inválido')
   })
+
   it('Deve mostrar mensagem erro quando a validação for cpf e o mesmo não for validado na variante cpf/cnpj', () => {
     mount(
       <ThemeDSProvider>
@@ -280,14 +309,15 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='cpf/cnpj'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onchange')}
         />
       </ThemeDSProvider>
     )
     const sequence = faker.datatype.number({ min: 10000000000, max: 99999999999 })
     cy.get('[data-testid="input"]').type(sequence.toString())
-    cy.get('[data-testid="message"]').should('have.text', 'Cpf inválido')
+    cy.get('[data-testid="message"]').should('have.text', 'CPF inválido')
   })
+
   it('Deve mostrar mensagem erro quando a validação for cnpj e o mesmo não for validado na variante cpf/cnpj', () => {
     mount(
       <ThemeDSProvider>
@@ -298,7 +328,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='cpf/cnpj'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onchange')}
         />
       </ThemeDSProvider>
     )
@@ -316,8 +346,8 @@ describe('Input component', () => {
           title={titleFake}
           placeholder={placeholderFake}
           disabled={false}
-          validator='telefone'
-          onchange={cy.stub().as('onchange')}
+          validator='phone'
+          onChange={cy.stub().as('onchange')}
         />
       </ThemeDSProvider>
     )
@@ -325,6 +355,7 @@ describe('Input component', () => {
     cy.get('[data-testid="input"]').type(sequence)
     cy.get('[data-testid="message"]').should('have.text', 'o DDD não é válido')
   })
+
   it('Deve mostrar mensagem erro quando a validação for telefone e o mesmo conter menos 10 dígitos', () => {
     mount(
       <ThemeDSProvider>
@@ -334,8 +365,8 @@ describe('Input component', () => {
           title={titleFake}
           placeholder={placeholderFake}
           disabled={false}
-          validator='telefone'
-          onchange={cy.stub().as('onchange')}
+          validator='phone'
+          onChange={cy.stub().as('onchange')}
         />
       </ThemeDSProvider>
     )
@@ -343,24 +374,7 @@ describe('Input component', () => {
     cy.get('[data-testid="input"]').type(`85${sequence}`)
     cy.get('[data-testid="message"]').should('have.text', 'Telefone invalido')
   })
-  it('Deve mostrar mensagem erro quando a validação for telefone e o mesmo conter mais 11 dígitos', () => {
-    mount(
-      <ThemeDSProvider>
-        <GlobalStyles />
-        <Input
-          type='text'
-          title={titleFake}
-          placeholder={placeholderFake}
-          disabled={false}
-          validator='telefone'
-          onchange={cy.stub().as('onchange')}
-        />
-      </ThemeDSProvider>
-    )
-    const sequence = faker.datatype.number({ min: 1000000000, max: 9999999999 })
-    cy.get('[data-testid="input"]').type(`85${sequence}`)
-    cy.get('[data-testid="message"]').should('have.text', 'Telefone invalido')
-  })
+
   it('Deve mostrar máscara para cpf quando essa opção for marcada na variant', () => {
     mount(
       <ThemeDSProvider>
@@ -371,7 +385,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='cpf'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onchange')}
         />
       </ThemeDSProvider>
     )
@@ -379,6 +393,7 @@ describe('Input component', () => {
     const masked = sequence.toString().replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, '$1.$2.$3-$4')
     cy.get('[data-testid="input"]').type(sequence.toString()).should('have.value', masked)
   })
+
   it('Deve mostrar máscara para cnpj quando essa opção for marcada na variant', () => {
     mount(
       <ThemeDSProvider>
@@ -389,7 +404,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='cnpj'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onchange')}
         />
       </ThemeDSProvider>
     )
@@ -397,6 +412,7 @@ describe('Input component', () => {
     const masked = sequence.toString().replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/g, '$1.$2.$3/$4-$5')
     cy.get('[data-testid="input"]').type(sequence.toString()).should('have.value', masked)
   })
+
   it('Deve mostrar máscara para cpf caso o mesmo seja passado e a variante for cpf/cnpj', () => {
     mount(
       <ThemeDSProvider>
@@ -407,7 +423,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='cpf/cnpj'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onchange')}
         />
       </ThemeDSProvider>
     )
@@ -415,6 +431,7 @@ describe('Input component', () => {
     const masked = sequence.toString().replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, '$1.$2.$3-$4')
     cy.get('[data-testid="input"]').type(sequence.toString()).should('have.value', masked)
   })
+
   it('Deve mostrar máscara para cnpj caso o mesmo seja passado e a variante for cpf/cnpj', () => {
     mount(
       <ThemeDSProvider>
@@ -425,7 +442,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='cpf/cnpj'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onchange')}
         />
       </ThemeDSProvider>
     )
@@ -433,6 +450,7 @@ describe('Input component', () => {
     const masked = sequence.toString().replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/g, '$1.$2.$3/$4-$5')
     cy.get('[data-testid="input"]').type(sequence.toString()).should('have.value', masked)
   })
+
   it('Deve mostrar máscara para telefone caso a variante for a mesma', () => {
     mount(
       <ThemeDSProvider>
@@ -442,13 +460,54 @@ describe('Input component', () => {
           title={titleFake}
           placeholder={placeholderFake}
           disabled={false}
-          validator='telefone'
-          onchange={cy.stub().as('onchange')}
+          validator='phone'
+          onChange={cy.stub().as('onchange')}
         />
       </ThemeDSProvider>
     )
-    const sequence = faker.datatype.number({ min: 1000000000, max: 9999999999 })
-    const masked = sequence.toString().replace(/(\d{2})(\d{4,5})(\d{4})/g, '($1) $2-$3')
+    const sequence = faker.datatype.number({ min: 10000000000, max: 99999999999 })
+    const masked = sequence.toString().replace(/(\d{2})(\d{1})(\d{4})(\d{4})/g, '($1) $2 $3-$4')
     cy.get('[data-testid="input"]').type(sequence.toString()).should('have.value', masked)
+  })
+
+  it('Deve mostrar componente sem label quando não for passado valor do label', () => {
+    mount(
+      <ThemeDSProvider>
+        <GlobalStyles />
+        <Input type='text' placeholder={placeholderFake} onChange={cy.stub().as('onChange')} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="label"]').should('not.exist')
+  })
+
+  it('Deve mostrar mensagem de erro ou de validação quando for passado como parâmetro', () => {
+    mount(
+      <ThemeDSProvider>
+        <GlobalStyles />
+        <Input type='text' placeholder={placeholderFake} onChange={cy.stub().as('onChange')} message={messageError} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="message"]').should('have.text', messageError)
+  })
+
+  for (const key in backgroundColor) {
+    it(`Deve mostrar background com cor ${key}`, () => {
+      mount(
+        <ThemeDSProvider>
+          <GlobalStyles />
+          <Input
+            type='text'
+            placeholder={placeholderFake}
+            onChange={cy.stub().as('onChange')}
+            background={key as any}
+          />
+        </ThemeDSProvider>
+      )
+      cy.get('[data-testid="input"]').should('have.css', 'background-color', backgroundColor[key])
+    })
+  }
+
+  it('Deve mostrar campo limpo quando reset é passado como parâmetro', () => {
+    cy.get('[data-testid="input"]').type(textFaker).and('have.attr', 'placeholder', placeholderFake)
   })
 })

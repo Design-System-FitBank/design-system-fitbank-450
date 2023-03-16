@@ -36,6 +36,31 @@ Default.args = {
       description: "Realiza utilizando dados pessoais",
       icon: 'ticketPayment',
       onClick: () => {}
+    },
+    {
+      title: "Transferência Por CPF", 
+      description: "Realiza utilizando dados pessoais",
+      icon: 'ticketPayment',
+      onClick: () => {}
+    }
+  ]
+}
+
+export const TabDisabled = Template.bind({})
+TabDisabled.args = {
+    tabsInfo: [
+    {
+      title: "Transferência PIX", 
+      description: "Realiza transferência via PIX",
+      icon: 'keys',
+      onClick: () => {},
+      disabled: true
+    },
+    {
+      title: "Transferência TED", 
+      description: "Realiza transferência utilizando dados bancários",
+      icon: 'ticketPayment',
+      onClick: () => {}
     }
   ]
 }

@@ -35,9 +35,7 @@ export const NavButton = ({ icon, children, disabled = false, size = 'medium', o
                   {`${words[0].substring(0, 10)} ${words[1].substring(0, 10)}`}
                 </Typography>
               )}
-              {words.length === 1 && (
-                <Typography variant='buttonSmall'>{words[0].substring(0, 10)}</Typography>
-              )}
+              {words.length === 1 && <Typography variant='buttonSmall'>{words[0].substring(0, 10)}</Typography>}
             </Styled.LabelLarge>
           </Styled.Large>
         )
@@ -49,13 +47,9 @@ export const NavButton = ({ icon, children, disabled = false, size = 'medium', o
             </Styled.Icon>
             <Styled.Label data-testid='nav-label'>
               {words.length > 1 && (
-                <Typography variant='caption'>
-                  {`${words[0].substring(0, 10)} ${words[1].substring(0, 10)}`}
-                </Typography>
+                <Typography variant='caption'>{`${words[0].substring(0, 14)} ${words[1].substring(0, 14)}`}</Typography>
               )}
-              {words.length === 1 && (
-                <Typography variant='caption'>{words[0].substring(0, 10)}</Typography>
-              )}
+              {words.length === 1 && <Typography variant='caption'>{words[0].substring(0, 14)}</Typography>}
             </Styled.Label>
           </Styled.Container>
         )

@@ -16,8 +16,8 @@ export interface InputBreadlineProps {
 export const Breadline: React.FC<InputBreadlineProps> = ({ path, onClick }) => {
   return (
     <Styled.Container data-testid='container'>
-      <Styled.Home data-testid='home' onClick={() => onClick!('Inicio')}>
-        <Typography variant='h5'>Inicio</Typography>
+      <Styled.Home data-testid='home' onClick={() => onClick!('Início')}>
+        <Typography variant='captionBold'>Início</Typography>
       </Styled.Home>
       <Styled.Bloc data-testid='bloc'>
         {path.map((labelPathBlock, index) => (

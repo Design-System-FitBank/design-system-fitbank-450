@@ -10,7 +10,6 @@ export const Container = styled.button`
   height: ${({ theme }) => theme.sizes['92px']};
   padding: ${({ theme }) => theme.sizes['8px']} ${({ theme }) => theme.sizes['4px']};
   gap: ${({ theme }) => theme.sizes['4px']};
-
   border: 1px solid transparent;
   border-radius: ${({ theme }) => theme.sizes['16px']};
   box-shadow: 2px 2px 4px ${({ theme }) => theme.colors.shadow};
@@ -51,7 +50,6 @@ export const Large = styled(Container)`
   height: ${({ theme }) => theme.sizes['56px']};
   padding: ${({ theme }) => theme.sizes['8px']};
   gap: ${({ theme }) => theme.sizes['8px']};
-
   font-size: 14px;
 `
 export const Icon = styled.div`

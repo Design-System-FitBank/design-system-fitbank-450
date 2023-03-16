@@ -9,13 +9,33 @@ export class Mask {
 
     switch (variant) {
       case 'cpf':
-        return value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, '$1.$2.$3-$4')
+        return value
+          .replace(/\D/g, '')
+          .replace(/(\d{3})(\d)/, '$1.$2')
+          .replace(/(\d{3})(\d)/, '$1.$2')
+          .replace(/(\d{3})(\d{1,2})/, '$1-$2')
+          .replace(/(-\d{2})\d+?$/, '$1')
+
       case 'cnpj':
-        return value.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/g, '$1.$2.$3/$4-$5')
-      case 'telefone':
-        return value.replace(/(\d{2})(\d{4,5})(\d{4})/g, '($1) $2-$3')
-      case 'dinheiro':
+        return value
+          .replace(/\D/g, '')
+          .replace(/(\d{2})(\d)/, '$1.$2')
+          .replace(/(\d{3})(\d)/, '$1.$2')
+          .replace(/(\d{3})(\d)/, '$1/$2')
+          .replace(/(\d{4})(\d{1,2})/, '$1-$2')
+          .replace(/(-\d{2})\d+?$/, '$1')
+
+      case 'phone':
+        if (value.includes('-')) {
+          const valuePhoneWithoutCharacter = value.replace(/[\()]|\s|[\-]/g, '')
+          return valuePhoneWithoutCharacter.replace(/(\d{2})(\d{1})(\d{4,5})(\d{4})/g, '($1) $2 $3-$4')
+        } else {
+          return value.replace(/(\d{2})(\d{1})(\d{4,5})(\d{4})/g, '($1) $2 $3-$4')
+        }
+
+      case 'money':
         return maskMoney(value)
+
       default:
         break
     }

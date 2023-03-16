@@ -68,6 +68,7 @@ import { EyeOpen } from './icons/EyeOpen'
 import { Checked } from './icons/Checked'
 import { Search } from './icons/Search'
 import { Keys } from './icons/Keys'
+import { EmptyList } from './icons/EmptyList'
 
 export interface IconsProps {
   /**
@@ -106,6 +107,7 @@ export interface IconsProps {
     | 'doc'
     | 'edit'
     | 'email'
+    | 'emptyList'
     | 'enterprise'
     | 'eyeClose'
     | 'favorite'
@@ -225,6 +227,9 @@ export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) =>
 
     case 'email':
       return <Email data-testid='email' width={width} height={height} />
+
+    case 'emptyList':
+      return <EmptyList data-testid='emptyList' width={width} height={height} />
 
     case 'enterprise':
       return <Enterprise data-testid='enterprise' width={width} height={height} />
