@@ -22,11 +22,11 @@ Este design system requer [React](https://pt-br.reactjs.org/docs/create-a-new-re
 
 Para instalar a biblioteca, rode:
 ```sh
-npm install design-system-fitbank
+npm install design-system-fitbank-450
 ```
 Ou se preferir usando o Yarn:
 ```sh
-yarn add design-system-fitbank
+yarn add design-system-fitbank-450
 ```
 ## Modo de uso
 O atributo tema é opcional caso não seja passado assumira o padrão do FitBank e envolva o componente raiz do seu projeto. Caso passe um tema personalizado deve seguir essa tipificação [Styled.d.ts](https://github.com/Fitbank-Pagamentos-Eletronicos/Design-System/blob/main/src/theme/styled.d.ts)
