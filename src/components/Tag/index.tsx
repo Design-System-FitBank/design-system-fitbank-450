@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
 import * as Styled from './styles'
-import { Typography } from '../Typography'
+
+import React, { useState } from 'react'
+
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
+import { Typography } from '../Typography'
 import { Validator } from '../../_utils/validator'
 
 export interface TagButtonListProps {
@@ -62,7 +64,6 @@ export const Tag = ({ tagButtonList }: TagProps) => {
           <Input
             title={''}
             validator={'tag'}
-            maxLength={20}
             placeholder={'Digite uma tag'}
             type={'text'}
             disabled={false}

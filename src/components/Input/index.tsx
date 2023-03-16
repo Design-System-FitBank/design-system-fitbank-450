@@ -51,7 +51,7 @@ export interface InputProps {
   /**
    * Função que capta os valores digitados no campo de entrada de texto após a verificação de validação.
    */
-  onChange: (text: string) => void
+  onchange: (text: string) => void
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -63,7 +63,7 @@ export const Input: React.FC<InputProps> = ({
   message,
   background,
   resetValue,
-  onChange
+  onchange
 }) => {
   const [text, setText] = useState<string>()
   const [errorMessage, setErrorMessage] = useState<string>()
@@ -112,7 +112,7 @@ export const Input: React.FC<InputProps> = ({
         setText(Mask.masked('cnpj', textEntry)!)
         setErrorMessage(Validator.validation('cnpj', textEntry!))
       }
-      onChange(textEntry)
+      onchange(textEntry)
       return
     }
 
@@ -123,7 +123,7 @@ export const Input: React.FC<InputProps> = ({
       }
 
       if (textEntry.length === 11) {
-        onChange(textEntry)
+        onchange(textEntry)
       }
       return setMaxLengthInput(15)
     }
@@ -133,7 +133,7 @@ export const Input: React.FC<InputProps> = ({
       if (errorMessage === 'Campo só aceita letras') {
         setText('')
       }
-      onChange(textEntry)
+      onchange(textEntry)
       return setMaxLengthInput(50)
     }
 
@@ -142,14 +142,14 @@ export const Input: React.FC<InputProps> = ({
       if (errorMessage === 'Campo só aceita números') {
         setText('')
       }
-      onChange(textEntry)
+      onchange(textEntry)
       return setMaxLengthInput(50)
     }
 
     setText(Mask.masked(validator!, textEntry))
     setErrorMessage(Validator.validation(validator!, textEntry))
 
-    onChange(textEntry)
+    onchange(textEntry)
   }
 
   const toggleIcon = hideIcon ? 'eyeClose' : 'eyeOpen'
