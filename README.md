@@ -32,7 +32,7 @@ yarn add design-system-fitbank-450
 O atributo tema é opcional caso não seja passado assumira o padrão do FitBank e envolva o componente raiz do seu projeto. Caso passe um tema personalizado deve seguir essa tipificação [Styled.d.ts](https://github.com/Fitbank-Pagamentos-Eletronicos/Design-System/blob/main/src/theme/styled.d.ts)
 ```js
 
-import { ThemeDSProvider } from 'design-system-fitbank'
+import { ThemeDSProvider } from 'design-system-fitbank-450'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -46,7 +46,7 @@ root.render(
 ou essa alternativa com tema personalizado
 ```js
 
-import { ThemeDSProvider } from 'design-system-fitbank'
+import { ThemeDSProvider } from 'design-system-fitbank-450'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -60,7 +60,7 @@ root.render(
 Agora pode usar os componentes no local onde quiser
 ```js
 
-import {Button} from 'design-system-fitbank'
+import {Button} from 'design-system-fitbank-450'
 
 function App() {
   return (<Button>Teste</Button>);
