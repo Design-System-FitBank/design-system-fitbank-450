@@ -1,4 +1,4 @@
-# Design System FitBank
+# Design System FitBank 450
 
 > Design system usado nas aplicações da FitBank pagamentos eletrônicos
 
@@ -7,7 +7,7 @@ Este design system requer [React](https://pt-br.reactjs.org/docs/create-a-new-re
 
 ## Sumario
 
-- [Descrição](#design-system-fitBank)
+- [Descrição](#design-system-fitBank-450)
 - [Pre-requisitos](#pre-requisitos)
 - [Sumario](#sumario)
 - [Instalação](#instalação)
@@ -72,9 +72,9 @@ export default App;
 Documentação completa dos componentes [StoryBook](https://sharedimages.fitbank.com.br/sharedimages/designSystemDoc/index.html?path=/story/button--default).
 
 ## Versionamento
-Para as versões disponíveis, consulte o [Versões](https://github.com/fit-cledson-leite/design-system-fitbank/releases)
+Para as versões disponíveis, consulte o [Versões](https://github.com/Design-System-FitBank/design-system-fitbank-450/releases)
 
 ## Autores
-[Autores](https://github.com/fit-cledson-leite/design-system-fitbank/graphs/contributors)
+[Autores](https://github.com/Design-System-FitBank/design-system-fitbank-450/graphs/contributors)
 
 ----------------------------------
