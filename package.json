@@ -1,11 +1,11 @@
 {
-  "name": "design-system-fitbank",
+  "name": "design-system-fitbank-450",
   "version": "2.2.3",
   "description": "Design system para aplicações FitBank Pagamentos Eletrônicos",
   "main": "dist/src/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Design-System-FitBank/design-system-fitbank.git"
+    "url": "https://github.com/Design-System-FitBank/design-system-fitbank-450.git"
   },
   "author": "Design-System-FitBank <design.system@fitbank.com.br>",
   "license": "MIT",
