@@ -1,42 +1,30 @@
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`
-
-export const Container = styled.div`
+export const Container = styled.div<{ opacity: number }>`
   display: flex;
   position: absolute;
   align-items: center;
   justify-content: center;
   top: 0;
   left: 0;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   transition: all 0.3s ease-in-out;
-  animation: ${fadeIn} 0.3s;
-  &.out {
-    opacity: 0;
-  }
+  opacity: ${({ opacity }) => opacity};
 `
 
 export const BackdropModal = styled.div`
   position: absolute;
-  background-color: ${({ theme }) => theme.colors.low.pure};
-  height: 100vh;
-  width: 100vw;
+  background-color: ${({ theme }) => theme.colors.high.dark};
+  height: 100%;
+  width: 100%;
   z-index: 400;
   opacity: 0.2;
 `
 
 export const ContainerModal = styled.div<{ width: number; height: number; type: any }>`
   display: flex;
-  position: fixed;
+  position: relative;
   justify-content: ${({ type }) => (type === 'primary' ? 'space-between' : 'center')};
   background-color: ${({ theme }) => theme.colors.high.pure};
   flex-direction: column;
