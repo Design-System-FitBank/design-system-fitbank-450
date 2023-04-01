@@ -211,7 +211,7 @@ export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) =>
       return <Detail data-testid='details' width={width} height={height} />
 
     case 'device':
-      return <Device data-testId='device' width={width} height={height} />
+      return <Device data-testid='device' width={width} height={height} />
 
     case 'done':
       return <Done data-testid='done' width={width} height={height} />
@@ -262,7 +262,7 @@ export const Icon: React.FC<IconsProps> = ({ name, height = 32, width = 32 }) =>
       return <MoneyNote data-testid='moneyNote' width={width} height={height} />
 
     case 'moneyOut':
-      return <MoneyOut data-testId='moneyOut' width={width} height={height} />
+      return <MoneyOut data-testid='moneyOut' width={width} height={height} />
 
     case 'moneyTransfer':
       return <MoneyTransfer data-testid='moneyTransfer' width={width} height={height} />
