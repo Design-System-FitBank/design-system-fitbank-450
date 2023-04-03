@@ -21,7 +21,7 @@ export const Breadline: React.FC<InputBreadlineProps> = ({ path, onClick }) => {
       </Styled.Home>
       <Styled.Bloc data-testid='bloc'>
         {path.map((labelPathBlock, index) => (
-          <>
+          <Styled.BreadLine key={index}>
             {index === 0 && path.length === 1 ? (
               <LastPath label={labelPathBlock} />
             ) : (
@@ -31,8 +31,9 @@ export const Breadline: React.FC<InputBreadlineProps> = ({ path, onClick }) => {
                 </Styled.Route>
               )
             )}
-            {index === path.length - 1 && path.length !== 1 && <LastPath label={labelPathBlock} />}
-          </>
+            {index === path.length - 1 && path.length !== 1 &&
+              <LastPath label={labelPathBlock} />}
+          </Styled.BreadLine>
         ))}
       </Styled.Bloc>
     </Styled.Container>

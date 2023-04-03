@@ -77,8 +77,9 @@ export const Tag = ({ tagButtonList }: TagProps) => {
 
       <Styled.TagContent data-testid='tag-component'>
         <Styled.Wrap data-testid='wrap'>
-          {tagsList.map(tagList => (
+          {tagsList.map((tagList, index) => (
             <Button
+              key={index}
               onClick={() => removeTag(tagList.label)}
               disabled={false}
               size={'small'}

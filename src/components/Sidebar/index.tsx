@@ -87,13 +87,13 @@ export const Sidebar = ({
       <Styled.ChildContent isClosed={!isOpen}>{children}</Styled.ChildContent>
 
       <Styled.ButtonsGrid data-testid='nav-button-grid' isClosed={!isOpen}>
-        {navButtonList.map(({ label, icon, onClick }: NavButtonListProps) =>
+        {navButtonList.map(({ label, icon, onClick }: NavButtonListProps, index) =>
           isOpen ? (
-            <NavButton onClick={() => onClick()} icon={icon}>
+            <NavButton key={index} onClick={() => onClick()} icon={icon}>
               {label}
             </NavButton>
           ) : (
-            <NavButton onClick={() => onClick()} icon={icon} size='small' />
+            <NavButton key={index} onClick={() => onClick()} icon={icon} size='small' />
           )
         )}
       </Styled.ButtonsGrid>

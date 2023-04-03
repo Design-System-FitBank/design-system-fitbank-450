@@ -51,6 +51,6 @@ export const TextAlign = styled.div`
   flex-direction: column;
   align-items: flex-start;
 `
-export const Title = styled.body``
+export const Title = styled.div``
 
-export const Subtitle = styled.body``
+export const Subtitle = styled.div``

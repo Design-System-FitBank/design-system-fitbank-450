@@ -19,3 +19,6 @@ export const Bloc = styled.div`
 
 export const Route = styled.div`
 `
+
+export const BreadLine = styled.div`
+`

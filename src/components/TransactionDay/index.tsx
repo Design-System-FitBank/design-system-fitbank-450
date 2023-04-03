@@ -29,12 +29,12 @@ export const TransactionDay: React.FC<DayTransactionsProps> = ({ dayTransactions
   return (
     <Styled.TransactionDay data-testid='transactionDay'>
       {dayTransactions?.map((transactionDate, i) => (
-        <Styled.Transactions data-testid='transaction'>
+        <Styled.Transactions key={i} data-testid='transaction'>
           <Styled.DateTransaction data-testid='transactionDate'>
-            <Typography variant='body' key={i}>
+            <Typography variant='body'>
               {transactionDate.day?.toString()}
             </Typography>
-            <Typography variant='body' key={i}>
+            <Typography variant='body'>
               {transactionDate.month}
             </Typography>
           </Styled.DateTransaction>

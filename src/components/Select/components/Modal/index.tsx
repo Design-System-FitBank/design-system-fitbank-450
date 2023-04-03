@@ -13,7 +13,7 @@ export const Modal: React.FC<ModalContentProps> = ({ openModal, options, onClick
   return (
     <ModalContent data-testid='modal' isOpen={openModal}>
       {options.map((value, index) => (
-        <Item data-testid={`item-${index}`} onClick={() => onClick(value)}>
+        <Item key={index} data-testid={`item-${index}`} onClick={() => onClick(value)}>
           <Typography variant='bodyLarge'>{value}</Typography>
         </Item>
       ))}
