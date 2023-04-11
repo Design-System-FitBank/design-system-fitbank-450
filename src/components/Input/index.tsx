@@ -51,7 +51,7 @@ export interface InputProps {
   /**
    * Função que capta os valores digitados no campo de entrada de texto após a verificação de validação.
    */
-  onchange: (text: string) => void
+  onChange: (text: string) => void
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -63,9 +63,9 @@ export const Input: React.FC<InputProps> = ({
   message,
   background,
   resetValue,
-  onchange
+  onChange
 }) => {
-  const [text, setText] = useState<string>()
+  const [text, setText] = useState<string>("")
   const [errorMessage, setErrorMessage] = useState<string>()
   const [hideIcon, setHideIcon] = useState<boolean>(false)
   const [checked, setChecked] = useState<boolean>(false)
@@ -93,7 +93,7 @@ export const Input: React.FC<InputProps> = ({
 
   const handleSetMessageAndMasK = (validator: string, textEntry: any) => {
     setErrorMessage(Validator.validation(validator!, textEntry))
-    setText(Mask.masked(validator!, textEntry))
+    setText(Mask.masked(validator!, textEntry) || "")
   }
 
   const handleChange = (e: any) => {
@@ -112,7 +112,7 @@ export const Input: React.FC<InputProps> = ({
         setText(Mask.masked('cnpj', textEntry)!)
         setErrorMessage(Validator.validation('cnpj', textEntry!))
       }
-      onchange(textEntry)
+      onChange(textEntry)
       return
     }
 
@@ -123,7 +123,7 @@ export const Input: React.FC<InputProps> = ({
       }
 
       if (textEntry.length === 11) {
-        onchange(textEntry)
+        onChange(textEntry)
       }
       return setMaxLengthInput(15)
     }
@@ -133,7 +133,7 @@ export const Input: React.FC<InputProps> = ({
       if (errorMessage === 'Campo só aceita letras') {
         setText('')
       }
-      onchange(textEntry)
+      onChange(textEntry)
       return setMaxLengthInput(50)
     }
 
@@ -142,14 +142,14 @@ export const Input: React.FC<InputProps> = ({
       if (errorMessage === 'Campo só aceita números') {
         setText('')
       }
-      onchange(textEntry)
+      onChange(textEntry)
       return setMaxLengthInput(50)
     }
 
-    setText(Mask.masked(validator!, textEntry))
+    setText(Mask.masked(validator!, textEntry) || "")
     setErrorMessage(Validator.validation(validator!, textEntry))
 
-    onchange(textEntry)
+    onChange(textEntry)
   }
 
   const toggleIcon = hideIcon ? 'eyeClose' : 'eyeOpen'
