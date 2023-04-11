@@ -1,6 +1,6 @@
 {
   "name": "design-system-fitbank-450",
-  "version": "2.2.11",
+  "version": "2.2.14",
   "description": "Design system para aplicações FitBank Pagamentos Eletrônicos",
   "main": "dist/src/index.js",
   "repository": {
