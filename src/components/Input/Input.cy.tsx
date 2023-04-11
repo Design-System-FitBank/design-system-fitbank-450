@@ -28,7 +28,7 @@ describe('Input component', () => {
           title={titleFake}
           placeholder={placeholderFake}
           disabled={false}
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onChange')}
         />
       </ThemeDSProvider>
     )
@@ -43,7 +43,7 @@ describe('Input component', () => {
           title={titleFake}
           placeholder={placeholderFake}
           disabled={false}
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onChange')}
           resetValue={true}
         />
       </ThemeDSProvider>
@@ -79,7 +79,7 @@ describe('Input component', () => {
           title={titleFake}
           placeholder={placeholderFake}
           disabled={false}
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onChange')}
         />
       </ThemeDSProvider>
     )
@@ -132,7 +132,7 @@ describe('Input component', () => {
           title={titleFake}
           placeholder={placeholderFake}
           disabled={true}
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onChange')}
         />
       </ThemeDSProvider>
     )
@@ -150,7 +150,7 @@ describe('Input component', () => {
           title={titleFake}
           placeholder={placeholderFake}
           disabled={true}
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onChange')}
         />
       </ThemeDSProvider>
     )
@@ -170,7 +170,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='email'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onChange')}
         />
       </ThemeDSProvider>
     )
@@ -194,7 +194,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='number'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onChange')}
         />
       </ThemeDSProvider>
     )
@@ -212,7 +212,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='cpf'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onChange')}
         />
       </ThemeDSProvider>
     )
@@ -230,7 +230,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='cpf'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onChange')}
         />
       </ThemeDSProvider>
     )
@@ -250,7 +250,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='cpf'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onChange')}
         />
       </ThemeDSProvider>
     )
@@ -269,7 +269,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='cpf'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onChange')}
         />
       </ThemeDSProvider>
     )
@@ -289,7 +289,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='cnpj'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onChange')}
         />
       </ThemeDSProvider>
     )
@@ -309,7 +309,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='cpf/cnpj'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onChange')}
         />
       </ThemeDSProvider>
     )
@@ -328,7 +328,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='cpf/cnpj'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onChange')}
         />
       </ThemeDSProvider>
     )
@@ -347,7 +347,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='phone'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onChange')}
         />
       </ThemeDSProvider>
     )
@@ -366,7 +366,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='phone'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onChange')}
         />
       </ThemeDSProvider>
     )
@@ -385,7 +385,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='cpf'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onChange')}
         />
       </ThemeDSProvider>
     )
@@ -404,7 +404,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='cnpj'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onChange')}
         />
       </ThemeDSProvider>
     )
@@ -423,7 +423,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='cpf/cnpj'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onChange')}
         />
       </ThemeDSProvider>
     )
@@ -442,7 +442,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='cpf/cnpj'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onChange')}
         />
       </ThemeDSProvider>
     )
@@ -461,7 +461,7 @@ describe('Input component', () => {
           placeholder={placeholderFake}
           disabled={false}
           validator='phone'
-          onchange={cy.stub().as('onchange')}
+          onChange={cy.stub().as('onChange')}
         />
       </ThemeDSProvider>
     )
@@ -474,7 +474,7 @@ describe('Input component', () => {
     mount(
       <ThemeDSProvider>
         <GlobalStyles />
-        <Input type='text' placeholder={placeholderFake} onchange={cy.stub().as('onchange')} />
+        <Input type='text' placeholder={placeholderFake} onChange={cy.stub().as('onChange')} />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="label"]').should('not.exist')
@@ -484,7 +484,7 @@ describe('Input component', () => {
     mount(
       <ThemeDSProvider>
         <GlobalStyles />
-        <Input type='text' placeholder={placeholderFake} onchange={cy.stub().as('onchange')} message={messageError} />
+        <Input type='text' placeholder={placeholderFake} onChange={cy.stub().as('onChange')} message={messageError} />
       </ThemeDSProvider>
     )
     cy.get('[data-testid="message"]').should('have.text', messageError)
@@ -498,7 +498,7 @@ describe('Input component', () => {
           <Input
             type='text'
             placeholder={placeholderFake}
-            onchange={cy.stub().as('onchange')}
+            onChange={cy.stub().as('onChange')}
             background={key as any}
           />
         </ThemeDSProvider>
