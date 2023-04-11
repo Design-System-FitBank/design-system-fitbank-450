@@ -67,7 +67,7 @@ export const Tag = ({ tagButtonList }: TagProps) => {
             placeholder={'Digite uma tag'}
             type={'text'}
             disabled={false}
-            onchange={handleChange}
+            onChange={handleChange}
           />
         </Styled.TagInput>
         <Button onClick={addTag} disabled={disable} size={'small'} type={'secondary'} data-testid='tag-buttonAdd'>
