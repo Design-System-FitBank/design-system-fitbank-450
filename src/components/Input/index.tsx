@@ -93,7 +93,7 @@ export const Input: React.FC<InputProps> = ({
 
   const handleSetMessageAndMasK = (validator: string, textEntry: any) => {
     setErrorMessage(Validator.validation(validator!, textEntry))
-    setText(Mask.masked(validator!, textEntry) || "")
+    setText(Mask.masked(validator!, textEntry) || textEntry)
   }
 
   const handleChange = (e: any) => {
@@ -146,7 +146,7 @@ export const Input: React.FC<InputProps> = ({
       return setMaxLengthInput(50)
     }
 
-    setText(Mask.masked(validator!, textEntry) || "")
+    setText(Mask.masked(validator!, textEntry) || textEntry)
     setErrorMessage(Validator.validation(validator!, textEntry))
 
     onChange(textEntry)
