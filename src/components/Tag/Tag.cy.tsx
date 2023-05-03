@@ -8,7 +8,7 @@ import { Tag, TagButtonListProps } from './'
 describe('Tag', () => {
   const tagButtonList: TagButtonListProps[] = []
   const title = 'Tags'
-  const subtitle = 'Insira marcações para identificar seus gastos. Use nossa sugestão ou personalise as tags.'
+  const subtitle = 'Insira marcações para identificar seus gastos. Use nossa sugestão ou personalize as tags.'
   const placeholder = 'Digite uma tag'
   const textFaker = faker.lorem.word()
   const numberFaker = faker.datatype.number()
@@ -18,7 +18,7 @@ describe('Tag', () => {
     mount(
       <ThemeDSProvider>
         <GlobalStyles />
-        <Tag tagButtonList={tagButtonList} />
+        <Tag tagButtonList={tagButtonList} onClick={() => {}} />
       </ThemeDSProvider>
     )
   })
@@ -61,13 +61,15 @@ describe('Tag', () => {
 
   it('Deve preencher o campo input e verificar se o click no botão adicionar está inserindo a tag', () => {
     cy.get('[data-testid="input"]').type(textFaker)
-    cy.get('[data-testid="tag-content"] > .sc-bBABsx').click()
+    cy.get('[data-testid="buttonSmall"]').click()
     cy.get('[data-testid="tag-component"]').should('be.visible')
-    cy.get('[data-testid="wrap"] > .sc-bBABsx').contains(textFaker)
+    cy.get('[data-testid="wrap"]').contains(textFaker)
   })
 
   it('Deve verificar a funcionalidade do onClick para excluir dentro da tag', () => {
-    cy.get('[data-testid="wrap"] > .sc-bBABsx').click()
+    cy.get('[data-testid="input"]').type(textFaker)
+    cy.get('[data-testid="buttonSmall"]').click()
+    cy.get('[data-testid="trash"]').click()
     cy.get('[data-testid="tag-component"]').should('not.be.visible')
   })
 })

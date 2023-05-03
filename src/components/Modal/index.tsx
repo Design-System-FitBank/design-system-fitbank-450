@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import * as Styled from './styles'
 
@@ -61,37 +61,41 @@ export const Modal: React.FC<ModalProps> = ({
   onClose = () => {},
   children
 }) => {
-  const [isOpen, setIsOpen] = React.useState(isEnabled)
-  const [opacity, setOpacity] = React.useState(0)
+  const [isOpen, setIsOpen] = useState(isEnabled)
+  const [closeAnimation, setCloseAnimation] = useState(!isEnabled)
 
   const convertToRem = pxValue => pxValue / 16
 
+  const handleOpen = () => {
+    setCloseAnimation(false)
+    setIsOpen(true)
+    document.body.style.overflow = 'hidden'
+  }
+
   const handleClose = () => {
-    setOpacity(0)
+    setCloseAnimation(true)
     onClose()
-    const timer = setTimeout(() => {
+    setTimeout(() => {
       setIsOpen(false)
     }, 300)
-    return () => clearTimeout(timer)
+    document.body.style.overflow = 'visible'
   }
 
-  const handleOpen = () => {
-    setIsOpen(true)
-    setTimeout(() => {
-      setOpacity(1)
-    }, 1)
-  }
-
-  React.useEffect(() => {
+  useEffect(() => {
     isEnabled ? handleOpen() : handleClose()
   }, [isEnabled])
 
   return (
     <>
       {isOpen && (
-        <Styled.Container opacity={opacity} data-testid='box-container'>
+        <Styled.Container className={closeAnimation ? 'out' : ''} data-testid='box-container'>
           <Styled.BackdropModal data-testid='backdrop-modal' />
-          <Styled.ContainerModal width={convertToRem(width)} height={convertToRem(height)} type={type} data-testid='container-modal'>
+          <Styled.ContainerModal
+            width={convertToRem(width)}
+            height={convertToRem(height)}
+            type={type}
+            data-testid='container-modal'
+          >
             {type === 'primary' && <HeaderModal title={title} closeFunction={handleClose} />}
             <Styled.BodyModal data-testid='body-modal'>{children}</Styled.BodyModal>
             {type === 'primary' && (

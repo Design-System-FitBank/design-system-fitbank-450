@@ -16,9 +16,8 @@ export const ToggleContainer = styled.div<{ isToggled: boolean }>`
   background-color: ${({ isToggled, theme }) => (isToggled ? theme.colors.primary.pure : theme.colors.high.dark)};
   display: flex;
   align-items: center;
-  transition: 1s ease-in-out;
-  justify-content: ${({ isToggled }) => (isToggled ?  'flex-end'  : 'flex-start')};
   cursor: pointer;
+  position: relative;
 `
 
 export const Switcher = styled.div<{ isToggled: boolean }>`
@@ -26,4 +25,7 @@ export const Switcher = styled.div<{ isToggled: boolean }>`
   height: ${({ theme }) => theme.sizes['12px']};
   border-radius: 50%;
   background-color: ${({ isToggled, theme }) => (isToggled ? theme.colors.high.pure : theme.colors.primary.pure)};
+  transition: 0.5s ease-in-out;
+  left: ${({ isToggled }) => (isToggled ? '16px' : '2px')};
+  position: absolute;
 `

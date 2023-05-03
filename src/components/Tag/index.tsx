@@ -15,7 +15,7 @@ export interface TagProps {
   /**
    * Função sem retorno que será chamada ao acionar o click
    */
-  onClick?: () => any
+  onClick: (tag: TagButtonListProps[]) => any
   /**
    * Lista de tags que será do tipo
    * TagButtonListProps[] {
@@ -27,7 +27,7 @@ export interface TagProps {
   tagButtonList: TagButtonListProps[]
 }
 
-export const Tag = ({ tagButtonList }: TagProps) => {
+export const Tag = ({ tagButtonList, onClick }: TagProps) => {
   const [disable, setDisable] = useState(true)
   const [textValue, setTextValue] = useState<string>()
   const [tagsList, setTagsList] = useState(tagButtonList)
@@ -40,14 +40,15 @@ export const Tag = ({ tagButtonList }: TagProps) => {
   }
 
   const addTag = () => {
-    setTextValue('')
     if (!tagsList.find(item => item.label === textValue) && textValue) {
-      tagsList.push({ label: textValue! })
+      setTagsList([...tagsList, { label: textValue }])
+      onClick([...tagsList, { label: textValue }])
     }
   }
 
   const removeTag = tag => {
     setTagsList(tagsList.filter(item => item.label !== tag))
+    onClick(tagsList.filter(item => item.label !== tag))
   }
 
   return (
@@ -56,7 +57,7 @@ export const Tag = ({ tagButtonList }: TagProps) => {
         Tags
       </Typography>
       <Typography variant='body' data-testid='tag-subtitle'>
-        Insira marcações para identificar seus gastos. Use nossa sugestão ou personalise as tags.
+        Insira marcações para identificar seus gastos. Use nossa sugestão ou personalize as tags.
       </Typography>
 
       <Styled.TagContent data-testid='tag-content'>

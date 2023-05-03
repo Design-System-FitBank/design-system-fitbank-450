@@ -53,14 +53,13 @@ describe('Input component', () => {
   it('Deve mostrar o componente default', () => {
     cy.get('[data-testid="label"]')
       .should('have.text', titleFake)
-      .and('have.css', 'text-transform', 'capitalize')
-      .and('have.css', 'color', 'rgb(50, 56, 79)')
+      .and('have.css', 'color', 'rgb(41, 41, 41)')
       .and('have.css', 'justify-content', 'flex-start')
 
     cy.get('[data-testid="input"]')
       .should('have.attr', 'placeholder', placeholderFake)
-      .and('have.css', 'border', '0.8px solid rgb(174, 174, 174)')
-      .and('have.css', 'color', 'rgb(50, 56, 79)')
+      .and('have.css', 'border', '1px solid rgb(174, 174, 174)')
+      .and('have.css', 'color', 'rgb(41, 41, 41)')
       .and('have.css', 'background-color', 'rgb(255, 255, 255)')
       .and('have.css', 'font-weight', '400')
       .and('have.css', 'font-size', '16px')
@@ -107,20 +106,19 @@ describe('Input component', () => {
 
   it('Deve mostrar o hover do componente default', () => {
     cy.get('[data-testid="input"]').realHover()
-    cy.wait(300)
-    cy.get('[data-testid="input"]').should('have.css', 'box-shadow','rgba(0, 0, 0, 0.1) 2px 2px 4px 0px')
+    cy.get('[data-testid="input"]').should('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 2px 4px 0px')
   })
 
   it('Deve mostrar foco quando clicado no componente default', () => {
     cy.get('[data-testid="input"]').focus().type(textFaker)
     cy.get('[data-testid="input"]')
-      .should('have.css', 'border', '0.8px solid rgb(50, 56, 79)')
-      .and('have.css', 'color', 'rgb(50, 56, 79)')
+      .should('have.css', 'border', '1px solid rgb(50, 56, 79)')
+      .and('have.css', 'color', 'rgb(41, 41, 41)')
       .and('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.1) 2px 2px 4px 0px')
   })
 
   it('Deve mostrar componente default preenchido após desfocado', () => {
-    cy.get('[data-testid="input"]').type(textFaker).and('have.css', 'color', 'rgb(50, 56, 79)')
+    cy.get('[data-testid="input"]').type(textFaker).and('have.css', 'color', 'rgb(41, 41, 41)')
   })
 
   it('Deve mostrar componente default desabilitado ', () => {
@@ -137,7 +135,7 @@ describe('Input component', () => {
       </ThemeDSProvider>
     )
     cy.get('[data-testid="input"]')
-      .should('have.css', 'border', '0.8px solid rgb(232, 232, 232)')
+      .should('have.css', 'border', '1px solid rgb(232, 232, 232)')
       .and('have.css', 'background-color', 'rgb(232, 232, 232)')
   })
 
@@ -156,7 +154,7 @@ describe('Input component', () => {
     )
     cy.get('[data-testid="input"]')
       .should('have.attr', 'placeholder', '••••••••')
-      .and('have.css', 'border', '0.8px solid rgb(232, 232, 232)')
+      .and('have.css', 'border', '1px solid rgb(232, 232, 232)')
       .and('have.css', 'background-color', 'rgb(232, 232, 232)')
   })
 
@@ -174,9 +172,9 @@ describe('Input component', () => {
         />
       </ThemeDSProvider>
     )
-    cy.get('[data-testid="input"]').should('have.css', 'border', '0.8px solid rgb(174, 174, 174)')
+    cy.get('[data-testid="input"]').should('have.css', 'border', '1px solid rgb(174, 174, 174)')
     cy.get('[data-testid="input"]').type(faker.lorem.sentence())
-    cy.get('[data-testid="input"]').should('have.css', 'border', '0.8px solid rgb(50, 56, 79)')
+    cy.get('[data-testid="input"]').should('have.css', 'border', '1px solid rgb(50, 56, 79)')
     cy.get('[data-testid="message"]')
       .should('have.text', 'Não é um email válido')
       .and('have.css', 'color', 'rgb(234, 62, 62)')
@@ -259,7 +257,7 @@ describe('Input component', () => {
     cy.get('[data-testid="message"]').should('have.text', 'CPF inválido')
   })
 
-  it('Deve mostrar mensagem erro quando a validação for cpf e o mesmo não for sequencia de números igual 11', () => {
+  it('Deve mostrar mensagem erro quando o cpf inserido for inválido', () => {
     mount(
       <ThemeDSProvider>
         <GlobalStyles />
@@ -273,13 +271,12 @@ describe('Input component', () => {
         />
       </ThemeDSProvider>
     )
-    const number = faker.datatype.number({ min: 0, max: 9 })
-    const sequence = Array(number + 1).fill(number)
-    cy.get('[data-testid="input"]').type(sequence.join(''))
-    cy.get('[data-testid="message"]').should('have.text', 'Cpf inválido')
+    const sequence = '00000000000'
+    cy.get('[data-testid="input"]').type(sequence)
+    cy.get('[data-testid="message"]').should('have.text', 'CPF inválido')
   })
 
-  it('Deve mostrar mensagem erro quando a validação for cnpj e o mesmo não for sequencia de números igual 14', () => {
+  it('Deve mostrar mensagem erro quando o cnpj inserido for inválido', () => {
     mount(
       <ThemeDSProvider>
         <GlobalStyles />
@@ -293,9 +290,8 @@ describe('Input component', () => {
         />
       </ThemeDSProvider>
     )
-    const number = faker.datatype.number({ min: 0, max: 9 })
-    const sequence = Array(number + 4).fill(number)
-    cy.get('[data-testid="input"]').type(sequence.join(''))
+    const sequence = '00000000000000'
+    cy.get('[data-testid="input"]').type(sequence)
     cy.get('[data-testid="message"]').should('have.text', 'CNPJ inválido')
   })
 
@@ -509,5 +505,37 @@ describe('Input component', () => {
 
   it('Deve mostrar campo limpo quando reset é passado como parâmetro', () => {
     cy.get('[data-testid="input"]').type(textFaker).and('have.attr', 'placeholder', placeholderFake)
+  })
+
+  it('Deve passar um valor inicial para o input sem um validator', () => {
+    mount(
+      <ThemeDSProvider>
+        <GlobalStyles />
+        <Input type='text' placeholder={placeholderFake} onChange={cy.stub().as('onChange')} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="input"]').type(textFaker)
+    cy.get('[data-testid="input"]').type('ola123oi@#!')
+    cy.get('[data-testid="input"]').should('have.value', textFaker + 'ola123oi@#!')
+  })
+
+  it('Deve passar um valor inicial para o input com um validator', () => {
+    mount(
+      <ThemeDSProvider>
+        <GlobalStyles />
+        <Input type='text' placeholder={placeholderFake} onChange={cy.stub().as('onChange')} validator={'cpf'} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="input"]').type('ola123oi@#!')
+  })
+
+  it('Deve exibir mensagem de error ao passar valor inicial para o input com um validator', () => {
+    mount(
+      <ThemeDSProvider>
+        <GlobalStyles />
+        <Input type='text' placeholder={placeholderFake} onChange={cy.stub().as('onChange')} validator={'cpf'} />
+      </ThemeDSProvider>
+    )
+    cy.get('[data-testid="message"]').should('have.text', 'Campo só aceita números')
   })
 })

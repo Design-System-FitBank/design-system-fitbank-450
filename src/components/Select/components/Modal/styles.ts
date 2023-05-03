@@ -1,21 +1,9 @@
-import styled, { keyframes } from 'styled-components'
-
-const animationModal = keyframes`
-  0% {
-    top: 40px;
-    height: 0px;
-  }
-
-  100% {
-    top: 68px;
-    height: 174px;
-  }
-`
+import styled from 'styled-components'
 
 export const ModalContent = styled.div<{ isOpen: boolean }>`
   width: 100%;
   max-width: ${({ theme }) => theme.sizes['320px']};
-  height: ${({ isOpen, theme }) => (isOpen ? theme.sizes['174px'] : '0px')};
+  height: ${({ isOpen, theme }) => (isOpen ? theme.sizes['212px'] : '0px')};
 
   justify-content: flex-start;
   position: absolute;
@@ -34,9 +22,7 @@ export const ModalContent = styled.div<{ isOpen: boolean }>`
 
   border: 1px solid ${({ theme }) => theme.colors.primary};
 
-  animation-name: ${({ isOpen }) => (isOpen ? animationModal : '')};
-  animation-duration: 1.5s;
-  animation-direction: normal;
+  transition: 1.5s;
 
   overflow-y: scroll;
 
@@ -45,13 +31,11 @@ export const ModalContent = styled.div<{ isOpen: boolean }>`
   }
 
   &::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.colors.high.darkest};
-    border-radius: ${({ theme }) => theme.sizes['20px']};
+    background-color: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.colors.high.darkest};
-    border-radius: ${({ theme }) => theme.sizes['20px']};
+    background-color: transparent;
   }
 `
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 import * as Styled from './styles'
 export interface TypographyProps {
@@ -23,7 +23,7 @@ export interface TypographyProps {
     | 'buttonLarge'
     | 'caption'
     | 'captionBold'
-  children?: string
+  children?: ReactNode | ReactNode[]
 }
 
 export const Typography = ({ variant = 'h1', children }: TypographyProps) => {

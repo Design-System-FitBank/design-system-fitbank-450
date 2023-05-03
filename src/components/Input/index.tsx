@@ -65,7 +65,7 @@ export const Input: React.FC<InputProps> = ({
   resetValue,
   onChange
 }) => {
-  const [text, setText] = useState<string>("")
+  const [text, setText] = useState<string>('')
   const [errorMessage, setErrorMessage] = useState<string>()
   const [hideIcon, setHideIcon] = useState<boolean>(false)
   const [checked, setChecked] = useState<boolean>(false)
