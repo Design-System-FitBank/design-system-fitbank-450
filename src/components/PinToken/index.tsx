@@ -1,6 +1,3 @@
-import * as Styled from '../PinToken/styles'
-import { Stopwatch } from '../Stopwatch'
-
 import React, { useState } from 'react'
 
 import { PinGrid } from './components/PinGrid'
@@ -35,12 +32,5 @@ export const PinToken: React.FC<PinProps> = ({ onPinChange, disabled = false, is
     onPinChange(pin)
   }
 
-  return (
-    <Styled.Container>
-      <PinGrid pin={pin} onPinChange={onPinChanged} isDisabled={disabled} isPassword={isPassword} />
-      <Styled.Stopwatch>
-        <Stopwatch initialTime={60} onResend={function (): void {}} />
-      </Styled.Stopwatch>
-    </Styled.Container>
-  )
+  return <PinGrid pin={pin} onPinChange={onPinChanged} isDisabled={disabled} isPassword={isPassword} />
 }
