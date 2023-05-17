@@ -121,10 +121,7 @@ export const Input: React.FC<InputProps> = ({
       if (errorMessage === 'o DDD não é válido' || errorMessage === 'Campo só aceita números') {
         setText('')
       }
-
-      if (textEntry.length === 11) {
-        onChange(textEntry)
-      }
+      onChange(textEntry)
       return setMaxLengthInput(15)
     }
 
