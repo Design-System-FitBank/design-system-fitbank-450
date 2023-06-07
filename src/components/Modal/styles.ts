@@ -18,6 +18,7 @@ export const Container = styled.div`
   left: 0;
   height: 100vh;
   width: 100vw;
+  z-index: 2;
   transition: all 0.3s ease-in-out;
   animation: ${fadeIn} 0.3s;
   &.out {
