@@ -54,6 +54,12 @@ export const BodyBold = styled.p`
   font-weight: ${({ theme }) => theme.font.weight.bold};
 `
 
+export const BodySmallLight = styled.p`
+  font-size: ${({ theme }) => theme.sizes['12px']};
+  line-height: ${({ theme }) => theme.sizes['20px']};
+  font-weight: ${({ theme }) => theme.font.weight.tiny};
+`
+
 export const BodySmall = styled.p`
   font-size: ${({ theme }) => theme.sizes['12px']};
   line-height: ${({ theme }) => theme.sizes['20px']};
@@ -64,6 +70,12 @@ export const BodySmallBold = styled.p`
   font-size: ${({ theme }) => theme.sizes['12px']};
   line-height: ${({ theme }) => theme.sizes['20px']};
   font-weight: ${({ theme }) => theme.font.weight.bold};
+`
+
+export const BodyMediumLight = styled.p`
+  font-size: ${({ theme }) => theme.sizes['16px']};
+  line-height: ${({ theme }) => theme.sizes['24px']};
+  font-weight: ${({ theme }) => theme.font.weight.tiny};
 `
 
 export const BodyMedium = styled.p`
@@ -78,6 +90,12 @@ export const BodyMediumBold = styled.p`
   font-weight: ${({ theme }) => theme.font.weight.bold};
 `
 
+export const BodyLargeLight = styled.p`
+  font-size: ${({ theme }) => theme.sizes['20px']};
+  line-height: ${({ theme }) => theme.sizes['28px']};
+  font-weight: ${({ theme }) => theme.font.weight.tiny};
+`
+
 export const BodyLarge = styled.p`
   font-size: ${({ theme }) => theme.sizes['20px']};
   line-height: ${({ theme }) => theme.sizes['28px']};
@@ -88,6 +106,12 @@ export const BodyLargeBold = styled.p`
   font-size: ${({ theme }) => theme.sizes['20px']};
   line-height: ${({ theme }) => theme.sizes['28px']};
   font-weight: ${({ theme }) => theme.font.weight.bold};
+`
+
+export const CaptionLight = styled.span`
+  font-size: ${({ theme }) => theme.sizes['12px']};
+  line-height: ${({ theme }) => theme.sizes['16px']};
+  font-weight: ${({ theme }) => theme.font.weight.tiny};
 `
 
 export const Caption = styled.span`

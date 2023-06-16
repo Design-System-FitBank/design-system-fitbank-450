@@ -15,8 +15,8 @@ describe('Typography', () => {
 
     mount(
       <ThemeDSProvider>
-          <GlobalStyles />
-          <Typography variant='h1'>{txt}</Typography>
+        <GlobalStyles />
+        <Typography variant='h1'>{txt}</Typography>
       </ThemeDSProvider>
     )
     cy.get('[data-testid = "typography"]')
@@ -37,9 +37,13 @@ describe('Typography', () => {
     'subtitle',
     'body',
     'bodySmall',
+    'bodySmallLight',
+    'bodyMediumLight',
     'bodyBold',
     'bodyLarge',
-    'caption'
+    'bodyLargeLight',
+    'caption',
+    'captionLight'
   ]
 
   const getValues = (variant: string) => {
@@ -100,11 +104,32 @@ describe('Typography', () => {
           lineHeight: '20px',
           fontWeight: '500'
         }
+      case 'bodySmallLight':
+        return {
+          fontSize: '12px',
+          lineHeight: '20px',
+          fontWeight: '400',
+          label: 'BodySmall Light'
+        }
+      case 'bodyMediumLight':
+        return {
+          fontSize: '16px',
+          lineHeight: '24px',
+          fontWeight: '400',
+          label: 'BodySmall Light'
+        }
       case 'bodyLarge':
         return {
           fontSize: '20px',
           lineHeight: '28px',
           fontWeight: '500'
+        }
+      case 'bodyLargeLight':
+        return {
+          fontSize: '20px',
+          lineHeight: '28px',
+          fontWeight: '400',
+          label: 'BodyLarge Light'
         }
       case 'bodyBold':
         return {
@@ -118,6 +143,13 @@ describe('Typography', () => {
           lineHeight: '16px',
           fontWeight: '500',
           label: 'Caption'
+        }
+      case 'captionLight':
+        return {
+          fontSize: '12px',
+          lineHeight: '16px',
+          fontWeight: '400',
+          label: 'Caption Light'
         }
       default:
         'Variant not found'

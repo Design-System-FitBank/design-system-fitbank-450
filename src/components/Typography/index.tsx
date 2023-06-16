@@ -10,17 +10,21 @@ export interface TypographyProps {
     | 'h5'
     | 'h6'
     | 'subtitle'
+    | 'bodySmallLight'
     | 'bodySmall'
     | 'bodySmallBold'
     | 'body'
     | 'bodyBold'
+    | 'bodyMediumLight'
     | 'bodyMedium'
     | 'bodyMediumBold'
+    | 'bodyLargeLight'
     | 'bodyLarge'
     | 'bodyLargeBold'
     | 'buttonSmall'
     | 'button'
     | 'buttonLarge'
+    | 'captionLight'
     | 'caption'
     | 'captionBold'
   children?: ReactNode | ReactNode[]
@@ -50,6 +54,9 @@ export const Typography = ({ variant = 'h1', children }: TypographyProps) => {
       case 'subtitle':
         return <Styled.Subtitle data-testid='subtitle'>{children}</Styled.Subtitle>
 
+      case 'bodySmallLight':
+        return <Styled.BodySmallLight data-testid='bodySmallLight'>{children}</Styled.BodySmallLight>
+
       case 'bodySmall':
         return <Styled.BodySmall data-testid='bodySmall'>{children}</Styled.BodySmall>
 
@@ -62,17 +69,26 @@ export const Typography = ({ variant = 'h1', children }: TypographyProps) => {
       case 'bodyBold':
         return <Styled.BodyBold data-testid='bodyBold'>{children}</Styled.BodyBold>
 
+      case 'bodyMediumLight':
+        return <Styled.BodyMediumLight data-testid='bodyMediumLight'>{children}</Styled.BodyMediumLight>
+
       case 'bodyMedium':
         return <Styled.BodyMedium data-testid='bodyMedium'>{children}</Styled.BodyMedium>
 
       case 'bodyMediumBold':
         return <Styled.BodyMediumBold data-testid='bodyMediumBold'>{children}</Styled.BodyMediumBold>
 
+      case 'bodyLargeLight':
+        return <Styled.BodyLargeLight data-testid='bodyLargeLight'>{children}</Styled.BodyLargeLight>
+
       case 'bodyLarge':
         return <Styled.BodyLarge data-testid='bodyLarge'>{children}</Styled.BodyLarge>
 
       case 'bodyLargeBold':
         return <Styled.BodyLargeBold data-testid='bodyLargeBold'>{children}</Styled.BodyLargeBold>
+
+      case 'captionLight':
+        return <Styled.CaptionLight data-testid='captionLight'>{children}</Styled.CaptionLight>
 
       case 'caption':
         return <Styled.Caption data-testid='caption'>{children}</Styled.Caption>
